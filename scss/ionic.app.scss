@@ -38,13 +38,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         margin: 0px;
         padding: 0px;
         .box {
-          height:200px;
+          height:120px;
           background: no-repeat top center;
+          background-size:100% 100%;
         }
       }
     }
   }
-
 
   .my-row2 {
     .row {
