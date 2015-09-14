@@ -7702,5 +7702,14 @@ a.button {
 
 #home .bar-header .search {
   height: 23px; }
-#home .slider .box {
-  height: 400px; }
+#home .my-row1 .slider .slider-slide {
+  margin: 0px;
+  padding: 0px; }
+  #home .my-row1 .slider .slider-slide .box {
+    height: 200px;
+    background: no-repeat top center; }
+#home .my-row2 .row .col .box {
+  height: 200px;
+  background: no-repeat top center; }
+#home .my-row3 .list ion-item {
+  padding-top: 30px; }

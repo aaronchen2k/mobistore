@@ -8,19 +8,70 @@
     </button>
   </div>
 
-  <ion-content class="padding has-header">
+  <ion-content class=" has-header">
+    <div class="my-row1">
+      <ion-slide-box auto-play="true" slide-interval="2000">
+        <ion-slide>
+          <div class="box" style="background-image:url('img/sample/ad001.jpg');">
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box" style="background-image:url('img/sample/ad002.jpg');">
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box" style="background-image:url('img/sample/ad003.jpg');">
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box" style="background-image:url('img/sample/ad004.jpg');">
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
 
-    <ion-slide-box on-slide-changed="slideHasChanged($index)">
-      <ion-slide>
-        <div class="box blue"><h1>BLUE</h1></div>
-      </ion-slide>
-      <ion-slide>
-        <div class="box yellow"><h1>YELLOW</h1></div>
-      </ion-slide>
-      <ion-slide>
-        <div class="box pink"><h1>PINK</h1></div>
-      </ion-slide>
-    </ion-slide-box>
+    <div class="my-row2">
+      <div class="row">
+        <h4 class="col">
+          热销商品
+        </h4>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="box" style="background-image:url('img/sample/production001-m.png');">
+          </div>
+        </div>
+        <div class="col">
+          <div class="box" style="background-image:url('img/sample/production002-m.png');">
+          </div>
+        </div>
+        <div class="col">
+          <div class="box" style="background-image:url('img/sample/production003-m.png');">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-row3">
+      <div class="row">
+        <h4 class="col">
+          促销商品
+        </h4>
+      </div>
+
+      <ion-list>
+
+        <ion-item ng-repeat="item in productions" class="item-thumbnail-left item-icon-right">
+          <img ng-src="img/sample/production{{item.id}}-m.png">
+          <h2>{{item.name}}</h2>
+          <p>{{item.capacity}}</p>
+
+          <i class="icon ion-chevron-right"></i>
+        </ion-item>
+
+      </ion-list>
+    </div>
 
   </ion-content>
 </ion-view>

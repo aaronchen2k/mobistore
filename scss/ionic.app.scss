@@ -26,13 +26,41 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 #home {
-  .bar-header .search{
-    height: 23px;
+  .bar-header {
+    .search{
+      height: 23px;
+    }
   }
 
-  .slider {
-    .box {
-      height:400px;
+  .my-row1 {
+    .slider {
+      .slider-slide {
+        margin: 0px;
+        padding: 0px;
+        .box {
+          height:200px;
+          background: no-repeat top center;
+        }
+      }
+    }
+  }
+
+
+  .my-row2 {
+    .row {
+      .col {
+        .box {
+          height:200px;
+          background: no-repeat top center;
+        }
+      }
+    }
+  }
+  .my-row3 {
+    .list {
+      ion-item {
+        padding-top: 30px;
+      }
     }
   }
 }
