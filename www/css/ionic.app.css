@@ -7699,3 +7699,6 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+#home .bar-header .search {
+  height: 23px; }

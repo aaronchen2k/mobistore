@@ -1,0 +1,10 @@
+ionic start mobi-store tabs
+ionic start mobi-store sidemenu
+
+cd mobi-store
+
+ionic setup sass
+ionic platform add android
+ionic browser add crosswalk
+
+cp -a mobi-store-/.
