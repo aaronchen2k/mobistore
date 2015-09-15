@@ -2,51 +2,47 @@
 
 angular.module('mobistore.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+  .factory('productionRes', ['$resource', '$http', 'Constant', function($resource, $http, Constant){
+      var res = $resource(Constant.ApiPath + 'production/:id', {id:'@id'});
+      return res
+  }])
+  .factory('productionSrv', ['$http', 'Constant', function($http, Constant){
 
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
-  }];
+  }])
 
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
-  };
-});
+  .factory('tokenAuthSrv', ['$rootScope', '$cookies', '$q', '$http', '$location', 'Constant', 'StringUtil',
+                                          function($rootScope, $cookies, $q, $http, $location, Constant, StringUtil){
+
+       //return function () {
+       //   if ($rootScope.userProfile) {
+       //       if ($rootScope.userProfile.type === 'admin') {
+       //           $location.path("/admin");
+       //       } else {
+       //           $location.path("/app/list");
+       //       }
+       //   } else {
+       //       var userToken = $cookies.userToken;
+       //
+       //       if (!StringUtil.isEmpty(userToken)) {
+       //           $http.post(Constant.ApiPath + 'user/signonWithToken', { token: userToken })
+       //               .success(function (json) {
+       //                   if (json.code === 1) {
+       //                       $rootScope.userProfile = json.data;
+       //                       if (json.data.type === 'admin') {
+       //                           $location.path("/admin");
+       //                       } else {
+       //                           $location.path("/app/list");
+       //                       }
+       //                   } else {
+       //                       $location.path("/signon");
+       //                   }
+       //               })
+       //               .error(function () {
+       //                   $location.path("/signon");
+       //               });
+       //       } else {
+       //           $location.path("/signon");
+       //       }
+       //   }
+       //}
+  }]);

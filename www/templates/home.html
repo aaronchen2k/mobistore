@@ -12,7 +12,7 @@
     <div class="my-row1">
       <ion-slide-box auto-play="true" does-continue="true" slide-interval="2000">
         <ion-slide ng-repeat="item in [1,2,3,4]">
-          <div class="box" ng-style="styleSlideHeight" style="background-image:url('img/sample/ad00{{item}}.jpg');">
+          <div class="box" ng-style="styleSlideHeight" style="background-image:url('sample/img/ad00{{item}}.jpg');">
           </div>
         </ion-slide>
       </ion-slide-box>
@@ -27,7 +27,7 @@
 
       <div class="row">
         <div class="col" ng-repeat="item in [2,3,1]">
-          <div class="box" style="background-image:url('img/sample/production00{{item}}-m.png');">
+          <div class="box" style="background-image:url('sample/img/production00{{item}}-m.png');">
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
       <ion-list>
 
         <ion-item ng-repeat="item in productions" class="item-thumbnail-left item-icon-right">
-          <img ng-src="img/sample/production{{item.id}}-m.png">
+          <img ng-src="sample/img/production{{item.id}}-m.png">
           <h2>{{item.name}}</h2>
           <p>{{item.capacity}}</p>
 

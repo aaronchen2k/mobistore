@@ -7,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'mobistore.services' is found in services
 // 'mobistore.controllers' is found in controllers
-angular.module('mobistore', ['ionic', 'mobistore.utils', 'mobistore.controllers', 'mobistore.services'])
+angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistore.controllers', 'mobistore.services'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -25,7 +25,7 @@ angular.module('mobistore', ['ionic', 'mobistore.utils', 'mobistore.controllers'
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $provide, $httpProvider, $ionicConfigProvider) {
     $ionicConfigProvider.platform.android.tabs.position('bottom');
 
     // Ionic uses AngularUI Router which uses the concept of states
@@ -83,4 +83,38 @@ angular.module('mobistore', ['ionic', 'mobistore.utils', 'mobistore.controllers'
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
 
+    // register the interceptor as a service
+    $provide.factory('myHttpInterceptor', function($q, Constant) {
+      return {
+        'request': function(config) {
+          if (config.params) {
+            config.params.pageSize = Constant.PAGE_SIZE;
+          }
+          return config || $q.when(config);
+        },
+
+        'requestError': function(rejection) {
+          // do something on error
+          //if (canRecover(rejection)) {
+          //  return responseOrNewPromise
+          //}
+          return $q.reject(rejection);
+        },
+
+        'response': function(response) {
+          // do something on success
+          return response;
+        },
+
+        'responseError': function(rejection) {
+          // do something on error
+          //if (canRecover(rejection)) {
+          //  return responseOrNewPromise
+          //}
+          return $q.reject(rejection);
+        }
+      };
+    });
+
+    $httpProvider.interceptors.push('myHttpInterceptor');
   });
