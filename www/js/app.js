@@ -7,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'mobistore.services' is found in services
 // 'mobistore.controllers' is found in controllers
-angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistore.controllers', 'mobistore.services'])
+angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistore.filters', 'mobistore.controllers', 'mobistore.services'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -88,7 +88,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistor
       return {
         'request': function(config) {
           if (config.params) {
-            config.params.pageSize = Constant.PAGE_SIZE;
+            config.params.pageSize = Constant.PageSize;
           }
           return config || $q.when(config);
         },

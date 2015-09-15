@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="platforms/android/CordovaLib/build/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="platforms/android/CordovaLib/build/generated/source/buildConfig/release"/>
+	<classpathentry kind="src" path="platforms/android/CordovaLib/src"/>
+	<classpathentry kind="src" path="platforms/android/build/generated/source/buildConfig/armv7/debug"/>
+	<classpathentry kind="src" path="platforms/android/build/generated/source/r/armv7/debug"/>
+	<classpathentry kind="src" path="platforms/android/src"/>
+	<classpathentry kind="src" path="plugins/cordova-plugin-crosswalk-webview/platforms/android/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -3,8 +3,9 @@
 angular.module('mobistore.controllers', [])
 
   .controller('HomeCtrl', ['$scope', 'Util', 'productionRes', function($scope, Util, productionRes) {
-    $scope.productions = productionRes.get({id: '123'},function (json) {
+    productionRes.get({'startIndex': 0},function (json) {
       console.log(json);
+      $scope.productions = json.data;
     });
 
     $scope.platform = ionic.Platform.platform();

@@ -41,15 +41,13 @@
       </div>
 
       <ion-list>
-
         <ion-item ng-repeat="item in productions" class="item-thumbnail-left item-icon-right">
-          <img ng-src="sample/img/production{{item.id}}-m.png">
+          <img ng-src="{{item.image | imgPath}}">
           <h2>{{item.name}}</h2>
           <p>{{item.capacity}}</p>
 
           <i class="icon ion-chevron-right"></i>
         </ion-item>
-
       </ion-list>
     </div>
 
