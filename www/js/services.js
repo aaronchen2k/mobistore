@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('mobistore.services', [])
 
 .factory('Chats', function() {

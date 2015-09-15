@@ -1,3 +1,5 @@
+'use strict';
+
 // Ionic MobiStore App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -5,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'mobistore.services' is found in services
 // 'mobistore.controllers' is found in controllers
-angular.module('mobistore', ['ionic', 'mobistore.controllers', 'mobistore.services'])
+angular.module('mobistore', ['ionic', 'mobistore.utils', 'mobistore.controllers', 'mobistore.services'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
