@@ -7,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'mobistore.services' is found in services
 // 'mobistore.controllers' is found in controllers
-angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistore.filters', 'mobistore.controllers', 'mobistore.services'])
+angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistore.filters', 'mobistore.models', 'mobistore.controllers', 'mobistore.services'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {

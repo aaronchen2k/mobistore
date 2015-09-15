@@ -27,7 +27,7 @@
 
       <div class="row">
         <div class="col" ng-repeat="item in [2,3,1]">
-          <div class="box" style="background-image:url('sample/img/production00{{item}}-m.png');">
+          <div class="box" style="background-image:url('sample/img/product00{{item}}-m.png');">
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
       </div>
 
       <ion-list>
-        <ion-item ng-repeat="item in productions" class="item-thumbnail-left item-icon-right">
+        <ion-item ng-repeat="item in products" class="item-thumbnail-left item-icon-right">
           <img ng-src="{{item.image | imgPath}}">
           <h2>{{item.name}}</h2>
           <p>{{item.capacity}}</p>

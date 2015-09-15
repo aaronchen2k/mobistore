@@ -2,14 +2,6 @@
 
 angular.module('mobistore.services', [])
 
-  .factory('productionRes', ['$resource', '$http', 'Constant', function($resource, $http, Constant){
-      var res = $resource(Constant.ApiPath + 'production/:id', {id:'@id'});
-      return res
-  }])
-  .factory('productionSrv', ['$http', 'Constant', function($http, Constant){
-
-  }])
-
   .factory('tokenAuthSrv', ['$rootScope', '$cookies', '$q', '$http', '$location', 'Constant', 'StringUtil',
                                           function($rootScope, $cookies, $q, $http, $location, Constant, StringUtil){
 
