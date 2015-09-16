@@ -1,12 +1,10 @@
 <ion-view id="home">
-  <div class="bar bar-header bar-dark item-input-inset">
-    <label class="item-input-wrapper">
-      <i class="icon ion-ios-search placeholder-icon"></i>
-      <input class="search" type="search" placeholder="Search">
-    </label>
-    <!-- <button class="button button-clear ion-information-circled badge-assertive">
-    </button> -->
-  </div>
+  
+  <ion-nav-buttons id="home-bar" side="right">
+      <button class="button button-small button-clear " ng-click="doSomething()">
+      	<i class="icon ion-ios-search search"></i>
+      </button>
+    </ion-nav-buttons>
 
   <ion-content class="has-header">
     <div class="my-row1">

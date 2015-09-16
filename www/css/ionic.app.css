@@ -7700,6 +7700,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+#my-head-bar i.search:before {
+  font-size: 28px; }
+
 #home .bar-header .search {
   height: 23px; }
 #home .my-row1 .slider .slider-slide {
