@@ -33,7 +33,7 @@ navigation history that also transitions its views in and out.
             <div class="menu-inner">
                 <div ng-repeat="item in categories" ng-click="showComp(item)"
                      class="menu-item" ng-class="{'menu-item-current': Current == item.code}" >
-                    <div class="icon" style="background-image: url('../img/{{item.code}}.png');"></div>
+                    <div class="icon" style="background-image: url('{{item.image | imgPath}}');"></div>
                     <div class="my-label">{{item.name}}</div>
                 </div>
                 <div style="clear:both; "></div>

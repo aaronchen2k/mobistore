@@ -2,7 +2,7 @@
 
 angular.module('mobistore.controllers', [])
 
-  .controller('TabCtrl', ['$scope', 'Util', 'HomeOpt', function($scope, Util, HomeOpt) {
+  .controller('TabCtrl', ['$scope', '$timeout', '$ionicSlideBoxDelegate', 'Util', 'HomeOpt', function($scope, $timeout, $ionicSlideBoxDelegate, Util, HomeOpt) {
 	  $scope.menuShow = false;
       $scope.showMenu = function() {
           $scope.menuShow = !$scope.menuShow;
@@ -11,15 +11,18 @@ angular.module('mobistore.controllers', [])
       
     HomeOpt.opt({act: 'index'},function(json) {
     	console.log(json);
-    	$scope.categories = json.data;
+    	$scope.categories = json.categories;
+    	$scope.adverts = json.adverts;
+    	$scope.products = json.products;
+    	
   	});
   }])
 
   .controller('HomeCtrl', ['$scope', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', function($scope, Util, HomeOpt, ProductMdl, ProductOpt) {
 	    $scope.platform = ionic.Platform.platform();
 	    var width = Util.getScreenSize().w;
-	    var height = width * 0.32;
-	    $scope.styleSlideHeight = {'height':height + 'px'};
+	    var height = width * 0.57;
+	    $scope.styleSlideHeight = {'height':height + 'px', 'width': width + 'px'};
 	    
 //	    // 查找
 //	    ProductMdl.get({ id: '1'}).$promise.then(function(p1) {

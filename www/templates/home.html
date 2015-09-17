@@ -11,9 +11,10 @@
 
   <ion-content class="has-header">
     <div class="my-row1">
-      <ion-slide-box auto-play="true" does-continue="true" slide-interval="2000">
-        <ion-slide ng-repeat="item in [1,2,3,4]">
-          <div class="box" ng-style="styleSlideHeight" style="background-image:url('sample/img/ad00{{item}}.jpg');">
+      <ion-slide-box auto-play="true" does-continue="true" slide-interval="2000" ng-if="adverts">
+        <ion-slide ng-repeat="item in adverts">
+          <div class="box" ng-style="styleSlideHeight" style="background-image:url('{{item.image | imgPath}}');">
+          	
           </div>
         </ion-slide>
       </ion-slide-box>
