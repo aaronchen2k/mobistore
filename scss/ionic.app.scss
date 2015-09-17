@@ -85,22 +85,23 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
+$menu-height: 300px;
 .my-menu {
 	position: absolute;
 	top: 44px;
 	width: 100%;
-	height: 230px;
+	height: 300px;
 	text-align: center;
 	z-index: 5;
 	-webkit-transition: all .3s cubic-bezier(0, 0, 0, 1);
 	-moz-transition: all .3s cubic-bezier(0, 0, 0, 1);
 	-o-transition: all .3s cubic-bezier(0, 0, 0, 1);
 	transition: all .3s cubic-bezier(0, 0, 0, 1);
-	-webkit-transform: translate3d(0, -200px, 0);
-	-moz-transform: translate3d(0, -200px, 0);
-	-ms-transform: translate3d(0, -200px, 0);
-	-o-transform: translate3d(0, -200px, 0);
-	transform: translate3d(0, -200px, 0);
+	-webkit-transform: translate3d(0, -$menu-height, 0);
+	-moz-transform: translate3d(0, -$menu-height, 0);
+	-ms-transform: translate3d(0, -$menu-height, 0);
+	-o-transform: translate3d(0, -$menu-height, 0);
+	transform: translate3d(0, -$menu-height, 0);
     .menu-draw-outer {
 	    width: 100%;
 	    .menu-draw{
@@ -123,13 +124,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 
   .background-opacity {
-    height:200px;
+    height:$menu-height;
     background: rgba(0, 0, 0, 0.5);
     .background-opacity-inner {
       background: rgba(246, 246, 246, 0.8);
     }
     .background-opacity-inner {
-      height:200px;
+      height:$menu-height;
     }
   }
 
@@ -157,67 +158,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         width: 35px;
         background:cover no-repeat center;
         background-size: 35px ;
-        &.icon-contactUs{
-          background-image: url("../img/contactUs.png");
-        }
-        &.icon-contactUs-h{
-          background-image: url("../img/contactUs_h.png");
-        }
-
-        &.icon-event{
-          background-image: url("../img/event.png");
-        }
-        &.icon-event-h{
-          background-image: url("../img/event_h.png");
-        }
-
-        &.icon-gallery{
-          background-image: url("../img/gallery.png");
-        }
-        &.icon-gallery-h{
-          background-image: url("../img/gallery_h.png");
-        }
-
-        &.icon-home{
-          background-image: url("../img/home.png");
-        }
-        &.icon-home-h{
-          background-image: url("../img/home_h.png");
-        }
-        &.icon-category{
-          background-image: url("../img/category.png");
-        }
-        &.icon-category-h{
-          background-image: url("../img/category_h.png");
-        }
         
-        &.icon-shop{
-          background-image: url("../img/shop.png");
-        }
-        &.icon-shop-h{
-          background-image: url("../img/shop_h.png");
-        }
-
-        &.icon-video{
-          background-image: url("../img/video.png");
-        }
-        &.icon-video-h{
-          background-image: url("../img/video_h.png");
-        }
-
-        &.icon-video{
-          background-image: url("../img/video.png");
-        }
-        &.icon-video-h{
-          background-image: url("../img/video_h.png");
-        }
-
-        &.icon-preference{
-          background-image: url("../img/preference.png");
-        }
-        &.icon-preference-h{
-          background-image: url("../img/preference_h.png");
-        }
       }
     }
   }

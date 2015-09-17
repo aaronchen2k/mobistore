@@ -7796,18 +7796,18 @@ a.button {
   position: absolute;
   top: 44px;
   width: 100%;
-  height: 230px;
+  height: 300px;
   text-align: center;
   z-index: 5;
   -webkit-transition: all .3s cubic-bezier(0, 0, 0, 1);
   -moz-transition: all .3s cubic-bezier(0, 0, 0, 1);
   -o-transition: all .3s cubic-bezier(0, 0, 0, 1);
   transition: all .3s cubic-bezier(0, 0, 0, 1);
-  -webkit-transform: translate3d(0, -200px, 0);
-  -moz-transform: translate3d(0, -200px, 0);
-  -ms-transform: translate3d(0, -200px, 0);
-  -o-transform: translate3d(0, -200px, 0);
-  transform: translate3d(0, -200px, 0); }
+  -webkit-transform: translate3d(0, -300px, 0);
+  -moz-transform: translate3d(0, -300px, 0);
+  -ms-transform: translate3d(0, -300px, 0);
+  -o-transform: translate3d(0, -300px, 0);
+  transform: translate3d(0, -300px, 0); }
   .my-menu .menu-draw-outer {
     width: 100%; }
     .my-menu .menu-draw-outer .menu-draw {
@@ -7825,12 +7825,12 @@ a.button {
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
   .my-menu .background-opacity {
-    height: 200px;
+    height: 300px;
     background: rgba(0, 0, 0, 0.5); }
     .my-menu .background-opacity .background-opacity-inner {
       background: rgba(246, 246, 246, 0.8); }
     .my-menu .background-opacity .background-opacity-inner {
-      height: 200px; }
+      height: 300px; }
   .my-menu .menu-inner {
     margin: 0 auto;
     width: 100%; }
@@ -7851,39 +7851,3 @@ a.button {
         width: 35px;
         background: cover no-repeat center;
         background-size: 35px; }
-        .my-menu .menu-inner .menu-item .icon.icon-contactUs {
-          background-image: url("../img/contactUs.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-contactUs-h {
-          background-image: url("../img/contactUs_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-event {
-          background-image: url("../img/event.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-event-h {
-          background-image: url("../img/event_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-gallery {
-          background-image: url("../img/gallery.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-gallery-h {
-          background-image: url("../img/gallery_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-home {
-          background-image: url("../img/home.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-home-h {
-          background-image: url("../img/home_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-category {
-          background-image: url("../img/category.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-category-h {
-          background-image: url("../img/category_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-shop {
-          background-image: url("../img/shop.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-shop-h {
-          background-image: url("../img/shop_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-video {
-          background-image: url("../img/video.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-video-h {
-          background-image: url("../img/video_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-video {
-          background-image: url("../img/video.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-video-h {
-          background-image: url("../img/video_h.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-preference {
-          background-image: url("../img/preference.png"); }
-        .my-menu .menu-inner .menu-item .icon.icon-preference-h {
-          background-image: url("../img/preference_h.png"); }

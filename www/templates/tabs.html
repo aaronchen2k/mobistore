@@ -31,9 +31,9 @@ navigation history that also transitions its views in and out.
     <div class="menu-inner background-opacity">
         <div class="background-opacity-inner">
             <div class="menu-inner">
-                <div ng-click="nav(item.code)" ng-repeat="item in ['home', 'category', 'event', 'shop', 'preference']" ng-click="showComp(item)"
+                <div ng-click="nav(item.code)" ng-repeat="item in ['suit', 't-shirt', 'event', 'dress', 'bikini', 'pants', 'underwear','shoes','accessory', 'beauty-salon']" ng-click="showComp(item)"
                      class="menu-item" ng-class="{'menu-item-current': Current == item.code}" >
-                    <div class="icon icon-{{item}}"></div>
+                    <div class="icon" style="background-image: url('../img/{{item}}.png');"></div>
                     <div class="my-label">{{item}}</div>
                 </div>
                 <div style="clear:both; "></div>
