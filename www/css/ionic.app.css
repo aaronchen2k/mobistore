@@ -7700,8 +7700,82 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.my-header-bar i.search:before {
-  font-size: 28px; }
+@font-face {
+  font-family: "Roboto-Thin";
+  src: font-files("../font/roboto/Roboto-Thin.ttf");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Roboto-Light";
+  src: font-files("../font/roboto/Roboto-Light.ttf");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Roboto-Regular";
+  src: font-files("../font/roboto/Roboto-Regular.ttf");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Roboto-Medium";
+  src: font-files("../font/roboto/Roboto-Medium.ttf");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: font-files("../font/roboto/Roboto-Bold.ttf");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Roboto-Black";
+  src: font-files("../font/roboto/Roboto-Black.ttf");
+  font-weight: 900;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Roboto-ThinItalic";
+  src: font-files("../font/roboto/Roboto-ThinItalic.ttf");
+  font-weight: 100;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Roboto-LightItalic";
+  src: font-files("../font/roboto/Roboto-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Roboto-Italic";
+  src: font-files("../font/roboto/Roboto-Italic.ttf");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Roboto-MediumItalic";
+  src: font-files("../font/roboto/Roboto-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Roboto-BoldItalic";
+  src: font-files("../font/roboto/Roboto-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Roboto-BlackItalic";
+  src: font-files("../font/roboto/Roboto-BlackItalic.ttf");
+  font-weight: 900;
+  font-style: italic; }
+
+.my-header-bar {
+  z-index: 10; }
+  .my-header-bar i.search:before {
+    font-size: 28px; }
 
 #home .bar-header .search {
   height: 23px; }
@@ -7717,3 +7791,99 @@ a.button {
   background: no-repeat top center; }
 #home .my-row3 .list ion-item {
   padding-top: 30px; }
+
+.my-menu {
+  position: absolute;
+  top: 44px;
+  width: 100%;
+  height: 230px;
+  text-align: center;
+  z-index: 5;
+  -webkit-transition: all .3s cubic-bezier(0, 0, 0, 1);
+  -moz-transition: all .3s cubic-bezier(0, 0, 0, 1);
+  -o-transition: all .3s cubic-bezier(0, 0, 0, 1);
+  transition: all .3s cubic-bezier(0, 0, 0, 1);
+  -webkit-transform: translate3d(0, -200px, 0);
+  -moz-transform: translate3d(0, -200px, 0);
+  -ms-transform: translate3d(0, -200px, 0);
+  -o-transform: translate3d(0, -200px, 0);
+  transform: translate3d(0, -200px, 0); }
+  .my-menu .menu-draw-outer {
+    width: 100%; }
+    .my-menu .menu-draw-outer .menu-draw {
+      margin: 0 auto;
+      height: 24px;
+      width: 36px;
+      padding: 0;
+      background: url(../img/dropdown.png) no-repeat center;
+      background-size: 36px 24px;
+      -webkit-tap-highlight-color: transparent; }
+  .my-menu.menu_show {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  .my-menu .background-opacity {
+    height: 200px;
+    background: rgba(0, 0, 0, 0.5); }
+    .my-menu .background-opacity .background-opacity-inner {
+      background: rgba(246, 246, 246, 0.8); }
+    .my-menu .background-opacity .background-opacity-inner {
+      height: 200px; }
+  .my-menu .menu-inner {
+    margin: 0 auto;
+    width: 100%; }
+    .my-menu .menu-inner .menu-item {
+      float: left;
+      margin: 10px 0px;
+      width: 25%;
+      height: 70px;
+      text-align: center; }
+      .my-menu .menu-inner .menu-item.menu-item-current {
+        color: #07538e; }
+      .my-menu .menu-inner .menu-item .label {
+        margin: 5px 0;
+        font-size: larger; }
+      .my-menu .menu-inner .menu-item .icon {
+        margin: 5px auto;
+        height: 35px;
+        width: 35px;
+        background: cover no-repeat center;
+        background-size: 35px; }
+        .my-menu .menu-inner .menu-item .icon.icon-contactUs {
+          background-image: url("../img/contactUs.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-contactUs-h {
+          background-image: url("../img/contactUs_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-event {
+          background-image: url("../img/event.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-event-h {
+          background-image: url("../img/event_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-gallery {
+          background-image: url("../img/gallery.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-gallery-h {
+          background-image: url("../img/gallery_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-home {
+          background-image: url("../img/home.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-home-h {
+          background-image: url("../img/home_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-category {
+          background-image: url("../img/category.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-category-h {
+          background-image: url("../img/category_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-shop {
+          background-image: url("../img/shop.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-shop-h {
+          background-image: url("../img/shop_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-video {
+          background-image: url("../img/video.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-video-h {
+          background-image: url("../img/video_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-video {
+          background-image: url("../img/video.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-video-h {
+          background-image: url("../img/video_h.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-preference {
+          background-image: url("../img/preference.png"); }
+        .my-menu .menu-inner .menu-item .icon.icon-preference-h {
+          background-image: url("../img/preference_h.png"); }

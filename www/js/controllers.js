@@ -2,6 +2,14 @@
 
 angular.module('mobistore.controllers', [])
 
+  .controller('TabCtrl', ['$scope', 'Util', function($scope, Util) {
+	  $scope.menuShow = false;
+      $scope.showMenu = function() {
+          $scope.menuShow = !$scope.menuShow;
+          console.log($scope.menuShow);
+      };
+  }])
+
   .controller('HomeCtrl', ['$scope', 'Util', 'ProductMdl', 'ProductOpt', function($scope, Util, ProductMdl, ProductOpt) {
 	    $scope.platform = ionic.Platform.platform();
 	    var width = Util.getScreenSize().w;

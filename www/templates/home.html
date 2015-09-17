@@ -3,7 +3,7 @@
 	
   </ion-nav-buttons>
   <ion-nav-title>
-      光明牛奶
+      移动商城
   </ion-nav-title>
   <ion-nav-buttons id="home-bar" side="right">
       <button class="button button-small button-clear " ng-click="doSomething()">
@@ -21,28 +21,7 @@
       </ion-slide-box>
     </div>
 
-    <div class="my-row2">
-      <div class="row">
-        <h4 class="col">
-          热销商品
-        </h4>
-      </div>
-
-      <div class="row">
-        <div class="col" ng-repeat="item in [2,3,1]">
-          <div class="box" style="background-image:url('sample/img/product00{{item}}-m.png');">
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="my-row3">
-      <div class="row">
-        <h4 class="col">
-          促销商品
-        </h4>
-      </div>
-
       <ion-list>
         <ion-item ng-repeat="item in products" class="item-thumbnail-left item-icon-right">
           <img ng-src="{{item.image | imgPath}}">

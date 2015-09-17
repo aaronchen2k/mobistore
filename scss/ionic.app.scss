@@ -20,8 +20,24 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import "mixin";
+
+@include font-face("Roboto-Thin", font-files("../font/roboto/Roboto-Thin.ttf"), false, 100, normal);
+@include font-face("Roboto-Light", font-files("../font/roboto/Roboto-Light.ttf"), false, 300, normal);
+@include font-face("Roboto-Regular", font-files("../font/roboto/Roboto-Regular.ttf"), false, 400, normal);
+@include font-face("Roboto-Medium", font-files("../font/roboto/Roboto-Medium.ttf"), false, 500, normal);
+@include font-face("Roboto-Bold", font-files("../font/roboto/Roboto-Bold.ttf"), false, 700, normal);
+@include font-face("Roboto-Black", font-files("../font/roboto/Roboto-Black.ttf"), false, 900, normal);
+
+@include font-face("Roboto-ThinItalic", font-files("../font/roboto/Roboto-ThinItalic.ttf"), false, 100, italic);
+@include font-face("Roboto-LightItalic", font-files("../font/roboto/Roboto-LightItalic.ttf"), false, 300, italic);
+@include font-face("Roboto-Italic", font-files("../font/roboto/Roboto-Italic.ttf"), false, 400, italic);
+@include font-face("Roboto-MediumItalic", font-files("../font/roboto/Roboto-MediumItalic.ttf"), false, 500, italic);
+@include font-face("Roboto-BoldItalic", font-files("../font/roboto/Roboto-BoldItalic.ttf"), false, 700, italic);
+@include font-face("Roboto-BlackItalic", font-files("../font/roboto/Roboto-BlackItalic.ttf"), false, 900, italic);
 
 .my-header-bar {
+	z-index: 10;
 	i.search:before {
 		font-size: 28px;
 	}
@@ -69,4 +85,140 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
+.my-menu {
+	position: absolute;
+	top: 44px;
+	width: 100%;
+	height: 230px;
+	text-align: center;
+	z-index: 5;
+	-webkit-transition: all .3s cubic-bezier(0, 0, 0, 1);
+	-moz-transition: all .3s cubic-bezier(0, 0, 0, 1);
+	-o-transition: all .3s cubic-bezier(0, 0, 0, 1);
+	transition: all .3s cubic-bezier(0, 0, 0, 1);
+	-webkit-transform: translate3d(0, -200px, 0);
+	-moz-transform: translate3d(0, -200px, 0);
+	-ms-transform: translate3d(0, -200px, 0);
+	-o-transform: translate3d(0, -200px, 0);
+	transform: translate3d(0, -200px, 0);
+    .menu-draw-outer {
+	    width: 100%;
+	    .menu-draw{
+			margin: 0 auto;
+			height: 24px;
+			width: 36px;
+			padding: 0;
+			background: url(../img/dropdown.png) no-repeat center;
+			background-size: 36px 24px;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+	    }
+	  }
 
+  &.menu_show {
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+  }
+
+  .background-opacity {
+    height:200px;
+    background: rgba(0, 0, 0, 0.5);
+    .background-opacity-inner {
+      background: rgba(246, 246, 246, 0.8);
+    }
+    .background-opacity-inner {
+      height:200px;
+    }
+  }
+
+  .menu-inner {
+    margin: 0 auto;
+
+    width: 100%;
+    .menu-item{
+      float: left;
+      margin: 10px 0px;
+      width: 25%;
+      height: 70px;
+      text-align: center;
+      &.menu-item-current{
+        color:#07538e;
+      }
+      .label{
+        margin: 5px 0;
+        font-size: larger;
+      }
+
+      .icon{
+        margin: 5px auto;
+        height:35px;
+        width: 35px;
+        background:cover no-repeat center;
+        background-size: 35px ;
+        &.icon-contactUs{
+          background-image: url("../img/contactUs.png");
+        }
+        &.icon-contactUs-h{
+          background-image: url("../img/contactUs_h.png");
+        }
+
+        &.icon-event{
+          background-image: url("../img/event.png");
+        }
+        &.icon-event-h{
+          background-image: url("../img/event_h.png");
+        }
+
+        &.icon-gallery{
+          background-image: url("../img/gallery.png");
+        }
+        &.icon-gallery-h{
+          background-image: url("../img/gallery_h.png");
+        }
+
+        &.icon-home{
+          background-image: url("../img/home.png");
+        }
+        &.icon-home-h{
+          background-image: url("../img/home_h.png");
+        }
+        &.icon-category{
+          background-image: url("../img/category.png");
+        }
+        &.icon-category-h{
+          background-image: url("../img/category_h.png");
+        }
+        
+        &.icon-shop{
+          background-image: url("../img/shop.png");
+        }
+        &.icon-shop-h{
+          background-image: url("../img/shop_h.png");
+        }
+
+        &.icon-video{
+          background-image: url("../img/video.png");
+        }
+        &.icon-video-h{
+          background-image: url("../img/video_h.png");
+        }
+
+        &.icon-video{
+          background-image: url("../img/video.png");
+        }
+        &.icon-video-h{
+          background-image: url("../img/video_h.png");
+        }
+
+        &.icon-preference{
+          background-image: url("../img/preference.png");
+        }
+        &.icon-preference-h{
+          background-image: url("../img/preference_h.png");
+        }
+      }
+    }
+  }
+}
