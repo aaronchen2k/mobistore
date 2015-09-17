@@ -7700,7 +7700,7 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-#my-head-bar i.search:before {
+.my-header-bar i.search:before {
   font-size: 28px; }
 
 #home .bar-header .search {

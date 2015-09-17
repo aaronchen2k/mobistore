@@ -21,7 +21,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-#my-head-bar {
+.my-header-bar {
 	i.search:before {
 		font-size: 28px;
 	}
