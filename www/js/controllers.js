@@ -9,16 +9,14 @@ angular.module('mobistore.controllers', [])
           console.log($scope.menuShow);
       };
       
-    HomeOpt.opt({act: 'index'},function(json) {
-    	console.log(json);
-    	$scope.categories = json.categories;
-    	$scope.adverts = json.adverts;
-    	$scope.products = json.products;
-    	
-  	});
+ 	 HomeOpt.opt({act: 'index'},function(json) {
+     	console.log(json);
+     	$scope.categories = json.categories;
+     	$scope.adverts = json.adverts;
+   	});
   }])
 
-  .controller('HomeCtrl', ['$scope', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', function($scope, Util, HomeOpt, ProductMdl, ProductOpt) {
+  .controller('HomeCtrl', ['$scope', '$state', '$location', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', function($scope, $state, $location, Util, HomeOpt, ProductMdl, ProductOpt) {
 	  $scope.resize = function() {
 		  $scope.platform = ionic.Platform.platform();
 	    var width = Util.getScreenSize().w;
@@ -29,11 +27,26 @@ angular.module('mobistore.controllers', [])
 	  
 	  window.addEventListener("orientationchange", function() {
 		　　$scope.resize();
-	  }, false);
-
-//	  window.addEventListener("resize", function() {
-//		  $scope.resize();
-//	  }, false);  
+	  }, false)
+	  
+	 HomeOpt.opt({act: 'index'},function(json) {
+    	console.log(json);
+    	$scope.products = json.products;
+    	
+  	 });
+	  
+	  $scope.showProdcut = function(item) {
+		  console.log($location.path());
+		  $location.path('/tab/product/'+ item.id);
+	  };
+  }])
+  
+  .controller('ProductCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($scope,  $state, Util, ProductMdl, ProductOpt) {
+	  
+	  var productId = $state.params.productId;
+	  ProductMdl.get({id: productId}).$promise.then(function(p1) {
+		  console.log(p1);
+	  });
 	  
 //	    // 查找
 //	    ProductMdl.get({ id: '1'}).$promise.then(function(p1) {

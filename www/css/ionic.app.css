@@ -7782,6 +7782,18 @@ a.button {
   overflow: hidden;
   white-space: nowrap; }
 
+.spinner {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-position: -2px -2px;
+  background-image: url(/packages/bby-core-img/img/spinner@2x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-animation: spinner .6s linear infinite;
+  -moz-animation: spinner .6s linear infinite;
+  animation: spinner .6s linear infinite; }
+
 .text-line {
   margin: 0;
   padding: 0; }
@@ -7845,18 +7857,17 @@ a.button {
   position: absolute;
   top: 44px;
   width: 100%;
-  height: 300px;
   text-align: center;
   z-index: 5;
   -webkit-transition: all .3s cubic-bezier(0, 0, 0, 1);
   -moz-transition: all .3s cubic-bezier(0, 0, 0, 1);
   -o-transition: all .3s cubic-bezier(0, 0, 0, 1);
   transition: all .3s cubic-bezier(0, 0, 0, 1);
-  -webkit-transform: translate3d(0, -300px, 0);
-  -moz-transform: translate3d(0, -300px, 0);
-  -ms-transform: translate3d(0, -300px, 0);
-  -o-transform: translate3d(0, -300px, 0);
-  transform: translate3d(0, -300px, 0); }
+  -webkit-transform: translate3d(0, -290px, 0);
+  -moz-transform: translate3d(0, -290px, 0);
+  -ms-transform: translate3d(0, -290px, 0);
+  -o-transform: translate3d(0, -290px, 0);
+  transform: translate3d(0, -290px, 0); }
   .my-menu .menu-draw-outer {
     width: 100%; }
     .my-menu .menu-draw-outer .menu-draw {
@@ -7874,12 +7885,12 @@ a.button {
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
   .my-menu .background-opacity {
-    height: 300px;
+    height: 290px;
     background: rgba(0, 0, 0, 0.5); }
     .my-menu .background-opacity .background-opacity-inner {
       background: rgba(246, 246, 246, 0.8); }
     .my-menu .background-opacity .background-opacity-inner {
-      height: 300px; }
+      height: 290px; }
   .my-menu .menu-inner {
     margin: 0 auto;
     width: 100%; }
@@ -7896,7 +7907,7 @@ a.button {
         font-size: larger; }
       .my-menu .menu-inner .menu-item .icon {
         margin: 5px auto;
-        height: 35px;
-        width: 35px;
-        background: cover no-repeat center;
-        background-size: 35px; }
+        height: 50px;
+        width: 50px;
+        background-repeat: no-repeat;
+        background-size: cover; }

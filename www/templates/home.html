@@ -1,4 +1,4 @@
-<ion-view id="home" view-title="移动商城">
+<ion-view id="home" view-title="首页">
   <ion-nav-buttons id="home-bar" side="left">
 	
   </ion-nav-buttons>
@@ -28,7 +28,7 @@
 	
     <div class="my-row3">
       <ion-list>
-        <ion-item ng-repeat="item in products" class="item-thumbnail-left item-icon-right">
+        <ion-item ng-repeat="item in products" ng-click="showProdcut(item)" class="item-thumbnail-left item-icon-right">
           <img ng-src="{{item.image | imgPath}}">
           
           <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>

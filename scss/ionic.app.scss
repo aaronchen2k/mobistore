@@ -22,6 +22,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 @import "mixin";
 
+$menu-height: 290px;
+
 @include font-face("Roboto-Thin", font-files("../font/roboto/Roboto-Thin.ttf"), false, 100, normal);
 @include font-face("Roboto-Light", font-files("../font/roboto/Roboto-Light.ttf"), false, 300, normal);
 @include font-face("Roboto-Regular", font-files("../font/roboto/Roboto-Regular.ttf"), false, 400, normal);
@@ -38,6 +40,19 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .text-ellipsis{text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
 .text-ellipsis{text-overflow:clip; overflow:hidden; white-space:nowrap;}
+
+.spinner {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-position: -2px -2px;
+    background-image: url(/packages/bby-core-img/img/spinner@2x.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-animation: spinner .6s linear infinite;
+    -moz-animation: spinner .6s linear infinite;
+    animation: spinner .6s linear infinite;
+}
 
 .text-line {
 	margin: 0;
@@ -133,12 +148,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
-$menu-height: 300px;
+
 .my-menu {
 	position: absolute;
 	top: 44px;
 	width: 100%;
-	height: 300px;
 	text-align: center;
 	z-index: 5;
 	-webkit-transition: all .3s cubic-bezier(0, 0, 0, 1);
@@ -202,10 +216,10 @@ $menu-height: 300px;
 
       .icon{
         margin: 5px auto;
-        height:35px;
-        width: 35px;
-        background:cover no-repeat center;
-        background-size: 35px ;
+        height: 50px;
+        width: 50px;
+        background-repeat:no-repeat;
+        background-size: cover;
         
       }
     }
