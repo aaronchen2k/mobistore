@@ -19,11 +19,22 @@ angular.module('mobistore.controllers', [])
   }])
 
   .controller('HomeCtrl', ['$scope', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', function($scope, Util, HomeOpt, ProductMdl, ProductOpt) {
-	    $scope.platform = ionic.Platform.platform();
+	  $scope.resize = function() {
+		  $scope.platform = ionic.Platform.platform();
 	    var width = Util.getScreenSize().w;
 	    var height = width * 0.57;
 	    $scope.styleSlideHeight = {'height':height + 'px', 'width': width + 'px'};
-	    
+	  };
+	  $scope.resize();
+	  
+	  window.addEventListener("orientationchange", function() {
+		　　$scope.resize();
+	  }, false);
+
+//	  window.addEventListener("resize", function() {
+//		  $scope.resize();
+//	  }, false);  
+	  
 //	    // 查找
 //	    ProductMdl.get({ id: '1'}).$promise.then(function(p1) {
 //	        console.log(p1);

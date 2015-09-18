@@ -7798,9 +7798,9 @@ a.button {
   line-height: 28px; }
 
 .text-medium {
-  font-size: 16px;
+  font-size: 20px;
   font-family: Roboto, "Roboto Cn";
-  line-height: 16px; }
+  line-height: 20px; }
 
 .text-thin {
   min-height: 10px;
@@ -7832,6 +7832,7 @@ a.button {
   margin: 0px;
   padding: 0px; }
   #home .my-row1 .slider .slider-slide .box {
+    margin: auto;
     background: no-repeat top center;
     background-size: 100% 100%; }
 #home .my-row2 .row .col .box {

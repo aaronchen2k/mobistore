@@ -43,15 +43,35 @@ angular.module('mobistore.utils', [])
     return {
       getScreenSize: function () {
         var sh = window.screen.height;
-        if (document.body.clientHeight < sh) {
-          sh = document.body.clientHeight;
-        }
+//        if (document.body.clientHeight < sh) {
+//          sh = document.body.clientHeight;
+//        }
 
         var sw = window.screen.width;
-        if (document.body.clientWidth < sw) {
-          sw = document.body.clientWidth;
+//        if (document.body.clientWidth < sw) {
+//          sw = document.body.clientWidth;
+//        }
+        
+        var landscape = this.landscape();
+        if (landscape && sh > sw) {
+        	var temp = sh;
+        	sh = sw;
+        	sw = temp;
         }
+        
         return {h: sh, w: sw};
+      },
+      
+      landscape: function () {
+	  	var orientation;
+	    if (window.orientation == 0 || window.orientation == 180) {
+	        orientation = 'portrait';
+	        return false;
+	    }
+	    else if (window.orientation == 90 || window.orientation == -90) {
+	        orientation = 'landscape';
+	        return true;
+	    }
       }
     }
 }]);
