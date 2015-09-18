@@ -1,0 +1,32 @@
+<ion-view id="detail" view-title="细节">
+  <ion-nav-buttons id="home-bar" side="left">
+	
+  </ion-nav-buttons>
+
+  <ion-nav-buttons id="home-bar" side="right">
+      <button class="button button-small button-clear " ng-click="doSomething()">
+      	<i class="icon ion-ios-search search"></i>
+      </button>
+   </ion-nav-buttons>
+
+  <ion-content class="has-header">
+		<div class="content">
+			<div class="slide">
+				<img ng-src="{{product.image | imgPath}}">
+			</div>
+			<div class="introduction">
+				<span class="title">{{product.name}}</span>
+				<div class="sub-title"><span>价格</span>￥ {{product.retailPrice}}</div>
+				<div class="sub-title"><span>颜色</span>￥ {{product.color}}</div>
+				<div class="divide-line"></div>
+				<div class="descr">
+					<div>
+						The English actor incarnates an American journalist in The Return, 
+						a new film by Karl Lagerfeld. In this interview, Rupert Everett speaks about 
+						how pleasant it was to share the set wil time, and simultaneously on chanel.com.
+					</div>
+				</div>
+			</div>
+		</div>
+  </ion-content>
+</ion-view>

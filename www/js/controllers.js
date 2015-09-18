@@ -44,8 +44,9 @@ angular.module('mobistore.controllers', [])
   .controller('ProductCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($scope,  $state, Util, ProductMdl, ProductOpt) {
 	  
 	  var productId = $state.params.productId;
-	  ProductMdl.get({id: productId}).$promise.then(function(p1) {
-		  console.log(p1);
+	  ProductMdl.get({id: productId}).$promise.then(function(vo) {
+		  console.log(vo);
+		  $scope.product = vo;
 	  });
 	  
 //	    // 查找

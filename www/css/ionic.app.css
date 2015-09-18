@@ -7820,6 +7820,11 @@ a.button {
   font-family: "Roboto Lt";
   line-height: 20px; }
 
+.divide-line {
+  height: 20px;
+  width: 100%;
+  border-bottom: 1px solid #b0aeae; }
+
 .slider-bar {
   position: absolute;
   bottom: 0;
@@ -7911,3 +7916,73 @@ a.button {
         width: 50px;
         background-repeat: no-repeat;
         background-size: cover; }
+
+#detail .content .slide {
+  width: 100%;
+  height: 428px;
+  background: #000;
+  text-align: center;
+  overflow: hidden; }
+  #detail .content .slide img {
+    max-height: 100%;
+    max-width: 100%; }
+#detail .content .introduction {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 20px; }
+  #detail .content .introduction .title {
+    font-size: 35px;
+    color: #08548e; }
+  #detail .content .introduction .sub-title {
+    font-size: 16px;
+    line-height: 32px;
+    color: #606060; }
+    #detail .content .introduction .sub-title span {
+      margin-right: 20px;
+      color: #638cb1; }
+  #detail .content .introduction .descr div {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 40px;
+    color: #464646; }
+
+#product .content .slide {
+  width: 100%;
+  height: 200px;
+  background: #000;
+  text-align: center;
+  overflow: hidden; }
+  #product .content .slide img {
+    max-height: 100%;
+    max-width: 100%; }
+#product .content .rows {
+  font-size: 18px;
+  margin: 20px 20px 0 20px; }
+  #product .content .rows .row {
+    margin: 6px;
+    height: 40px; }
+    #product .content .rows .row .title {
+      font-size: 20px;
+      color: #08548e; }
+    #product .content .rows .row .col-left {
+      float: left;
+      width: 100px;
+      padding-right: 15px;
+      text-align: left; }
+    #product .content .rows .row .col-right {
+      float: left; }
+      #product .content .rows .row .col-right .item-input {
+        width: 50px; }
+        #product .content .rows .row .col-right .item-input input {
+          margin: 0px;
+          padding: 0px;
+          height: 16px;
+          font-size: 13px; }
+      #product .content .rows .row .col-right img {
+        height: 28px; }
+#product .content .descr {
+  margin: 20px;
+  text-align: left;
+  font-size: 20px;
+  line-height: 40px;
+  color: #464646; }

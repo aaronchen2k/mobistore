@@ -1,4 +1,4 @@
-<ion-view id="home" view-title="产品">
+<ion-view id="product" view-title="产品">
   <ion-nav-buttons id="home-bar" side="left">
 	
   </ion-nav-buttons>
@@ -10,6 +10,68 @@
    </ion-nav-buttons>
 
   <ion-content class="has-header">
-		products
+		<div class="content">
+			<div class="slide">
+				<img ng-src="{{product.image | imgPath}}">
+			</div>
+			<div class="rows">
+				<div class="row">
+					<span class="title">{{product.name}}</span>
+	       		</div>
+				<div class="row">
+			        <div class="col-left text-color-light-grey">
+	       				价格
+	       			</div>
+	       			<div class="col-right">
+	       				￥ {{product.retailPrice}}
+	       			</div>
+	       			<div style="clear:both;"></div>
+	       		</div>
+	           	<div class="row">
+	       			<div class="col-left text-color-light-grey">
+	       				数量
+	       			</div>
+	       			<div class="col-right">
+	       				{{product.qty}}
+	       			</div> 
+	       			<div style="clear:both;"></div>
+	       		</div>
+	           	<div class="row">
+	       			<div class="col-left text-color-light-grey">
+	     				运费
+	     			</div>
+	     			<div class="col-right">
+	     				￥ {{product.freight}}
+	     			</div> 
+	       			<div style="clear:both;"></div>
+	           	</div>
+	            <div class="row">
+	        		<div class="col-left text-color-light-grey">
+	     				数量
+	     			</div>
+		       		<div class="col-right">
+		       				<div id="reduceQty" style="float:left;">
+		       					<img src="img/reduce.png">
+		       				</div>
+		       				<div style="float:left;vertical-align:middle; ">
+		       					<label class="item item-input">
+								    <input type="text" value="1">
+								</label>
+		       				</div> 
+		       				<div id="addQty" style="float:left;"><img src="img/add.png"></div>
+	               			<div style="clear:both;"></div>
+		       		</div>
+		       		<div style="clear:both;"></div>
+	            </div>
+            </div>
+               	
+           	<div>
+           		<div class="divide-line"></div>
+           	</div>
+           	
+       		<div class="descr">
+ 				fsjdfsa s dfjasdfsljf
+           	</div>
+		</div>
   </ion-content>
 </ion-view>

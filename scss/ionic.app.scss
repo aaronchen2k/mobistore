@@ -82,6 +82,11 @@ $menu-height: 290px;
     font-family: "Roboto Lt";
     line-height: 20px;
 }
+.divide-line {
+    height: 20px;
+    width: 100%;
+    border-bottom: 1px solid #b0aeae;
+}
 
 .slider-bar {
 	position: absolute;
@@ -224,4 +229,108 @@ $menu-height: 290px;
       }
     }
   }
+}
+
+#detail {
+	.content {
+		.slide {
+		    width: 100%;
+		    height: 428px;
+		    background: #000;
+		    text-align: center;
+		    overflow: hidden;
+		    
+		    img {
+			    max-height: 100%;
+			    max-width: 100%;
+			}
+		}
+		.introduction {
+		    width: 90%;
+		    margin: 0 auto;
+		    padding-top: 20px;
+		    .title {
+			    font-size: 35px;
+			    color: #08548e;
+			}
+			.sub-title {
+			    font-size: 16px;
+			    line-height: 32px;
+			    color: #606060;
+			    span {
+				    margin-right: 20px;
+				    color: #638cb1;
+				}
+			}
+			.descr {
+				div {
+				    margin-top: 20px;
+				    font-size: 20px;
+				    line-height: 40px;
+				    color: #464646;
+				}
+			} 
+		}
+	}
+}
+
+#product {
+	.content {
+	   
+		.slide {
+		    width: 100%;
+		    height: 200px;
+		    background: #000;
+		    text-align: center;
+		    overflow: hidden;
+		    
+		    img {
+			    max-height: 100%;
+			    max-width: 100%;
+			}
+		}
+		.rows {
+			font-size: 18px;
+			margin: 20px 20px 0 20px;
+			.row {
+				margin: 6px;
+				height: 40px;
+				.title {
+				    font-size: 20px;
+				    color: #08548e;
+				}
+				.col-left {
+					float:left;
+					width:100px;
+					padding-right:15px;
+					text-align: left;
+				}
+				.col-right {
+					 float:left;
+					 .item-input {
+						 width: 50px;
+					 	input {
+					 		margin: 0px;
+					 		padding: 0px;
+						 	height: 16px;
+						 	
+						 	font-size: 13px;
+						 }
+					 }
+					 
+					 img {
+					 	height: 28px;
+					 }
+				}
+			}
+		}
+
+		.descr {
+			margin: 20px;
+			text-align: left;
+		    font-size: 20px;
+		    line-height: 40px;
+		    color: #464646;
+		}
+	}
 }
