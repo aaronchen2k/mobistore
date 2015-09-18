@@ -2,57 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cf57d66-40ee-4c71-b214-a0a4d79078bb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/about@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/about_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/back.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/category.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/category@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/category_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/category_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/contactUs.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/contactUs@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/contactUs_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/contactUs_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/dropdown.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/event.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/event@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/event_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/event_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/gallery.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/gallery@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/gallery_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/gallery_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/home.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/home@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/home_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/home_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/ionic.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/list-go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/loyalty.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/loyalty@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/loyalty_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/loyalty_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/mstore@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/mstore_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/preference.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/preference@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/preference_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/preference_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/shop.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/shop@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/shop_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/shop_h@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/store.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/store_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/video.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/video@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/video_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/img/video_h@2x.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/ionic.app.min.css" afterPath="$PROJECT_DIR$/www/css/ionic.app.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/ionic.app.scss" afterPath="$PROJECT_DIR$/scss/ionic.app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tabs.html" afterPath="$PROJECT_DIR$/www/templates/tabs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/utils.js" afterPath="$PROJECT_DIR$/www/js/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mobi-store-.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,8 +28,11 @@
         <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-              <folding />
+              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+              <folding>
+                <marker date="1442483033000" expanded="true" signature="1716:1722" placeholder="{...}" />
+                <marker date="1442483033000" expanded="true" signature="1716:1729" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/www/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+              <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -176,7 +130,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -302,6 +255,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,14 +404,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496799" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496799" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -486,8 +440,30 @@
     <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1442483033000" expanded="true" signature="1716:1722" placeholder="{...}" />
+            <marker date="1442483033000" expanded="true" signature="1716:1729" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
+          <folding>
+            <marker date="1442483033000" expanded="true" signature="1716:1722" placeholder="{...}" />
+            <marker date="1442483033000" expanded="true" signature="1716:1729" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -592,11 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/img/production001-l.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -623,31 +594,6 @@
         <state vertical-scroll-proportion="0.34896812">
           <caret line="30" column="3953" selection-start-line="30" selection-start-column="3953" selection-end-line="30" selection-end-column="3953" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/img/production004-m.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/img/production004-l.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/img/production002-m.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/img/production003-l.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/img/production003-m.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/css/ionic.app.css">
@@ -678,11 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/sample/img/ad001.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6498195">
@@ -707,15 +648,18 @@
     <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-          <folding />
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding>
+            <marker date="1442483033000" expanded="true" signature="1716:1722" placeholder="{...}" />
+            <marker date="1442483033000" expanded="true" signature="1716:1729" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
           <folding />
         </state>
       </provider>

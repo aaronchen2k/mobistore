@@ -36,6 +36,48 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @include font-face("Roboto-BoldItalic", font-files("../font/roboto/Roboto-BoldItalic.ttf"), false, 700, italic);
 @include font-face("Roboto-BlackItalic", font-files("../font/roboto/Roboto-BlackItalic.ttf"), false, 900, italic);
 
+.slider-bar {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background: rgba(0, 0, 0, 0.6);
+    
+	.slider-bar-inner {
+		height: 100%;
+		min-height: 40px;
+	    width: auto;
+	    margin: 10px 0 0 10px;
+	    text-overflow: ellipsis;
+	}
+}
+
+.text-ellipsis{text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
+.text-ellipsis{text-overflow:clip; overflow:hidden; white-space:nowrap;}
+
+.text-color-light-grey {
+	color: #4e5053;
+}
+
+.text-color-white {
+    color: #FFF;
+}
+.text-big {
+    font-size: 28px;
+    font-family: Roboto, "Roboto Cn";
+    line-height: 28px;
+}
+.text-medium {
+    font-size: 24px;
+    font-family: Roboto, "Roboto Cn";
+    line-height: 24px;
+}
+.text-thin {
+    font-size: 16px;
+    font-family: "Roboto Lt";
+    line-height: 20px;
+}
+
 .my-header-bar {
 	z-index: 10;
 	i.search:before {
@@ -58,7 +100,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
         padding: 0px;
 
         .box {
-          height:180px;
           background: no-repeat top center;
           background-size:100% 100%;
         }
@@ -79,7 +120,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   .my-row3 {
     .list {
       ion-item {
-        padding-top: 30px;
+        padding-top: 20px;
       }
     }
   }

@@ -14,9 +14,12 @@ angular.module('mobistore.utils', [])
     var url = $location.absUrl();
     if (url.indexOf("localhost") > -1 || url.indexOf("192.168") > -1 || url.indexOf("10.0") > -1) { // development
     	WebPath = SERVICE_URL_DEVELOP;
+    } else if (url.indexOf("file://") > -1) {    // app test
+		WebPath = SERVICE_URL_DEVELOP;
     } else {    // production
     	WebPath = SERVICE_URL_PRODUCTION;
     }
+   
     ApiPath =  WebPath + 'api/' + ApiVer + '/';
 
     return {
