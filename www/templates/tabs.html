@@ -9,8 +9,8 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-home"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="发现" icon-off="ion-ios-color-wand-outline" icon-on="ion-ios-color-wand" href="#/tab/category">
-    <ion-nav-view name="tab-category"></ion-nav-view>
+  <ion-tab title="发现" icon-off="ion-ios-color-wand-outline" icon-on="ion-ios-color-wand" href="#/tab/find">
+    <ion-nav-view name="tab-find"></ion-nav-view>
   </ion-tab>
 
   <ion-tab title="购物车" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" href="#/tab/shoppingcart">
@@ -27,22 +27,5 @@ navigation history that also transitions its views in and out.
 <ion-nav-bar class="my-header-bar bar-dark">
   <ion-nav-back-button></ion-nav-back-button>
 </ion-nav-bar>
- <div id="my-menu" class="my-menu" ng-class="{menu_show: menuShow}">
-    <div class="menu-inner background-opacity">
-        <div class="background-opacity-inner">
-            <div class="menu-inner">
-                <div ng-repeat="item in categories" ng-click="showCategory(item)"
-                     class="menu-item" ng-class="{'menu-item-current': Current == item.code}" >
-                    <div class="icon" style="background-image: url('{{item.image | imgPath}}');"></div>
-                    <div class="my-label">{{item.name}}</div>
-                </div>
-                <div style="clear:both; "></div>
-            </div>
-        </div>
-    </div>
-    <div class="menu-draw-outer">
-        <div id="menu-button" ng-click="showMenu()" class="menu-draw"></div>
-    </div>
-</div>
 
 <ion-nav-view></ion-nav-view>

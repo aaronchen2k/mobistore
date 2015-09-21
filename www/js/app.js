@@ -71,6 +71,15 @@ angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistor
           }
         }
       })
+      .state('tab.find', {
+        url: '/find',
+        views: {
+          'tab-find': {
+            templateUrl: 'templates/find.html',
+            controller: 'FindCtrl'
+          }
+        }
+      })
       .state('tab.shoppingcart', {
         url: '/shoppingcart',
         views: {

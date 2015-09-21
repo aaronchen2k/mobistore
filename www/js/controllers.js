@@ -3,27 +3,7 @@
 angular.module('mobistore.controllers', [])
 
   .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicSlideBoxDelegate', 'Util', 'HomeOpt', function($rootScope, $scope, $location, $timeout, $ionicSlideBoxDelegate, Util, HomeOpt) {
-	  if (!$rootScope.init) {
-		  $scope.menuShow = false;
-	      $scope.showMenu = function() {
-	          $scope.menuShow = !$scope.menuShow;
-	          
-	      };
 
-	      
-	      $scope.showCategory = function(item) {
-	    	  console.log(item.id);
-	    	  $location.path('/tab/category/' + item.id + '/products');
-	      };
-	      
-	  	 HomeOpt.opt({act: 'listCategories'},function(json) {
-	      	console.log(json);
-	      	$rootScope.categories = json.categories;
-	      	
-	     });
-	  	 
-	  	$rootScope.init = true;
-	  }
   }])
 
   .controller('HomeCtrl', ['$scope', '$state', '$location', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', function($scope, $state, $location, Util, HomeOpt, ProductMdl, ProductOpt) {
@@ -35,10 +15,6 @@ angular.module('mobistore.controllers', [])
 	  };
 	  $scope.resize();
 	  
-	  window.addEventListener("orientationchange", function() {
-		　　$scope.resize();
-	  }, false)
-	  
  	 HomeOpt.opt({act: 'index'},function(json) {
      	console.log(json);
      	$scope.categories = json.categories;
@@ -46,6 +22,26 @@ angular.module('mobistore.controllers', [])
      	$scope.products = json.products;
      	
    	});
+ 	 
+	  window.addEventListener("orientationchange", function() {
+		　　$scope.resize();
+	  }, false)
+	  
+	  if (!$scope.init) {
+		  $scope.menuShow = false;$scope.categories
+	      $scope.showMenu = function() {
+	          $scope.menuShow = !$scope.menuShow;
+	          
+	      };
+
+	      $scope.showCategory = function(item) {
+	    	  console.log(item.id);
+	    	  $location.path('/tab/category/' + item.id + '/products');
+	    	  $scope.menuShow = false;
+	      };
+	  	 
+	  	$scope.init = true;
+	  }
 	  
 	  $scope.showProdcut = function(item) {
 		  $location.path('/tab/product/'+ item.id);
@@ -53,7 +49,7 @@ angular.module('mobistore.controllers', [])
   }])
   
   	.controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {
-  	  var categoryId = $state.params.categoryId;
+  		var categoryId = $state.params.categoryId;
 	  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
 		  console.log(json);
 		  $scope.productsIn = json.data;
@@ -98,6 +94,9 @@ angular.module('mobistore.controllers', [])
 
   }])
 
+  .controller('FindCtrl', function($scope) {
+    var i = 0;
+  })
   .controller('ShoppingcartCtrl', function($scope) {
     var i = 0;
   })

@@ -28,7 +28,7 @@
 	
     <div class="my-row3">
       <ion-list>
-        <ion-item ng-repeat="item in products" ng-click="showProdcut(item)" class="item-thumbnail-left item-icon-right">
+        <ion-item ng-repeat="item in products" ng-click="showProdcut(item)" class="item-thumbnail-left item-icon-right">qqq{{categories.length}}jjjj
           <img ng-src="{{item.image | imgPath}}">
           
           <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
@@ -40,4 +40,23 @@
     </div>
 
   </ion-content>
+
 </ion-view>
+
+  <div id="my-menu" class="my-menu" ng-class="{menu_show: menuShow}">
+    <div class="menu-inner background-opacity">
+        <div class="background-opacity-inner">
+            <div>
+                <div ng-repeat="item in categories" ng-click="showCategory(item)"
+                     class="menu-item" ng-class="{'menu-item-current': Current == item.code}" >
+                    <div class="icon" style="background-image: url('{{item.image | imgPath}}');"></div>
+                    <div class="my-label">{{item.name}}</div>
+                </div>
+                <div style="clear:both; "></div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-draw-outer">
+        <div id="menu-button" ng-click="showMenu()" class="menu-draw"></div>
+    </div>
+</div>
