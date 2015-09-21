@@ -2,18 +2,28 @@
 
 angular.module('mobistore.controllers', [])
 
-  .controller('TabCtrl', ['$scope', '$timeout', '$ionicSlideBoxDelegate', 'Util', 'HomeOpt', function($scope, $timeout, $ionicSlideBoxDelegate, Util, HomeOpt) {
-	  $scope.menuShow = false;
-      $scope.showMenu = function() {
-          $scope.menuShow = !$scope.menuShow;
-          console.log($scope.menuShow);
-      };
-      
- 	 HomeOpt.opt({act: 'index'},function(json) {
-     	console.log(json);
-     	$scope.categories = json.categories;
-     	$scope.adverts = json.adverts;
-   	});
+  .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicSlideBoxDelegate', 'Util', 'HomeOpt', function($rootScope, $scope, $location, $timeout, $ionicSlideBoxDelegate, Util, HomeOpt) {
+	  if (!$rootScope.init) {
+		  $scope.menuShow = false;
+	      $scope.showMenu = function() {
+	          $scope.menuShow = !$scope.menuShow;
+	          
+	      };
+
+	      
+	      $scope.showCategory = function(item) {
+	    	  console.log(item.id);
+	    	  $location.path('/tab/category/' + item.id + '/products');
+	      };
+	      
+	  	 HomeOpt.opt({act: 'listCategories'},function(json) {
+	      	console.log(json);
+	      	$rootScope.categories = json.categories;
+	      	
+	     });
+	  	 
+	  	$rootScope.init = true;
+	  }
   }])
 
   .controller('HomeCtrl', ['$scope', '$state', '$location', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', function($scope, $state, $location, Util, HomeOpt, ProductMdl, ProductOpt) {
@@ -29,17 +39,26 @@ angular.module('mobistore.controllers', [])
 		　　$scope.resize();
 	  }, false)
 	  
-	 HomeOpt.opt({act: 'index'},function(json) {
-    	console.log(json);
-    	$scope.products = json.products;
-    	
-  	 });
+ 	 HomeOpt.opt({act: 'index'},function(json) {
+     	console.log(json);
+     	$scope.categories = json.categories;
+     	$scope.adverts = json.adverts;
+     	$scope.products = json.products;
+     	
+   	});
 	  
 	  $scope.showProdcut = function(item) {
-		  console.log($location.path());
 		  $location.path('/tab/product/'+ item.id);
 	  };
   }])
+  
+  	.controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {
+  	  var categoryId = $state.params.categoryId;
+	  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
+		  console.log(json);
+		  $scope.productsIn = json.data;
+	  });
+	}])
   
   .controller('ProductCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($scope,  $state, Util, ProductMdl, ProductOpt) {
 	  
@@ -79,9 +98,6 @@ angular.module('mobistore.controllers', [])
 
   }])
 
-  .controller('CategoryCtrl', function($scope) {
-
-  })
   .controller('ShoppingcartCtrl', function($scope) {
     var i = 0;
   })

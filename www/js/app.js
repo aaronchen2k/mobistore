@@ -53,21 +53,21 @@ angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistor
           }
         }
       })
+      .state('tab.category', {
+        url: '/category/:categoryId/products',
+        views: {
+          'tab-home': {
+            templateUrl: 'templates/category/products.html',
+            controller: 'CategoryCtrl'
+          }
+        }
+      })
       .state('tab.product', {
         url: '/product/:productId',
         views: {
           'tab-home': {
-            templateUrl: 'templates/product.html',
+            templateUrl: 'templates/product/product.html',
             controller: 'ProductCtrl'
-          }
-        }
-      })
-      .state('tab.category', {
-        url: '/category',
-        views: {
-          'tab-category': {
-            templateUrl: 'templates/category.html',
-            controller: 'CategoryCtrl'
           }
         }
       })
