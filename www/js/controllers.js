@@ -68,6 +68,10 @@ angular.module('mobistore.controllers', [])
 		  $scope.product = vo;
 	  });
 	  
+	  $scope.buy = function(item) {
+    	  console.log(item.id);
+      };
+	  
 //	    // 查找
 //	    ProductMdl.get({ id: '1'}).$promise.then(function(p1) {
 //	        console.log(p1);

@@ -85,7 +85,13 @@ $menu-height: 290px;
 .divide-line {
     height: 20px;
     width: 100%;
+    
     border-bottom: 1px solid #b0aeae;
+    
+    &.pad {
+    	width: 90%;
+    	margin: 0 auto;
+    }
 }
 
 .slider-bar {
@@ -335,6 +341,26 @@ $menu-height: 290px;
 		    font-size: 20px;
 		    line-height: 40px;
 		    color: #464646;
+		}
+		.my-buttons {
+			margin: 20px 0;
+			padding: 0px;
+			text-align: center;
+			
+			font-size: 20px;
+			button {
+				margin: 0px;
+				padding: 0px;
+				width: 50%;
+				height : 60px;
+				line-height: 60px;
+				&.left {
+					background: #DA9050;
+				}
+				&.right {
+					background: #8DA5D1;
+				}
+			}
 		}
 	}
 }

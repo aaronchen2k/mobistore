@@ -7824,6 +7824,9 @@ a.button {
   height: 20px;
   width: 100%;
   border-bottom: 1px solid #b0aeae; }
+  .divide-line.pad {
+    width: 90%;
+    margin: 0 auto; }
 
 .slider-bar {
   position: absolute;
@@ -7986,3 +7989,18 @@ a.button {
   font-size: 20px;
   line-height: 40px;
   color: #464646; }
+#product .content .my-buttons {
+  margin: 20px 0;
+  padding: 0px;
+  text-align: center;
+  font-size: 20px; }
+  #product .content .my-buttons button {
+    margin: 0px;
+    padding: 0px;
+    width: 50%;
+    height: 60px;
+    line-height: 60px; }
+    #product .content .my-buttons button.left {
+      background: #DA9050; }
+    #product .content .my-buttons button.right {
+      background: #8DA5D1; }
