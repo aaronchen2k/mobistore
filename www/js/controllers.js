@@ -2,11 +2,15 @@
 
 angular.module('mobistore.controllers', [])
 
-  .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicSlideBoxDelegate', 'Util', 'HomeOpt', function($rootScope, $scope, $location, $timeout, $ionicSlideBoxDelegate, Util, HomeOpt) {
-
+  .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
+//	  $scope.goHome = function() {
+//		  $location.path('/tab/home');
+//	  }
   }])
 
-  .controller('HomeCtrl', ['$scope', '$state', '$location', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', function($scope, $state, $location, Util, HomeOpt, ProductMdl, ProductOpt) {
+  .controller('HomeCtrl', ['$scope', '$state', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 
+                           function($scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
+
 	  $scope.resize = function() {
 		  $scope.platform = ionic.Platform.platform();
 	    var width = Util.getScreenSize().w;

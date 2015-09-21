@@ -43,7 +43,6 @@ angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistor
       })
 
       // Each tab has its own nav history stack:
-
       .state('tab.home', {
         url: '/home',
         views: {
