@@ -8,7 +8,7 @@
 // 'mobistore.services' is found in services
 // 'mobistore.controllers' is found in controllers
 angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies', 
-                             'mobistore.utils', 'mobistore.filters', 'mobistore.models', 'mobistore.controllers', 'mobistore.services'])
+                             'mobistore.utils', 'mobistore.filters', 'mobistore.models', 'mobistore.controllers', 'mobistore.services', 'mobistore.directives'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
