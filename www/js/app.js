@@ -7,7 +7,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'mobistore.services' is found in services
 // 'mobistore.controllers' is found in controllers
-angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistore.filters', 'mobistore.models', 'mobistore.controllers', 'mobistore.services'])
+angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies', 
+                             'mobistore.utils', 'mobistore.filters', 'mobistore.models', 'mobistore.controllers', 'mobistore.services'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -33,6 +34,11 @@ angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistor
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     $stateProvider
+	.state('signon', {
+	    url: '/signon',
+	    templateUrl: 'templates/signon.html',
+	    controller: 'ClientCtrl'
+	  })
 
       // setup an abstract state for the tabs directive
       .state('tab', {
@@ -102,7 +108,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistor
     $urlRouterProvider.otherwise('/tab/home');
 
     // register the interceptor as a service
-    $provide.factory('myHttpInterceptor', function($q, Constant) {
+    $provide.factory('myHttpInterceptor', ['$q', '$location', 'Constant', function($q, $location, Constant) {
       return {
         'request': function(config) {
           if (config.params) {
@@ -120,19 +126,22 @@ angular.module('mobistore', ['ngResource', 'ionic', 'mobistore.utils', 'mobistor
         },
 
         'response': function(response) {
-          // do something on success
+        	if (response.data.code < 0) {
+        		$location.path("/signon");;
+        	}
+        	
           return response;
         },
 
         'responseError': function(rejection) {
-          // do something on error
-          //if (canRecover(rejection)) {
-          //  return responseOrNewPromise
-          //}
+          console.log('responseError');
+          $location.path("/signon");
           return $q.reject(rejection);
         }
       };
-    });
+    }]);
 
     $httpProvider.interceptors.push('myHttpInterceptor');
+    
+    
   });

@@ -1,16 +1,27 @@
 'use strict';
 
 angular.module('mobistore.controllers', [])
-
-  .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
-//	  $scope.goHome = function() {
-//		  $location.path('/tab/home');
-//	  }
+  .controller('ClientCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'clientSrv', 
+                             function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, clientSrv) {
+	  $scope.client = {};
+	  $scope.signon = function() {
+		  clientSrv.signon($scope.client);
+	  }
+	  
+  }])
+  .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
+                          function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
+	  
+	  
   }])
 
   .controller('HomeCtrl', ['$scope', '$state', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 
                            function($scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
 
+	  window.addEventListener("orientationchange", function() {
+		　　$scope.resize();
+	  }, false)
+	  
 	  $scope.resize = function() {
 		  $scope.platform = ionic.Platform.platform();
 	    var width = Util.getScreenSize().w;
@@ -19,57 +30,50 @@ angular.module('mobistore.controllers', [])
 	  };
 	  $scope.resize();
 	  
- 	 HomeOpt.opt({act: 'index'},function(json) {
-     	console.log(json);
-     	$scope.categories = json.categories;
-     	$scope.adverts = json.adverts;
-     	$scope.products = json.products;
-     	
-   	});
+	  HomeOpt.opt({act: 'index'},function(json) {
+		  console.log(json);
+		  $scope.categories = json.categories;
+		  $scope.adverts = json.adverts;
+		  $scope.products = json.products;	
+	  });
  	 
-	  window.addEventListener("orientationchange", function() {
-		　　$scope.resize();
-	  }, false)
+	  $scope.menuShow = false;$scope.categories
+	  $scope.showMenu = function() {
+	      $scope.menuShow = !$scope.menuShow;
+	  };
+	
+	  $scope.showCategory = function(item) {
+		  console.log(item.id);
+		  $location.path('/tab/category/' + item.id + '/products');
+		  $scope.menuShow = false;
+	  };
 	  
-	  if (!$scope.init) {
-		  $scope.menuShow = false;$scope.categories
-	      $scope.showMenu = function() {
-	          $scope.menuShow = !$scope.menuShow;
-	          
-	      };
-
-	      $scope.showCategory = function(item) {
-	    	  console.log(item.id);
-	    	  $location.path('/tab/category/' + item.id + '/products');
-	    	  $scope.menuShow = false;
-	      };
-	  	 
-	  	$scope.init = true;
-	  }
-	  
-	  $scope.showProdcut = function(item) {
-		  $location.path('/tab/product/'+ item.id);
+	  $scope.showProdcut = function(id) {
+		  $location.path('/tab/product/'+ id);
 	  };
   }])
   
-  	.controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {
-  		var categoryId = $state.params.categoryId;
+  .controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {
+	  var categoryId = $state.params.categoryId;
 	  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
 		  console.log(json);
 		  $scope.productsIn = json.data;
 	  });
-	}])
+  }])
   
-  .controller('ProductCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($scope,  $state, Util, ProductMdl, ProductOpt) {
-	  
+  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($rootScope, $scope, $state, Util, ProductMdl, ProductOpt) {
 	  var productId = $state.params.productId;
 	  ProductMdl.get({id: productId}).$promise.then(function(vo) {
 		  console.log(vo);
 		  $scope.product = vo;
 	  });
 	  
-	  $scope.buy = function(item) {
-    	  console.log(item.id);
+	  $scope.addToShoppingcart = function(product) {
+    	  console.log(product.id);
+      };
+	  
+	  $scope.buy = function(product) {
+    	  console.log(product.id);
       };
 	  
 //	    // 查找

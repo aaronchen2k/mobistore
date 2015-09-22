@@ -7821,12 +7821,13 @@ a.button {
   line-height: 20px; }
 
 .divide-line {
-  height: 20px;
+  margin: 5px 0;
   width: 100%;
   border-bottom: 1px solid #b0aeae; }
   .divide-line.pad {
     width: 90%;
-    margin: 0 auto; }
+    margin-left: auto;
+    margin-right: auto; }
 
 .slider-bar {
   position: absolute;
@@ -7951,7 +7952,7 @@ a.button {
 
 #product .content .slide {
   width: 100%;
-  height: 200px;
+  height: 170px;
   background: #000;
   text-align: center;
   overflow: hidden; }
@@ -7959,13 +7960,14 @@ a.button {
     max-height: 100%;
     max-width: 100%; }
 #product .content .rows {
-  font-size: 18px;
-  margin: 20px 20px 0 20px; }
+  font-size: 17px;
+  margin: 0px 20px 0 20px; }
   #product .content .rows .row {
-    margin: 6px;
-    height: 40px; }
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 30px; }
     #product .content .rows .row .title {
-      font-size: 20px;
+      font-size: 18px;
       color: #08548e; }
     #product .content .rows .row .col-left {
       float: left;
@@ -7984,23 +7986,23 @@ a.button {
       #product .content .rows .row .col-right img {
         height: 28px; }
 #product .content .descr {
-  margin: 20px;
+  margin: 10px 20px;
   text-align: left;
-  font-size: 20px;
-  line-height: 40px;
+  font-size: 15px;
+  line-height: 20px;
   color: #464646; }
-#product .content .my-buttons {
-  margin: 20px 0;
+#product .content .bottom-buttons {
+  margin: 0;
   padding: 0px;
   text-align: center;
   font-size: 20px; }
-  #product .content .my-buttons button {
+  #product .content .bottom-buttons button {
     margin: 0px;
     padding: 0px;
     width: 50%;
-    height: 60px;
-    line-height: 60px; }
-    #product .content .my-buttons button.left {
+    height: 50px;
+    line-height: 50px; }
+    #product .content .bottom-buttons button.left {
       background: #DA9050; }
-    #product .content .my-buttons button.right {
+    #product .content .bottom-buttons button.right {
       background: #8DA5D1; }

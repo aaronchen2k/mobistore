@@ -10,7 +10,7 @@
   <ion-content class="has-header">
     <div class="my-row1">
       <ion-slide-box auto-play="true" does-continue="true" slide-interval="2000" show-pager="false" ng-if="adverts">
-        <ion-slide ng-repeat="item in adverts">
+        <ion-slide ng-repeat="item in adverts" ng-click="showProdcut(item.id)">
           <div class="box" ng-style="styleSlideHeight" style="background-image:url('{{item.image | imgPath}}');">
           	<div class="slider-bar">
           		<div class="slider-bar-inner">
@@ -26,7 +26,7 @@
 	
     <div class="my-row3">
       <ion-list>
-        <ion-item ng-repeat="item in products" ng-click="showProdcut(item)" class="item-thumbnail-left item-icon-right">
+        <ion-item ng-repeat="item in products" ng-click="showProdcut(item.id)" class="item-thumbnail-left item-icon-right">
           <img ng-src="{{item.image | imgPath}}">
           
           <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>

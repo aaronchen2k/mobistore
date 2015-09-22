@@ -1,16 +1,11 @@
 <ion-view id="product" view-title="产品">
-  <ion-nav-buttons id="home-bar" side="left">
-	
-  </ion-nav-buttons>
-
   <ion-nav-buttons id="home-bar" side="right">
       <button class="button button-small button-clear " ng-click="doSomething()">
       	<i class="icon ion-ios-search search"></i>
       </button>
    </ion-nav-buttons>
 
-  <ion-content class="has-header">
-		<div class="content">
+  <ion-content class="has-header content">
 			<div class="slide">
 				<img ng-src="{{product.image | imgPath}}">
 			</div>
@@ -64,27 +59,22 @@
 		       		<div style="clear:both;"></div>
 	            </div>
             </div>
-               	
-           	<div>
-           		<div class="divide-line pad"></div>
-           	</div>
+           	
+           	<div class="divide-line pad"></div>
            	
        		<div class="descr">
- 				fsjdfsa s dfjasdfsljf
+ 				{{product.descr}}
            	</div>
-           	
-           	<div>
-           		<div class="divide-line"></div>
-           	</div>
-           	
-       		<div class="row my-buttons">
-				<button class="button button-light left" ng-click="buy()">
+
+           	<div class="divide-line"></div>
+		
+		    <div class="row bottom-buttons">
+				<button class="button button-light left" ng-click="addToShoppingcart(product)">
 				  加入购物车
 				</button>
-				<button class="button button-light right" ng-click="buy()">
+				<button class="button button-light right" ng-click="buy(product)">
 				  立即购买
 				</button>
            	</div>
-		</div>
   </ion-content>
 </ion-view>
