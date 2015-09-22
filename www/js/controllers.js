@@ -3,9 +3,12 @@
 angular.module('mobistore.controllers', [])
   .controller('ClientCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'clientSrv', 
                              function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, clientSrv) {
-	  $scope.client = {};
+	  var platform = ionic.Platform.platform();
+	  var isWebView = ionic.Platform.isWebView();
+	  
+	  $scope.client = {mobile: '18626203266', password: '123456'};
 	  $scope.signon = function() {
-		  clientSrv.signon($scope.client);
+		  clientSrv.signon($scope.client, platform);
 	  }
 	  
   }])

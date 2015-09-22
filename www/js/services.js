@@ -2,12 +2,24 @@
 
 angular.module('mobistore.services', [])
 
-.factory('clientSrv', ['$rootScope', '$cookieStore', '$q', '$http', '$location', 'Constant', 'StringUtil', 'ClientOpt',
-                                        function($rootScope, $cookieStore, $q, $http, $location, Constant, StringUtil, ClientOpt){
+.factory('clientSrv', ['$rootScope', '$cookies', '$q', '$http', '$location', 'Constant', 'StringUtil', 'ClientOpt',
+                                        function($rootScope, $cookies, $q, $http, $location, Constant, StringUtil, ClientOpt){
 
      return {
     	 signon: function (client) {
     		 console.log(client);
+    		 
+    		 ClientOpt.opt({act: 'signon', mobile: client.mobile, password: client.password}).$promise.then(function(json) {
+       		  	console.log(json);
+
+                if (json.code == 1) {
+                	$cookies.userToken = json.token;
+                    $rootScope.userProfile = json.data;
+                    $location.path("/tab/home");
+                } else {
+                    $location.path("/signon");
+                }
+             });
     	 },
     	 signonWithToken: function () {
 	        if ($rootScope.userProfile) {

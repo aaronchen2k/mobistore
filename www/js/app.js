@@ -108,12 +108,21 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $urlRouterProvider.otherwise('/tab/home');
 
     // register the interceptor as a service
-    $provide.factory('myHttpInterceptor', ['$q', '$location', 'Constant', function($q, $location, Constant) {
+    $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', 'Constant', 
+                                           function($rootScope, $cookies, $q, $location, Constant) {
       return {
         'request': function(config) {
-          if (config.params) {
-            config.params.pageSize = Constant.PageSize;
+        	
+          if (!config.params) {
+        	  config.params = {};
           }
+          
+          if (config.url.indexOf('/api/') > -1 && config.params) {
+        	  console.log(config);
+        	  config.params.pageSize = Constant.PageSize;
+        	  config.params.token = $cookies.userToken;
+          }
+          
           return config || $q.when(config);
         },
 
