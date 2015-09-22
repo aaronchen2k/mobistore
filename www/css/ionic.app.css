@@ -8006,3 +8006,7 @@ a.button {
       background: #DA9050; }
     #product .content .bottom-buttons button.right {
       background: #8DA5D1; }
+
+#signon button.button-small {
+  margin-right: 3px;
+  width: 60px; }
