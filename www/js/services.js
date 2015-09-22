@@ -13,7 +13,7 @@ angular.module('mobistore.services', [])
        		  	console.log(json);
 
                 if (json.code == 1) {
-                	$cookies.userToken = json.token;
+                	$cookies.put('userToken', json.token);
                     $rootScope.userProfile = json.data;
                     $location.path("/tab/home");
                 } else {

@@ -120,7 +120,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           if (config.url.indexOf('/api/') > -1 && config.params) {
         	  console.log(config);
         	  config.params.pageSize = Constant.PageSize;
-        	  config.params.token = $cookies.userToken;
+        	  config.params.token = $cookies.get('userToken');
           }
           
           return config || $q.when(config);
