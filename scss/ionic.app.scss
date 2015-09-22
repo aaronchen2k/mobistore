@@ -118,6 +118,33 @@ $menu-height: 290px;
 	}
 }
 
+ion-tabs {
+	.tab-nav {
+		-webkit-transition: all .1s linear;
+		-moz-transition: all .1s linear;
+		-o-transition: all .1s linear;
+		transition: all .1s linear;
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		-o-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+	&.tabs-bar-hide {
+		.tab-nav.tabs {
+			-webkit-transform: translate3d(0, 50px, 0);
+			-moz-transform: translate3d(0, 50px, 0);
+			-ms-transform: translate3d(0, 50px, 0);
+			-o-transform: translate3d(0, 50px, 0);
+			transform: translate3d(0, 50px, 0);
+		}
+		.has-tabs {
+			bottom: 0px;
+		}
+	}
+}
+
+
 #home {
   .bar-header {
     .search{
@@ -176,6 +203,14 @@ $menu-height: 290px;
 	-ms-transform: translate3d(0, -$menu-height, 0);
 	-o-transform: translate3d(0, -$menu-height, 0);
 	transform: translate3d(0, -$menu-height, 0);
+	
+	 &.menu_show {
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		-o-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	 }
     .menu-draw-outer {
 	    width: 100%;
 	    .menu-draw{
@@ -188,14 +223,6 @@ $menu-height: 290px;
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 	    }
 	}
-
-	 &.menu_show {
-		-webkit-transform: translate3d(0, 0, 0);
-		-moz-transform: translate3d(0, 0, 0);
-		-ms-transform: translate3d(0, 0, 0);
-		-o-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	 }
 
   .background-opacity {
     height:$menu-height;
@@ -286,6 +313,29 @@ $menu-height: 290px;
 	}
 }
 #product {
+	.bar-footer{
+		margin: 0;
+		padding: 0px;
+		.bottom-buttons {
+				margin: 0;
+				padding: 0px;
+				
+				font-size: 20px;
+				button {
+					margin: 0px;
+					padding: 0px;
+					width: 50%;
+					height : 50px;
+					line-height: 50px;
+					&.left {
+						background: #DA9050;
+					}
+					&.right {
+						background: #8DA5D1;
+					}
+				}
+		}
+	}	
 	.content {
 	   
 		.slide {
@@ -344,26 +394,6 @@ $menu-height: 290px;
 		    font-size: 15px;
 		    line-height: 20px;
 		    color: #464646;
-		}
-		.bottom-buttons {
-
-			margin: 0;
-			padding: 0px;
-			text-align: center;
-			font-size: 20px;
-			button {
-				margin: 0px;
-				padding: 0px;
-				width: 50%;
-				height : 50px;
-				line-height: 50px;
-				&.left {
-					background: #DA9050;
-				}
-				&.right {
-					background: #8DA5D1;
-				}
-			}
 		}
 	}
 }

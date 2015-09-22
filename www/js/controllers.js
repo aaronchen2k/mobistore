@@ -65,6 +65,13 @@ angular.module('mobistore.controllers', [])
   }])
   
   .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($rootScope, $scope, $state, Util, ProductMdl, ProductOpt) {
+	  console.log(angular.element(document.querySelector('.bottom-buttons')).css('top'));
+	  
+//	  angular.element(document.querySelector('.bottom-buttons')).css('top', Util.getScreenSize().h - 94 + 'px');
+	  
+	  
+	  console.log(angular.element(document.querySelector('.bottom-buttons')).css('top'));
+	  
 	  var productId = $state.params.productId;
 	  ProductMdl.get({id: productId}).$promise.then(function(vo) {
 		  console.log(vo);
