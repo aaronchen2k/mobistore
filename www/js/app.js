@@ -28,11 +28,13 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
   .config(function ($stateProvider, $urlRouterProvider, $provide, $httpProvider, $ionicConfigProvider) {
     $ionicConfigProvider.platform.android.tabs.position('bottom');
+    $ionicConfigProvider.views.maxCache(0);
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
+    
     $stateProvider
 	.state('signon', {
 	    url: '/signon',
@@ -69,6 +71,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.product', {
         url: '/product/:productId',
+        
         views: {
           'tab-home': {
             templateUrl: 'templates/product/product.html',
@@ -102,14 +105,19 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
             controller: 'MineCtrl'
           }
         }
+      })
+      .state('msg', {
+        url: '/msg/:error',
+        templateUrl: 'templates/msg.html',
+        controller: 'MsgCtrl'
       });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
 
     // register the interceptor as a service
-    $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', 'Constant', 
-                                           function($rootScope, $cookies, $q, $location, Constant) {
+    $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', 'Constant', 'Util',  
+                                           function($rootScope, $cookies, $q, $location, Constant, Util) {
       return {
         'request': function(config) {
         	
@@ -118,7 +126,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           }
           
           if (config.url.indexOf('/api/') > -1 && config.params) {
-        	  console.log(config);
+//        	  console.log(config);
         	  config.params.pageSize = Constant.PageSize;
         	  config.params.token = $cookies.get('userToken');
           }
@@ -127,6 +135,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         },
 
         'requestError': function(rejection) {
+        	
           // do something on error
           //if (canRecover(rejection)) {
           //  return responseOrNewPromise
@@ -135,11 +144,15 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         },
 
         'response': function(response) {
-        	if (response.data.code < 0) {
-        		$location.path("/signon");;
+        	var code = response.data.code;
+//        	console.log("======");
+//        	console.log(response);
+        	if (code === -100) {
+        		$location.path("/signon");
+        	} else if (code < 0){
+        		$location.path("/msg/" + code);
         	}
-        	
-          return response;
+            return response;
         },
 
         'responseError': function(rejection) {

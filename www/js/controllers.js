@@ -11,6 +11,10 @@ angular.module('mobistore.controllers', [])
 		  clientSrv.signon($scope.client, platform);
 	  }
 	  
+	  $scope.$on('$viewContentLoaded', function(event) {
+	      
+	  });
+	  
   }])
   .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
                           function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
@@ -20,7 +24,7 @@ angular.module('mobistore.controllers', [])
 
   .controller('HomeCtrl', ['$scope', '$state', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 
                            function($scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
-
+	  
 	  window.addEventListener("orientationchange", function() {
 		　　$scope.resize();
 	  }, false)
@@ -34,7 +38,7 @@ angular.module('mobistore.controllers', [])
 	  $scope.resize();
 	  
 	  HomeOpt.opt({act: 'index'},function(json) {
-		  console.log(json);
+//		  console.log(json);
 		  $scope.categories = json.categories;
 		  $scope.adverts = json.adverts;
 		  $scope.products = json.products;	
@@ -65,12 +69,7 @@ angular.module('mobistore.controllers', [])
   }])
   
   .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($rootScope, $scope, $state, Util, ProductMdl, ProductOpt) {
-	  console.log(angular.element(document.querySelector('.bottom-buttons')).css('top'));
-	  
-//	  angular.element(document.querySelector('.bottom-buttons')).css('top', Util.getScreenSize().h - 94 + 'px');
-	  
-	  
-	  console.log(angular.element(document.querySelector('.bottom-buttons')).css('top'));
+
 	  
 	  var productId = $state.params.productId;
 	  ProductMdl.get({id: productId}).$promise.then(function(vo) {
@@ -124,4 +123,25 @@ angular.module('mobistore.controllers', [])
   })
   .controller('MineCtrl', function($scope) {
     var i = 0;
-  });
+  })
+  .controller('MsgCtrl', ['$scope', '$state', '$location', 
+                          function($scope, $state, $location) {
+	  var error = $state.params.error;
+	  
+	  if (error == -200) {
+		  $scope.msg = {
+    			  title: '服务请求错误',
+    			  descr: '请联系系统管理人员！'
+    	  };
+	  } else {
+		  $scope.msg = {
+    			  title: '未知错误',
+    			  descr: '请联系系统管理人员！'
+    	  };
+	  }
+	  
+	  $scope.backTo = function() {
+		  $location.path('/tab/home');
+	  }
+	  
+  }]);
