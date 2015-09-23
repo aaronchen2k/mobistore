@@ -22,8 +22,8 @@ angular.module('mobistore.controllers', [])
 	  
   }])
 
-  .controller('HomeCtrl', ['$scope', '$state', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 
-                           function($scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
+  .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 
+                           function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
 	  
 	  window.addEventListener("orientationchange", function() {
 		　　$scope.resize();
@@ -42,8 +42,9 @@ angular.module('mobistore.controllers', [])
 		  $scope.categories = json.categories;
 		  $scope.adverts = json.adverts;
 		  $scope.products = json.products;	
+		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
 	  });
- 	 
+ 	  
 	  $scope.menuShow = false;$scope.categories
 	  $scope.showMenu = function() {
 	      $scope.menuShow = !$scope.menuShow;
@@ -68,9 +69,9 @@ angular.module('mobistore.controllers', [])
 	  });
   }])
   
-  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', function($rootScope, $scope, $state, Util, ProductMdl, ProductOpt) {
-
-	  
+  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
+                              function($rootScope, $scope, $state, Util, ProductMdl, ProductOpt, ShoppingcartOpt) {
+	  $scope.shopping = {qty: 1};
 	  var productId = $state.params.productId;
 	  ProductMdl.get({id: productId}).$promise.then(function(vo) {
 		  console.log(vo);
@@ -79,10 +80,22 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.addToShoppingcart = function(product) {
     	  console.log(product.id);
+    	  
+    	  ShoppingcartOpt.opt({act:'addto', productId: product.id, qty: $scope.shopping.qty}).$promise.then(function(json) {
+    		  console.log(json);
+    		  
+    		  var car = json.data;
+    		  $rootScope.shoppingcartItemNumb = car.items.length;
+    		  
+    	  });
       };
 	  
 	  $scope.buy = function(product) {
     	  console.log(product.id);
+    	  
+    	  ShoppingcartOpt.opt({act:'buy', productId: product.id}).$promise.then(function(json) {
+    		  console.log(json);
+    	  });
       };
 	  
 //	    // 查找

@@ -7982,6 +7982,8 @@ ion-tabs.tabs-bar-hide .has-tabs {
     margin: 0;
     padding: 0px;
     font-size: 20px; }
+    #product .bar-footer .bottom-buttons .button-icon {
+      margin: 5px 10px; }
     #product .bar-footer .bottom-buttons button {
       margin: 0px;
       padding: 0px;

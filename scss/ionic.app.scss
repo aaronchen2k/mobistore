@@ -328,8 +328,12 @@ ion-tabs {
 		.bottom-buttons {
 				margin: 0;
 				padding: 0px;
-				
 				font-size: 20px;
+				
+				.button-icon {
+					margin: 5px 10px;
+				}
+				
 				button {
 					margin: 0px;
 					padding: 0px;

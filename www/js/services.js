@@ -7,8 +7,6 @@ angular.module('mobistore.services', [])
 
      return {
     	 signon: function (client) {
-    		 console.log(client);
-    		 
     		 ClientOpt.opt({act: 'signon', mobile: client.mobile, password: client.password}).$promise.then(function(json) {
        		  	console.log(json);
 

@@ -50,7 +50,7 @@
 		       				</div>
 		       				<div style="float:left;vertical-align:middle; ">
 		       					<label class="item item-input">
-								    <input type="text" value="1">
+								    <input type="text" ng-model="shopping.qty">
 								</label>
 		       				</div> 
 		       				<div id="addQty" style="float:left;"><img src="img/add.png"></div>
@@ -74,6 +74,9 @@
   
 	<div class="bar bar-footer">
 	   	<div class="row bottom-buttons">
+	   		<a class="button button-icon icon ion-android-favorite-outline"></a>
+	   		<a class="button button-icon icon ion-ios-cart"></a>
+	   		&nbsp;&nbsp;&nbsp;
 			<button class="button button-light left" ng-click="addToShoppingcart(product)">
 			  加入购物车
 			</button>
