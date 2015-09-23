@@ -144,7 +144,16 @@ ion-tabs {
 	}
 }
 
-
+#msg {
+	.content {
+		font-size: 16px;
+		padding: 20px;
+		div {
+			margin: 20px 0;
+		}
+	}
+	
+}
 #home {
   .bar-header {
     .search{

@@ -10,12 +10,12 @@
   <ion-content class="has-header">
     <div class="my-row1">
       <ion-slide-box auto-play="true" does-continue="true" slide-interval="2000" show-pager="false" ng-if="adverts">
-        <ion-slide ng-repeat="item in adverts" ng-click="showProdcut(item.id)">
+        <ion-slide ng-repeat="item in adverts" ng-click="showProdcut(item.productId)">
           <div class="box" ng-style="styleSlideHeight" style="background-image:url('{{item.image | imgPath}}');">
           	<div class="slider-bar">
           		<div class="slider-bar-inner">
           			<div class="text-ellipsis text-thin text-color-white"></div>
-          			<div class="text-ellipsis text-medium text-color-white">{{item.title}}</div>
+          			<div class="text-ellipsis text-medium text-color-white">{{item.title}}{{item.productId}}</div>
           			<div class="text-ellipsis text-thin text-color-white"></div>
           		</div>
           	</div>

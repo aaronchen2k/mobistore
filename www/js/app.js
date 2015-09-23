@@ -116,11 +116,12 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $urlRouterProvider.otherwise('/tab/home');
 
     // register the interceptor as a service
-    $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', 'Constant', 'Util',  
-                                           function($rootScope, $cookies, $q, $location, Constant, Util) {
+    $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', '$injector', 'Constant', 'Util',  
+                                           function($rootScope, $cookies, $q, $location, $injector, Constant, Util) {
       return {
         'request': function(config) {
-        	
+          $injector.get('$ionicLoading').show({template: '加载中...'});
+        
           if (!config.params) {
         	  config.params = {};
           }
@@ -135,15 +136,18 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         },
 
         'requestError': function(rejection) {
-        	
+        	$injector.get('$ionicLoading').hide();
           // do something on error
           //if (canRecover(rejection)) {
           //  return responseOrNewPromise
           //}
+
           return $q.reject(rejection);
         },
 
         'response': function(response) {
+        	$injector.get('$ionicLoading').hide();
+        	
         	var code = response.data.code;
 //        	console.log("======");
 //        	console.log(response);
@@ -156,6 +160,8 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         },
 
         'responseError': function(rejection) {
+        	$injector.get('$ionicLoading').hide();
+        	
           console.log('responseError');
           $location.path("/signon");
           return $q.reject(rejection);

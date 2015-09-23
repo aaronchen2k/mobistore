@@ -7866,6 +7866,12 @@ ion-tabs.tabs-bar-hide .tab-nav.tabs {
 ion-tabs.tabs-bar-hide .has-tabs {
   bottom: 0px; }
 
+#msg .content {
+  font-size: 16px;
+  padding: 20px; }
+  #msg .content div {
+    margin: 20px 0; }
+
 #home .bar-header .search {
   height: 23px; }
 #home .my-row1 .slider .slider-slide {
