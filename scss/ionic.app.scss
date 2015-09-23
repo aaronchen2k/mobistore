@@ -118,6 +118,17 @@ $menu-height: 290px;
 	}
 }
 
+.my-back {
+	height: 20px;
+	i:before {
+		margin-right: 6px;
+		margin-top: 0px;
+		width: 16px;
+		height: 18px;
+		font-size: 22px !important;
+    	line-height: 28px !important;
+	}
+}
 ion-tabs {
 	.tab-nav {
 		-webkit-transition: all .1s linear;

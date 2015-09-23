@@ -19,15 +19,21 @@ angular.module('mobistore.controllers', [])
   .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
                           function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
 	  
-	  
+	  $scope.toHome = function() {
+		  $ionicHistory.nextViewOptions({
+			  historyRoot: true
+		  });
+		  $location.path('/tab/home');
+	  }
   }])
 
   .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 
                            function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
+	  $rootScope.fromHome = true;
 	  
 	  window.addEventListener("orientationchange", function() {
 		　　$scope.resize();
-	  }, false)
+	  }, false);
 	  
 	  $scope.resize = function() {
 		  $scope.platform = ionic.Platform.platform();
@@ -73,9 +79,13 @@ angular.module('mobistore.controllers', [])
                               function($rootScope, $scope, $state, Util, ProductMdl, ProductOpt, ShoppingcartOpt) {
 	  $scope.shopping = {qty: 1};
 	  var productId = $state.params.productId;
-	  ProductMdl.get({id: productId}).$promise.then(function(vo) {
-		  console.log(vo);
-		  $scope.product = vo;
+	  
+	  ProductOpt.opt({act:'get', productId: productId}).$promise.then(function(json) {
+		  console.log(json);
+		  
+		  $scope.product = json.data;
+		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
+		  
 	  });
 	  
 	  $scope.addToShoppingcart = function(product) {
