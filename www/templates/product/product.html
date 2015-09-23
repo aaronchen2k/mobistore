@@ -74,9 +74,11 @@
   
 	<div class="bar bar-footer">
 	   	<div class="row bottom-buttons">
-	   		<a class="button button-icon icon ion-android-favorite-outline"></a>
-	   		<a class="button button-icon icon ion-ios-cart"></a>
-	   		&nbsp;&nbsp;&nbsp;
+	   		<a class="button button-icon icon ion-android-favorite-outline left"></a>
+	   		<a class="button button-icon icon ion-ios-cart has-badge right">
+	   			<span class="badge badge-assertive" ng-if="shoppingcartItemNumb > 0">{{shoppingcartItemNumb}}</span>
+	   		</a>
+	   		
 			<button class="button button-light left" ng-click="addToShoppingcart(product)">
 			  加入购物车
 			</button>

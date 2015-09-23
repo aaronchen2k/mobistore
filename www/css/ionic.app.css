@@ -7984,6 +7984,19 @@ ion-tabs.tabs-bar-hide .has-tabs {
     font-size: 20px; }
     #product .bar-footer .bottom-buttons .button-icon {
       margin: 5px 10px; }
+      #product .bar-footer .bottom-buttons .button-icon.left {
+        margin-left: 30px; }
+      #product .bar-footer .bottom-buttons .button-icon.has-badge .badge {
+        position: absolute;
+        top: 4%;
+        right: 33%;
+        right: calc(50% - 26px);
+        padding: 1px 6px;
+        height: 18px;
+        font-size: 12px;
+        line-height: 16px; }
+        #product .bar-footer .bottom-buttons .button-icon.has-badge .badge:empty {
+          display: inline-block; }
     #product .bar-footer .bottom-buttons button {
       margin: 0px;
       padding: 0px;
@@ -7991,6 +8004,7 @@ ion-tabs.tabs-bar-hide .has-tabs {
       height: 50px;
       line-height: 50px; }
       #product .bar-footer .bottom-buttons button.left {
+        margin-left: 20px;
         background: #DA9050; }
       #product .bar-footer .bottom-buttons button.right {
         background: #8DA5D1; }

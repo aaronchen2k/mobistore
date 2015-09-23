@@ -332,6 +332,26 @@ ion-tabs {
 				
 				.button-icon {
 					margin: 5px 10px;
+					&.left {
+				    	margin-left: 30px;
+				    }
+					&.has-badge {
+					 	.badge {
+					 		position: absolute;
+						    top: 4%;
+						    right: 33%;
+						    right: calc(50% - 26px);
+						    padding: 1px 6px;
+						    height: 18px;
+						    font-size: 12px;
+						    line-height: 16px;
+						    
+
+						    &:empty {
+						    	display: inline-block;
+						    }
+					 	}
+					}
 				}
 				
 				button {
@@ -341,6 +361,7 @@ ion-tabs {
 					height : 50px;
 					line-height: 50px;
 					&.left {
+						margin-left: 20px;
 						background: #DA9050;
 					}
 					&.right {
