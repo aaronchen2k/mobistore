@@ -8085,18 +8085,24 @@ ion-tabs.tabs-bar-hide .has-tabs {
 
 #search .list {
   margin-top: 20px; }
-  #search .list .item.hot span {
-    background-color: #e5e5e5;
-    height: 32px;
-    z-index: 1;
-    margin: 0 10px 0 0;
-    display: inline-block;
-    padding: 8px 16px;
-    min-width: 10px;
-    border-radius: 5px;
-    vertical-align: baseline;
-    text-align: center;
-    white-space: nowrap;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px; }
+  #search .list .hot {
+    display: block;
+    height: 50px;
+    color: black;
+    padding: 10px; }
+    #search .list .hot button {
+      border: 0;
+      background-color: #f2f2f2;
+      margin: 0 10px 0 0;
+      display: inline-block;
+      padding: 8px 16px;
+      min-width: 10px;
+      border-radius: 5px;
+      vertical-align: baseline;
+      text-align: center;
+      white-space: nowrap;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px; }
+      #search .list .hot button.activated {
+        background-color: #e5e5e5; }

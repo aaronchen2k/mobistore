@@ -78,7 +78,10 @@ angular.module('mobistore.controllers', [])
 	  $scope.showProdcut = function(id) {
 		  $location.path('/tab/product/'+ id);
 	  };
-
+	  
+	  $scope.search = function(key) {
+		  console.log(key);
+	  };
 	  
 	  $ionicModal.fromTemplateUrl('templates/search.html', {
 	    scope: $scope,

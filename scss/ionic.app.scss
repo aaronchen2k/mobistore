@@ -480,11 +480,14 @@ ion-tabs {
 #search {
 	.list {
 		margin-top: 20px;
-		.item.hot {
-			span {
-				background-color: #e5e5e5;
-				height: 32px;
-				z-index: 1;
+		.hot {
+			display: block;
+			height: 50px;
+			color: rgb(0, 0, 0);
+			padding: 10px;
+			button {
+				border: 0;
+				background-color: #f2f2f2;
 				margin: 0 10px 0 0;
 			    display: inline-block;
 			    padding: 8px 16px;
@@ -496,6 +499,10 @@ ion-tabs {
 			    font-weight: bold;
 			    font-size: 14px;
 			    line-height: 16px;
+			    
+			    &.activated {
+			    	background-color: #e5e5e5;
+			    }
 			}
 		}
 	}

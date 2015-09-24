@@ -15,13 +15,13 @@
 	      <div class="item item-divider">
 		    热门搜索
 		  </div>
-		  <a class="item hot" href="#">
-		    <span ng-repeat="item in hots">{{item}}</span>
+		  <a class=" hot" href="#">
+		    <button ng-click="search(item)" ng-repeat="item in hots">{{item}}</button>
 		  </a>
 		  <div class="item item-divider">
 		    搜索历史
 		  </div>
-		  <a ng-repeat="item in histories" class="item" href="#">
+		  <a ng-click="search(item)" ng-repeat="item in histories" class="item" href="#">
 		    {{item}}
 		  </a>
 	</div>
