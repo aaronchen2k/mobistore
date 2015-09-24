@@ -97,21 +97,21 @@ angular.module('mobistore.controllers', [])
 		  console.log(json);
 		  
 		  $scope.product = json.data;
-		  $scope.isRised = json.isRised;
+		  $scope.isCollected = json.isCollected;
 		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
 	  });
 	  
-	  $scope.rise = function(product) {
+	  $scope.collect = function(product) {
     	  console.log(product.id);
     	  
-    	  if ($scope.isRised) {
+    	  if ($scope.isCollected) {
     		  return;
     	  }
     	  
-    	  ProductOpt.opt({act:'rise', productId: product.id}).$promise.then(function(json) {
+    	  ProductOpt.opt({act:'collect', productId: product.id}).$promise.then(function(json) {
     		  console.log(json);
     		  if (json.code == 1) {
-    			  $scope.isRised = true;
+    			  $scope.isCollected = true;
     		  }
     	  });
       };
