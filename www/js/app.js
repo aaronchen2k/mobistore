@@ -150,7 +150,6 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         	$injector.get('$ionicLoading').hide();
         	
         	var code = response.data.code;
-//        	console.log("======");
 //        	console.log(response);
         	if (code === -100) {
         		$location.path("/signon");

@@ -88,8 +88,8 @@ angular.module('mobistore.controllers', [])
 	  });
   }])
   
-  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
-                              function($rootScope, $scope, $state, Util, ProductMdl, ProductOpt, ShoppingcartOpt) {
+  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
+                              function($rootScope, $scope, $state, Util, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
 	  $scope.shopping = {qty: 1};
 	  var productId = $state.params.productId;
 	  
@@ -97,9 +97,24 @@ angular.module('mobistore.controllers', [])
 		  console.log(json);
 		  
 		  $scope.product = json.data;
+		  $scope.isRised = json.isRised;
 		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
-		  
 	  });
+	  
+	  $scope.rise = function(product) {
+    	  console.log(product.id);
+    	  
+    	  if ($scope.isRised) {
+    		  return;
+    	  }
+    	  
+    	  ProductOpt.opt({act:'rise', productId: product.id}).$promise.then(function(json) {
+    		  console.log(json);
+    		  if (json.code == 1) {
+    			  $scope.isRised = true;
+    		  }
+    	  });
+      };
 	  
 	  $scope.addToShoppingcart = function(product) {
     	  console.log(product.id);

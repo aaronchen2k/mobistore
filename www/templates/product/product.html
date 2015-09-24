@@ -74,7 +74,9 @@
   
 	<div class="bar bar-footer">
 	   	<div class="row bottom-buttons">
-	   		<a class="button button-icon icon ion-android-favorite-outline left"></a>
+	   		<a class="button button-icon icon left" ng-click="rise(product)"
+	   			ng-class="{'ion-android-favorite': isRised, 'ion-android-favorite-outline': !isRised}">
+	   		</a>
 	   		<a class="button button-icon icon ion-ios-cart has-badge right">
 	   			<span class="badge badge-assertive" ng-if="shoppingcartItemNumb > 0">{{shoppingcartItemNumb}}</span>
 	   		</a>
