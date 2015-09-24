@@ -31,6 +31,31 @@ angular.module('mobistore.controllers', [])
                            function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
 	  $rootScope.fromHome = true;
 	  
+	  $scope.$on("$destroy", function() {
+	       console.log('scope.$destroy');
+	  });
+//	  $scope.$on( "$ionicView.enter", function() {
+//	       console.log('ionicView.enter');
+	       
+		 	  HomeOpt.opt({act: 'index'},function(json) {
+				  
+					  console.log(json);
+					  $scope.categories = json.categories;
+					  $scope.adverts = json.adverts;
+					  $scope.products = json.products;	
+					  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
+
+
+			  });
+//	  });
+	  $scope.$on( "$ionicView.leave", function() {
+	       console.log('$ionicView.leave');
+	  });
+	  $scope.$on( "$ionicView.loaded", function() {
+	       console.log('$ionicView.loaded');
+
+	  });
+	  
 	  window.addEventListener("orientationchange", function() {
 		　　$scope.resize();
 	  }, false);
@@ -42,14 +67,6 @@ angular.module('mobistore.controllers', [])
 	    $scope.styleSlideHeight = {'height':height + 'px', 'width': width + 'px'};
 	  };
 	  $scope.resize();
-	  
-	  HomeOpt.opt({act: 'index'},function(json) {
-//		  console.log(json);
-		  $scope.categories = json.categories;
-		  $scope.adverts = json.adverts;
-		  $scope.products = json.products;	
-		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
-	  });
  	  
 	  $scope.menuShow = false;$scope.categories
 	  $scope.showMenu = function() {
