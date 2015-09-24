@@ -31,29 +31,25 @@ angular.module('mobistore.controllers', [])
                            function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
 	  $rootScope.fromHome = true;
 	  
+ 	  HomeOpt.opt({act: 'index'},function(json) {
+		  console.log(json);
+		  $scope.categories = json.categories;
+		  $scope.adverts = json.adverts;
+		  $scope.products = json.products;	
+		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
+	  });
+	  
 	  $scope.$on("$destroy", function() {
 	       console.log('scope.$destroy');
 	  });
-//	  $scope.$on( "$ionicView.enter", function() {
-//	       console.log('ionicView.enter');
-	       
-		 	  HomeOpt.opt({act: 'index'},function(json) {
-				  
-					  console.log(json);
-					  $scope.categories = json.categories;
-					  $scope.adverts = json.adverts;
-					  $scope.products = json.products;	
-					  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
-
-
-			  });
-//	  });
+	  $scope.$on( "$ionicView.enter", function() {
+	       console.log('ionicView.enter');
+	  });
 	  $scope.$on( "$ionicView.leave", function() {
 	       console.log('$ionicView.leave');
 	  });
 	  $scope.$on( "$ionicView.loaded", function() {
 	       console.log('$ionicView.loaded');
-
 	  });
 	  
 	  window.addEventListener("orientationchange", function() {
