@@ -27,8 +27,8 @@ angular.module('mobistore.controllers', [])
 	  }
   }])
 
-  .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 
-                           function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, Util, HomeOpt, ProductMdl, ProductOpt) {
+  .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicModal', '$ionicPopover', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 'SearchOpt', 
+                           function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicModal, $ionicPopover, Util, HomeOpt, ProductMdl, ProductOpt, SearchOpt) {
 	  $rootScope.fromHome = true;
 	  
  	  HomeOpt.opt({act: 'index'},function(json) {
@@ -78,6 +78,56 @@ angular.module('mobistore.controllers', [])
 	  $scope.showProdcut = function(id) {
 		  $location.path('/tab/product/'+ id);
 	  };
+
+	  
+	  $ionicModal.fromTemplateUrl('templates/search.html', {
+	    scope: $scope,
+	    animation: 'slide-in'
+	  }).then(function(modal) {
+	    $scope.modal = modal;
+	  });
+	  $scope.openModal = function() {
+	 	  SearchOpt.opt({act: 'history'},function(json) {
+			  console.log(json);
+			  $scope.hots = json.hots;
+			  $scope.histories = json.histories;
+		  });
+		
+	    $scope.modal.show();
+	  };
+	  $scope.closeModal = function() {
+	    $scope.modal.hide();
+	  };
+	  $scope.$on('$destroy', function() {
+	    $scope.modal.remove();
+	  });
+	  $scope.$on('modal.hidden', function() {
+	    
+	  });
+	  $scope.$on('modal.removed', function() {
+	    
+	  });
+	  
+	  $ionicPopover.fromTemplateUrl('templates/search.html', {
+		    scope: $scope
+		  }).then(function(popover) {
+		    $scope.popover = popover;
+	   });
+	  $scope.openPopover = function($event) {
+	    $scope.popover.show($event);
+	  };
+	  $scope.closePopover = function() {
+	    $scope.popover.hide();
+	  };
+	  $scope.$on('$destroy', function() {
+	    $scope.popover.remove();
+	  });
+	  $scope.$on('popover.hidden', function() {
+	    
+	  });
+	  $scope.$on('popover.removed', function() {
+		  
+	  });
   }])
   
   .controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {

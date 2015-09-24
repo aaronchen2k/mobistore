@@ -38,4 +38,9 @@ angular.module('mobistore.models', [])
     return $resource(Constant.ApiPath + 'shoppingcart/opt/:act', {act:'@act'}, {
         'opt': {method:'POST'}
     });
+}])
+.factory('SearchOpt', ['$resource', 'Constant', function($resource, Constant){
+    return $resource(Constant.ApiPath + 'search/opt/:act', {act:'@act'}, {
+        'opt': {method:'POST'}
+    });
 }]);

@@ -38,6 +38,33 @@ $menu-height: 290px;
 @include font-face("Roboto-BoldItalic", font-files("../font/roboto/Roboto-BoldItalic.ttf"), false, 700, italic);
 @include font-face("Roboto-BlackItalic", font-files("../font/roboto/Roboto-BlackItalic.ttf"), false, 900, italic);
 
+// Slide down from the bottom, used for modals
+// -------------------------------
+
+.slide-in {
+    transform: scale(0.9);
+  opacity: 0;
+}
+.slide-in.ng-enter,
+.slide-in > .ng-enter {
+  @include transition(all cubic-bezier(.1, .7, .1, 1) 900ms);
+}
+.slide-in.ng-enter-active,
+.slide-in > .ng-enter-active {
+   transform: scale(1);
+  opacity: 1;
+}
+
+.slide-in.ng-leave,
+.slide-in > .ng-leave {
+  @include transition(all ease-in-out 250ms);
+}
+
+.scale-in.ng-leave,
+.scale-in > .ng-leave {
+  transition: all ease-in-out 250ms;
+}
+
 .text-ellipsis{text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
 .text-ellipsis{text-overflow:clip; overflow:hidden; white-space:nowrap;}
 
@@ -447,5 +474,29 @@ ion-tabs {
 	button.button-small {
 		margin-right: 3px;
 		width: 60px;
+	}
+}
+
+#search {
+	.list {
+		margin-top: 20px;
+		.item.hot {
+			span {
+				background-color: #e5e5e5;
+				height: 32px;
+				z-index: 1;
+				margin: 0 10px 0 0;
+			    display: inline-block;
+			    padding: 8px 16px;
+			    min-width: 10px;
+			    border-radius: 5px;
+			    vertical-align: baseline;
+			    text-align: center;
+			    white-space: nowrap;
+			    font-weight: bold;
+			    font-size: 14px;
+			    line-height: 16px;
+			}
+		}
 	}
 }

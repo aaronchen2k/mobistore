@@ -1,0 +1,29 @@
+ <ion-modal-view id="search">
+    <ion-header-bar>
+		<div class="bar bar-header item-input-inset">
+		  <label class="item-input-wrapper">
+		    <i class="icon ion-ios-search placeholder-icon"></i>
+		    <input type="search" placeholder="搜索">
+		  </label>
+		  <button class="button button-clear" ng-click="closeModal()">
+		    取消
+		  </button>
+		</div>
+	</ion-header-bar>
+    <ion-content>
+      <div class="list">
+	      <div class="item item-divider">
+		    热门搜索
+		  </div>
+		  <a class="item hot" href="#">
+		    <span ng-repeat="item in hots">{{item}}</span>
+		  </a>
+		  <div class="item item-divider">
+		    搜索历史
+		  </div>
+		  <a ng-repeat="item in histories" class="item" href="#">
+		    {{item}}
+		  </a>
+	</div>
+   </ion-content>
+</ion-modal-view>
