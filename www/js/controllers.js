@@ -27,8 +27,8 @@ angular.module('mobistore.controllers', [])
 	  }
   }])
 
-  .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicModal', '$ionicPopover', 'Util', 'HomeOpt', 'ProductMdl', 'ProductOpt', 'SearchOpt', 
-                           function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicModal, $ionicPopover, Util, HomeOpt, ProductMdl, ProductOpt, SearchOpt) {
+  .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicModal', '$ionicPopover', 'Util', 'StringUtil', 'HomeOpt', 'ProductMdl', 'ProductOpt', 'SearchOpt', 
+                           function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicModal, $ionicPopover, Util, StringUtil, HomeOpt, ProductMdl, ProductOpt, SearchOpt) {
 	  $rootScope.fromHome = true;
 	  
  	  HomeOpt.opt({act: 'index'},function(json) {
@@ -75,21 +75,77 @@ angular.module('mobistore.controllers', [])
 		  $scope.menuShow = false;
 	  };
 	  
+	  $scope.listProducts = function() {
+		  $location.path('/tab/products');
+	  };
 	  $scope.showProdcut = function(id) {
 		  $location.path('/tab/product/'+ id);
 	  };
 	  
-	  $scope.search = function(key) {
-		  console.log(key);
+  }])
+    .controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {
+	  var categoryId = $state.params.categoryId;
+	  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
+		  console.log(json);
+		  $scope.products = json.data;
+	  });
+  }])
+  
+  .controller('ProductsCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicModal', 'Util', 'StringUtil', 'ProductMdl', 'SearchOpt', 
+                             function($rootScope, $scope,  $state, $location, $ionicModal, Util, StringUtil, ProductMdl, SearchOpt) {
+	  $scope.inputData = {};
+	  $scope.resultLoadKeywordsData = [];
+	  $scope.showLoadKeywordsResult = false;
+	  
+	  $scope.resetLoadKeywords = function() {
+		  $scope.resultLoadKeywordsData = [];
+		  $scope.showLoadKeywordsResult = false;
+	  };
+	  $scope.loadKeywords = function(keywords) {
+		  console.log(keywords);
+		  
+//		  keywords = StringUtil.trim(keywords);
+		  keywords = keywords.replace(/(^\s*)|(\s*$)/g, '');
+		  if (StringUtil.isEmpty(keywords)) {
+			  $scope.resultLoadKeywordsData = [];
+			  $scope.showLoadKeywordsResult = false;
+			  return;
+		  }
+	 	  SearchOpt.opt({act: 'getMatchedKeywords', keywords: keywords},function(json) {
+			  $scope.resultLoadKeywordsData = json.data;
+			  $scope.showLoadKeywordsResult = true;
+		  });
 	  };
 	  
-	  $ionicModal.fromTemplateUrl('templates/search.html', {
-	    scope: $scope,
-	    animation: 'slide-in'
-	  }).then(function(modal) {
-	    $scope.modal = modal;
-	  });
+	  $scope.loadData = function() {
+	 	  SearchOpt.opt({act: 'search', keywords: ''},function(json) {
+	 		  console.log(json);
+			  $scope.products = json.data;
+		  });
+	  };
+	  $scope.loadData(); // 初始化默认的列表数据
+	  
+	  $scope.search = function(keywords) {
+		  console.log(keywords);
+		  
+		  $scope.showLoadKeywordsResult = false;
+		  $scope.closeModal();
+	 	  SearchOpt.opt({act: 'search', keywords: keywords},function(json) {
+	 		  console.log(json);
+			  $scope.products = json.data;
+		  });
+	  };
+	  
+	  $scope.keywordsChange = function() {
+		  $scope.loadKeywords($scope.inputData.keywords)
+	  };
+	  
+	  $scope.showProdcut = function(id) {
+		  $location.path('/tab/product/'+ id);
+	  };
+	  
 	  $scope.openModal = function() {
+		  $scope.inputData = {};
 	 	  SearchOpt.opt({act: 'history'},function(json) {
 			  console.log(json);
 			  $scope.hots = json.hots;
@@ -111,33 +167,12 @@ angular.module('mobistore.controllers', [])
 	    
 	  });
 	  
-	  $ionicPopover.fromTemplateUrl('templates/search.html', {
-		    scope: $scope
-		  }).then(function(popover) {
-		    $scope.popover = popover;
-	   });
-	  $scope.openPopover = function($event) {
-	    $scope.popover.show($event);
-	  };
-	  $scope.closePopover = function() {
-	    $scope.popover.hide();
-	  };
-	  $scope.$on('$destroy', function() {
-	    $scope.popover.remove();
-	  });
-	  $scope.$on('popover.hidden', function() {
-	    
-	  });
-	  $scope.$on('popover.removed', function() {
-		  
-	  });
-  }])
-  
-  .controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {
-	  var categoryId = $state.params.categoryId;
-	  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
-		  console.log(json);
-		  $scope.productsIn = json.data;
+	  $ionicModal.fromTemplateUrl('templates/search/search.html', {
+	    scope: $scope,
+	    animation: 'slide-in'
+	  }).then(function(modal) {
+	    $scope.modal = modal;
+	    $scope.openModal();
 	  });
   }])
   

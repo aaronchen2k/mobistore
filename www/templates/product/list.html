@@ -1,6 +1,6 @@
 <ion-view id="products" view-title="产品">
-  <ion-nav-buttons id="home-bar" side="right">
-      <button class="button button-small button-clear " ng-click="doSomething()">
+  <ion-nav-buttons side="right" class="my-search-bar">
+      <button class="button button-small button-clear " ng-click="openModal()">
       	<i class="icon ion-ios-search search"></i>
       </button>
    </ion-nav-buttons>
@@ -9,7 +9,7 @@
 		<div class="content">
 		
 			<ion-list>
-		        <ion-item ng-repeat="item in productsIn" ng-click="showProdcut(item)" class="item-thumbnail-left item-icon-right">
+		        <ion-item ng-repeat="item in products" ng-click="showProdcut(item.id)" class="item-thumbnail-left item-icon-right">
 		          <img ng-src="{{item.image | imgPath}}">
 		          
 		          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>

@@ -479,16 +479,16 @@ ion-tabs {
 
 #search {
 	.list {
-		margin-top: 20px;
+		margin-top: 10px;
 		.hot {
 			display: block;
-			height: 50px;
+			min-height: 50px;
 			color: rgb(0, 0, 0);
 			padding: 10px;
 			button {
 				border: 0;
 				background-color: #f2f2f2;
-				margin: 0 10px 0 0;
+				margin: 5px;
 			    display: inline-block;
 			    padding: 8px 16px;
 			    min-width: 10px;

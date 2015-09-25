@@ -74,7 +74,8 @@ angular.module('mobistore.utils', [])
 	    }
       }
     }
-  }]).factory('StringUtil', [function(){
+  }])
+  .factory('StringUtil', [function(){
 		return {
 		    isEmpty: function (o){
 		        if (o === null || o === "null" || o === undefined || o === "undefined" || o === "") {
@@ -82,6 +83,10 @@ angular.module('mobistore.utils', [])
 		        } else {
 		            return false;
 		        }
+		    },
+		    trim: function (str){
+		    	return str.replace(/(^\s*)|(\s*$)/g, '');
 		    }
-		}
+		};
   }]);
+

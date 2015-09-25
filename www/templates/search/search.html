@@ -3,7 +3,8 @@
 		<div class="bar bar-header item-input-inset">
 		  <label class="item-input-wrapper">
 		    <i class="icon ion-ios-search placeholder-icon"></i>
-		    <input type="search" placeholder="搜索">
+		    <input type="search" placeholder="搜索" ng-change="keywordsChange(this)" ng-model="inputData.keywords"  ng-click="resetLoadKeywords()">
+		    <i class="icon ion-android-cancel placeholder-icon" ng-click="resetSearch()"></i>
 		  </label>
 		  <button class="button button-clear" ng-click="closeModal()">
 		    取消
@@ -11,7 +12,7 @@
 		</div>
 	</ion-header-bar>
     <ion-content>
-      <div class="list">
+      <div class="list keywords" ng-if="!showLoadKeywordsResult">
 	      <div class="item item-divider">
 		    热门搜索
 		  </div>
@@ -25,5 +26,14 @@
 		    {{item}}
 		  </a>
 	</div>
+	<div class="list results" ng-if="showLoadKeywordsResult">
+	      <div class="item item-divider">
+		    搜索结果
+		  </div>
+		  <a ng-click="search(item.keywords)" ng-repeat="item in resultLoadKeywordsData" class="item" href="#">
+		    {{item.keywords}}
+		  </a>
+	</div>
+	
    </ion-content>
 </ion-modal-view>

@@ -65,9 +65,19 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         url: '/category/:categoryId/products',
         views: {
           'tab-home': {
-            templateUrl: 'templates/category/products.html',
+            templateUrl: 'templates/product/list.html',
             controller: 'CategoryCtrl'
           }
+        }
+      })
+      
+      .state('tab.products', {
+        url: '/products',
+        views: {
+            'tab-home': {
+                templateUrl: 'templates/product/list.html',
+                controller: 'ProductsCtrl'
+            }
         }
       })
       .state('tab.product', {
@@ -75,11 +85,12 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         
         views: {
           'tab-home': {
-            templateUrl: 'templates/product/product.html',
+            templateUrl: 'templates/product/detail.html',
             controller: 'ProductCtrl'
           }
         }
       })
+
       .state('tab.find', {
         url: '/find',
         views: {
