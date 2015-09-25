@@ -98,6 +98,8 @@ angular.module('mobistore.controllers', [])
 	  $scope.showLoadKeywordsResult = false;
 	  
 	  $scope.resetLoadKeywords = function() {
+		  alert(1);
+		  $scope.inputData = {};
 		  $scope.resultLoadKeywordsData = [];
 		  $scope.showLoadKeywordsResult = false;
 	  };
@@ -126,6 +128,10 @@ angular.module('mobistore.controllers', [])
 	  $scope.loadData(); // 初始化默认的列表数据
 	  
 	  $scope.search = function(keywords) {
+		  if (StringUtil.isEmpty(keywords)) {
+			  keywords = $scope.inputData.keywords;
+		  }
+		  
 		  console.log(keywords);
 		  
 		  $scope.showLoadKeywordsResult = false;

@@ -1,11 +1,11 @@
  <ion-modal-view id="search">
     <ion-header-bar>
 		<div class="bar bar-header item-input-inset">
-		  <label class="item-input-wrapper">
-		    <i class="icon ion-ios-search placeholder-icon"></i>
-		    <input type="search" placeholder="搜索" ng-change="keywordsChange(this)" ng-model="inputData.keywords"  ng-click="resetLoadKeywords()">
-		    <i class="icon ion-android-cancel placeholder-icon" ng-click="resetSearch()"></i>
-		  </label>
+		  <span class="item-input-wrapper">
+		    <i class="icon ion-ios-search placeholder-icon" ng-click="search()"></i>
+		    <input type="search" placeholder="搜索" ng-change="keywordsChange(this)" ng-model="inputData.keywords">
+		    <i class="icon ion-android-cancel placeholder-icon" ng-click="resetLoadKeywords()"></i>
+		  </span>
 		  <button class="button button-clear" ng-click="closeModal()">
 		    取消
 		  </button>
