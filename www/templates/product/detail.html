@@ -1,9 +1,4 @@
 <ion-view id="product" view-title="产品" hide-tab-bar>
-  <ion-nav-buttons id="home-bar" side="right">
-      <button class="button button-small button-clear " ng-click="doSomething()">
-      	<i class="icon ion-ios-search search"></i>
-      </button>
-   </ion-nav-buttons>
 
   <ion-content class="has-header content">
 			<div class="slide">
@@ -20,7 +15,7 @@
 	       			<div class="col-right">
 	       				￥ {{product.retailPrice}}
 	       			</div>
-	       			<div style="clear:both;"></div>
+	       			<div class="clear-both"></div>
 	       		</div>
 	           	<div class="row">
 	       			<div class="col-left text-color-light-grey">
@@ -29,7 +24,7 @@
 	       			<div class="col-right">
 	       				{{product.qty}}
 	       			</div> 
-	       			<div style="clear:both;"></div>
+	       			<div class="clear-both"></div>
 	       		</div>
 	           	<div class="row">
 	       			<div class="col-left text-color-light-grey">
@@ -38,25 +33,22 @@
 	     			<div class="col-right">
 	     				￥ {{product.freight}}
 	     			</div> 
-	       			<div style="clear:both;"></div>
+	       			<div class="clear-both"></div>
 	           	</div>
-	            <div class="row">
+	            <div class="row qty">
 	        		<div class="col-left text-color-light-grey">
 	     				数量
 	     			</div>
 		       		<div class="col-right">
-		       				<div id="reduceQty" style="float:left;">
-		       					<img src="img/reduce.png">
-		       				</div>
-		       				<div style="float:left;vertical-align:middle; ">
+		       				<div class="reduceQty"><img src="img/reduce.png"></div>
+		       				<div class="input">
 		       					<label class="item item-input">
 								    <input type="text" ng-model="shopping.qty">
 								</label>
 		       				</div> 
-		       				<div id="addQty" style="float:left;"><img src="img/add.png"></div>
-	               			<div style="clear:both;"></div>
+		       				<div class="addQty"><img src="img/add.png"></div>
+	               			<div class="clear-both"></div>
 		       		</div>
-		       		<div style="clear:both;"></div>
 	            </div>
             </div>
            	
@@ -67,20 +59,19 @@
            	</div>
 
            	<div class="divide-line"></div>
-
-
-				
   </ion-content>
   
 	<div class="bar bar-footer">
 	   	<div class="row bottom-buttons">
-	   		<a class="button button-icon icon left" ng-click="collect(product)"
-	   			ng-class="{'ion-android-favorite': isCollected, 'ion-android-favorite-outline': !isCollected}">
-	   		</a>
-	   		<a class="button button-icon icon ion-ios-cart has-badge right">
-	   			<span class="badge badge-assertive" ng-if="shoppingcartItemNumb > 0">{{shoppingcartItemNumb}}</span>
-	   		</a>
-	   		
+	   		<div class="icons">
+	   			<a class="button button-icon icon" ng-click="collect(product)"
+		   			ng-class="{'ion-android-favorite': isCollected, 'ion-android-favorite-outline': !isCollected}">
+		   		</a>
+		   		<a class="button button-icon icon ion-ios-cart has-badge right" ng-click="toShoppingcart()">
+		   			<span class="badge badge-assertive" ng-if="shoppingcartItemNumb > 0">{{shoppingcartItemNumb}}</span>
+		   		</a>
+	   		</div>
+
 			<button class="button button-light left" ng-click="addToShoppingcart(product)">
 			  加入购物车
 			</button>

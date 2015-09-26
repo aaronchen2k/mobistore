@@ -104,7 +104,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         url: '/shoppingcart',
         views: {
           'tab-shoppingcart': {
-            templateUrl: 'templates/shoppingcart.html',
+            templateUrl: 'templates/shoppingcart/shoppingcart.html',
             controller: 'ShoppingcartCtrl'
           }
         }

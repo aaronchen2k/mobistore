@@ -182,8 +182,8 @@ angular.module('mobistore.controllers', [])
 	  });
   }])
   
-  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', 'Util', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
-                              function($rootScope, $scope, $state, Util, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
+  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', '$location', 'Util', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
+                              function($rootScope, $scope, $state, $location, Util, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
 	  $scope.shopping = {qty: 1};
 	  var productId = $state.params.productId;
 	  
@@ -229,6 +229,10 @@ angular.module('mobistore.controllers', [])
     		  console.log(json);
     	  });
       };
+      $scope.toShoppingcart = function(product) {
+    	  $rootScope.hideTabs = false;
+    	  $location.path('/tab/shoppingcart');
+      };
 	  
 //	    // 查找
 //	    ProductMdl.get({ id: '1'}).$promise.then(function(p1) {
@@ -259,13 +263,39 @@ angular.module('mobistore.controllers', [])
 //	    });
 
   }])
+  .controller('ShoppingcartCtrl', ['$scope', 'StringUtil', 'ShoppingcartOpt', function($scope, StringUtil, ShoppingcartOpt) {
+	  $scope.tab = 1;
+	  ShoppingcartOpt.opt({act: 'info'},function(json) {
+	  		console.log(json);
+	  		
+	  		$scope.cart = json.data;
+	  });
+	  
+	  $scope.show = function(tab) {
+			$scope.tab = tab;	
+	  };
+	  
+	  $scope.qtyChange = function(item) {
+			console.log(item);	
+			if (StringUtil.isEmpty(item.qty)) {
+				return;
+			}
+			ShoppingcartOpt.opt({act: 'changeQty', itemId: item.id, itemQty: item.qty}, function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.cart = json.data;
+			});
+	  };
+	  
+	  $scope.clear = function() {
+		  console.log('clear');	
+	  };
+  }])
 
   .controller('FindCtrl', function($scope) {
     var i = 0;
   })
-  .controller('ShoppingcartCtrl', function($scope) {
-    var i = 0;
-  })
+
   .controller('MineCtrl', function($scope) {
     var i = 0;
   })

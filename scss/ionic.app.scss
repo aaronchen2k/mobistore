@@ -38,6 +38,10 @@ $menu-height: 290px;
 @include font-face("Roboto-BoldItalic", font-files("../font/roboto/Roboto-BoldItalic.ttf"), false, 700, italic);
 @include font-face("Roboto-BlackItalic", font-files("../font/roboto/Roboto-BlackItalic.ttf"), false, 900, italic);
 
+ .clear-both {
+ 	clear:both;
+ }
+
 // Slide down from the bottom, used for modals
 // -------------------------------
 
@@ -312,6 +316,58 @@ ion-tabs {
   }
 }
 
+.bar-footer{
+	margin: 0;
+	padding: 0px;
+	&.has-tab-bar-footer {
+		bottom: 50px;
+	}
+	.bottom-buttons {
+			margin: 0;
+			padding: 0px;
+			font-size: 20px;
+			
+			.icons {
+				 width: 230px;
+    			 padding: 0 13px 0 13px;
+				 .button-icon {
+					margin: 5px 5px;
+					&.has-badge {
+					 	.badge {
+					 		position: absolute;
+						    top: 4%;
+						    right: 33%;
+						    right: calc(50% - 26px);
+						    padding: 1px 6px;
+						    height: 18px;
+						    font-size: 12px;
+						    line-height: 16px;
+						    
+	
+						    &:empty {
+						    	display: inline-block;
+						    }
+					 	}
+					}
+				}
+			}
+			
+			button {
+				margin: 0px;
+				padding: 0px;
+				width: 50%;
+				height : 50px;
+				line-height: 50px;
+				&.left {
+					background: #DA9050;
+				}
+				&.right {
+					background: #8DA5D1;
+				}
+			}
+	}
+}	
+
 #detail {
 	.content {
 		.slide {
@@ -360,54 +416,16 @@ ion-tabs {
 	}
 }
 #product {
-	.bar-footer{
-		margin: 0;
-		padding: 0px;
-		.bottom-buttons {
-				margin: 0;
-				padding: 0px;
-				font-size: 20px;
-				
-				.button-icon {
-					margin: 5px 10px;
-					&.left {
-				    	margin-left: 30px;
-				    }
-					&.has-badge {
-					 	.badge {
-					 		position: absolute;
-						    top: 4%;
-						    right: 33%;
-						    right: calc(50% - 26px);
-						    padding: 1px 6px;
-						    height: 18px;
-						    font-size: 12px;
-						    line-height: 16px;
-						    
-
-						    &:empty {
-						    	display: inline-block;
-						    }
-					 	}
-					}
+	.row.qty {
+		.col-right {
+			div {
+				float:left;
+				&.input {
+					vertical-align:middle; 
 				}
-				
-				button {
-					margin: 0px;
-					padding: 0px;
-					width: 50%;
-					height : 50px;
-					line-height: 50px;
-					&.left {
-						margin-left: 20px;
-						background: #DA9050;
-					}
-					&.right {
-						background: #8DA5D1;
-					}
-				}
+			}
 		}
-	}	
+	}
 	.content {
 	   
 		.slide {
@@ -503,6 +521,115 @@ ion-tabs {
 			    &.activated {
 			    	background-color: #e5e5e5;
 			    }
+			}
+		}
+	}
+}
+
+#shoppingcart {
+	font-size: 16px;
+	font-family: Roboto-Light;
+	.row {
+		.my-dark {
+			background-color: #636363;
+		}
+		.my-light {
+			background-color: #959595;
+		}
+		
+		.col {
+			padding: 8px;
+		}
+		&.content {
+			.col.left {
+				padding-left: 30px;
+			}
+		}
+		&.title {
+			color: white;
+			text-align: center;
+			padding: 0px;
+			
+			.col {
+				position: relative;
+				.triangle-down {
+					position: absolute;
+					margin-left: -16px;
+					z-index: 10;
+					left: 50%;
+					bottom: -13px;
+				    width: 0;
+				    height: 0;
+				    border-left: 16px solid transparent;
+				    border-right: 16px solid transparent;
+				    border-top-width: 13px;
+					border-top-style: solid;
+				}
+			}
+			.col.left .triangle-down{
+				border-top-color:   #636363;
+			}
+			.col.right .triangle-down{
+				border-top-color:   #959595;
+			}
+		}
+	}
+	.summary {
+		.price
+			.row {
+
+			}
+		}
+		.info {
+			.row {
+
+			}
+		}
+		
+	.detail {
+		.list ion-item {
+		    padding-top: 20px;
+		    padding-left: 100px;
+		    img {
+		    	top: 0px;
+		    	left : 0px;
+	    	    max-width: 100px;
+   				max-height: 100px;
+		    }
+		    h2 {
+		    	padding-left: 10px;
+		    }
+		    .my-box {
+				position: absolute;
+    			bottom: 0;
+    			padding-left: 10px;
+    			width: 100%;
+    			height: 35px;
+    			
+    			background-color: #EBEBEB;
+    			
+    			span {
+    				line-height: 35px;
+    				&.right {
+    					    float: right;
+						    width: 220px;
+						    span {
+						    	float: left;
+						    	&.my-label {
+						    		width: 50px;
+						    	}
+						    	&.my-input {
+						    		padding: 2px;
+						    		text-align: center;
+						    		input {
+						    			width: 50px;
+						    			height: 31px;
+						    			text-align: center;
+						    		}
+						    	}
+						    }
+    				}
+    			}
 			}
 		}
 	}
