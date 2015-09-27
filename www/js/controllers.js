@@ -106,8 +106,7 @@ angular.module('mobistore.controllers', [])
 	  $scope.loadKeywords = function(keywords) {
 		  console.log(keywords);
 		  
-//		  keywords = StringUtil.trim(keywords);
-		  keywords = keywords.replace(/(^\s*)|(\s*$)/g, '');
+		  keywords = StringUtil.trim(keywords);
 		  if (StringUtil.isEmpty(keywords)) {
 			  $scope.resultLoadKeywordsData = [];
 			  $scope.showLoadKeywordsResult = false;
@@ -277,7 +276,7 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.qtyChange = function(item) {
 			console.log(item);	
-			if (StringUtil.isEmpty(item.qty)) {
+			if (StringUtil.isEmpty(StringUtil.trim(item.qty))) {
 				return;
 			}
 			ShoppingcartOpt.opt({act: 'changeQty', itemId: item.id, itemQty: item.qty}, function(json) {
