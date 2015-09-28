@@ -317,11 +317,18 @@ angular.module('mobistore.controllers', [])
   .controller('OrdersCtrl', function($scope) {
 	  
   })
-  .controller('OrderCtrl', ['$scope', '$state', 'OrderOpt', function($scope, $state, OrderOpt) {
+  .controller('OrderCtrl', ['$scope', '$state', '$ionicHistory', '$location', 'OrderOpt', 
+                            function($scope, $state, $ionicHistory, $location, OrderOpt) {
 	  $scope.tab = 1;
 	  
 	  $scope.show = function(tab) {
 			$scope.tab = tab;	
+	  };
+	  $scope.toOrders = function(tab) {
+		  $ionicHistory.nextViewOptions({
+			  historyRoot: true
+		  });
+		  $location.path('/tab/order');	
 	  };
 	  
 	  var orderId = $state.params.orderId;

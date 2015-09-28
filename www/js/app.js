@@ -121,6 +121,16 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           }
         }
       })
+      .state('tab.orders', {
+        url: '/order',
+        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/order/list.html',
+            controller: 'OrdersCtrl'
+          }
+        }
+      })
       .state('tab.order', {
         url: '/order/:orderId',
         cache: false,
