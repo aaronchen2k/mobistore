@@ -34,15 +34,22 @@
 			</div>
 			<div class="row content">
 			  <div class="col left">姓名</div>
-			  <div class="col right">.col</div>
-			</div>
-			<div class="row content">
-			  <div class="col left">地址</div>
-			  <div class="col right">.col</div>
+			  <div class="col right"><input type="text" ng-model="address.name"></div>
 			</div>
 			<div class="row content">
 			  <div class="col left">电话</div>
-			  <div class="col right">.col</div>
+			  <div class="col right"><input type="text" ng-model="address.phone"></div>
+			</div>
+			<div class="row content address">
+			  <div class="col left">地址</div>
+			  <div class="col right content">
+			  	<div class="text">
+			  		<span>{{address.area}}{{address.street}}{{address.address}}</span>
+			  	</div>
+			  	<div class="more">
+			  		<i class="icon ion-chevron-right"></i>
+			  	</div>
+			  </div>
 			</div>
 		</div>
 	</div>

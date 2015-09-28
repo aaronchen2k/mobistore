@@ -98,7 +98,6 @@ angular.module('mobistore.controllers', [])
 	  $scope.showLoadKeywordsResult = false;
 	  
 	  $scope.resetLoadKeywords = function() {
-		  alert(1);
 		  $scope.inputData = {};
 		  $scope.resultLoadKeywordsData = [];
 		  $scope.showLoadKeywordsResult = false;
@@ -262,12 +261,19 @@ angular.module('mobistore.controllers', [])
 //	    });
 
   }])
-  .controller('ShoppingcartCtrl', ['$scope', 'StringUtil', 'ShoppingcartOpt', function($scope, StringUtil, ShoppingcartOpt) {
+  .controller('ShoppingcartCtrl', ['$scope', '$ionicModal', '$ionicPopover', 'StringUtil', 'ShoppingcartOpt', 
+                                   function($scope, $ionicModal, $ionicPopover, StringUtil, ShoppingcartOpt) {
 	  $scope.tab = 1;
+	  $scope.address = {};
+	  
 	  ShoppingcartOpt.opt({act: 'info'},function(json) {
 	  		console.log(json);
 	  		
 	  		$scope.cart = json.data;
+	  		if (json.data.addresses.length > 0) {
+	  			$scope.address = json.data.addresses[0];
+	  		}
+	  		
 	  });
 	  
 	  $scope.show = function(tab) {
@@ -287,7 +293,15 @@ angular.module('mobistore.controllers', [])
 	  };
 	  
 	  $scope.clear = function() {
-		  console.log('clear');	
+		  ShoppingcartOpt.opt({act:'clear'}).$promise.then(function(json) {
+    		  console.log(json);
+    		  $scope.cart = json.data;
+    	  });	
+	  };
+	  $scope.checkout = function() {
+		  ShoppingcartOpt.opt({act:'checkout'}).$promise.then(function(json) {
+    		  console.log(json);
+    	  });	
 	  };
   }])
 

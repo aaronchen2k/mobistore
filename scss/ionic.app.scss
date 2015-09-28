@@ -186,6 +186,10 @@ ion-tabs {
 	}
 }
 
+ion-popover-view.active {
+	opacity: 1;
+}
+
 #msg {
 	.content {
 		font-size: 16px;
@@ -581,8 +585,26 @@ ion-tabs {
 			}
 		}
 		.info {
-			.row {
-
+			.row.address {
+				.content {
+					div {
+						
+						&.text {
+							float: left;
+							margin-right: 30px;
+						}
+						&.more {
+							position: absolute;
+							top: 50%;
+							margin-top: -10px;
+							right: 10px;
+							width: 10px;
+							i {
+								
+							}
+						}
+					}
+				}
 			}
 		}
 		
