@@ -1,47 +1,50 @@
 <ion-view id="shoppingcart" view-title="购物车">
-
   <ion-content class="has-header content">
-	<div class="summary">
-		<div class="row content">
-		  <div class="col col-33 left">总额</div>
-		  <div class="col col-67 right">￥ {{cart.totalAmount}}</div>
-		</div>
-		<div class="row content">
-		  <div class="col col-33 left">商品</div>
-		  <div class="col col-67 right">￥ {{cart.amount}}</div>
-		</div>
-		<div class="row content">
-		  <div class="col col-33 left">运费</div>
-		  <div class="col col-67 right">￥ {{cart.freight}}</div>
-		</div>
+  	<div class="msg" ng-if="isEmpty">
+		暂未添加商品
 	</div>
-
-	<div class="detail">
-		<ion-list class="list-with-price">
-	        <ion-item ng-repeat="item in cart.items" ng-click="showProdcut(item.id)" class="item-thumbnail-left">
-	          <img ng-src="{{item.image | imgPath}}">
-	          
-	          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
-	          <div class="my-box text-thin text-color-light-grey">
-				<span>
-					￥ {{item.unitPrice}}
-				</span>
-				<span class="right">
-					<span class="my-label">
-						数量
+  	<div ng-if="!isEmpty">
+		<div class="summary">
+			<div class="row content">
+			  <div class="col col-33 left">总额</div>
+			  <div class="col col-67 right">￥ {{cart.totalAmount}}</div>
+			</div>
+			<div class="row content">
+			  <div class="col col-33 left">商品</div>
+			  <div class="col col-67 right">￥ {{cart.amount}}</div>
+			</div>
+			<div class="row content">
+			  <div class="col col-33 left">运费</div>
+			  <div class="col col-67 right">￥ {{cart.freight}}</div>
+			</div>
+		</div>
+	
+		<div class="detail">
+			<ion-list class="list-with-price">
+		        <ion-item ng-repeat="item in cart.items" ng-click="showProdcut(item.id)" class="item-thumbnail-left">
+		          <img ng-src="{{item.image | imgPath}}">
+		          
+		          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
+		          <div class="my-box text-thin text-color-light-grey">
+					<span>
+						￥ {{item.unitPrice}}
 					</span>
-					<span class="my-input">
-						<input type="text" ng-model="item.qty" ng-change="qtyChange(item)">
+					<span class="right">
+						<span class="my-label">
+							数量
+						</span>
+						<span class="my-input">
+							<input type="text" ng-model="item.qty" ng-change="qtyChange(item)">
+						</span>
 					</span>
-				</span>
-			  </div>
-	        </ion-item>
-	   </ion-list>
-	</div>
-   
+				  </div>
+		        </ion-item>
+		   </ion-list>
+		</div>
+   </div>
   </ion-content>
   
-	<div class="bar bar-footer has-tab-bar-footer">
+	<div ng-if="!isEmpty" class="bar bar-footer has-tab-bar-footer">
 	   	<div class="row bottom-buttons">
 			<button class="button button-light left" ng-click="checkout()">
 			  结算

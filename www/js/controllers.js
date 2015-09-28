@@ -261,15 +261,16 @@ angular.module('mobistore.controllers', [])
   }])
   .controller('ShoppingcartCtrl', ['$rootScope', '$scope', '$location', '$ionicModal', '$ionicPopover', 'StringUtil', 'ShoppingcartOpt', 'OrderOpt',  
                                    function($rootScope, $scope, $location, $ionicModal, $ionicPopover, StringUtil, ShoppingcartOpt, OrderOpt) {
+	  $scope.isEmpty = false;
 	  
 	  ShoppingcartOpt.opt({act: 'info'},function(json) {
 	  		console.log(json);
 	  		
 	  		$scope.cart = json.data;
+	  		$scope.isEmpty = $scope.cart.totalAmount == 0;
 	  		if (json.data.addresses.length > 0) {
 	  			$scope.address = json.data.addresses[0];
 	  		}
-	  		
 	  });
 	  
 	  $scope.qtyChange = function(item) {
@@ -281,6 +282,7 @@ angular.module('mobistore.controllers', [])
 		  		console.log(json);
 		  		
 		  		$scope.cart = json.data;
+		  		$scope.isEmpty = $scope.cart.totalAmount == 0;
 			});
 	  };
 	  
@@ -288,6 +290,7 @@ angular.module('mobistore.controllers', [])
 		  ShoppingcartOpt.opt({act:'clear'}).$promise.then(function(json) {
     		  console.log(json);
     		  $scope.cart = json.data;
+    		  $scope.isEmpty = $scope.cart.totalAmount == 0;
     		  $rootScope.shoppingcartItemNumb = 0;
     	  });	
 	  };
