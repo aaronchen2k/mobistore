@@ -1,0 +1,94 @@
+<ion-view id="order" view-title="订单详情">
+
+  <ion-content class="has-header content">
+  	<div class="my-bar">
+  		<div class="row title">
+		  <div class="col left my-dark" ng-click="show(1)">
+		  	概要
+		  	<div class="triangle-down" ng-if="tab==1"></div>
+		  </div>
+		  <div class="col right my-light" ng-click="show(2)">
+		  	细节
+		  	<div class="triangle-down" ng-if="tab==2"></div>
+		  </div>
+		</div>
+  	</div>
+	<div class="summary" ng-if="tab==1">
+		<div class="price">
+			<div class="row content">
+			  <div class="col col-33 left">金额</div>
+			  <div class="col col-67 right">￥ {{order.amount}}</div>
+			</div>
+			<div class="row content">
+			  <div class="col col-33 left">运费</div>
+			  <div class="col col-67 right">￥ {{order.freight}}</div>
+			</div>
+			<div class="row content">
+			  <div class="col col-33 left">总额</div>
+			  <div class="col col-67 right">￥ {{order.totalAmount}}</div>
+			</div>
+		</div>
+		
+		<div class="info">
+			<div class="row title">
+				<div class="col my-light">收件人</div>
+			</div>
+			<div class="row content">
+			  <div class="col col-33 left">姓名</div>
+			  <div class="col col-67 right"><input type="text" ng-model="order.recipientName"></div>
+			</div>
+			<div class="row content">
+			  <div class="col col-33 left">电话</div>
+			  <div class="col col-67 right"><input type="text" ng-model="order.recipientPhone"></div>
+			</div>
+			<div class="row content address">
+			  <div class="col col-33 left">地址</div>
+			  <div class="col col-67 right content">
+			  	<div class="text">
+			  		<span>{{order.recipientArea}}{{order.recipientStreet}}{{order.recipientAddress}}</span>
+			  	</div>
+			  	<div class="more">
+			  		<i class="icon ion-chevron-right"></i>
+			  	</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	
+    <div class="detail" ng-if="tab==2">
+		<ion-list class="list-with-price">
+	        <ion-item ng-repeat="item in order.items" ng-click="showProdcut(item.id)" class="item-thumbnail-left">
+	          <img ng-src="{{item.image | imgPath}}">
+	          
+	          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
+	          <div class="my-box text-thin text-color-light-grey">
+				<span>
+					￥ {{item.unitPrice}}
+				</span>
+				<span class="right">
+					<span class="my-label">
+						数量
+					</span>
+					<span class="my-input">
+						<input type="text" ng-model="item.qty" ng-change="qtyChange(item)">
+					</span>
+				</span>
+			  </div>
+	        </ion-item>
+	   </ion-list>
+   </div>
+   
+  </ion-content>
+  
+	<div class="bar bar-footer has-tab-bar-footer">
+	   	<div class="row bottom-buttons">
+			<button class="button button-light left" ng-click="checkout()">
+			  提交
+			</button>
+			<button class="button button-light right" ng-click="clear()">
+			  返回
+			</button>
+		</div>
+	</div>
+	
+</ion-view>

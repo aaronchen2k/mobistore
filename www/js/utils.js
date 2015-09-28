@@ -87,6 +87,12 @@ angular.module('mobistore.utils', [])
 		        } else {
 		            return false;
 		        }
+		    },
+		    upcaseFirst: function(str) {
+		    	var first = str.substring(0,1).toUpperCase();
+		    	var others = str.substring(1,str.length);
+		    	var ret = first + others;
+		    	return ret;
 		    }
 		};
   }]);

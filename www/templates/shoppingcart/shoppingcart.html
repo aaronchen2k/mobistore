@@ -1,61 +1,23 @@
 <ion-view id="shoppingcart" view-title="购物车">
 
   <ion-content class="has-header content">
-  	<div class="my-bar">
-  		<div class="row title">
-		  <div class="col left my-dark" ng-click="show(1)">
-		  	概要
-		  	<div class="triangle-down" ng-if="tab==1"></div>
-		  </div>
-		  <div class="col right my-light" ng-click="show(2)">
-		  	细节
-		  	<div class="triangle-down" ng-if="tab==2"></div>
-		  </div>
+	<div class="summary">
+		<div class="row content">
+		  <div class="col col-33 left">总额</div>
+		  <div class="col col-67 right">￥ {{cart.totalAmount}}</div>
 		</div>
-  	</div>
-	<div class="summary" ng-if="tab==1">
-		<div class="price">
-			<div class="row content">
-			  <div class="col left">金额</div>
-			  <div class="col right">￥ {{cart.amount}}</div>
-			</div>
-			<div class="row content">
-			  <div class="col left">运费</div>
-			  <div class="col right">￥ {{cart.freight}}</div>
-			</div>
-			<div class="row content">
-			  <div class="col left">总额</div>
-			  <div class="col right">￥ {{cart.totalAmount}}</div>
-			</div>
+		<div class="row content">
+		  <div class="col col-33 left">商品</div>
+		  <div class="col col-67 right">￥ {{cart.amount}}</div>
 		</div>
-		<div class="info">
-			<div class="row title">
-				<div class="col my-light">收件人</div>
-			</div>
-			<div class="row content">
-			  <div class="col left">姓名</div>
-			  <div class="col right"><input type="text" ng-model="address.name"></div>
-			</div>
-			<div class="row content">
-			  <div class="col left">电话</div>
-			  <div class="col right"><input type="text" ng-model="address.phone"></div>
-			</div>
-			<div class="row content address">
-			  <div class="col left">地址</div>
-			  <div class="col right content">
-			  	<div class="text">
-			  		<span>{{address.area}}{{address.street}}{{address.address}}</span>
-			  	</div>
-			  	<div class="more">
-			  		<i class="icon ion-chevron-right"></i>
-			  	</div>
-			  </div>
-			</div>
+		<div class="row content">
+		  <div class="col col-33 left">运费</div>
+		  <div class="col col-67 right">￥ {{cart.freight}}</div>
 		</div>
 	</div>
-	
-    <div class="detail" ng-if="tab==2">
-		<ion-list>
+
+	<div class="detail">
+		<ion-list class="list-with-price">
 	        <ion-item ng-repeat="item in cart.items" ng-click="showProdcut(item.id)" class="item-thumbnail-left">
 	          <img ng-src="{{item.image | imgPath}}">
 	          
@@ -75,7 +37,7 @@
 			  </div>
 	        </ion-item>
 	   </ion-list>
-   </div>
+	</div>
    
   </ion-content>
   

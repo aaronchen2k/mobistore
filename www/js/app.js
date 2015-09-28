@@ -24,6 +24,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         StatusBar.styleLightContent();
       }
     });
+    
   })
 
   .config(function ($stateProvider, $urlRouterProvider, $provide, $httpProvider, $ionicConfigProvider) {
@@ -73,6 +74,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       
       .state('tab.products', {
         url: '/products',
+        cache: false,
         views: {
             'tab-home': {
                 templateUrl: 'templates/product/list.html',
@@ -82,7 +84,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.product', {
         url: '/product/:productId',
-        
+        cache: false,
         views: {
           'tab-home': {
             templateUrl: 'templates/product/detail.html',
@@ -102,6 +104,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.shoppingcart', {
         url: '/shoppingcart',
+        cache: false,
         views: {
           'tab-shoppingcart': {
             templateUrl: 'templates/shoppingcart/shoppingcart.html',
@@ -115,6 +118,16 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           'tab-mine': {
             templateUrl: 'templates/mine.html',
             controller: 'MineCtrl'
+          }
+        }
+      })
+      .state('tab.order', {
+        url: '/order/:orderId',
+        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/order/detail.html',
+            controller: 'OrderCtrl'
           }
         }
       })

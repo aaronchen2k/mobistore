@@ -8017,6 +8017,40 @@ ion-popover-view.active {
       .bar-footer .bottom-buttons button.right {
         background: #8DA5D1; }
 
+ion-list.list-with-price .list ion-item {
+  padding-top: 20px;
+  padding-left: 100px; }
+  ion-list.list-with-price .list ion-item img {
+    top: 0px;
+    left: 0px;
+    max-width: 100px;
+    max-height: 100px; }
+  ion-list.list-with-price .list ion-item h2 {
+    padding-left: 10px; }
+  ion-list.list-with-price .list ion-item .my-box {
+    position: absolute;
+    bottom: 0;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    background-color: #EBEBEB; }
+    ion-list.list-with-price .list ion-item .my-box span {
+      line-height: 35px; }
+      ion-list.list-with-price .list ion-item .my-box span.right {
+        float: right;
+        width: 220px; }
+        ion-list.list-with-price .list ion-item .my-box span.right span {
+          float: left; }
+          ion-list.list-with-price .list ion-item .my-box span.right span.my-label {
+            width: 50px; }
+          ion-list.list-with-price .list ion-item .my-box span.right span.my-input {
+            padding: 2px;
+            text-align: center; }
+            ion-list.list-with-price .list ion-item .my-box span.right span.my-input input {
+              width: 50px;
+              height: 31px;
+              text-align: center; }
+
 #detail .content .slide {
   width: 100%;
   height: 428px;
@@ -8123,21 +8157,27 @@ ion-popover-view.active {
 #shoppingcart {
   font-size: 16px;
   font-family: Roboto-Light; }
-  #shoppingcart .row .my-dark {
+  #shoppingcart .card.summary {
+    background-color: #EBEBEB; }
+
+#order {
+  font-size: 16px;
+  font-family: Roboto-Light; }
+  #order .row .my-dark {
     background-color: #636363; }
-  #shoppingcart .row .my-light {
+  #order .row .my-light {
     background-color: #959595; }
-  #shoppingcart .row .col {
+  #order .row .col {
     padding: 8px; }
-  #shoppingcart .row.content .col.left {
+  #order .row.content .col.left {
     padding-left: 30px; }
-  #shoppingcart .row.title {
+  #order .row.title {
     color: white;
     text-align: center;
     padding: 0px; }
-    #shoppingcart .row.title .col {
+    #order .row.title .col {
       position: relative; }
-      #shoppingcart .row.title .col .triangle-down {
+      #order .row.title .col .triangle-down {
         position: absolute;
         margin-left: -16px;
         z-index: 10;
@@ -8149,49 +8189,16 @@ ion-popover-view.active {
         border-right: 16px solid transparent;
         border-top-width: 13px;
         border-top-style: solid; }
-    #shoppingcart .row.title .col.left .triangle-down {
+    #order .row.title .col.left .triangle-down {
       border-top-color: #636363; }
-    #shoppingcart .row.title .col.right .triangle-down {
+    #order .row.title .col.right .triangle-down {
       border-top-color: #959595; }
-  #shoppingcart .info .row.address .content div.text {
+  #order .summary .info .row.address .content div.text {
     float: left;
     margin-right: 30px; }
-  #shoppingcart .info .row.address .content div.more {
+  #order .summary .info .row.address .content div.more {
     position: absolute;
     top: 50%;
     margin-top: -10px;
     right: 10px;
     width: 10px; }
-  #shoppingcart .detail .list ion-item {
-    padding-top: 20px;
-    padding-left: 100px; }
-    #shoppingcart .detail .list ion-item img {
-      top: 0px;
-      left: 0px;
-      max-width: 100px;
-      max-height: 100px; }
-    #shoppingcart .detail .list ion-item h2 {
-      padding-left: 10px; }
-    #shoppingcart .detail .list ion-item .my-box {
-      position: absolute;
-      bottom: 0;
-      padding-left: 10px;
-      width: 100%;
-      height: 35px;
-      background-color: #EBEBEB; }
-      #shoppingcart .detail .list ion-item .my-box span {
-        line-height: 35px; }
-        #shoppingcart .detail .list ion-item .my-box span.right {
-          float: right;
-          width: 220px; }
-          #shoppingcart .detail .list ion-item .my-box span.right span {
-            float: left; }
-            #shoppingcart .detail .list ion-item .my-box span.right span.my-label {
-              width: 50px; }
-            #shoppingcart .detail .list ion-item .my-box span.right span.my-input {
-              padding: 2px;
-              text-align: center; }
-              #shoppingcart .detail .list ion-item .my-box span.right span.my-input input {
-                width: 50px;
-                height: 31px;
-                text-align: center; }

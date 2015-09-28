@@ -372,6 +372,52 @@ ion-popover-view.active {
 	}
 }	
 
+ion-list.list-with-price .list ion-item {
+    padding-top: 20px;
+    padding-left: 100px;
+    img {
+    	top: 0px;
+    	left : 0px;
+   	    max-width: 100px;
+ 		max-height: 100px;
+    }
+    h2 {
+    	padding-left: 10px;
+    }
+    .my-box {
+		position: absolute;
+  			bottom: 0;
+  			padding-left: 10px;
+  			width: 100%;
+  			height: 35px;
+  			
+  			background-color: #EBEBEB;
+  			
+  			span {
+  				line-height: 35px;
+  				&.right {
+  					    float: right;
+				    width: 220px;
+				    span {
+				    	float: left;
+				    	&.my-label {
+				    		width: 50px;
+				    	}
+				    	&.my-input {
+				    		padding: 2px;
+				    		text-align: center;
+				    		input {
+				    			width: 50px;
+				    			height: 31px;
+				    			text-align: center;
+				    		}
+				    	}
+				    }
+  				}
+  			}
+	}
+}
+
 #detail {
 	.content {
 		.slide {
@@ -415,10 +461,6 @@ ion-popover-view.active {
 	}
 }
 
-#products {
-	.content {
-	}
-}
 #product {
 	.row.qty {
 		.col-right {
@@ -431,7 +473,6 @@ ion-popover-view.active {
 		}
 	}
 	.content {
-	   
 		.slide {
 		    width: 100%;
 		    height: 170px;
@@ -533,6 +574,19 @@ ion-popover-view.active {
 #shoppingcart {
 	font-size: 16px;
 	font-family: Roboto-Light;
+	
+	.card.summary {
+		background-color: #EBEBEB;
+	}
+		
+	.detail {
+
+	}
+}
+
+#order {
+	font-size: 16px;
+	font-family: Roboto-Light;
 	.row {
 		.my-dark {
 			background-color: #636363;
@@ -579,11 +633,7 @@ ion-popover-view.active {
 		}
 	}
 	.summary {
-		.price
-			.row {
-
-			}
-		}
+		
 		.info {
 			.row.address {
 				.content {
@@ -607,52 +657,8 @@ ion-popover-view.active {
 				}
 			}
 		}
-		
+	}
 	.detail {
-		.list ion-item {
-		    padding-top: 20px;
-		    padding-left: 100px;
-		    img {
-		    	top: 0px;
-		    	left : 0px;
-	    	    max-width: 100px;
-   				max-height: 100px;
-		    }
-		    h2 {
-		    	padding-left: 10px;
-		    }
-		    .my-box {
-				position: absolute;
-    			bottom: 0;
-    			padding-left: 10px;
-    			width: 100%;
-    			height: 35px;
-    			
-    			background-color: #EBEBEB;
-    			
-    			span {
-    				line-height: 35px;
-    				&.right {
-    					    float: right;
-						    width: 220px;
-						    span {
-						    	float: left;
-						    	&.my-label {
-						    		width: 50px;
-						    	}
-						    	&.my-input {
-						    		padding: 2px;
-						    		text-align: center;
-						    		input {
-						    			width: 50px;
-						    			height: 31px;
-						    			text-align: center;
-						    		}
-						    	}
-						    }
-    				}
-    			}
-			}
-		}
+
 	}
 }
