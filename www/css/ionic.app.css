@@ -8014,13 +8014,15 @@ ion-popover-view.active {
     .bar-footer .bottom-buttons button {
       margin: 0px;
       padding: 0px;
-      width: 50%;
       height: 50px;
+      width: 100%;
       line-height: 50px; }
       .bar-footer .bottom-buttons button.left {
         background: #DA9050; }
       .bar-footer .bottom-buttons button.right {
         background: #8DA5D1; }
+      .bar-footer .bottom-buttons button.half {
+        width: 50%; }
 
 ion-list.list-with-price .list ion-item {
   padding-top: 20px;

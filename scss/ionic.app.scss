@@ -363,14 +363,18 @@ ion-popover-view.active {
 			button {
 				margin: 0px;
 				padding: 0px;
-				width: 50%;
 				height : 50px;
+				width: 100%;
 				line-height: 50px;
 				&.left {
 					background: #DA9050;
 				}
 				&.right {
 					background: #8DA5D1;
+				}
+				
+				&.half {
+					width: 50%;
 				}
 			}
 	}
