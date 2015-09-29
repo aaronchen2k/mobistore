@@ -27,4 +27,36 @@ angular.module('mobistore.filters', [])
         var rst = url.substring(0, inx + 1) + 'thumbnail' + url.substring(inx);
         return rst;
     }
+}])
+
+.filter('orderStatus', ['Constant', 'StringUtil', function(Constant, StringUtil) {
+    return function(order) {
+
+//    	FEATURE("FEATURE"), INIT("INIT"),IN_PROGRESS("IN_PROGRESS"),SUCCESSED("SUCCESS");
+//    	FEATURE("BACK"), INIT("INIT"),IN_PROGRESS("IN_PROGRESS"),SUCCESSED("SUCCESS");
+    	
+    	var payStatus = order.payStatus;
+    	var shipStatus = order.shipStatus;
+    	var status;
+        if (shipStatus != 'INIT') {
+            if (shipStatus === 'IN_PROGRESS') {
+            	status = '发货中';
+            } else if (shipStatus === 'SUCCESS') {
+            	status = '已签收';
+            } else if (shipStatus === 'BACK'){
+            	status = '已退回';
+            }
+        } else {
+        	if (payStatus === 'IN_PROGRESS') {
+            	status = '支付已提交';
+            } else if (shipStatus === 'SUCCESS') {
+            	status = '支付已完成';
+            } else if (shipStatus === 'FEATURE'){
+            	status = '支付失败';
+            } else {
+            	status = '未支付';
+            }
+        }
+        return status;
+    }
 }]);

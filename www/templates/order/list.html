@@ -1,6 +1,25 @@
-<ion-view id="products" view-title="产品">
-
+<ion-view id="orders" view-title="订单">	
   <ion-content class="has-header">
-		templates/order/list.html
+		<div class="content">
+			<ion-list>
+		        <ion-item ng-repeat="order in orders" ng-click="showOrder(order.id)">
+		          <h2 class="text-big text-color-light-grey" >{{order.createTime | date:'yyyy-MM-dd'}}</h2>
+		          <div>
+			          <div class="left" ng-repeat="item in order.items">
+			          	 <img ng-src="{{item.image | imgPath}}">
+			          </div>
+			          <div class="right">
+			          	  <p class=" text-thin text-color-light-grey">￥ {{order.totalAmount}} &nbsp;&nbsp; {{order | orderStatus}}</p>
+				          <p class=" text-thin text-color-light-grey">
+				          	{{order.recipientArea}} {{order.recipientStreet}} {{order.recipientAddress}}
+				          </p>
+				          <p class=" text-thin text-color-light-grey">
+				          	{{order.recipientName}}
+				          </p>
+			          </div>
+		          </div>
+		        </ion-item>
+		   </ion-list>
+		</div>
   </ion-content>
 </ion-view>

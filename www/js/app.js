@@ -112,17 +112,17 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           }
         }
       })
-      .state('tab.mine', {
-        url: '/mine',
-        views: {
-          'tab-mine': {
-            templateUrl: 'templates/mine.html',
-            controller: 'MineCtrl'
-          }
-        }
-      })
+//      .state('tab.mine', {
+//        url: '/mine',
+//        views: {
+//          'tab-mine': {
+//            templateUrl: 'templates/mine.html',
+//            controller: 'MineCtrl'
+//          }
+//        }
+//      })
       .state('tab.orders', {
-        url: '/order',
+        url: '/orders',
         cache: false,
         views: {
           'tab-mine': {

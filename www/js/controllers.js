@@ -304,6 +304,7 @@ angular.module('mobistore.controllers', [])
 	    		  
 	    		  $rootScope.shoppingcartItemNumb = 0;
 	    		  var orderId = json.orderId
+	    		  $rootScope.fromCart = true;
 	    		  $location.path('/tab/order/' + orderId);
 	    	  });
 		  }
@@ -317,9 +318,21 @@ angular.module('mobistore.controllers', [])
   .controller('MineCtrl', function($scope) {
     var i = 0;
   })
-  .controller('OrdersCtrl', function($scope) {
+  .controller('OrdersCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
+                             function($state, $rootScope, $scope, $location, OrderOpt) {
+	  var orderId = $state.params.orderId;
 	  
-  })
+	  OrderOpt.opt({act: 'list', orderId: orderId},function(json) {
+	  		console.log(json);
+	  		
+	  		$scope.orders = json.data;
+	  });
+	  
+	  $scope.showOrder = function(id) {
+		  $rootScope.fromCart = false;
+		  $location.path('/tab/order/'+ id);
+	  };
+  }])
   .controller('OrderCtrl', ['$scope', '$state', '$ionicHistory', '$location', 'OrderOpt', 
                             function($scope, $state, $ionicHistory, $location, OrderOpt) {
 	  $scope.tab = 1;
@@ -331,7 +344,7 @@ angular.module('mobistore.controllers', [])
 		  $ionicHistory.nextViewOptions({
 			  historyRoot: true
 		  });
-		  $location.path('/tab/order');	
+		  $location.path('/tab/orders');	
 	  };
 	  
 	  var orderId = $state.params.orderId;
