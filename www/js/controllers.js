@@ -354,6 +354,7 @@ angular.module('mobistore.controllers', [])
 	  		
 	  		$scope.order = json.data;
 	  });
+	  
   }])
   .controller('MsgCtrl', ['$scope', '$state', '$location', 
                           function($scope, $state, $location) {
