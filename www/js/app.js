@@ -62,15 +62,6 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           }
         }
       })
-      .state('tab.category', {
-        url: '/category/:categoryId/products',
-        views: {
-          'tab-home': {
-            templateUrl: 'templates/product/list.html',
-            controller: 'CategoryCtrl'
-          }
-        }
-      })
       
       .state('tab.products', {
         url: '/products',

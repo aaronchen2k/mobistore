@@ -71,11 +71,13 @@ angular.module('mobistore.controllers', [])
 	
 	  $scope.showCategory = function(item) {
 		  console.log(item.id);
-		  $location.path('/tab/category/' + item.id + '/products');
+		  $rootScope.categoryId = item.id;
+		  $location.path('/tab/products');
 		  $scope.menuShow = false;
 	  };
 	  
 	  $scope.listProducts = function() {
+		  $rootScope.showSearch = true;
 		  $location.path('/tab/products');
 	  };
 	  $scope.showProdcut = function(id) {
@@ -83,16 +85,9 @@ angular.module('mobistore.controllers', [])
 	  };
 	  
   }])
-    .controller('CategoryCtrl', ['$scope', '$state', 'Util', 'ProductMdl', 'CategoryOpt', function($scope,  $state, Util, ProductMdl, CategoryOpt) {
-	  var categoryId = $state.params.categoryId;
-	  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
-		  console.log(json);
-		  $scope.products = json.data;
-	  });
-  }])
   
-  .controller('ProductsCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicModal', 'Util', 'StringUtil', 'ProductMdl', 'SearchOpt', 
-                             function($rootScope, $scope,  $state, $location, $ionicModal, Util, StringUtil, ProductMdl, SearchOpt) {
+  .controller('ProductsCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicModal', 'Util', 'StringUtil', 'CategoryOpt', 'ProductMdl', 'SearchOpt', 
+                             function($rootScope, $scope,  $state, $location, $ionicModal, Util, StringUtil, CategoryOpt, ProductMdl, SearchOpt) {
 	  $scope.inputData = {};
 	  $scope.resultLoadKeywordsData = [];
 	  $scope.showLoadKeywordsResult = false;
@@ -118,10 +113,19 @@ angular.module('mobistore.controllers', [])
 	  };
 	  
 	  $scope.loadData = function() {
-	 	  SearchOpt.opt({act: 'search', keywords: ''},function(json) {
-	 		  console.log(json);
-			  $scope.products = json.data;
-		  });
+		  var categoryId = $rootScope.categoryId;
+		  if (!StringUtil.isEmpty(categoryId)) {
+			  $rootScope.categoryId = '';
+			  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
+				  console.log(json);
+				  $scope.products = json.data;
+			  });
+		  } else {
+			  SearchOpt.opt({act: 'search', keywords: ''},function(json) {
+		 		  console.log(json);
+				  $scope.products = json.data;
+			  });  
+		  }
 	  };
 	  $scope.loadData(); // 初始化默认的列表数据
 	  
@@ -176,7 +180,10 @@ angular.module('mobistore.controllers', [])
 	    animation: 'slide-in'
 	  }).then(function(modal) {
 	    $scope.modal = modal;
-	    $scope.openModal();
+	    if ($rootScope.showSearch) {
+	    	$rootScope.showSearch = false;
+	    	$scope.openModal();
+	    }
 	  });
   }])
   
@@ -311,9 +318,9 @@ angular.module('mobistore.controllers', [])
 	  };
   }])
 
-  .controller('FindCtrl', function($scope) {
+  .controller('FindCtrl', ['$scope', function($scope) {
     var i = 0;
-  })
+  }])
 
   .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
                            function($state, $rootScope, $scope, $location, OrderOpt) {

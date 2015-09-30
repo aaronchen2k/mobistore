@@ -2,7 +2,7 @@
 
 angular.module('mobistore.directives', [])
 
-.directive('hideTabBar', function($rootScope) {
+.directive('hideTabBar', ['$rootScope', function($rootScope) {
     return {
         restrict: 'A',
         link: function($scope, $el) {
@@ -12,4 +12,4 @@ angular.module('mobistore.directives', [])
             });
         }
     };
-});
+}]);
