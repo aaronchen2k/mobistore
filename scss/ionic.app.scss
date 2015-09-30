@@ -602,6 +602,9 @@ ion-list.list-with-price .list ion-item {
 }
 
 #orders {
+	h2 {
+		background-color: #EBEBEB;
+	}
 	.left {
 		float: left;
 		margin-right: 20px;
@@ -691,5 +694,126 @@ ion-list.list-with-price .list ion-item {
 	}
 	.detail {
 
+	}
+}
+
+#mine {
+	.info {
+		height: 160px;
+		.profile {
+			padding: 15px;
+			.avatar {
+				float: left;
+				height: 60px;
+				width: 60px;
+				background: url(../img/mine.png) no-repeat   ;
+				background-size: cover;
+			}
+			.detail {
+				float: left;
+				margin: 10px 0 0 20px;
+				height: 60px;
+				line-height: 22px;
+			}
+			.edit {
+				float: right;
+				font-size: 20px;
+			}
+		}
+		.bar {
+			    height: 60px;
+			    background-color: #EBEBEB;
+			    .col {
+			    	text-align: center;
+			    	.numb {
+			    		margin: 0 auto;
+			    	}
+			    	.text {
+			    		margin: 0 auto;
+			    	}
+			    }
+		}
+	}
+	.service {
+		margin: 10px 0;
+		padding: 0;
+		height: 120px;
+		.col {
+			position: relative;
+			border: 1px solid #d5d5d5;
+			&.left {
+				border-left: 0px;
+				border-right: 0px;
+			}
+			&.right {
+				border-right: 0px;
+			}
+			.box {
+				position: absolute;
+				top: 50%;
+				margin-top: -30px;
+				left: 50%;
+				margin-left: -50px;
+				height: 60px;
+				width: 100px;
+				text-align: center;
+				.icon {
+					display: block;
+					font-size: 25px;
+    				margin-bottom: 10px;
+				}
+			}
+		}
+	}
+	.order {
+		.row {
+			border: 1px solid #d5d5d5;
+			&.my-header {
+				display: block;
+				height: 50px;
+				line-height: 40px;
+				.left {
+					float: left;
+				}
+				.right {
+					float: right;
+					padding-right: 10px;
+				}
+			}
+			&.my-content {
+				padding: 3px;
+				border-top: 0px;
+				text-align: center;
+				height: 80px;
+				.icon {
+					display: block;
+					margin: 5px auto;
+					height: 30px;
+					width: 30px;
+					font-size: 25px;
+    				
+    				&.pay {
+    					background: url(../img/pay.png) no-repeat   ;
+						background-size: cover;
+    				}
+    				&.deliver {
+    					background: url(../img/deliver.png) no-repeat   ;
+						background-size: cover;
+    				}
+    				&.take {
+    					background: url(../img/take.png) no-repeat   ;
+						background-size: cover;
+    				}
+    				&.mark {
+    					background: url(../img/mark.png) no-repeat   ;
+						background-size: cover;
+    				}
+    				&.refound {
+    					background: url(../img/refound.png) no-repeat   ;
+						background-size: cover;
+    				}
+				}
+			}
+		}
 	}
 }

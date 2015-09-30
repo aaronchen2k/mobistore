@@ -1,5 +1,94 @@
-<ion-view view-title="我的">
+<ion-view id="mine" view-title="我的">
   <ion-content>
-
+	<div class="info">
+		<div class="profile">
+			<div class="avatar"></div>
+			<div class="detail">
+				<div class="">
+					陈艾伦
+				</div>
+				<div class="">
+					18626203166
+				</div>
+			</div>
+			<div class="edit">
+				<i class="icon ion-edit"></i>
+			</div>
+			<div class="clear-both"></div>
+		</div>
+		<div class="bar row">
+			  <div class="col">
+				<div class="numb">0</div>
+				<div class="text">我的收藏</div>
+			  </div>
+			  <div class="col">
+				<div class="numb">0</div>
+				<div class="text">我的地址</div>
+			  </div>
+			  <div class="col">
+				<div class="numb">0</div>
+				<div class="text">我的消息</div>
+			  </div>
+		</div>
+	</div>
+	<div class="service row">
+	  <div class="col left">
+		<div class="box">
+			<i class="icon ion-ios-chatboxes-outline"></i>
+			建议投诉
+		</div>
+	  </div>
+	  <div class="col right">
+		<div class="box">
+			<i class="icon ion-ios-star-outline"></i>
+			应用打分
+		</div>
+	  </div>
+	</div>
+	
+	<div class="order">
+		<div class="row my-header" ng-click="showOrders()">
+		  <div class="left">
+			  <i class="icon ion-ios-pricetags-outline"></i>
+			  订单管理
+		  </div>
+		  <div class="right">
+			  <i class="icon ion-chevron-right"></i>
+		  </div>
+		</div>
+		<div class="row my-content">
+		  <div class="col">
+			<div class="box">
+				<i class="icon pay"></i>
+				待付款
+			</div>
+		  </div>
+		  <div class="col">
+			<div class="box">
+				<i class="icon deliver"></i>
+				待投递
+			</div>
+		  </div>
+		  <div class="col">
+			<div class="box">
+				<i class="icon take"></i>
+				待收货
+			</div>
+		  </div>
+		  <div class="col">
+			<div class="box">
+				<i class="icon mark"></i>
+				待评价
+			</div>
+		  </div>
+		  <div class="col">
+			<div class="box">
+				<i class="icon refound"></i>
+				退款/维修
+			</div>
+		  </div>
+		</div>
+	</div>
+	
   </ion-content>
 </ion-view>

@@ -8172,6 +8172,8 @@ ion-list.list-with-price .list ion-item {
     #shoppingcart .summary .row .col.right {
       padding-left: 50px; }
 
+#orders h2 {
+  background-color: #EBEBEB; }
 #orders .left {
   float: left;
   margin-right: 20px; }
@@ -8221,3 +8223,93 @@ ion-list.list-with-price .list ion-item {
     margin-top: -10px;
     right: 10px;
     width: 10px; }
+
+#mine .info {
+  height: 160px; }
+  #mine .info .profile {
+    padding: 15px; }
+    #mine .info .profile .avatar {
+      float: left;
+      height: 60px;
+      width: 60px;
+      background: url(../img/mine.png) no-repeat;
+      background-size: cover; }
+    #mine .info .profile .detail {
+      float: left;
+      margin: 10px 0 0 20px;
+      height: 60px;
+      line-height: 22px; }
+    #mine .info .profile .edit {
+      float: right;
+      font-size: 20px; }
+  #mine .info .bar {
+    height: 60px;
+    background-color: #EBEBEB; }
+    #mine .info .bar .col {
+      text-align: center; }
+      #mine .info .bar .col .numb {
+        margin: 0 auto; }
+      #mine .info .bar .col .text {
+        margin: 0 auto; }
+#mine .service {
+  margin: 10px 0;
+  padding: 0;
+  height: 120px; }
+  #mine .service .col {
+    position: relative;
+    border: 1px solid #d5d5d5; }
+    #mine .service .col.left {
+      border-left: 0px;
+      border-right: 0px; }
+    #mine .service .col.right {
+      border-right: 0px; }
+    #mine .service .col .box {
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      left: 50%;
+      margin-left: -50px;
+      height: 60px;
+      width: 100px;
+      text-align: center; }
+      #mine .service .col .box .icon {
+        display: block;
+        font-size: 25px;
+        margin-bottom: 10px; }
+#mine .order .row {
+  border: 1px solid #d5d5d5; }
+  #mine .order .row.my-header {
+    display: block;
+    height: 50px;
+    line-height: 40px; }
+    #mine .order .row.my-header .left {
+      float: left; }
+    #mine .order .row.my-header .right {
+      float: right;
+      padding-right: 10px; }
+  #mine .order .row.my-content {
+    padding: 3px;
+    border-top: 0px;
+    text-align: center;
+    height: 80px; }
+    #mine .order .row.my-content .icon {
+      display: block;
+      margin: 5px auto;
+      height: 30px;
+      width: 30px;
+      font-size: 25px; }
+      #mine .order .row.my-content .icon.pay {
+        background: url(../img/pay.png) no-repeat;
+        background-size: cover; }
+      #mine .order .row.my-content .icon.deliver {
+        background: url(../img/deliver.png) no-repeat;
+        background-size: cover; }
+      #mine .order .row.my-content .icon.take {
+        background: url(../img/take.png) no-repeat;
+        background-size: cover; }
+      #mine .order .row.my-content .icon.mark {
+        background: url(../img/mark.png) no-repeat;
+        background-size: cover; }
+      #mine .order .row.my-content .icon.refound {
+        background: url(../img/refound.png) no-repeat;
+        background-size: cover; }

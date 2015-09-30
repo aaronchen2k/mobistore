@@ -315,9 +315,13 @@ angular.module('mobistore.controllers', [])
     var i = 0;
   })
 
-  .controller('MineCtrl', function($scope) {
-    var i = 0;
-  })
+  .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
+                           function($state, $rootScope, $scope, $location, OrderOpt) {
+	  $scope.showOrders = function() {
+		  $rootScope.fromCart = false;
+		  $location.path('/tab/orders');
+	  };
+  }])
   .controller('OrdersCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
                              function($state, $rootScope, $scope, $location, OrderOpt) {
 	  var orderId = $state.params.orderId;
@@ -340,11 +344,11 @@ angular.module('mobistore.controllers', [])
 	  $scope.show = function(tab) {
 			$scope.tab = tab;	
 	  };
-	  $scope.toOrders = function(tab) {
+	  $scope.toMine = function(tab) {
 		  $ionicHistory.nextViewOptions({
 			  historyRoot: true
 		  });
-		  $location.path('/tab/orders');	
+		  $location.path('/tab/mine');	
 	  };
 	  
 	  var orderId = $state.params.orderId;
