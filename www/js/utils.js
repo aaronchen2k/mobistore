@@ -4,15 +4,15 @@ angular.module('mobistore.utils', [])
 
   .factory('Constant', ['$location', function($location) {
     var PAGE_SIZE = 6;
-    var SERVICE_URL_DEVELOP  = "http://localhost:8080/mobi-store/";
-    var SERVICE_URL_PRODUCTION = "http://appset.cn:8080/mobi-store/"
+    var SERVICE_URL_DEVELOP  = "http://127.0.0.1:8080/mobistore/";
+    var SERVICE_URL_PRODUCTION = "http://101.200.189.57:9090/mobistore/"
 
     var ApiVer = 'v1';
     var WebPath = 'N/A';
     var ApiPath = 'N/A';
 
     var url = $location.absUrl();
-    if (url.indexOf("localhost") > -1 || url.indexOf("192.168") > -1 || url.indexOf("10.0") > -1) { // development
+    if (url.indexOf("127.0.0.1") > -1 || url.indexOf("10.0") > -1) { // development
     	WebPath = SERVICE_URL_DEVELOP;
     } else if (url.indexOf("file://") > -1) {    // app test
 		WebPath = SERVICE_URL_DEVELOP;

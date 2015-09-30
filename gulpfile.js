@@ -50,3 +50,7 @@ gulp.task('git-check', function(done) {
   }
   done();
 });
+
+require('gulp-ionic-webbuild')(gulp, {
+  templatesModule: 'mobistore'
+});

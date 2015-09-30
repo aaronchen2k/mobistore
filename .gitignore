@@ -5,3 +5,4 @@ node_modules/
 platforms/
 plugins/
 /bin/
+/www-dist/
