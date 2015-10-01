@@ -202,16 +202,12 @@ angular.module('mobistore.controllers', [])
 	  });
 	  
 	  $scope.collect = function(product) {
-    	  console.log(product.id);
-    	  
-    	  if ($scope.isCollected) {
-    		  return;
-    	  }
+    	  console.log(product.id + '-' + $scope.isCollected);
     	  
     	  ProductOpt.opt({act:'collect', productId: product.id}).$promise.then(function(json) {
     		  console.log(json);
     		  if (json.code == 1) {
-    			  $scope.isCollected = true;
+    			  $scope.isCollected = json.data;
     		  }
     	  });
       };

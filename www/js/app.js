@@ -17,6 +17,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
+        
 
       }
       if (window.StatusBar) {
@@ -29,7 +30,8 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
   .config(function ($stateProvider, $urlRouterProvider, $provide, $httpProvider, $ionicConfigProvider) {
     $ionicConfigProvider.platform.android.tabs.position('bottom');
-//    $ionicConfigProvider.views.maxCache(0);
+    //$ionicConfigProvider.views.maxCache(0);
+    $ionicConfigProvider.views.transition('none');
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
@@ -54,7 +56,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       // Each tab has its own nav history stack:
       .state('tab.home', {
         url: '/home',
-//        cache: false,
+        cache: false,
         views: {
           'tab-home': {
             templateUrl: 'templates/home.html',
@@ -86,6 +88,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
       .state('tab.find', {
         url: '/find',
+        cache: false,
         views: {
           'tab-find': {
             templateUrl: 'templates/find.html',
@@ -105,6 +108,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.mine', {
         url: '/mine',
+        cache: false,
         views: {
           'tab-mine': {
             templateUrl: 'templates/mine.html',
@@ -134,6 +138,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('msg', {
         url: '/msg/:error',
+        cache: false,
         templateUrl: 'templates/msg.html',
         controller: 'MsgCtrl'
       });

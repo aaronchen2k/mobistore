@@ -470,6 +470,9 @@ ion-list.list-with-price .list ion-item {
 }
 
 #product {
+	.row.name {
+		height: 40px;
+	}
 	.row.qty {
 		.col-right {
 			div {

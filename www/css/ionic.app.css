@@ -8087,6 +8087,8 @@ ion-list.list-with-price .list ion-item {
     line-height: 40px;
     color: #464646; }
 
+#product .row.name {
+  height: 40px; }
 #product .row.qty .col-right div {
   float: left; }
   #product .row.qty .col-right div.input {
