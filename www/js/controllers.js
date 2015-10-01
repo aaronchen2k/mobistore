@@ -142,6 +142,7 @@ angular.module('mobistore.controllers', [])
 	 		  console.log(json);
 			  $scope.products = json.data;
 		  });
+	 	  return false;
 	  };
 	  
 	  $scope.keywordsChange = function() {
@@ -166,6 +167,7 @@ angular.module('mobistore.controllers', [])
 	    $scope.modal.hide();
 	  };
 	  $scope.$on('$destroy', function() {
+		  
 	    $scope.modal.remove();
 	  });
 	  $scope.$on('modal.hidden', function() {

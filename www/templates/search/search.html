@@ -16,15 +16,15 @@
 	      <div class="item item-divider">
 		    热门搜索
 		  </div>
-		  <a class=" hot" href="#">
+		  <span class="hot">
 		    <button ng-click="search(item)" ng-repeat="item in hots">{{item}}</button>
-		  </a>
+		  </span>
 		  <div class="item item-divider">
 		    搜索历史
 		  </div>
-		  <a ng-click="search(item)" ng-repeat="item in histories" class="item" href="#">
+		  <span ng-click="search(item)" ng-repeat="item in histories" class="item" href="#">
 		    {{item}}
-		  </a>
+		  </span>
 	</div>
 	<div class="list results" ng-if="showLoadKeywordsResult">
 	      <div class="item item-divider">
