@@ -7,15 +7,15 @@
 		<div class="summary">
 			<div class="row content">
 			  <div class="col col-33 left">总额</div>
-			  <div class="col col-67 right">￥ {{cart.totalAmount}}</div>
+			  <div class="col col-67 right">{{cart.totalAmount | currency:"￥"}}</div>
 			</div>
 			<div class="row content">
 			  <div class="col col-33 left">商品</div>
-			  <div class="col col-67 right">￥ {{cart.amount}}</div>
+			  <div class="col col-67 right">{{cart.amount | currency:"￥"}}</div>
 			</div>
 			<div class="row content">
 			  <div class="col col-33 left">运费</div>
-			  <div class="col col-67 right">￥ {{cart.freight}}</div>
+			  <div class="col col-67 right">{{cart.freight | currency:"￥"}}</div>
 			</div>
 		</div>
 	
@@ -27,7 +27,7 @@
 		          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
 		          <div class="my-box text-thin text-color-light-grey">
 					<span>
-						￥ {{item.unitPrice}}
+						{{item.unitPrice | currency:"￥"}}
 					</span>
 					<span class="right">
 						<span class="my-label">

@@ -22,15 +22,15 @@
 		<div class="price">
 			<div class="row content">
 			  <div class="col col-33 left">金额</div>
-			  <div class="col col-67 right">￥ {{order.amount}}</div>
+			  <div class="col col-67 right">{{order.amount | currency:"￥"}}</div>
 			</div>
 			<div class="row content">
 			  <div class="col col-33 left">运费</div>
-			  <div class="col col-67 right">￥ {{order.freight}}</div>
+			  <div class="col col-67 right">{{order.freight | currency:"￥"}}</div>
 			</div>
 			<div class="row content">
 			  <div class="col col-33 left">总额</div>
-			  <div class="col col-67 right">￥ {{order.totalAmount}}</div>
+			  <div class="col col-67 right">{{order.totalAmount | currency:"￥"}}</div>
 			</div>
 		</div>
 		
@@ -68,7 +68,7 @@
 	          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
 	          <div class="my-box text-thin text-color-light-grey">
 				<span>
-					￥ {{item.unitPrice}}
+					{{item.unitPrice | currency:"￥"}}
 				</span>
 				<span class="right">
 					<span class="my-label">

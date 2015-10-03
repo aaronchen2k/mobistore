@@ -9,7 +9,9 @@
 			          	 <img ng-src="{{item.image | imgPath}}">
 			          </div>
 			          <div class="right">
-			          	  <p class=" text-thin text-color-light-grey">￥ {{order.totalAmount}} &nbsp;&nbsp; {{order | orderStatus}}</p>
+			          	  <p class=" text-thin text-color-light-grey">
+			          	  	{{order.totalAmount | currency:"￥"}} &nbsp;&nbsp; {{order | orderStatus}}
+			          	  </p>
 				          <p class=" text-thin text-color-light-grey">
 				          	{{order.recipientArea}} {{order.recipientStreet}} {{order.recipientAddress}}
 				          </p>
