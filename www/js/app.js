@@ -17,8 +17,6 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
-        
-
       }
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required
@@ -145,7 +143,6 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
-    
     $locationProvider.html5Mode(true);
 
     // register the interceptor as a service
