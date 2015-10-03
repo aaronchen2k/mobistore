@@ -28,7 +28,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, $provide, $httpProvider, $ionicConfigProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $provide, $httpProvider, $ionicConfigProvider) {
     $ionicConfigProvider.platform.android.tabs.position('bottom');
 //    $ionicConfigProvider.views.maxCache(0);
 //    $ionicConfigProvider.views.transition('none');
@@ -145,6 +145,8 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
+    
+    $locationProvider.html5Mode(true);
 
     // register the interceptor as a service
     $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', '$injector', 'Constant', 'Util',  

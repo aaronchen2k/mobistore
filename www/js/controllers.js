@@ -202,9 +202,7 @@ angular.module('mobistore.controllers', [])
   
   .controller('ProductCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicHistory', 'Util', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
                               function($rootScope, $scope, $state, $location, $ionicHistory, Util, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
-	  
-	  $scope.collected = {};
-	  
+
 	  $scope.shopping = {qty: 1};
 	  var productId = $state.params.productId;
 	  
@@ -212,7 +210,7 @@ angular.module('mobistore.controllers', [])
 //		  console.log(json);
 		  
 		  $scope.product = json.data;
-		  $scope.collected[productId] = json.isCollected;
+		  $scope.collectCls = json.isCollected? 'ion-android-favorite': 'ion-android-favorite-outline';
 	  });
 	  
 	  $scope.collect = function(product) {
@@ -221,8 +219,7 @@ angular.module('mobistore.controllers', [])
     	  ProductOpt.opt({act:'collect', productId: product.id}).$promise.then(function(json) {
     		  console.log(json);
     		  if (json.code == 1) {
-    			  $scope.collected[product.id] = json.data;
-    			  console.log($scope.collected);
+    			  $scope.collectCls = json.data? 'ion-android-favorite': 'ion-android-favorite-outline';
     		  }
     	  });
       };

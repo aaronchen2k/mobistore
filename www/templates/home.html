@@ -29,7 +29,7 @@
           <img ng-src="{{item.image | imgPath}}">
           
           <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
-          <p class="text-thin text-color-light-grey">￥ {{item.retailPrice}}</p>
+          <p class="text-thin text-color-light-grey">{{item.retailPrice | currency:"￥"}}</p>
 
           <i class="icon ion-chevron-right"></i>
         </ion-item>

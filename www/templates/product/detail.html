@@ -13,7 +13,7 @@
 	       				价格
 	       			</div>
 	       			<div class="col-right">
-	       				￥ {{product.retailPrice}}
+	       				{{product.retailPrice | currency:"￥"}}
 	       			</div>
 	       			<div class="clear-both"></div>
 	       		</div>
@@ -31,7 +31,7 @@
 	     				运费
 	     			</div>
 	     			<div class="col-right">
-	     				￥ {{product.freight}}
+	     				{{product.freight | currency:"￥"}}
 	     			</div> 
 	       			<div class="clear-both"></div>
 	           	</div>
@@ -62,9 +62,8 @@
 	<div class="bar bar-footer has-tab-bar-footer">
 	   	<div class="row bottom-buttons">
 	   		<div class="icons">
-	   			<a class="button button-icon icon" ng-click="collect(product)"
-		   			ng-class="{'ion-android-favorite': collected[product.id], 'ion-android-favorite-outline': !collected[product.id]}">
-		   		</a>
+	   			<a class="{{collectCls}} button button-icon icon" ng-click="collect(product)"> </a>
+		   		
 		   		<a class="button button-icon icon ion-ios-cart has-badge right" ng-click="toShoppingcart()">
 		   			<span class="badge badge-assertive" ng-if="shoppingcartItemNumb > 0">{{shoppingcartItemNumb}}</span>
 		   		</a>
