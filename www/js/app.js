@@ -143,7 +143,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
-//    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
     // register the interceptor as a service
     $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', '$injector', 'Constant', 'Util',  

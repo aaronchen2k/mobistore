@@ -110,6 +110,7 @@ angular.module('mobistore.controllers', [])
 		  }
 		  
 		  if ($rootScope.fromWhereToProducts === 'homebar') { // from home search bar
+			  $rootScope.fromWhereToProducts = '';
 			  $scope.openModal();
 		  } else if ($rootScope.fromWhereToProducts === 'category') { // from category
 			  if (!$scope.tags) {
@@ -120,7 +121,7 @@ angular.module('mobistore.controllers', [])
 			  console.log($rootScope.fromWhereToProducts);
 			  
 			  if ($scope.tags.fromWhereToProducts != $rootScope.fromWhereToProducts // 来源不一样
-					  || $scope.tags.categoryId != $rootScope.categoryId) { // 目录不一样
+					  || $scope.tags.categoryId != $rootScope.categoryId) { // 分类不一样
 				  
 				  $scope.tags.fromWhereToProducts = $rootScope.fromWhereToProducts;
 				  $scope.tags.categoryId = $rootScope.categoryId;
