@@ -98,7 +98,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.shoppingcart', {
         url: '/shoppingcart',
-//        cache: false,
+        cache: false,
         views: {
           'tab-shoppingcart': {
             templateUrl: 'templates/shoppingcart/shoppingcart.html',

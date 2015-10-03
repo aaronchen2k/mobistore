@@ -670,8 +670,10 @@ ion-list.list-with-price .list ion-item {
 		}
 	}
 	.summary {
-		
 		.info {
+			.row.title {
+				margin-bottom: 5px;
+			}
 			.row.address {
 				.content {
 					div {

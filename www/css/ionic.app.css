@@ -8216,6 +8216,8 @@ ion-list.list-with-price .list ion-item {
       border-top-color: #636363; }
     #order .row.title .col.right .triangle-down {
       border-top-color: #959595; }
+  #order .summary .info .row.title {
+    margin-bottom: 5px; }
   #order .summary .info .row.address .content div.text {
     float: left;
     margin-right: 30px; }
