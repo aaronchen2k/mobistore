@@ -29,16 +29,25 @@ angular.module('mobistore.controllers', [])
 
   .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicModal', '$ionicPopover', 'Util', 'StringUtil', 'HomeOpt', 'ProductMdl', 'ProductOpt', 'SearchOpt', 
                            function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicModal, $ionicPopover, Util, StringUtil, HomeOpt, ProductMdl, ProductOpt, SearchOpt) {
-
 	  $rootScope.fromHome = true;
 	  
- 	  HomeOpt.opt({act: 'index'},function(json) {
-//		  console.log(json);
-		  $scope.categories = json.categories;
-		  $scope.adverts = json.adverts;
-		  $scope.products = json.products;	
-		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
-	  });
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  if ($scope.loaded) {
+			  return;
+		  }
+		  
+	 	  HomeOpt.opt({act: 'index'},function(json) {
+//			  console.log(json);
+			  $scope.categories = json.categories;
+			  $scope.adverts = json.adverts;
+			  $scope.products = json.products;	
+			  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
+			  
+			  if(json.code == 1) {
+				  $scope.loaded = true;
+			  }
+		  });
+	   });
 	  
 	  window.addEventListener("orientationchange", function() {
 		　　$scope.resize();
@@ -59,19 +68,19 @@ angular.module('mobistore.controllers', [])
 	
 	  $scope.showCategory = function(item) {
 		  console.log(item.id);
+		  $rootScope.fromWhereToProducts = 'category';
 		  $rootScope.categoryId = item.id;
 		  $location.path('/tab/products');
 		  $scope.menuShow = false;
 	  };
 	  
-	  $scope.listProducts = function() {
-		  $rootScope.showSearch = true;
+	  $scope.searchProducts = function() {
+		  $rootScope.fromWhereToProducts = 'homebar';
 		  $location.path('/tab/products');
 	  };
 	  $scope.showProdcut = function(id) {
 		  $location.path('/tab/product/'+ id);
 	  };
-	  
   }])
   
   .controller('ProductsCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicModal', 'Util', 'StringUtil', 'CategoryOpt', 'ProductMdl', 'SearchOpt', 
@@ -80,7 +89,51 @@ angular.module('mobistore.controllers', [])
 	  $scope.inputData = {};
 	  $scope.resultLoadKeywordsData = [];
 	  $scope.showLoadKeywordsResult = false;
-	  $scope.loaded = false;
+	  
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  $scope.loadData(); // 初始化默认的列表数据 
+	  });
+	  
+	  if (!$scope.modalLoaded) {
+		  $ionicModal.fromTemplateUrl('templates/search/search.html', {
+		    scope: $scope,
+		    animation: 'slide-in'
+		  }).then(function(modal) {
+		    $scope.modal = modal;
+		    $scope.modalLoaded = true;
+		  });
+	  }
+	  
+	  $scope.loadData = function() {
+		  if (!$rootScope.fromHome) { // 浏览器刷新
+			  $scope.search();
+		  }
+		  
+		  if ($rootScope.fromWhereToProducts === 'homebar') { // from home search bar
+			  $scope.openModal();
+		  } else if ($rootScope.fromWhereToProducts === 'category') { // from category
+			  if (!$scope.tags) {
+				  $scope.tags = {};
+			  }
+			  
+			  console.log($scope.tags.fromWhereToProducts);
+			  console.log($rootScope.fromWhereToProducts);
+			  
+			  if ($scope.tags.fromWhereToProducts != $rootScope.fromWhereToProducts // 来源不一样
+					  || $scope.tags.categoryId != $rootScope.categoryId) { // 目录不一样
+				  
+				  $scope.tags.fromWhereToProducts = $rootScope.fromWhereToProducts;
+				  $scope.tags.categoryId = $rootScope.categoryId;
+				  
+				  CategoryOpt.opt({act:'listProduct', categoryId: $scope.categoryId}).$promise.then(function(json) {
+					  console.log(json);
+					  $scope.products = json.data;
+					  
+					  $scope.loaded = true;
+				  });
+			  }
+		  } 
+	  };
 	  
 	  $scope.resetLoadKeywords = function() {
 		  $scope.inputData = {};
@@ -101,29 +154,10 @@ angular.module('mobistore.controllers', [])
 			  $scope.showLoadKeywordsResult = true;
 		  });
 	  };
-	  
-	  $scope.loadData = function() {
-		  var categoryId = $rootScope.categoryId;
-		  if (!StringUtil.isEmpty(categoryId)) { // from category
-			  $rootScope.categoryId = '';
-			  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
-				  console.log(json);
-				  $scope.products = json.data;
-			  });
-		  } else {
-			  if (!$rootScope.showSearch) { // back from
-				  SearchOpt.opt({act: 'search', keywords: $rootScope.keywords},function(json) {
-			 		  console.log(json);
-					  $scope.products = json.data;
-					  
-					  $scope.loaded = true;
-				  });
-			  }
-		  }
-	  };
-	  $scope.loadData(); // 初始化默认的列表数据
-	  
+
 	  $scope.search = function(keywords) {
+		  $rootScope.fromWhereToProducts = 'search';
+		  
 		  if (StringUtil.isEmpty(keywords)) {
 			  keywords = $scope.inputData.keywords;
 		  }
@@ -171,32 +205,21 @@ angular.module('mobistore.controllers', [])
 				  $scope.loaded = true;
 			  });
 		  }
-		  
 	  };
 	  
 	  $scope.closeModal = function() {
 	    $scope.modal.hide();
 	  };
 	  $scope.$on('$destroy', function() {
-		  
-	    $scope.modal.remove();
+		  if ($scope.modal) {
+			  $scope.modal.remove();
+		  }
 	  });
 	  $scope.$on('modal.hidden', function() {
 	    
 	  });
 	  $scope.$on('modal.removed', function() {
 	    
-	  });
-	  
-	  $ionicModal.fromTemplateUrl('templates/search/search.html', {
-	    scope: $scope,
-	    animation: 'slide-in'
-	  }).then(function(modal) {
-	    $scope.modal = modal;
-	    if ($rootScope.showSearch) {
-	    	$rootScope.showSearch = false;
-	    	$scope.openModal();
-	    }
 	  });
   }])
   
@@ -280,15 +303,17 @@ angular.module('mobistore.controllers', [])
                                    function($rootScope, $scope, $location, $ionicModal, $ionicPopover, StringUtil, ShoppingcartOpt, OrderOpt) {
 	  $scope.isEmpty = false;
 	  
-	  ShoppingcartOpt.opt({act: 'info'},function(json) {
-	  		console.log(json);
-	  		
-	  		$scope.cart = json.data;
-	  		$scope.isEmpty = $scope.cart.totalAmount == 0;
-	  		if (json.data.addresses.length > 0) {
-	  			$scope.address = json.data.addresses[0];
-	  		}
-	  });
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  ShoppingcartOpt.opt({act: 'info'},function(json) {
+//		  		console.log(json);
+		  		
+		  		$scope.cart = json.data;
+		  		$scope.isEmpty = $scope.cart.totalAmount == 0;
+		  		if (json.data.addresses.length > 0) {
+		  			$scope.address = json.data.addresses[0];
+		  		}
+		  });
+	   });
 	  
 	  $scope.qtyChange = function(item) {
 			console.log(item);	
@@ -334,6 +359,11 @@ angular.module('mobistore.controllers', [])
 
   .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
                            function($state, $rootScope, $scope, $location, OrderOpt) {
+	  
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  // TODO: 
+	   });
+	  
 	  $scope.showOrders = function() {
 		  $rootScope.fromCart = false;
 		  $location.path('/tab/orders');
@@ -343,11 +373,13 @@ angular.module('mobistore.controllers', [])
                              function($state, $rootScope, $scope, $location, OrderOpt) {
 	  var orderId = $state.params.orderId;
 	  
-	  OrderOpt.opt({act: 'list', orderId: orderId},function(json) {
-	  		console.log(json);
-	  		
-	  		$scope.orders = json.data;
-	  });
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  OrderOpt.opt({act: 'list', orderId: orderId},function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.orders = json.data;
+		  });
+	   });
 	  
 	  $scope.showOrder = function(id) {
 		  $rootScope.fromCart = false;
@@ -357,6 +389,15 @@ angular.module('mobistore.controllers', [])
   .controller('OrderCtrl', ['$scope', '$state', '$ionicHistory', '$location', 'OrderOpt', 
                             function($scope, $state, $ionicHistory, $location, OrderOpt) {
 	  $scope.tab = 1;
+	  var orderId = $state.params.orderId;
+	  
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  OrderOpt.opt({act: 'info', orderId: orderId},function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.order = json.data;
+		  });
+	   });
 	  
 	  $scope.show = function(tab) {
 			$scope.tab = tab;	
@@ -367,14 +408,6 @@ angular.module('mobistore.controllers', [])
 		  });
 		  $location.path('/tab/mine');	
 	  };
-	  
-	  var orderId = $state.params.orderId;
-	  
-	  OrderOpt.opt({act: 'info', orderId: orderId},function(json) {
-	  		console.log(json);
-	  		
-	  		$scope.order = json.data;
-	  });
 	  
   }])
   .controller('MsgCtrl', ['$scope', '$state', '$location', 
