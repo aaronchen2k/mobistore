@@ -47056,7 +47056,6 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
           }, 600);
         }
       }
-
       viewHistory.backView && viewHistory.backView.go();
     },
 

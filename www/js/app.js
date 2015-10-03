@@ -30,8 +30,8 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
   .config(function ($stateProvider, $urlRouterProvider, $provide, $httpProvider, $ionicConfigProvider) {
     $ionicConfigProvider.platform.android.tabs.position('bottom');
-    //$ionicConfigProvider.views.maxCache(0);
-    $ionicConfigProvider.views.transition('none');
+//    $ionicConfigProvider.views.maxCache(0);
+//    $ionicConfigProvider.views.transition('none');
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
@@ -56,7 +56,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       // Each tab has its own nav history stack:
       .state('tab.home', {
         url: '/home',
-        cache: false,
+//        cache: false,
         views: {
           'tab-home': {
             templateUrl: 'templates/home.html',
@@ -67,7 +67,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       
       .state('tab.products', {
         url: '/products',
-        cache: false,
+//        cache: false,
         views: {
             'tab-home': {
                 templateUrl: 'templates/product/list.html',
@@ -77,7 +77,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.product', {
         url: '/product/:productId',
-        cache: false,
+//        cache: false,
         views: {
           'tab-home': {
             templateUrl: 'templates/product/detail.html',
@@ -88,7 +88,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 
       .state('tab.find', {
         url: '/find',
-        cache: false,
+//        cache: false,
         views: {
           'tab-find': {
             templateUrl: 'templates/find.html',
@@ -98,7 +98,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.shoppingcart', {
         url: '/shoppingcart',
-        cache: false,
+//        cache: false,
         views: {
           'tab-shoppingcart': {
             templateUrl: 'templates/shoppingcart/shoppingcart.html',
@@ -108,7 +108,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.mine', {
         url: '/mine',
-        cache: false,
+//        cache: false,
         views: {
           'tab-mine': {
             templateUrl: 'templates/mine.html',
@@ -118,7 +118,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.orders', {
         url: '/orders',
-        cache: false,
+//        cache: false,
         views: {
           'tab-mine': {
             templateUrl: 'templates/order/list.html',
@@ -128,7 +128,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('tab.order', {
         url: '/order/:orderId',
-        cache: false,
+//        cache: false,
         views: {
           'tab-mine': {
             templateUrl: 'templates/order/detail.html',
@@ -138,7 +138,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
       })
       .state('msg', {
         url: '/msg/:error',
-        cache: false,
+//        cache: false,
         templateUrl: 'templates/msg.html',
         controller: 'MsgCtrl'
       });

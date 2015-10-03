@@ -6,7 +6,7 @@
 		    <input type="search" placeholder="搜索" ng-change="keywordsChange()" ng-model="inputData.keywords">
 		    <i class="icon ion-android-cancel placeholder-icon" ng-click="resetLoadKeywords()"></i>
 		  </span>
-		  <button class="button button-clear" ng-click="closeModal()">
+		  <button class="button button-clear" ng-click="cancel()">
 		    取消
 		  </button>
 		</div>
@@ -30,9 +30,9 @@
 	      <div class="item item-divider">
 		    搜索结果
 		  </div>
-		  <a ng-click="search(item.keywords)" ng-repeat="item in resultLoadKeywordsData" class="item" href="#">
+		  <span ng-click="search(item.keywords)" ng-repeat="item in resultLoadKeywordsData" class="item" href="#">
 		    {{item.keywords}}
-		  </a>
+		  </span>
 	</div>
 	
    </ion-content>

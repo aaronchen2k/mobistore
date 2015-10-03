@@ -29,27 +29,15 @@ angular.module('mobistore.controllers', [])
 
   .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicModal', '$ionicPopover', 'Util', 'StringUtil', 'HomeOpt', 'ProductMdl', 'ProductOpt', 'SearchOpt', 
                            function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicModal, $ionicPopover, Util, StringUtil, HomeOpt, ProductMdl, ProductOpt, SearchOpt) {
+
 	  $rootScope.fromHome = true;
 	  
  	  HomeOpt.opt({act: 'index'},function(json) {
-		  console.log(json);
+//		  console.log(json);
 		  $scope.categories = json.categories;
 		  $scope.adverts = json.adverts;
 		  $scope.products = json.products;	
 		  $rootScope.shoppingcartItemNumb = json.shoppingcartItemNumb;
-	  });
-	  
-	  $scope.$on("$destroy", function() {
-	       console.log('scope.$destroy');
-	  });
-	  $scope.$on( "$ionicView.enter", function() {
-	       console.log('ionicView.enter');
-	  });
-	  $scope.$on( "$ionicView.leave", function() {
-	       console.log('$ionicView.leave');
-	  });
-	  $scope.$on( "$ionicView.loaded", function() {
-	       console.log('$ionicView.loaded');
 	  });
 	  
 	  window.addEventListener("orientationchange", function() {
@@ -88,9 +76,11 @@ angular.module('mobistore.controllers', [])
   
   .controller('ProductsCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicModal', 'Util', 'StringUtil', 'CategoryOpt', 'ProductMdl', 'SearchOpt', 
                              function($rootScope, $scope,  $state, $location, $ionicModal, Util, StringUtil, CategoryOpt, ProductMdl, SearchOpt) {
+	  
 	  $scope.inputData = {};
 	  $scope.resultLoadKeywordsData = [];
 	  $scope.showLoadKeywordsResult = false;
+	  $scope.loaded = false;
 	  
 	  $scope.resetLoadKeywords = function() {
 		  $scope.inputData = {};
@@ -114,17 +104,21 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.loadData = function() {
 		  var categoryId = $rootScope.categoryId;
-		  if (!StringUtil.isEmpty(categoryId)) {
+		  if (!StringUtil.isEmpty(categoryId)) { // from category
 			  $rootScope.categoryId = '';
 			  CategoryOpt.opt({act:'listProduct', categoryId: categoryId}).$promise.then(function(json) {
 				  console.log(json);
 				  $scope.products = json.data;
 			  });
 		  } else {
-			  SearchOpt.opt({act: 'search', keywords: ''},function(json) {
-		 		  console.log(json);
-				  $scope.products = json.data;
-			  });  
+			  if (!$rootScope.showSearch) { // back from
+				  SearchOpt.opt({act: 'search', keywords: $rootScope.keywords},function(json) {
+			 		  console.log(json);
+					  $scope.products = json.data;
+					  
+					  $scope.loaded = true;
+				  });
+			  }
 		  }
 	  };
 	  $scope.loadData(); // 初始化默认的列表数据
@@ -134,6 +128,7 @@ angular.module('mobistore.controllers', [])
 			  keywords = $scope.inputData.keywords;
 		  }
 		  
+		  $rootScope.keywords = keywords;
 		  console.log(keywords);
 		  
 		  $scope.showLoadKeywordsResult = false;
@@ -141,6 +136,8 @@ angular.module('mobistore.controllers', [])
 	 	  SearchOpt.opt({act: 'search', keywords: keywords},function(json) {
 	 		  console.log(json);
 			  $scope.products = json.data;
+			  
+			  $scope.loaded = true;
 		  });
 	 	  return false;
 	  };
@@ -155,14 +152,28 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.openModal = function() {
 		  $scope.inputData = {};
+		  $scope.modal.show();
 	 	  SearchOpt.opt({act: 'history'},function(json) {
 			  console.log(json);
 			  $scope.hots = json.hots;
 			  $scope.histories = json.histories;
 		  });
-		
-	    $scope.modal.show();
 	  };
+	  
+	  $scope.cancel = function() {
+		  $scope.closeModal();
+		  
+		  if (!$scope.loaded) {
+			  SearchOpt.opt({act: 'search', keywords: $rootScope.keywords},function(json) {
+		 		  console.log(json);
+				  $scope.products = json.data;
+				  
+				  $scope.loaded = true;
+			  });
+		  }
+		  
+	  };
+	  
 	  $scope.closeModal = function() {
 	    $scope.modal.hide();
 	  };
@@ -189,16 +200,19 @@ angular.module('mobistore.controllers', [])
 	  });
   }])
   
-  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', '$location', 'Util', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
-                              function($rootScope, $scope, $state, $location, Util, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
+  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicHistory', 'Util', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
+                              function($rootScope, $scope, $state, $location, $ionicHistory, Util, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
+	  
+	  $scope.collected = {};
+	  
 	  $scope.shopping = {qty: 1};
 	  var productId = $state.params.productId;
 	  
 	  ProductOpt.opt({act:'get', productId: productId}).$promise.then(function(json) {
-		  console.log(json);
+//		  console.log(json);
 		  
 		  $scope.product = json.data;
-		  $scope.isCollected = json.isCollected;
+		  $scope.collected[productId] = json.isCollected;
 	  });
 	  
 	  $scope.collect = function(product) {
@@ -207,7 +221,8 @@ angular.module('mobistore.controllers', [])
     	  ProductOpt.opt({act:'collect', productId: product.id}).$promise.then(function(json) {
     		  console.log(json);
     		  if (json.code == 1) {
-    			  $scope.isCollected = json.data;
+    			  $scope.collected[product.id] = json.data;
+    			  console.log($scope.collected);
     		  }
     	  });
       };

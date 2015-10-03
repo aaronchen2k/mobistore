@@ -63,7 +63,7 @@
 	   	<div class="row bottom-buttons">
 	   		<div class="icons">
 	   			<a class="button button-icon icon" ng-click="collect(product)"
-		   			ng-class="{'ion-android-favorite': isCollected, 'ion-android-favorite-outline': !isCollected}">
+		   			ng-class="{'ion-android-favorite': collected[product.id], 'ion-android-favorite-outline': !collected[product.id]}">
 		   		</a>
 		   		<a class="button button-icon icon ion-ios-cart has-badge right" ng-click="toShoppingcart()">
 		   			<span class="badge badge-assertive" ng-if="shoppingcartItemNumb > 0">{{shoppingcartItemNumb}}</span>
