@@ -3,7 +3,7 @@
 		<div class="bar bar-header item-input-inset">
 		  <span class="item-input-wrapper">
 		    <i class="icon ion-ios-search placeholder-icon" ng-click="search()"></i>
-		    <input type="search" placeholder="搜索" ng-change="keywordsChange()" ng-model="inputData.keywords">
+		    <input id="my-search-input" type="search" placeholder="搜索" ng-change="keywordsChange()" ng-model="inputData.keywords">
 		    <i class="icon ion-android-cancel placeholder-icon" ng-click="resetLoadKeywords()"></i>
 		  </span>
 		  <button class="button button-clear" ng-click="cancel()">

@@ -67,7 +67,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         url: '/products',
 //        cache: false,
         views: {
-            'tab-home': {
+            'tab-find': {
                 templateUrl: 'templates/product/list.html',
                 controller: 'ProductsCtrl'
             }
@@ -77,20 +77,9 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         url: '/product/:productId',
 //        cache: false,
         views: {
-          'tab-home': {
+          'tab-find': {
             templateUrl: 'templates/product/detail.html',
             controller: 'ProductCtrl'
-          }
-        }
-      })
-
-      .state('tab.find', {
-        url: '/find',
-//        cache: false,
-        views: {
-          'tab-find': {
-            templateUrl: 'templates/find.html',
-            controller: 'FindCtrl'
           }
         }
       })

@@ -1,5 +1,11 @@
 <ion-view id="product" view-title="产品">
 
+   <ion-nav-buttons side="left">
+      <span class="button button-small button-clear my-back" ng-if="myBackButtonShow" ng-click="toProducts()">
+      	<i class="icon ion-chevron-left">返回</i>
+      </span>
+   </ion-nav-buttons>
+
   <ion-content class="has-header content">
 			<div class="slide">
 				<img ng-src="{{product.image | imgPath}}">
