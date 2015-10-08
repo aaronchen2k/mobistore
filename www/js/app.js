@@ -177,6 +177,9 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         	var code = response.data.code;
 //        	console.log(response);
         	if (code === -100) {
+        		if ($rootScope.modal) {
+        			$rootScope.modal.hide();
+      		  }
         		$location.path("/signon");
         	} else if (code < 0){
         		$location.path("/msg/" + code);

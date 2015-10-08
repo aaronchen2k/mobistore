@@ -104,7 +104,7 @@ angular.module('mobistore.controllers', [])
 		    scope: $scope,
 		    animation: 'slide-in'
 		  }).then(function(modal) {
-		    $scope.modal = modal;
+		    $rootScope.modal = modal;
 		    $scope.modalLoaded = true;
 		  });
 	  }
@@ -198,7 +198,7 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.openModal = function() {
 		  $scope.inputData = {};
-		  $scope.modal.show();
+		  $rootScope.modal.show();
 		  
 //		  $timeout(function() {
 //			  console.log(document.getElementById("my-search-input"));
@@ -226,11 +226,11 @@ angular.module('mobistore.controllers', [])
 	  };
 	  
 	  $scope.closeModal = function() {
-	    $scope.modal.hide();
+	    $rootScope.modal.hide();
 	  };
 	  $scope.$on('$destroy', function() {
-		  if ($scope.modal) {
-			  $scope.modal.remove();
+		  if ($rootScope.modal) {
+			  $rootScope.modal.remove();
 		  }
 	  });
 	  $scope.$on('modal.hidden', function() {
