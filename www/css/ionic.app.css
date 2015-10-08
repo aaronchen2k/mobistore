@@ -7832,7 +7832,7 @@ a.button {
   line-height: 28px; }
 
 .text-medium {
-  font-size: 20px;
+  font-size: 17px;
   font-family: Roboto, "Roboto Cn";
   line-height: 20px; }
 
@@ -7861,7 +7861,7 @@ a.button {
     height: 100%;
     min-height: 40px;
     width: auto;
-    margin: 10px;
+    margin: 0px;
     text-overflow: ellipsis; }
 
 .my-header-bar {
@@ -7915,7 +7915,7 @@ ion-popover-view.active {
 #home .bar-header .search {
   height: 23px; }
 #home .my-row1 .slider {
-  height: 428px; }
+  height: 200px; }
   #home .my-row1 .slider .slider-slide {
     margin: 0px;
     padding: 0px; }

@@ -103,7 +103,7 @@ $menu-height: 290px;
     line-height: 28px;
 }
 .text-medium {
-    font-size: 20px;
+    font-size: 17px;
     font-family: Roboto, "Roboto Cn";
     line-height: 20px;
 }
@@ -137,7 +137,7 @@ $menu-height: 290px;
 		height: 100%;
 		min-height: 40px;
 	    width: auto;
-	    margin: 10px;
+	    margin: 0px;
 	    text-overflow: ellipsis;
 	}
 }
@@ -213,7 +213,7 @@ ion-popover-view.active {
 
   .my-row1 {
     .slider {
-      height: 428px;
+      height: 200px;
       
       .slider-slide {
         margin: 0px;
