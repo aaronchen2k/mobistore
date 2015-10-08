@@ -7866,8 +7866,6 @@ a.button {
 
 .my-header-bar {
   z-index: 10; }
-  .my-header-bar i.search:before {
-    font-size: 28px; }
 
 .my-back {
   height: 20px; }
@@ -8146,6 +8144,8 @@ ion-list.list-with-price .list ion-item {
   margin-right: 3px;
   width: 60px; }
 
+#search .my-search-bar .item-input-wrapper #my-search-input {
+  width: 82%; }
 #search .list {
   margin-top: 10px; }
   #search .list .hot {

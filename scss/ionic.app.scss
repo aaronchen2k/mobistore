@@ -144,9 +144,6 @@ $menu-height: 290px;
 
 .my-header-bar {
 	z-index: 10;
-	i.search:before {
-		font-size: 28px;
-	}
 }
 
 .my-back {
@@ -561,6 +558,20 @@ ion-list.list-with-price .list ion-item {
 }
 
 #search {
+	.my-search-bar {
+		.item-input-wrapper {
+			#my-search-input {
+				width: 82%;
+			}
+			.ion-android-cancel{
+				
+				&:before {
+					
+				}
+			}
+		}
+	}
+	
 	.list {
 		margin-top: 10px;
 		.hot {
