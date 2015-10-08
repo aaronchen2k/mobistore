@@ -194,10 +194,10 @@ angular.module('mobistore.controllers', [])
 		  $scope.inputData = {};
 		  $scope.modal.show();
 		  
-		  $timeout(function() {
-			  console.log(document.getElementById("my-search-input"));
-			  document.getElementById("my-search-input").focus(); 
-		  }, 50);
+//		  $timeout(function() {
+//			  console.log(document.getElementById("my-search-input"));
+//			  document.getElementById("my-search-input").focus(); 
+//		  }, 50);
 		  
 	 	  SearchOpt.opt({act: 'history'},function(json) {
 			  console.log(json);
@@ -248,7 +248,6 @@ angular.module('mobistore.controllers', [])
 			  $scope.product = json.data;
 			  $scope.collectCls = json.isCollected? 'ion-android-favorite': 'ion-android-favorite-outline';
 			  
-			  
 			  console.log($ionicHistory.backView());
 			  
 			  if ($rootScope.showProductFromHome || $ionicHistory.backView() == null) {
@@ -259,7 +258,7 @@ angular.module('mobistore.controllers', [])
 	  });
 	  
 	  $scope.toProducts = function(product) {
-		  $scope.isHistoryRoot = false;
+		  $scope.myBackButtonShow = false;
 		  $ionicHistory.nextViewOptions({ historyRoot: true });
 		  $location.path('/tab/products');
 	  };
