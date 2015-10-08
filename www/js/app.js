@@ -176,10 +176,13 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         	
         	var code = response.data.code;
 //        	console.log(response);
-        	if (code === -100) {
+        	
+        	if (code < 0){
         		if ($rootScope.modal) {
         			$rootScope.modal.hide();
-      		  }
+      		  	}
+        	}
+        	if (code === -100) {
         		$location.path("/signon");
         	} else if (code < 0){
         		$location.path("/msg/" + code);
@@ -188,11 +191,14 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         },
 
         'responseError': function(rejection) {
-        	$injector.get('$ionicLoading').hide();
-        	
-          console.log('responseError');
-          $location.path("/signon");
-          return $q.reject(rejection);
+        	  $injector.get('$ionicLoading').hide();
+			  console.log('responseError');
+			  
+			  if ($rootScope.modal) {
+				$rootScope.modal.hide();
+			  }
+			  $location.path("/signon");
+			  return $q.reject(rejection);
         }
       };
     }]);
