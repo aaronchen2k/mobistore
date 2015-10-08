@@ -7914,13 +7914,17 @@ ion-popover-view.active {
 
 #home .bar-header .search {
   height: 23px; }
-#home .my-row1 .slider .slider-slide {
-  margin: 0px;
-  padding: 0px; }
-  #home .my-row1 .slider .slider-slide .box {
-    margin: auto;
-    background: no-repeat top center;
-    background-size: 100% 100%; }
+#home .my-row1 .slider {
+  height: 428px; }
+  #home .my-row1 .slider .slider-slide {
+    margin: 0px;
+    padding: 0px; }
+    #home .my-row1 .slider .slider-slide .box {
+      margin: auto;
+      height: 100%;
+      width: 100%;
+      background: no-repeat top center;
+      background-size: 100% 100%; }
 #home .my-row2 .row .col .box {
   height: 200px;
   background: no-repeat top center; }
@@ -7996,33 +8000,38 @@ ion-popover-view.active {
     padding: 0px;
     font-size: 20px; }
     .bar-footer .bottom-buttons .icons {
-      width: 230px;
+      width: 50%;
       padding: 0 13px 0 13px; }
       .bar-footer .bottom-buttons .icons .button-icon {
         margin: 5px 5px; }
         .bar-footer .bottom-buttons .icons .button-icon.has-badge .badge {
           position: absolute;
-          top: 4%;
-          right: 33%;
-          right: calc(50% - 26px);
+          top: 0%;
+          right: 0%;
+          /* right: calc(50% - 26px); */
           padding: 1px 6px;
           height: 18px;
           font-size: 12px;
           line-height: 16px; }
           .bar-footer .bottom-buttons .icons .button-icon.has-badge .badge:empty {
             display: inline-block; }
-    .bar-footer .bottom-buttons button {
-      margin: 0px;
-      padding: 0px;
-      height: 50px;
-      width: 100%;
-      line-height: 50px; }
-      .bar-footer .bottom-buttons button.left {
-        background: #DA9050; }
-      .bar-footer .bottom-buttons button.right {
-        background: #8DA5D1; }
-      .bar-footer .bottom-buttons button.half {
+    .bar-footer .bottom-buttons .buttons {
+      width: 100%; }
+      .bar-footer .bottom-buttons .buttons.half {
         width: 50%; }
+      .bar-footer .bottom-buttons .buttons button {
+        float: left;
+        margin: 0px;
+        padding: 0px;
+        height: 50px;
+        width: 100%;
+        line-height: 50px; }
+        .bar-footer .bottom-buttons .buttons button.left {
+          background: #DA9050; }
+        .bar-footer .bottom-buttons .buttons button.right {
+          background: #8DA5D1; }
+        .bar-footer .bottom-buttons .buttons button.half {
+          width: 50%; }
 
 ion-list.list-with-price .list ion-item {
   padding-top: 20px;
@@ -8106,6 +8115,7 @@ ion-list.list-with-price .list ion-item {
   font-size: 17px;
   margin: 0px 20px 0 20px; }
   #product .content .rows .row {
+    position: relative;
     padding-left: 0;
     padding-right: 0;
     line-height: 30px; }
@@ -8113,21 +8123,18 @@ ion-list.list-with-price .list ion-item {
       font-size: 18px;
       color: #08548e; }
     #product .content .rows .row .col-left {
-      float: left;
       width: 100px;
       padding-right: 15px;
       text-align: left; }
-    #product .content .rows .row .col-right {
-      float: left; }
-      #product .content .rows .row .col-right .item-input {
-        width: 50px; }
-        #product .content .rows .row .col-right .item-input input {
-          margin: 0px;
-          padding: 0px;
-          height: 16px;
-          font-size: 13px; }
-      #product .content .rows .row .col-right img {
-        height: 28px; }
+    #product .content .rows .row .col-right .item-input {
+      width: 50px; }
+      #product .content .rows .row .col-right .item-input input {
+        margin: 0px;
+        padding: 0px;
+        height: 16px;
+        font-size: 13px; }
+    #product .content .rows .row .col-right img {
+      height: 28px; }
 #product .content .descr {
   margin: 10px 20px;
   text-align: left;
@@ -8259,24 +8266,20 @@ ion-list.list-with-price .list ion-item {
   margin: 10px 0;
   padding: 0;
   height: 120px; }
-  #mine .service .col {
-    position: relative;
+  #mine .service .my-col {
+    width: 50%;
     border: 1px solid #d5d5d5; }
-    #mine .service .col.left {
+    #mine .service .my-col.left {
       border-left: 0px;
       border-right: 0px; }
-    #mine .service .col.right {
+    #mine .service .my-col.right {
       border-right: 0px; }
-    #mine .service .col .box {
-      position: absolute;
-      top: 50%;
-      margin-top: -30px;
-      left: 50%;
-      margin-left: -50px;
+    #mine .service .my-col .box {
+      margin: 30px;
       height: 60px;
       width: 100px;
       text-align: center; }
-      #mine .service .col .box .icon {
+      #mine .service .my-col .box .icon {
         display: block;
         font-size: 25px;
         margin-bottom: 10px; }

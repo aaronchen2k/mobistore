@@ -47,17 +47,23 @@ angular.module('mobistore.controllers', [])
 		  });
 	   });
 	  
-	  window.addEventListener("orientationchange", function() {
-		　　$scope.resize();
-	  }, false);
-	  
-	  $scope.resize = function() {
-		  $scope.platform = ionic.Platform.platform();
-	    var width = Util.getScreenSize().w;
-	    var height = width * 0.57;
-	    $scope.styleSlideHeight = {'height':height + 'px', 'width': width + 'px'};
-	  };
-	  $scope.resize();
+//	  window.addEventListener("orientationchange", function() {
+//		　　$scope.resize();
+//	  }, false);
+//	  
+//	  $scope.resize = function() {
+//		  $scope.platform = ionic.Platform.platform();
+//	    var width = Util.getScreenSize().w;
+//	    var height = width * 0.57;
+//	    
+//	    if (ionic.Platform.isAndroid()window.devicePixelRatio) {
+//	    	height = height / window.devicePixelRatio;
+//	    	width = width / window.devicePixelRatio;
+//	    }
+//
+//	    $scope.styleSlideHeight = {'height':height + 'px', 'width': width + 'px'};
+//	  };
+//	  $scope.resize();
  	  
 	  $scope.menuShow = false;$scope.categories
 	  $scope.showMenu = function() {

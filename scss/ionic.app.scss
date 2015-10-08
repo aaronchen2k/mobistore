@@ -213,13 +213,16 @@ ion-popover-view.active {
 
   .my-row1 {
     .slider {
-
+      height: 428px;
+      
       .slider-slide {
         margin: 0px;
         padding: 0px;
-
+        
         .box {
-        	margin: auto;
+          margin: auto;
+          height: 100%;
+          width: 100%;
           background: no-repeat top center;
           background-size:100% 100%;
         }
@@ -336,16 +339,16 @@ ion-popover-view.active {
 			font-size: 20px;
 			
 			.icons {
-				 width: 230px;
+				 width: 50%;
     			 padding: 0 13px 0 13px;
 				 .button-icon {
 					margin: 5px 5px;
 					&.has-badge {
 					 	.badge {
 					 		position: absolute;
-						    top: 4%;
-						    right: 33%;
-						    right: calc(50% - 26px);
+						    top: 0%;
+						    right: 0%;
+						    /* right: calc(50% - 26px); */
 						    padding: 1px 6px;
 						    height: 18px;
 						    font-size: 12px;
@@ -359,22 +362,28 @@ ion-popover-view.active {
 					}
 				}
 			}
-			
-			button {
-				margin: 0px;
-				padding: 0px;
-				height : 50px;
+			.buttons {
 				width: 100%;
-				line-height: 50px;
-				&.left {
-					background: #DA9050;
-				}
-				&.right {
-					background: #8DA5D1;
-				}
-				
 				&.half {
 					width: 50%;
+				}
+				button {
+					float: left;
+					margin: 0px;
+					padding: 0px;
+					height : 50px;
+					width: 100%;
+					line-height: 50px;
+					&.left {
+						background: #DA9050;
+					}
+					&.right {
+						background: #8DA5D1;
+					}
+					
+					&.half {
+						width: 50%;
+					}
 				}
 			}
 	}
@@ -501,6 +510,8 @@ ion-list.list-with-price .list ion-item {
 			margin: 0px 20px 0 20px;
 			
 			.row {
+				position: relative;
+				
 				padding-left: 0;
 				padding-right: 0;
 				line-height: 30px;
@@ -509,13 +520,11 @@ ion-list.list-with-price .list ion-item {
 				    color: #08548e;
 				}
 				.col-left {
-					float:left;
 					width:100px;
 					padding-right:15px;
 					text-align: left;
 				}
 				.col-right {
-					 float:left;
 					 .item-input {
 						 width: 50px;
 					 	input {
@@ -743,8 +752,8 @@ ion-list.list-with-price .list ion-item {
 		margin: 10px 0;
 		padding: 0;
 		height: 120px;
-		.col {
-			position: relative;
+		.my-col {
+			width: 50%;
 			border: 1px solid #d5d5d5;
 			&.left {
 				border-left: 0px;
@@ -754,11 +763,7 @@ ion-list.list-with-price .list ion-item {
 				border-right: 0px;
 			}
 			.box {
-				position: absolute;
-				top: 50%;
-				margin-top: -30px;
-				left: 50%;
-				margin-left: -50px;
+				margin: 30px;
 				height: 60px;
 				width: 100px;
 				text-align: center;
