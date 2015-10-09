@@ -5,10 +5,10 @@
 			<div class="avatar"></div>
 			<div class="detail">
 				<div class="">
-					Aaron Chen
+					{{info.client.nickName}}
 				</div>
 				<div class="">
-					18626203266
+					{{info.client.mobile}}
 				</div>
 			</div>
 			<div class="edit">
@@ -18,15 +18,15 @@
 		</div>
 		<div class="bar row">
 			  <div class="col">
-				<div class="numb">0</div>
+				<div class="numb">{{info.client.rewardPoints}}</div>
+				<div class="text">我的积分</div>
+			  </div>
+			  <div class="col">
+				<div class="numb">{{info.collectionCount}}</div>
 				<div class="text">我的收藏</div>
 			  </div>
 			  <div class="col">
-				<div class="numb">0</div>
-				<div class="text">我的地址</div>
-			  </div>
-			  <div class="col">
-				<div class="numb">0</div>
+				<div class="numb">{{info.msgCount}}</div>
 				<div class="text">我的消息</div>
 			  </div>
 		</div>
@@ -46,7 +46,7 @@
 	  </div>
 	</div>
 	
-	<div class="order">
+	<div class="section">
 		<div class="row my-header" ng-click="showOrders()">
 		  <div class="left">
 			  <i class="icon ion-ios-pricetags-outline"></i>
@@ -59,27 +59,47 @@
 		<div class="row my-content">
 		  <div class="col">
 			<div class="box">
-				<i class="icon pay"></i>
+				<i class="icon pay has-badge my-badge">
+					<span class="badge light" ng-if="info.waitPayCount > 0">{{info.waitPayCount}}</span>
+				</i>
 				待付款
 			</div>
 		  </div>
 		  <div class="col">
 			<div class="box">
-				<i class="icon deliver"></i>
+				<i class="icon deliver has-badge my-badge">
+					<span class="badge light" ng-if="info.waitShip > 0">{{info.waitShip}}</span>
+				</i>
 				待投递
 			</div>
 		  </div>
 		  <div class="col">
 			<div class="box">
-				<i class="icon take"></i>
+				<i class="icon take has-badge my-badge">
+					<span class="badge light" ng-if="info.waitReceive > 0">{{info.waitReceive}}</span>
+				</i>
 				待收货
 			</div>
 		  </div>
 		  <div class="col">
 			<div class="box">
-				<i class="icon mark"></i>
+				<i class="icon mark has-badge my-badge">
+					<span class="badge light" ng-if="info.waitRate > 0">{{info.waitRate}}</span>
+				</i>
 				待评价
 			</div>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="section">
+		<div class="row my-header" ng-click="showOrders()">
+		  <div class="left">
+			  <i class="icon ion-ios-home-outline"></i>
+			  地址管理
+		  </div>
+		  <div class="right">
+			  <i class="icon ion-chevron-right"></i>
 		  </div>
 		</div>
 	</div>

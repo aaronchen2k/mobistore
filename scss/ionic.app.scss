@@ -323,6 +323,27 @@ ion-popover-view.active {
     }
   }
 }
+.has-badge.my-badge {
+	position: relative;
+ 	.badge {
+ 		position: absolute;
+	    top: 0%;
+	    right: 0%;
+	    /* right: calc(50% - 26px); */
+	    padding: 1px 6px;
+	    height: 18px;
+	    font-size: 12px;
+	    line-height: 16px;
+
+	    &:empty {
+	    	display: inline-block;
+	    }
+	    &.light{
+	    	background-color: #EBEBEB;
+	    	color: black;
+	    }
+ 	}
+}
 
 .bar-footer{
 	margin: 0;
@@ -340,23 +361,6 @@ ion-popover-view.active {
     			 padding: 0 13px 0 13px;
 				 .button-icon {
 					margin: 5px 5px;
-					&.has-badge {
-					 	.badge {
-					 		position: absolute;
-						    top: 0%;
-						    right: 0%;
-						    /* right: calc(50% - 26px); */
-						    padding: 1px 6px;
-						    height: 18px;
-						    font-size: 12px;
-						    line-height: 16px;
-						    
-	
-						    &:empty {
-						    	display: inline-block;
-						    }
-					 	}
-					}
 				}
 			}
 			.buttons {
@@ -786,7 +790,9 @@ ion-list.list-with-price .list ion-item {
 			}
 		}
 	}
-	.order {
+	
+	.section {
+		margin-bottom: 10px;
 		.row {
 			border: 1px solid #d5d5d5;
 			&.my-header {
@@ -810,28 +816,28 @@ ion-list.list-with-price .list ion-item {
 					display: block;
 					margin: 5px auto;
 					height: 30px;
-					width: 30px;
+					width: 50px;
 					font-size: 25px;
     				
     				&.pay {
-    					background: url(../img/pay.png) no-repeat   ;
-						background-size: cover;
+    					background: url(../img/pay.png) no-repeat center;
+						background-size: 30px;
     				}
     				&.deliver {
-    					background: url(../img/deliver.png) no-repeat   ;
-						background-size: cover;
+    					background: url(../img/deliver.png) no-repeat center;
+						background-size: 30px;
     				}
     				&.take {
-    					background: url(../img/take.png) no-repeat   ;
-						background-size: cover;
+    					background: url(../img/take.png) no-repeat center;
+						background-size: 30px;
     				}
     				&.mark {
-    					background: url(../img/mark.png) no-repeat   ;
-						background-size: cover;
+    					background: url(../img/mark.png) no-repeat center;
+						background-size: 30px;
     				}
     				&.refound {
-    					background: url(../img/refound.png) no-repeat   ;
-						background-size: cover;
+    					background: url(../img/refound.png) no-repeat center;
+						background-size: 30px;
     				}
 				}
 			}

@@ -142,8 +142,8 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     
 
     // register the interceptor as a service
-    $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', '$injector', 'Constant', 'Util',  
-                                           function($rootScope, $cookies, $q, $location, $injector, Constant, Util) {
+    $provide.factory('myHttpInterceptor', ['$rootScope', '$cookies', '$q', '$location', '$injector', '$timeout', 'Constant', 'Util',  
+                                           function($rootScope, $cookies, $q, $location, $injector, $timeout, Constant, Util) {
       return {
         'request': function(config) {
           $injector.get('$ionicLoading').show({template: '加载中...'});
@@ -191,13 +191,15 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         },
 
         'responseError': function(rejection) {
-        	  $injector.get('$ionicLoading').hide();
+        	  
 			  console.log('responseError');
 			  
 			  if ($rootScope.modal) {
 				$rootScope.modal.hide();
 			  }
-			  $location.path("/signon");
+			  
+			  $injector.get('$ionicLoading').show({template: '网络请求错误！', duration: 800, noBackdrop: true});
+			  
 			  return $q.reject(rejection);
         }
       };

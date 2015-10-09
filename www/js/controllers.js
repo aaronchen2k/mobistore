@@ -200,11 +200,6 @@ angular.module('mobistore.controllers', [])
 		  $scope.inputData = {};
 		  $rootScope.modal.show();
 		  
-//		  $timeout(function() {
-//			  console.log(document.getElementById("my-search-input"));
-//			  document.getElementById("my-search-input").focus(); 
-//		  }, 50);
-		  
 	 	  SearchOpt.opt({act: 'history'},function(json) {
 			  console.log(json);
 			  $scope.hots = json.hots;
@@ -386,11 +381,15 @@ angular.module('mobistore.controllers', [])
 	  };
   }])
 
-  .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
-                           function($state, $rootScope, $scope, $location, OrderOpt) {
+  .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', 'ClientOpt', 
+                           function($state, $rootScope, $scope, $location, ClientOpt) {
 	  
 	  $scope.$on('$ionicView.enter', function( scopes, states ) {
-		  // TODO: 
+		  ClientOpt.opt({act: 'info'},function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.info = json;
+		  });
 	   });
 	  
 	  $scope.showOrders = function() {

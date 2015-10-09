@@ -7988,6 +7988,23 @@ ion-popover-view.active {
         background-repeat: no-repeat;
         background-size: cover; }
 
+.has-badge.my-badge {
+  position: relative; }
+  .has-badge.my-badge .badge {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    /* right: calc(50% - 26px); */
+    padding: 1px 6px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 16px; }
+    .has-badge.my-badge .badge:empty {
+      display: inline-block; }
+    .has-badge.my-badge .badge.light {
+      background-color: #EBEBEB;
+      color: black; }
+
 .bar-footer {
   margin: 0;
   padding: 0px; }
@@ -8002,17 +8019,6 @@ ion-popover-view.active {
       padding: 0 13px 0 13px; }
       .bar-footer .bottom-buttons .icons .button-icon {
         margin: 5px 5px; }
-        .bar-footer .bottom-buttons .icons .button-icon.has-badge .badge {
-          position: absolute;
-          top: 0%;
-          right: 0%;
-          /* right: calc(50% - 26px); */
-          padding: 1px 6px;
-          height: 18px;
-          font-size: 12px;
-          line-height: 16px; }
-          .bar-footer .bottom-buttons .icons .button-icon.has-badge .badge:empty {
-            display: inline-block; }
     .bar-footer .bottom-buttons .buttons {
       width: 100%; }
       .bar-footer .bottom-buttons .buttons.half {
@@ -8283,40 +8289,42 @@ ion-list.list-with-price .list ion-item {
         display: block;
         font-size: 25px;
         margin-bottom: 10px; }
-#mine .order .row {
-  border: 1px solid #d5d5d5; }
-  #mine .order .row.my-header {
-    display: block;
-    height: 50px;
-    line-height: 40px; }
-    #mine .order .row.my-header .left {
-      float: left; }
-    #mine .order .row.my-header .right {
-      float: right;
-      padding-right: 10px; }
-  #mine .order .row.my-content {
-    padding: 3px;
-    border-top: 0px;
-    text-align: center;
-    height: 80px; }
-    #mine .order .row.my-content .icon {
+#mine .section {
+  margin-bottom: 10px; }
+  #mine .section .row {
+    border: 1px solid #d5d5d5; }
+    #mine .section .row.my-header {
       display: block;
-      margin: 5px auto;
-      height: 30px;
-      width: 30px;
-      font-size: 25px; }
-      #mine .order .row.my-content .icon.pay {
-        background: url(../img/pay.png) no-repeat;
-        background-size: cover; }
-      #mine .order .row.my-content .icon.deliver {
-        background: url(../img/deliver.png) no-repeat;
-        background-size: cover; }
-      #mine .order .row.my-content .icon.take {
-        background: url(../img/take.png) no-repeat;
-        background-size: cover; }
-      #mine .order .row.my-content .icon.mark {
-        background: url(../img/mark.png) no-repeat;
-        background-size: cover; }
-      #mine .order .row.my-content .icon.refound {
-        background: url(../img/refound.png) no-repeat;
-        background-size: cover; }
+      height: 50px;
+      line-height: 40px; }
+      #mine .section .row.my-header .left {
+        float: left; }
+      #mine .section .row.my-header .right {
+        float: right;
+        padding-right: 10px; }
+    #mine .section .row.my-content {
+      padding: 3px;
+      border-top: 0px;
+      text-align: center;
+      height: 80px; }
+      #mine .section .row.my-content .icon {
+        display: block;
+        margin: 5px auto;
+        height: 30px;
+        width: 50px;
+        font-size: 25px; }
+        #mine .section .row.my-content .icon.pay {
+          background: url(../img/pay.png) no-repeat center;
+          background-size: 30px; }
+        #mine .section .row.my-content .icon.deliver {
+          background: url(../img/deliver.png) no-repeat center;
+          background-size: 30px; }
+        #mine .section .row.my-content .icon.take {
+          background: url(../img/take.png) no-repeat center;
+          background-size: 30px; }
+        #mine .section .row.my-content .icon.mark {
+          background: url(../img/mark.png) no-repeat center;
+          background-size: 30px; }
+        #mine .section .row.my-content .icon.refound {
+          background: url(../img/refound.png) no-repeat center;
+          background-size: 30px; }
