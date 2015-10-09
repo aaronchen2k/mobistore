@@ -57,7 +57,7 @@
 		  </div>
 		</div>
 		<div class="row my-content">
-		  <div class="col">
+		  <div class="col" ng-click="showOrders('waitPay')">
 			<div class="box">
 				<i class="icon pay has-badge my-badge">
 					<span class="badge light" ng-if="info.waitPayCount > 0">{{info.waitPayCount}}</span>
@@ -65,7 +65,7 @@
 				待付款
 			</div>
 		  </div>
-		  <div class="col">
+		  <div class="col" ng-click="showOrders('waitShip')">
 			<div class="box">
 				<i class="icon deliver has-badge my-badge">
 					<span class="badge light" ng-if="info.waitShip > 0">{{info.waitShip}}</span>
@@ -73,7 +73,7 @@
 				待投递
 			</div>
 		  </div>
-		  <div class="col">
+		  <div class="col" ng-click="showOrders('waitReceive')">
 			<div class="box">
 				<i class="icon take has-badge my-badge">
 					<span class="badge light" ng-if="info.waitReceive > 0">{{info.waitReceive}}</span>
@@ -81,7 +81,7 @@
 				待收货
 			</div>
 		  </div>
-		  <div class="col">
+		  <div class="col" ng-click="showOrders('waitRate')">
 			<div class="box">
 				<i class="icon mark has-badge my-badge">
 					<span class="badge light" ng-if="info.waitRate > 0">{{info.waitRate}}</span>

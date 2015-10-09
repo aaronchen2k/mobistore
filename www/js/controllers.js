@@ -401,8 +401,10 @@ angular.module('mobistore.controllers', [])
 		  console.log($scope.info.rateUrl);
 	  };
 	  
-	  $scope.showOrders = function() {
+	  $scope.showOrders = function(orderFilter) {
 		  $rootScope.fromCart = false;
+		  
+		  $rootScope.orderFilter = orderFilter;
 		  $location.path('/tab/orders');
 	  };
   }])
@@ -441,10 +443,10 @@ angular.module('mobistore.controllers', [])
   }])
   .controller('OrdersCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
                              function($state, $rootScope, $scope, $location, OrderOpt) {
-	  var orderId = $state.params.orderId;
+	  console.log($rootScope.orderFilter);
 	  
 	  $scope.$on('$ionicView.enter', function( scopes, states ) {
-		  OrderOpt.opt({act: 'list', orderId: orderId},function(json) {
+		  OrderOpt.opt({act: 'list', filter: $rootScope.orderFilter},function(json) {
 		  		console.log(json);
 		  		
 		  		$scope.orders = json.data;
