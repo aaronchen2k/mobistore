@@ -8258,6 +8258,7 @@ ion-list.list-with-price .list ion-item {
       line-height: 22px; }
     #mine .info .profile .edit {
       float: right;
+      padding: 7px;
       font-size: 20px; }
   #mine .info .bar {
     height: 60px;

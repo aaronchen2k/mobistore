@@ -385,17 +385,59 @@ angular.module('mobistore.controllers', [])
                            function($state, $rootScope, $scope, $location, ClientOpt) {
 	  
 	  $scope.$on('$ionicView.enter', function( scopes, states ) {
-		  ClientOpt.opt({act: 'info'},function(json) {
+		  ClientOpt.opt({act: 'info', platform: ionic.Platform.platform()},function(json) {
 		  		console.log(json);
 		  		
 		  		$scope.info = json;
 		  });
 	   });
 	  
+	  $scope.editProfile = function() {
+		  $rootScope.client = $scope.info.client;
+		  $location.path('/tab/profile');
+	  };
+	  
+	  $scope.gotoMkt = function(url) {
+		  console.log($scope.info.rateUrl);
+	  };
+	  
 	  $scope.showOrders = function() {
 		  $rootScope.fromCart = false;
 		  $location.path('/tab/orders');
 	  };
+  }])
+  .controller('ProfileCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicPopup', 'StringUtil', 'ClientOpt', 
+                           function($state, $rootScope, $scope, $location, $ionicPopup, StringUtil, ClientOpt) {
+	  if (!$rootScope.client) {
+		  ClientOpt.opt({act: 'info', platform: ionic.Platform.platform()},function(json) {
+		  		console.log(json);
+		  		$rootScope.client = json.client;
+		  });
+	  }
+	  
+	  $scope.save = function() {
+		  $rootScope.client.mobile = StringUtil.trim($rootScope.client.mobile);
+		  $rootScope.client.nickName = StringUtil.trim($rootScope.client.nickName);
+		  
+		  if (StringUtil.isEmpty($rootScope.client.mobile) || StringUtil.isEmpty($rootScope.client.nickName)) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '用户名和姓名不能为空!',
+				     okText: '确定',
+				     okType: 'button-light'
+			  });
+			  return;
+		  }
+		  
+		  var request = {act: 'save', mobile: $rootScope.client.mobile, nickName: $rootScope.client.nickName};
+		  ClientOpt.opt(request, function(json) {
+		  		console.log(json);
+		  		$location.path('/tab/mine');
+		  });
+	  };
+	  
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  
+	  });
   }])
   .controller('OrdersCtrl', ['$state', '$rootScope', '$scope', '$location', 'OrderOpt', 
                              function($state, $rootScope, $scope, $location, OrderOpt) {

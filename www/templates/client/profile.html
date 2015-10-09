@@ -1,0 +1,19 @@
+<ion-view id="profile" view-title="个人信息">
+	
+	<ion-content class="has-header content">
+		<div class="list list-inset">
+		  <label class="item item-input">
+		  	<span class="input-label">手机号</span>
+		    <input type="text" ng-model="client.mobile">
+		  </label>
+		  <label class="item item-input">
+		  	<span class="input-label">姓名</span>
+		    <input type="text" ng-model="client.nickName">
+		  </label>
+		</div>
+		<div class="padding">
+	        <button ng-click="save()" class="button button-block button-positive activated">保存</button>
+	    </div>
+	</ion-content>
+	
+</ion-view>

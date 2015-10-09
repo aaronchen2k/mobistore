@@ -103,6 +103,16 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           }
         }
       })
+      .state('tab.profile', {
+        url: '/profile',
+//        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/client/profile.html',
+            controller: 'ProfileCtrl'
+          }
+        }
+      })
       .state('tab.orders', {
         url: '/orders',
 //        cache: false,
@@ -206,6 +216,5 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     }]);
 
     $httpProvider.interceptors.push('myHttpInterceptor');
-    
     
   });
