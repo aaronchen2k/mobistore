@@ -1,0 +1,21 @@
+ <ion-modal-view id="area-selection">
+	<ion-header-bar>
+		<div class="buttons">
+		    
+		</div>
+		  <h1 class="title">请选择</h1>
+		  <div class="buttons">
+		  <span class="button button-clear" ng-click="cancel()">
+		    取消
+		  </span>
+		  </div>
+	</ion-header-bar>
+	  <ion-content>
+			<div class="list">
+				<ion-radio ng-repeat="item in areas" ng-model="selectedArea" ng-value="item.shortname" ng-click="select(item)">
+					{{item.shortname}}
+				</ion-radio>
+			</div>
+	  </ion-content>
+	
+</ion-modal-view>

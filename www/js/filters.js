@@ -31,32 +31,41 @@ angular.module('mobistore.filters', [])
 
 .filter('orderStatus', ['Constant', 'StringUtil', function(Constant, StringUtil) {
     return function(order) {
-
-//    	FEATURE("FEATURE"), INIT("INIT"),IN_PROGRESS("IN_PROGRESS"),SUCCESSED("SUCCESS");
-//    	FEATURE("BACK"), INIT("INIT"),IN_PROGRESS("IN_PROGRESS"),SUCCESSED("SUCCESS");
     	
-    	var payStatus = order.payStatus;
-    	var shipStatus = order.shipStatus;
+    	var s = order.status;
     	var status;
-        if (shipStatus != 'INIT') {
-            if (shipStatus === 'IN_PROGRESS') {
-            	status = '发货中';
-            } else if (shipStatus === 'SUCCESS') {
-            	status = '已签收';
-            } else if (shipStatus === 'BACK'){
-            	status = '已退回';
-            }
-        } else {
-        	if (payStatus === 'IN_PROGRESS') {
-            	status = '支付已提交';
-            } else if (shipStatus === 'SUCCESS') {
-            	status = '支付已完成';
-            } else if (shipStatus === 'FEATURE'){
-            	status = '支付失败';
-            } else {
-            	status = '未支付';
-            }
+        
+        if (s === 0) {
+        	status = '未付款';
+        } else if (s === 1) {
+        	status = '支付中';
+        } else if (s === 2){
+        	status = '已支付';
+        } else if (s === 3){
+        	status = '发货中';
+        } else if (s === 4){
+        	status = '已收货';
+        } else if (s === 5){
+        	status = '已评价';
+        } else if (s === 6){
+        	status = '支付错误';
+        } else if (s === 7){
+        	status = '快递问题';
         }
+
         return status;
+    }
+}])
+.filter('booleanToCn', ['Constant', 'StringUtil', function(Constant, StringUtil) {
+    return function(bl) {
+        if (bl == true) {
+        	return '是';
+        } else {
+        	return '否';
+        }
+        
+        var inx = url.lastIndexOf('/');
+        var rst = url.substring(0, inx + 1) + 'thumbnail' + url.substring(inx);
+        return rst;
     }
 }]);

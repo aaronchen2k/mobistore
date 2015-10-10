@@ -133,6 +133,26 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           }
         }
       })
+      .state('tab.addresses', {
+        url: '/addresses',
+//        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/client/address-list.html',
+            controller: 'AddressesCtrl'
+          }
+        }
+      })
+      .state('tab.address', {
+        url: '/address/:addressId',
+//        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/client/address-edit.html',
+            controller: 'AddressCtrl'
+          }
+        }
+      })
       .state('msg', {
         url: '/msg/:error',
 //        cache: false,

@@ -51,6 +51,11 @@ angular.module('mobistore.models', [])
         'opt': {method:'POST'}
     });
 }])
+.factory('AddressOpt', ['$resource', 'Constant', function($resource, Constant){
+    return $resource(Constant.ApiPath + 'address/opt/:act', {act:'@act'}, {
+        'opt': {method:'POST'}
+    });
+}])
 .factory('SearchOpt', ['$resource', 'Constant', function($resource, Constant){
     return $resource(Constant.ApiPath + 'search/opt/:act', {act:'@act'}, {
         'opt': {method:'POST'}

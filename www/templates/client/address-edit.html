@@ -1,0 +1,49 @@
+<ion-view id="address" view-title="修改地址">
+	
+  <ion-content class="has-header">
+		<div class="list list-inset">
+		  <label class="item item-input">
+		  	<span class="input-label">姓名</span>
+		    <input type="text" ng-model="address.name">
+		  </label>
+		  <label class="item item-input">
+		  	<span class="input-label">电话</span>
+		    <input type="text" ng-model="address.phone">
+		  </label>
+		  <label class="item item-input" ng-click="openModal('provice')">
+		  	<span class="input-label">省</span>
+		    <span>{{address.provice}}</span>
+		  </label>
+		  <label class="item item-input" ng-click="openModal('city')">
+		  	<span class="input-label">市</span>
+		    <span>{{address.city}}</span>
+		  </label>
+		  <label class="item item-input" ng-click="openModal('region')">
+		  	<span class="input-label">区</span>
+		    <span>{{address.region}}</span>
+		  </label>
+		  <label class="item item-input">
+		  	<span class="input-label">街道</span>
+		    <input type="text" ng-model="address.street">
+		  </label>
+		  <label class="item item-input">
+		  	<span class="input-label">地址</span>
+		    <input type="text" ng-model="address.address">
+		  </label>
+		  <li class="item item-toggle">
+		     默认
+		     <label class="toggle ">
+		       <input type="checkbox" ng-model="address.defaultt">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+		
+		</div>
+		<div class="padding">
+	        <button ng-click="save()" class="button button-block button-positive activated">保存</button>
+	    </div>
+  </ion-content>
+	
+</ion-view>

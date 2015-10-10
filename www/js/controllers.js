@@ -407,6 +407,11 @@ angular.module('mobistore.controllers', [])
 		  $rootScope.orderFilter = orderFilter;
 		  $location.path('/tab/orders');
 	  };
+	  
+	  $scope.showAddress = function() {
+		  $location.path('/tab/addresses');
+	  };
+	  
   }])
   .controller('ProfileCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicPopup', 'StringUtil', 'ClientOpt', 
                            function($state, $rootScope, $scope, $location, $ionicPopup, StringUtil, ClientOpt) {
@@ -479,6 +484,111 @@ angular.module('mobistore.controllers', [])
 			  historyRoot: true
 		  });
 		  $location.path('/tab/mine');	
+	  };
+	  
+  }])
+   .controller('AddressesCtrl', ['$state', '$rootScope', '$scope', '$location', 'AddressOpt', 
+                             function($state, $rootScope, $scope, $location, AddressOpt) {
+	  console.log($rootScope.orderFilter);
+	  
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  AddressOpt.opt({act: 'list'},function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.addresses = json.data;
+		  });
+	   });
+	  
+	  $scope.edit = function(id) {
+		  $rootScope.fromCart = false;
+		  $location.path('/tab/address/'+ id);
+	  };
+  }])
+  .controller('AddressCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicModal', 'StringUtil', 'AddressOpt', 
+                             function($state, $rootScope, $scope, $location, $ionicModal, StringUtil, AddressOpt) {
+	  
+	  var productId = $state.params.addressId;
+	  
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  if (StringUtil.isEmpty(productId)) {
+			  $scope.address = {};
+			  return;
+		  }
+		  AddressOpt.opt({act: 'get', id: productId},function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.address = json.data;
+		  });
+	   });
+	  
+	  $scope.selectedArea = '北京';
+	  $scope.select = function(item) {
+		  $scope.selectedArea = item.shortname;
+		  console.log($scope.selectedArea);
+	  };
+	  
+	  if (!$scope.modalLoaded) {
+		  $ionicModal.fromTemplateUrl('templates/client/area-selection.html', {
+		    scope: $scope,
+		    
+		  }).then(function(modal) {
+		    $rootScope.modal = modal;
+		    $scope.modalLoaded = true;
+		  });
+	  }
+	  $scope.openModal = function(type) {
+		  console.log(type);
+		  $rootScope.modal.show();
+		  
+		  if (!$scope.areas) {
+			  AddressOpt.opt({act: 'getArea', type: type},function(json) {
+				  console.log(json);
+				  $scope.areas = json.data;
+			  });
+		  }
+	  };
+	  
+	  $scope.cancel = function() {
+		  $scope.closeModal();
+	  };
+	  
+	  $scope.closeModal = function() {
+	    $rootScope.modal.hide();
+	  };
+	  $scope.$on('$destroy', function() {
+		  if ($rootScope.modal) {
+			  $rootScope.modal.remove();
+		  }
+	  });
+	  $scope.$on('modal.hidden', function() {
+	    
+	  });
+	  $scope.$on('modal.removed', function() {
+	    
+	  });
+	  
+	  $scope.save = function() {
+		  $scope.address.name = StringUtil.trim($scope.address.name);
+		  $scope.address.phone = StringUtil.trim($scope.address.phone);
+		  $scope.address.provice = StringUtil.trim($scope.address.provice);
+		  $scope.address.city = StringUtil.trim($scope.address.city);
+		  $scope.address.region = StringUtil.trim($scope.address.region);
+		  $scope.address.street = StringUtil.trim($scope.address.street);
+		  
+		  if (StringUtil.isEmpty($rootScope.client.mobile) || StringUtil.isEmpty($rootScope.client.nickName)) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '所有资料不能为空!',
+				     okText: '确定',
+				     okType: 'button-light'
+			  });
+			  return;
+		  }
+		  
+		  var request = {act: 'save', mobile: $rootScope.client.mobile, nickName: $rootScope.client.nickName};
+		  ClientOpt.opt(request, function(json) {
+		  		console.log(json);
+		  		$location.path('/tab/mine');
+		  });
 	  };
 	  
   }])

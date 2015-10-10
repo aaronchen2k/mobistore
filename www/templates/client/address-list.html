@@ -1,0 +1,18 @@
+<ion-view id="address" view-title="地址">
+	
+  <ion-content class="has-header">
+		<div class="content">
+			<ion-list>
+		        <ion-item ng-repeat="item in addresses" ng-click="edit(item.id)" class="item-icon-right">
+		          <h2 class="text-big text-color-light-grey" >{{item.street}} {{item.address}}</h2>
+		          <p class="text-thin text-color-light-grey">{{item.area}}</p>
+		          <p class="text-thin text-color-light-grey">{{item.name}}，电话{{item.phone}}</p>
+		          <p class="text-thin text-color-light-grey">默认地址 &nbsp; {{item.defaultt | booleanToCn}}</p>
+		
+		          <i class="icon ion-chevron-right"></i>
+		        </ion-item>
+		   </ion-list>
+		</div>
+  </ion-content>
+	
+</ion-view>
