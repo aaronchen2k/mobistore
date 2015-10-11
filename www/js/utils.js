@@ -4,7 +4,7 @@ angular.module('mobistore.utils', [])
 
   .factory('Constant', ['$location', function($location) {
     var PAGE_SIZE = 6;
-    var SERVICE_URL_DEVELOP  = "http://10.0.1.100:8080/";
+    var SERVICE_URL_DEVELOP  = "http://localhost:8080/";
     var SERVICE_URL_PRODUCTION = "http://101.200.189.57:9090/mobistore/"
 
     var ApiVer = 'v1';

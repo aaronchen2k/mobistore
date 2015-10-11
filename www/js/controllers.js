@@ -207,7 +207,7 @@ angular.module('mobistore.controllers', [])
 		  });
 	  };
 	  
-	  $scope.cancel = function() {
+	  $scope.cancelModal = function() {
 		  $scope.closeModal();
 		  
 		  if (!$scope.loaded) {
@@ -521,10 +521,21 @@ angular.module('mobistore.controllers', [])
 		  });
 	   });
 	  
-	  $scope.selectedArea = '北京';
 	  $scope.select = function(item) {
-		  $scope.selectedArea = item.shortname;
-		  console.log($scope.selectedArea);
+		  console.log(item);
+		  $scope.address[item.levelname] = item.shortname;
+		  $scope.address[item.levelname + 'Id'] = item.id;
+		  
+		  if (item.level == 1) {
+			  $scope.address['city'] = null;
+			  $scope.address['region'] = null;
+		  } else if (item.level == 2) {
+			  $scope.address['region'] = null;
+		  } else if (item.level == 3) {
+			  
+		  }
+
+		  $scope.cancelModal();
 	  };
 	  
 	  if (!$scope.modalLoaded) {
@@ -537,18 +548,22 @@ angular.module('mobistore.controllers', [])
 		  });
 	  }
 	  $scope.openModal = function(type) {
-		  console.log(type);
 		  $rootScope.modal.show();
-		  
-		  if (!$scope.areas) {
-			  AddressOpt.opt({act: 'getArea', type: type},function(json) {
-				  console.log(json);
-				  $scope.areas = json.data;
-			  });
-		  }
+
+		  AddressOpt.opt({
+		  		act: 'getArea', type: type, 
+				proviceId: $scope.address.proviceId, 
+				cityId: $scope.address.cityId
+			}, 
+			function(json) {
+			  console.log(json);
+			  $scope.areas = json.data;
+			  
+			  $scope.area = $scope.address[type];
+		  });
 	  };
 	  
-	  $scope.cancel = function() {
+	  $scope.cancelModal = function() {
 		  $scope.closeModal();
 	  };
 	  

@@ -8329,3 +8329,6 @@ ion-list.list-with-price .list ion-item {
         #mine .section .row.my-content .icon.refound {
           background: url(../img/refound.png) no-repeat center;
           background-size: 30px; }
+
+#address .list .item .icon {
+  font-size: small; }
