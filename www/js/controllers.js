@@ -498,7 +498,10 @@ angular.module('mobistore.controllers', [])
 		  		$scope.addresses = json.data;
 		  });
 	   });
-	  
+	  $scope.add = function() {
+		  $rootScope.fromCart = false;
+		  $location.path('/tab/address/null');
+	  };
 	  $scope.edit = function(id) {
 		  $rootScope.fromCart = false;
 		  $location.path('/tab/address/'+ id);
@@ -608,6 +611,13 @@ angular.module('mobistore.controllers', [])
 		  		$location.path('/tab/addresses');
 		  });
 	  };
+	  
+	  $scope.remove = function() {
+		  AddressOpt.opt({act: 'remove', addressId: $scope.address.id}, function(json) {
+		  		console.log(json);
+		  		$location.path('/tab/addresses');
+		  });
+	  }
 	  
   }])
   .controller('MsgCtrl', ['$scope', '$state', '$location', 
