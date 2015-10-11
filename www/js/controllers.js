@@ -504,8 +504,8 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/tab/address/'+ id);
 	  };
   }])
-  .controller('AddressCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicModal', 'StringUtil', 'AddressOpt', 
-                             function($state, $rootScope, $scope, $location, $ionicModal, StringUtil, AddressOpt) {
+  .controller('AddressCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicModal', '$ionicPopup', 'StringUtil', 'AddressOpt', 
+                             function($state, $rootScope, $scope, $location, $ionicModal, $ionicPopup, StringUtil, AddressOpt) {
 	  
 	  var productId = $state.params.addressId;
 	  
@@ -523,7 +523,7 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.select = function(item) {
 		  console.log(item);
-		  $scope.address[item.levelname] = item.shortname;
+		  $scope.address[item.levelname] = item.areaname;
 		  $scope.address[item.levelname + 'Id'] = item.id;
 		  
 		  if (item.level == 1) {
@@ -590,19 +590,22 @@ angular.module('mobistore.controllers', [])
 		  $scope.address.region = StringUtil.trim($scope.address.region);
 		  $scope.address.street = StringUtil.trim($scope.address.street);
 		  
-		  if (StringUtil.isEmpty($rootScope.client.mobile) || StringUtil.isEmpty($rootScope.client.nickName)) {
+		  if (StringUtil.isEmpty($scope.address.name) || StringUtil.isEmpty($scope.address.phone)
+				  || StringUtil.isEmpty($scope.address.provice) || StringUtil.isEmpty($scope.address.city)
+				  || StringUtil.isEmpty($scope.address.street)) {
 			  var alertPopup = $ionicPopup.alert({
-				     title: '所有资料不能为空!',
+				     title: '请填写必要的资料!',
 				     okText: '确定',
 				     okType: 'button-light'
 			  });
 			  return;
 		  }
 		  
-		  var request = {act: 'save', mobile: $rootScope.client.mobile, nickName: $rootScope.client.nickName};
-		  ClientOpt.opt(request, function(json) {
+		  var request = {act: 'save'};
+		  request = angular.extend(request, $scope.address);
+		  AddressOpt.opt(request, function(json) {
 		  		console.log(json);
-		  		$location.path('/tab/mine');
+		  		$location.path('/tab/addresses');
 		  });
 	  };
 	  

@@ -79,6 +79,10 @@ angular.module('mobistore.utils', [])
   .factory('StringUtil', [function(){
 		return {
 			trim: function (o){
+				if (this.isEmpty(o)) {
+					return '';
+				}
+				
 				o = o.replace(/(^\s*)|(\s*$)/g, '');
 				return o;
 			},
