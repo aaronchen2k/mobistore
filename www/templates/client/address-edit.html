@@ -42,11 +42,19 @@
 		       </div>
 		     </label>
 		  </li>
-		
 		</div>
-		<div class="padding">
-	        <button ng-click="save()" class="button button-block button-positive activated">保存</button>
-	    </div>
   </ion-content>
+	<div class="bar bar-footer has-tab-bar-footer">
+	   	<div class="row bottom-buttons">
+	   		<div class="buttons">
+				<button class="button button-light left half" ng-click="save()">
+				  保存
+				</button>
+				<button class="button button-light right half" ng-click="remove()">
+				  删除
+				</button>
+			</div>
+		</div>
+	</div>
 	
 </ion-view>

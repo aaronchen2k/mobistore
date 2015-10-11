@@ -1,8 +1,13 @@
-<ion-view id="address" view-title="地址">
+<ion-view id="addresses" view-title="地址">
+
+  <ion-nav-buttons side="right">
+      <span class="button button-small button-clear " ng-click="add()">
+      	<i class="icon ion-ios-plus-empty"></i>
+      </span>
+   </ion-nav-buttons>
 	
   <ion-content class="has-header">
-		<div class="content">
-			<ion-list>
+			<ion-list can-swipe="true">
 		        <ion-item ng-repeat="item in addresses" ng-click="edit(item.id)" class="item-icon-right">
 		          <h2 class="text-big text-color-light-grey" >{{item.street}} {{item.address}}</h2>
 		          <p class="text-thin text-color-light-grey">{{item.provice}} &nbsp;{{item.city}}</p>
@@ -12,7 +17,6 @@
 		          <i class="icon ion-chevron-right"></i>
 		        </ion-item>
 		   </ion-list>
-		</div>
   </ion-content>
 	
 </ion-view>
