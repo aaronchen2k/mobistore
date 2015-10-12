@@ -368,7 +368,7 @@ angular.module('mobistore.controllers', [])
 			  		$scope.cart = json.data;
 			  		$scope.isEmpty = $scope.cart.totalAmount == 0;
 				});
-			}, 3000);
+			}, 2000);
 	  };
 	  
 	  $scope.clear = function() {
