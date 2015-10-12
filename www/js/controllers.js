@@ -3,6 +3,12 @@
 angular.module('mobistore.controllers', [])
   .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
                           function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
+	 
+	  $scope.backProduct = function() {
+//		  $ionicHistory.nextViewOptions({ historyRoot: true });
+		  $location.path('/tab/' + $rootScope.productBackTo);
+		  $scope.reset();
+	  }
 	  
 	  $scope.toHome = function() {
 		  $scope.reset();
@@ -26,8 +32,7 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/tab/mine');
 	  }
 	  $scope.reset = function() {
-		  $rootScope.backToProducts = false;
-		  $rootScope.backToConllections = false;
+		  $rootScope.productBackTo = null;
 	  }
   }])
   .controller('ClientCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 
@@ -179,7 +184,7 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/tab/products');
 	  };
 	  $scope.showProdcut = function(id) {
-		  $rootScope.showProductFromHome = true;
+		  $rootScope.productBackTo = 'home';
 		  $location.path('/tab/product/'+ id);
 	  };
   }])
@@ -337,23 +342,19 @@ angular.module('mobistore.controllers', [])
 			  
 			  console.log($ionicHistory.backView());
 			  
-			  if ($rootScope.showProductFromHome || $ionicHistory.backView() == null) {
-				  $scope.backToProducts = true;
-				  $rootScope.showProductFromHome = false;
-			  }
-			  if ($rootScope.showProductFromConllections) {
-				  $rootScope.backToConllections = true;
-				  $rootScope.showProductFromConllections = false;
+			  if ($ionicHistory.backView() == null) { // 直接刷新页面
+				  $rootScope.productBackTo = 'products';
 			  } 
 		  }); 
 	  });
 	  
 	  $scope.toProducts = function(product) {
-		  $scope.backToProducts = false;
+		  $rootScope.productBackTo = null;
 		  $ionicHistory.nextViewOptions({ historyRoot: true });
 		  $location.path('/tab/products');
 	  };
 	  $scope.toConllections = function(product) {
+		  $rootScope.productBackTo = 'mine';
 		  $ionicHistory.nextViewOptions({ historyRoot: true });
 		  $location.path('/tab/collections');
 	  };
@@ -852,7 +853,7 @@ angular.module('mobistore.controllers', [])
 	   });
 	  
 	  $scope.showProdcut = function(id) {
-		  $rootScope.showProductFromConllections = true;
+		  $rootScope.productBackTo = 'collections';
 		  $location.path('/tab/product/'+ id);
 	  };
 	  $scope.toMine = function(id) {
