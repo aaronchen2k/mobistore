@@ -41,6 +41,10 @@ $menu-height: 290px;
  .clear-both {
  	clear:both;
  }
+ 
+ [ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
 
 // Slide down from the bottom, used for modals
 // -------------------------------

@@ -7775,6 +7775,9 @@ a.button {
 .clear-both {
   clear: both; }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important; }
+
 .slide-in {
   transform: scale(0.9);
   opacity: 0; }

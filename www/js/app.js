@@ -168,7 +168,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $ionicConfigProvider.backButton.text('');
     
     // 发布时需要用html5Mode
-    $locationProvider.html5Mode(true);
+//    $locationProvider.html5Mode(true);
     
 
     // register the interceptor as a service

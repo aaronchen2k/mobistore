@@ -3,14 +3,17 @@
 		<div class="content">
 			<ion-list>
 		        <ion-item ng-repeat="order in orders" ng-click="showOrder(order.id)">
-		          <h2 class="text-big text-color-light-grey" >{{order.createTime | date:'yyyy-MM-dd'}}</h2>
+		          <h2 class="text-big text-color-light-grey" >
+		          	{{order.createTime | date:'yyyy-MM-dd'}}
+		          	 &nbsp;&nbsp; {{order | orderStatus}}
+		          </h2>
 		          <div>
 			          <div class="left" ng-repeat="item in order.items">
 			          	 <img ng-src="{{item.image | imgPath}}">
 			          </div>
 			          <div class="right">
 			          	  <p class=" text-thin text-color-light-grey">
-			          	  	{{order.totalAmount | currency:"￥"}} &nbsp;&nbsp; {{order | orderStatus}}
+			          	  	{{order.totalAmount | currency:"￥"}}
 			          	  </p>
 				          <p class=" text-thin text-color-light-grey">
 				          	{{order.recipientArea}} {{order.recipientStreet}} {{order.recipientAddress}}

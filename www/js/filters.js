@@ -31,25 +31,30 @@ angular.module('mobistore.filters', [])
 
 .filter('orderStatus', ['Constant', 'StringUtil', function(Constant, StringUtil) {
     return function(order) {
+    	if (!order) {
+    		return;
+    	}
     	
     	var s = order.status;
     	var status;
         
-        if (s === 0) {
-        	status = '未付款';
-        } else if (s === 1) {
+        if (s === 'INIT') {
+        	status = '未支付';
+        } else if (s === 'PAYING') {
         	status = '支付中';
-        } else if (s === 2){
+        } else if (s === 'PAID'){
         	status = '已支付';
-        } else if (s === 3){
+        } else if (s === 'SHIPPING'){
         	status = '发货中';
-        } else if (s === 4){
+        } else if (s === 'RECEIVED'){
         	status = '已收货';
-        } else if (s === 5){
+        } else if (s === 'RATED'){
         	status = '已评价';
-        } else if (s === 6){
+        } else if (s === 'CANCEL'){
+        	status = '已取消';
+        } else if (s === 'PAY_FEATURE'){
         	status = '支付错误';
-        } else if (s === 7){
+        } else if (s === 'SHIPPING_FEATURE'){
         	status = '快递问题';
         }
 

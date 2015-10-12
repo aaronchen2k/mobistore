@@ -1,0 +1,11 @@
+ <ion-modal-view id="address-selection">
+   <ion-content>
+        <div class="list">
+			<ion-radio ng-repeat="item in addresses" ng-model="address" ng-value="item.id" ng-click="select(item)">
+				  <h2 class="text-big text-color-light-grey" >{{item.street}} {{item.address}}</h2>
+		          <p class="text-thin text-color-light-grey">{{item.provice}} &nbsp;{{item.city}}</p>
+		          <p class="text-thin text-color-light-grey">{{item.name}}，电话{{item.phone}}</p>
+			</ion-radio>
+		</div>
+   </ion-content>
+</ion-modal-view>

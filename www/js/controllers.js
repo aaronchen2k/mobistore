@@ -208,7 +208,7 @@ angular.module('mobistore.controllers', [])
 	  };
 	  
 	  $scope.cancelModal = function() {
-		  $scope.closeModal();
+		  $rootScope.modal.hide();
 		  
 		  if (!$scope.loaded) {
 			  SearchOpt.opt({act: 'search', keywords: $rootScope.keywords},function(json) {
@@ -219,20 +219,10 @@ angular.module('mobistore.controllers', [])
 			  });
 		  }
 	  };
-	  
-	  $scope.closeModal = function() {
-	    $rootScope.modal.hide();
-	  };
 	  $scope.$on('$destroy', function() {
 		  if ($rootScope.modal) {
 			  $rootScope.modal.remove();
 		  }
-	  });
-	  $scope.$on('modal.hidden', function() {
-	    
-	  });
-	  $scope.$on('modal.removed', function() {
-	    
 	  });
   }])
   
@@ -463,8 +453,8 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/tab/order/'+ id);
 	  };
   }])
-  .controller('OrderCtrl', ['$scope', '$state', '$ionicHistory', '$location', 'OrderOpt', 
-                            function($scope, $state, $ionicHistory, $location, OrderOpt) {
+  .controller('OrderCtrl', ['$rootScope', '$scope', '$state', '$ionicHistory', '$location', '$ionicModal', 'OrderOpt', 'AddressOpt',
+                            function($rootScope, $scope, $state, $ionicHistory, $location, $ionicModal, OrderOpt, AddressOpt) {
 	  $scope.tab = 1;
 	  var orderId = $state.params.orderId;
 	  
@@ -486,6 +476,59 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/tab/mine');	
 	  };
 	  
+	  $scope.pay = function() {
+		  console.log($scope.order);	
+	  };
+	  $scope.cancel = function() {
+		  console.log($scope.order);
+		  
+		  OrderOpt.opt({act: 'cancel', orderId: $scope.order.id}, 
+			function(json) {
+			  console.log(json);
+			  
+			  $location.path('/tab/orders');
+		  });
+	  };
+	  
+	  $scope.select = function(item) {
+		  console.log(item);
+		  OrderOpt.opt({act: 'changeRecipient', orderId: $scope.order.id, recipientId: item.id}, 
+			function(json) {
+			  console.log(json);
+			  
+			  $scope.order = json.data;
+		  });
+
+		  $scope.cancelModal();
+	  };
+	  
+	  if (!$scope.modalLoaded) {
+		  $ionicModal.fromTemplateUrl('templates/client/address-selection.html', {
+		    scope: $scope,
+		    
+		  }).then(function(modal) {
+		    $rootScope.modal = modal;
+		    $scope.modalLoaded = true;
+		  });
+	  }
+	  $scope.openModal = function() {
+		  $rootScope.modal.show();
+
+		  AddressOpt.opt({act: 'list'}, 
+			function(json) {
+			  console.log(json);
+			  $scope.addresses = json.data;
+		  });
+	  };
+	  
+	  $scope.cancelModal = function() {
+		  $rootScope.modal.hide();
+	  };
+	  $scope.$on('$destroy', function() {
+		  if ($rootScope.modal) {
+			  $rootScope.modal.remove();
+		  }
+	  });
   }])
    .controller('AddressesCtrl', ['$state', '$rootScope', '$scope', '$location', 'AddressOpt', 
                              function($state, $rootScope, $scope, $location, AddressOpt) {
@@ -551,6 +594,11 @@ angular.module('mobistore.controllers', [])
 		  });
 	  }
 	  $scope.openModal = function(type) {
+		  if ( (type == 'city' && StringUtil.isEmpty($scope.address.provice) ) 
+				  || (type == 'region' && StringUtil.isEmpty($scope.address.city) ) ) {
+			  return;
+		  }
+		  
 		  $rootScope.modal.show();
 
 		  AddressOpt.opt({
@@ -567,22 +615,12 @@ angular.module('mobistore.controllers', [])
 	  };
 	  
 	  $scope.cancelModal = function() {
-		  $scope.closeModal();
-	  };
-	  
-	  $scope.closeModal = function() {
-	    $rootScope.modal.hide();
+		  $rootScope.modal.hide();
 	  };
 	  $scope.$on('$destroy', function() {
 		  if ($rootScope.modal) {
 			  $rootScope.modal.remove();
 		  }
-	  });
-	  $scope.$on('modal.hidden', function() {
-	    
-	  });
-	  $scope.$on('modal.removed', function() {
-	    
 	  });
 	  
 	  $scope.save = function() {

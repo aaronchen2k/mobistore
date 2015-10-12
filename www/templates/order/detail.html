@@ -21,6 +21,10 @@
 	<div class="summary" ng-if="tab==1">
 		<div class="price">
 			<div class="row content">
+			  <div class="col col-33 left">状态</div>
+			  <div class="col col-67 right">{{order | orderStatus}}</div>
+			</div>
+			<div class="row content">
 			  <div class="col col-33 left">金额</div>
 			  <div class="col col-67 right">{{order.amount | currency:"￥"}}</div>
 			</div>
@@ -46,7 +50,7 @@
 			  <div class="col col-33 left">电话</div>
 			  <div class="col col-67 right">{{order.recipientPhone}}</div>
 			</div>
-			<div class="row content address">
+			<div class="row content address" ng-click="openModal()">
 			  <div class="col col-33 left">地址</div>
 			  <div class="col col-67 right content">
 			  	<div class="text">
@@ -84,12 +88,15 @@
    </div>
    
   </ion-content>
-  
-	<div class="bar bar-footer has-tab-bar-footer">
+
+	<div ng-show="order.status != 'CANCEL'" ng-cloak class="bar bar-footer has-tab-bar-footer">
 	   	<div class="row bottom-buttons">
-		   	<div class="buttons">
-				<button class="button button-light left" ng-click="checkout()">
+	   		<div class="buttons">
+				<button class="button button-light left" ng-click="pay()">
 				  现在支付
+				</button>
+				<button class="button button-light right" ng-click="cancel()">
+				  取消订单
 				</button>
 			</div>
 		</div>
