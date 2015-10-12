@@ -41,20 +41,7 @@ angular.module('mobistore.services', [])
                  }
               });
      	 },
-    	 forget: function (mobile) {
-    		 ClientOpt.opt({act: 'forget', mobile: mobile}).$promise.then(function(json) {
-        		 console.log(json);
 
-                 if (json.code == 1) {
-                     console.log('测试用验证码为： ' + json.data.code);
-                     $location.path("/resetPassword/" + mobile);
-                 } else {
-	       			  var alertPopup = $ionicPopup.alert({
-	 				     title: json.msg,
-	 				     okText: '确定', okType: 'button-light' });
-                 }
-              });
-     	 },
     	 resetPassword: function (client) {
     		 client = angular.extend(client, {act: 'resetPassword'});
     		 ClientOpt.opt(client).$promise.then(function(json) {

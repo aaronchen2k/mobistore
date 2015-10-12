@@ -34,7 +34,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $ionicConfigProvider.navBar.alignTitle('center');
     $ionicConfigProvider.backButton.icon('ion-chevron-left');
     $ionicConfigProvider.backButton.text('');
-    $locationProvider.html5Mode(true); // 发布时需要用html5Mode
+//    $locationProvider.html5Mode(true); // 发布时需要用html5Mode
     $sceDelegateProvider.resourceUrlWhitelist(['self',
                                                'https://itunes.apple.com/**',
                                                'http://zhushou.360.cn/**' ]);
@@ -56,17 +56,12 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
 	  .state('signup', {
 	    url: '/signup',
 	    templateUrl: 'templates/client/signup.html',
-	    controller: 'ClientCtrl'
+	    controller: 'SignupCtrl'
 	  })
 	  .state('forget', {
 	    url: '/forget',
 	    templateUrl: 'templates/client/forget.html',
-	    controller: 'ClientCtrl'
-	  })
-	  .state('resetPassword', {
-	    url: '/resetPassword/:mobile',
-	    templateUrl: 'templates/client/resetPassword.html',
-	    controller: 'ResetPasswordCtrl'
+	    controller: 'ForgetPasswordCtrl'
 	  })
 
       // setup an abstract state for the tabs directive

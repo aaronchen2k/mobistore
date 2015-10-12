@@ -8339,5 +8339,10 @@ ion-list.list-with-price .list ion-item {
 #suggestion textarea {
   margin-top: 20px; }
 
+#forget .virify-code label {
+  background-color: #FFFFFF; }
+#forget .virify-code button {
+  color: black; }
+
 #myframe .content .scroll {
   height: 100%; }

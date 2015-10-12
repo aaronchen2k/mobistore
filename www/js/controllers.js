@@ -9,6 +9,7 @@ angular.module('mobistore.controllers', [])
 	  $scope.client = {mobile: '16612345678', password: '123456'};
 	  $scope.client = angular.extend($scope.client, {platform: platform, isWebView: isWebView});
 	  $scope.newClient = {};
+	  
 	  $scope.signon = function() {
 		  clientSrv.signon($scope.client);
 	  }
@@ -22,70 +23,86 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.toForget = function() {
 		  $location.path('/forget');
-	  }
+	  }	  
+  }])
+  .controller('SignupCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 'ClientOpt', 
+                          function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicPopup, Util, StringUtil, clientSrv, ClientOpt) {
+	  var platform = ionic.Platform.platform();
+	  var isWebView = ionic.Platform.isWebView();
+	  
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  $scope.client = {};
+	  });
 	  
 	  $scope.signup = function() {
 		  console.log('signup');
-		  if (StringUtil.isEmpty($scope.newClient.mobile) || StringUtil.isEmpty($scope.newClient.password)
-				  || StringUtil.isEmpty($scope.newClient.repassword)) {
+		  if (StringUtil.isEmpty($scope.client.mobile) || StringUtil.isEmpty($scope.client.password)
+				  || StringUtil.isEmpty($scope.client.repassword)) {
 			  var alertPopup = $ionicPopup.alert({
 				     title: '请填写手机号和密码!',
 				     okText: '确定', okType: 'button-light' });
 			  return;
 		  }
-		  if ($scope.newClient.password != $scope.newClient.repassword) {
+		  if ($scope.client.password != $scope.client.repassword) {
 			  var alertPopup = $ionicPopup.alert({
 				     title: '两次密码不一致!',
 				     okText: '确定', okType: 'button-light' });
 			  return;
 		  }
 		  
-		  $scope.newClient = angular.extend($scope.newClient, {platform: platform, isWebView: isWebView});
-		  clientSrv.signup($scope.newClient);
+		  $scope.client = angular.extend($scope.client, {platform: platform, isWebView: isWebView});
+		  clientSrv.signup($scope.client);
 	  }
+  }])
+  .controller('ForgetPasswordCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 'ClientOpt', 
+                          function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicPopup, Util, StringUtil, clientSrv, ClientOpt) {
+	  var platform = ionic.Platform.platform();
+	  var isWebView = ionic.Platform.isWebView();
 	  
-	  $scope.forget = function() {
-		  console.log('forget');
-		  if (StringUtil.isEmpty($scope.newClient.mobile)) {
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  $scope.client = {};
+	  });
+	  
+	  $scope.getVerifyCode = function() {
+		  console.log('getVerifyCode');
+		  if (StringUtil.isEmpty($scope.client.mobile)) {
 			  var alertPopup = $ionicPopup.alert({
 				     title: '请填写手机号码!',
 				     okText: '确定', okType: 'button-light' });
 			  return;
 		  }
-		  clientSrv.forget($scope.newClient.mobile);
-		  
+ 		 ClientOpt.opt({act: 'forget', mobile: $scope.client.mobile}).$promise.then(function(json) {
+    		 console.log(json);
+
+             if (json.code == 1) {
+            	 $scope.client.verifyCode = json.data.code;
+             } else {
+       			  var alertPopup = $ionicPopup.alert({
+ 				     title: json.msg,
+ 				     okText: '确定', okType: 'button-light' });
+             }
+          });
 	  }
 	  
-  }])
-  .controller('ResetPasswordCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 'HomeOpt', 
-                          function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicPopup, Util, StringUtil, clientSrv, HomeOpt) {
-	  var platform = ionic.Platform.platform();
-	  var isWebView = ionic.Platform.isWebView();
-	  
-	  $scope.newClient = {};
-	  $scope.newClient.mobile = $state.params.mobile;
 	  $scope.resetPassword = function() {
-		 
-		  console.log('---' + $scope.newClient.mobile);
-		  
 		  console.log('resetPassword');
-		  if (StringUtil.isEmpty($scope.newClient.mobile) || StringUtil.isEmpty($scope.newClient.password)
-				  || StringUtil.isEmpty($scope.newClient.repassword) || StringUtil.isEmpty($scope.newClient.verifyCode)) {
+		  if (StringUtil.isEmpty($scope.client.mobile) || StringUtil.isEmpty($scope.client.password)
+				  || StringUtil.isEmpty($scope.client.repassword) || StringUtil.isEmpty($scope.client.verifyCode)) {
 			  var alertPopup = $ionicPopup.alert({
 				     title: '请填写必要的信息!',
 				     okText: '确定', okType: 'button-light' });
 			  return;
 		  }
-		  if ($scope.newClient.password != $scope.newClient.repassword) {
+		  if ($scope.client.password != $scope.client.repassword) {
 			  var alertPopup = $ionicPopup.alert({
 				     title: '两次密码不一致!',
 				     okText: '确定', okType: 'button-light' });
 			  return;
 		  }
 		  
-		  angular.extend($scope.newClient, {platform: platform, isWebView: isWebView});
+		  angular.extend($scope.client, {platform: platform, isWebView: isWebView});
 		  
-		  clientSrv.resetPassword($scope.newClient);
+		  clientSrv.resetPassword($scope.client);
 	  }
 	  
 	  $scope.toSignon = function() {
