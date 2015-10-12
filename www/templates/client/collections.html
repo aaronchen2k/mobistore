@@ -1,0 +1,22 @@
+<ion-view id="collections" view-title="我的收藏">
+
+   <ion-nav-buttons side="left">
+      <span class="button button-small button-clear my-back" ng-if="backToConllections" ng-click="toMine()">
+      	<i class="icon ion-chevron-left"></i>
+      </span>
+   </ion-nav-buttons>
+	
+  <ion-content class="has-header">
+		<ion-list>
+	        <ion-item ng-repeat="item in collections" ng-click="showProdcut(item.productId)" class="item-thumbnail-left item-icon-right">
+		          <img ng-src="{{item.image | imgPath}}">
+		          
+		          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
+		          <p class="text-thin text-color-light-grey">{{item.retailPrice | currency:"￥"}}</p>
+		
+		          <i class="icon ion-chevron-right"></i>
+	        </ion-item>
+	   </ion-list>
+  </ion-content>
+	
+</ion-view>

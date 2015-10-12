@@ -1,7 +1,10 @@
 <ion-view id="product" view-title="产品">
 
    <ion-nav-buttons side="left">
-      <span class="button button-small button-clear my-back" ng-if="myBackButtonShow" ng-click="toProducts()">
+      <span class="button button-small button-clear my-back" ng-if="backToProducts" ng-click="toProducts()">
+      	<i class="icon ion-chevron-left"></i>
+      </span>
+      <span class="button button-small button-clear my-back" ng-if="backToConllections" ng-click="toConllections()">
       	<i class="icon ion-chevron-left"></i>
       </span>
    </ion-nav-buttons>

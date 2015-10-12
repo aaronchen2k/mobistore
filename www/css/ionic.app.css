@@ -8285,7 +8285,7 @@ ion-list.list-with-price .list ion-item {
     #mine .service .my-col.right {
       border-right: 0px; }
     #mine .service .my-col .box {
-      margin: 30px;
+      margin: 30px auto;
       height: 60px;
       width: 100px;
       text-align: center; }

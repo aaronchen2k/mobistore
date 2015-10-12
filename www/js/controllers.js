@@ -271,7 +271,7 @@ angular.module('mobistore.controllers', [])
 		  console.log(keywords);
 		  
 		  $scope.showLoadKeywordsResult = false;
-		  $scope.closeModal();
+		  $scope.cancelModal();
 	 	  SearchOpt.opt({act: 'search', keywords: keywords},function(json) {
 	 		  console.log(json);
 			  $scope.products = json.data;
@@ -335,16 +335,24 @@ angular.module('mobistore.controllers', [])
 			  console.log($ionicHistory.backView());
 			  
 			  if ($rootScope.showProductFromHome || $ionicHistory.backView() == null) {
-				  $scope.myBackButtonShow = true;
+				  $scope.backToProducts = true;
 				  $rootScope.showProductFromHome = false;
 			  }
+			  if ($rootScope.showProductFromConllections) {
+				  $rootScope.backToConllections = true;
+				  $rootScope.showProductFromConllections = false;
+			  } 
 		  }); 
 	  });
 	  
 	  $scope.toProducts = function(product) {
-		  $scope.myBackButtonShow = false;
+		  $scope.backToProducts = false;
 		  $ionicHistory.nextViewOptions({ historyRoot: true });
 		  $location.path('/tab/products');
+	  };
+	  $scope.toConllections = function(product) {
+		  $ionicHistory.nextViewOptions({ historyRoot: true });
+		  $location.path('/tab/collections');
 	  };
 	  
 	  $scope.collect = function(product) {
@@ -507,6 +515,12 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.suggest = function() {
 		  $location.path('/tab/suggestion');
+	  };
+	  $scope.toCollections = function() {
+		  $location.path('/tab/collections');
+	  };
+	  $scope.toMsgs = function() {
+		  $location.path('/tab/msgs');
 	  };
 	  $scope.gotoMkt = function() {
 		  $scope.title="请在打开的窗口中评分！";
@@ -823,6 +837,37 @@ angular.module('mobistore.controllers', [])
 		  });
 	  }
 	  
+  }])
+  .controller('CollectionsCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicHistory', 'CollectionOpt',
+                          function($rootScope, $scope, $state, $location, $ionicHistory, CollectionOpt) {
+	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+		  CollectionOpt.opt({act: 'list'},function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.collections = json.data;
+		  });
+	   });
+	  
+	  $scope.showProdcut = function(id) {
+		  $rootScope.showProductFromConllections = true;
+		  $location.path('/tab/product/'+ id);
+	  };
+	  $scope.toMine = function(id) {
+		  $rootScope.backToConllections = false;
+		  $ionicHistory.nextViewOptions({ historyRoot: true });
+		  $location.path('/tab/mine');
+	  };
+	  
+  }])
+    .controller('MsgsCtrl', ['$scope', '$state', '$location', 'MsgOpt',
+                          function($scope, $state, $location, MsgOpt) {
+  	  $scope.$on('$ionicView.enter', function( scopes, states ) {
+  		  MsgOpt.opt({act: 'list'},function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.msgs = json.data;
+		  });
+	   });
   }])
   .controller('MsgCtrl', ['$scope', '$state', '$location', 
                           function($scope, $state, $location) {

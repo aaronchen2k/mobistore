@@ -56,6 +56,16 @@ angular.module('mobistore.models', [])
         'opt': {method:'POST'}
     });
 }])
+.factory('MsgOpt', ['$resource', 'Constant', function($resource, Constant){
+    return $resource(Constant.ApiPath + 'msg/opt/:act', {act:'@act'}, {
+        'opt': {method:'POST'}
+    });
+}])
+.factory('CollectionOpt', ['$resource', 'Constant', function($resource, Constant){
+    return $resource(Constant.ApiPath + 'collection/opt/:act', {act:'@act'}, {
+        'opt': {method:'POST'}
+    });
+}])
 .factory('SearchOpt', ['$resource', 'Constant', function($resource, Constant){
     return $resource(Constant.ApiPath + 'search/opt/:act', {act:'@act'}, {
         'opt': {method:'POST'}

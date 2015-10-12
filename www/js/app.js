@@ -184,6 +184,26 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           }
         }
       })
+      .state('tab.collections', {
+        url: '/collections',
+//        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/client/collections.html',
+            controller: 'CollectionsCtrl'
+          }
+        }
+      })
+      .state('tab.msgs', {
+        url: '/msgs',
+//        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/client/msgs.html',
+            controller: 'MsgsCtrl'
+          }
+        }
+      })
       .state('msg', {
         url: '/msg/:error',
 //        cache: false,
