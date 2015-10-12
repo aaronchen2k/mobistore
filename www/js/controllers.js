@@ -4,36 +4,6 @@ angular.module('mobistore.controllers', [])
   .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
                           function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
 	 
-	  $scope.backProduct = function() {
-//		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/' + $rootScope.productBackTo);
-		  $scope.reset();
-	  }
-	  
-	  $scope.toHome = function() {
-		  $scope.reset();
-		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/home');
-	  }
-	  
-	  $scope.toFind = function() {
-		  $scope.reset();
-		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/products');
-	  }
-	  $scope.toShoppingcart = function() {
-		  $scope.reset();
-		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/shoppingcart');
-	  }
-	  $scope.toMine = function() {
-		  $scope.reset();
-		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/mine');
-	  }
-	  $scope.reset = function() {
-		  $rootScope.productBackTo = null;
-	  }
   }])
   .controller('ClientCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 
                              function($rootScope, $scope, $location, $timeout, $ionicHistory, $ionicPopup, Util, StringUtil, clientSrv) {
@@ -185,7 +155,7 @@ angular.module('mobistore.controllers', [])
 	  };
 	  $scope.showProdcut = function(id) {
 		  $rootScope.productBackTo = 'home';
-		  $location.path('/tab/product/'+ id);
+		  $location.path('/product/'+ id);
 	  };
   }])
   
@@ -294,7 +264,8 @@ angular.module('mobistore.controllers', [])
 	  };
 	  
 	  $scope.showProdcut = function(id) {
-		  $location.path('/tab/product/'+ id);
+		  $rootScope.productBackTo = 'products';
+		  $location.path('/product/'+ id);
 	  };
 	  
 	  $scope.openModal = function() {
@@ -348,16 +319,9 @@ angular.module('mobistore.controllers', [])
 		  }); 
 	  });
 	  
-	  $scope.toProducts = function(product) {
-		  $rootScope.productBackTo = null;
-		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/products');
-	  };
-	  $scope.toConllections = function(product) {
-		  $rootScope.productBackTo = 'mine';
-		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/collections');
-	  };
+	  $rootScope.backProduct = function() {
+		  $location.path('/tab/'+ $rootScope.productBackTo);
+	  }
 	  
 	  $scope.collect = function(product) {
     	  console.log(product.id + '-' + $scope.isCollected);
@@ -457,7 +421,7 @@ angular.module('mobistore.controllers', [])
 	   });
 	  
 	  $scope.showProdcut = function(productId) {
-		  $location.path('/tab/product/'+ productId);
+		  $location.path('/product/'+ productId);
 	  };
 	  
 	  $scope.qtyChange = function(item) {
@@ -854,7 +818,7 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.showProdcut = function(id) {
 		  $rootScope.productBackTo = 'collections';
-		  $location.path('/tab/product/'+ id);
+		  $location.path('/product/'+ id);
 	  };
 	  $scope.toMine = function(id) {
 		  $rootScope.backToConllections = false;

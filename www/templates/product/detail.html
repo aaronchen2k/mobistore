@@ -1,10 +1,11 @@
-<ion-view id="product" view-title="产品">
-
-   <ion-nav-buttons side="left">
-      <span class="button button-small button-clear my-back" ng-if="productBackTo" ng-click="backProduct()">
-      	<i class="icon ion-chevron-left"></i>
-      </span>
-   </ion-nav-buttons>
+<ion-view id="product" view-title="产品" animation="slide-left-right">
+	<ion-nav-bar class="my-header-bar bar-dark">
+	   <ion-nav-buttons side="left">
+	      <span class="button button-small button-clear my-back" ng-click="backProduct()">
+	      	<i class="icon ion-chevron-left"></i>
+	      </span>
+	   </ion-nav-buttons>
+	</ion-nav-bar>
 
   <ion-content class="has-header content">
 			<div class="slide">
@@ -65,7 +66,7 @@
            	</div>
   </ion-content>
   
-	<div class="bar bar-footer has-tab-bar-footer">
+	<div class="bar bar-footer">
 	   	<div class="row bottom-buttons">
 	   		<div class="icons">
 	   			<a class="{{collectCls}} button button-icon icon" ng-click="collect(product)"> </a>

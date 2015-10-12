@@ -94,15 +94,11 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
             }
         }
       })
-      .state('tab.product', {
+      .state('product', {
         url: '/product/:productId',
-//        cache: false,
-        views: {
-          'tab-find': {
-            templateUrl: 'templates/product/detail.html',
-            controller: 'ProductCtrl'
-          }
-        }
+//      cache: false,
+        templateUrl: 'templates/product/detail.html',
+        controller: 'ProductCtrl'
       })
       .state('tab.shoppingcart', {
         url: '/shoppingcart',
