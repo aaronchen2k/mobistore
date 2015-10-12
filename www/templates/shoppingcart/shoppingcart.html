@@ -21,10 +21,10 @@
 	
 		<div class="detail">
 			<ion-list class="list-with-price">
-		        <ion-item ng-repeat="item in cart.items" ng-click="showProdcut(item.id)" class="item-thumbnail-left">
-		          <img ng-src="{{item.image | imgPath}}">
+		        <ion-item ng-repeat="item in cart.items" class="item-thumbnail-left">
+		          <img ng-click="showProdcut(item.productId)" ng-src="{{item.image | imgPath}}">
 		          
-		          <h2 class="text-big text-color-light-grey" >{{item.name}}</h2>
+		          <h2 ng-click="showProdcut(item.productId)" class="text-big text-color-light-grey" >{{item.name}}</h2>
 		          <div class="my-box text-thin text-color-light-grey">
 					<span>
 						{{item.unitPrice | currency:"￥"}}

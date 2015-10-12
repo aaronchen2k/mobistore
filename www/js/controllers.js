@@ -226,8 +226,8 @@ angular.module('mobistore.controllers', [])
 	  });
   }])
   
-  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicNavBarDelegate', '$ionicHistory', 'Util', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
-                              function($rootScope, $scope, $state, $location, $ionicNavBarDelegate, $ionicHistory, Util, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
+  .controller('ProductCtrl', ['$rootScope', '$scope', '$state', '$location', '$ionicNavBarDelegate', '$ionicHistory', 'Util', 'StringUtil', 'ClientOpt', 'ProductMdl', 'ProductOpt', 'ShoppingcartOpt',
+                              function($rootScope, $scope, $state, $location, $ionicNavBarDelegate, $ionicHistory, Util, StringUtil, ClientOpt, ProductMdl, ProductOpt, ShoppingcartOpt) {
 
 	  $scope.shopping = {qty: 1};
 	  var productId = $state.params.productId;
@@ -263,6 +263,24 @@ angular.module('mobistore.controllers', [])
     			  $scope.collectCls = json.data? 'ion-android-favorite': 'ion-android-favorite-outline';
     		  }
     	  });
+      };
+      
+      $scope.reduceQty = function() {
+    	  if (angular.isString($scope.shopping.qty)) {
+    		  $scope.shopping.qty = parseInt(StringUtil.trim($scope.shopping.qty))
+    	  }
+
+    	  if ($scope.shopping.qty > 1) {
+    		  $scope.shopping.qty -= 1;
+    	  }
+      };
+      $scope.addQty = function() {
+    	  if (angular.isString($scope.shopping.qty)) {
+    		  $scope.shopping.qty = parseInt(StringUtil.trim($scope.shopping.qty))
+    	  }
+    	  if ($scope.shopping.qty < $scope.product.qty) {
+    		  $scope.shopping.qty += 1;
+    	  }
       };
 	  
 	  $scope.addToShoppingcart = function(product) {
@@ -317,8 +335,8 @@ angular.module('mobistore.controllers', [])
 //	    });
 
   }])
-  .controller('ShoppingcartCtrl', ['$rootScope', '$scope', '$location', '$ionicModal', '$ionicPopover', 'StringUtil', 'ShoppingcartOpt', 'OrderOpt',  
-                                   function($rootScope, $scope, $location, $ionicModal, $ionicPopover, StringUtil, ShoppingcartOpt, OrderOpt) {
+  .controller('ShoppingcartCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$ionicModal', '$ionicPopover', 'StringUtil', 'ShoppingcartOpt', 'OrderOpt',  
+                                   function($rootScope, $scope, $timeout, $location, $ionicModal, $ionicPopover, StringUtil, ShoppingcartOpt, OrderOpt) {
 	  $scope.isEmpty = false;
 	  
 	  $scope.$on('$ionicView.enter', function( scopes, states ) {
@@ -333,17 +351,24 @@ angular.module('mobistore.controllers', [])
 		  });
 	   });
 	  
+	  $scope.showProdcut = function(productId) {
+		  $location.path('/tab/product/'+ productId);
+	  };
+	  
 	  $scope.qtyChange = function(item) {
-			console.log(item);	
-			if (StringUtil.isEmpty(StringUtil.trim(item.qty))) {
-				return;
-			}
-			ShoppingcartOpt.opt({act: 'changeQty', itemId: item.id, itemQty: item.qty}, function(json) {
-		  		console.log(json);
-		  		
-		  		$scope.cart = json.data;
-		  		$scope.isEmpty = $scope.cart.totalAmount == 0;
-			});
+//			console.log(item);	
+		  $timeout.cancel($scope.promise)
+			$scope.promise = $timeout(function() {
+				if (StringUtil.isEmpty(StringUtil.trim(item.qty))) {
+					return;
+				}
+				ShoppingcartOpt.opt({act: 'changeQty', itemId: item.id, itemQty: item.qty}, function(json) {
+			  		console.log(json);
+			  		
+			  		$scope.cart = json.data;
+			  		$scope.isEmpty = $scope.cart.totalAmount == 0;
+				});
+			}, 3000);
 	  };
 	  
 	  $scope.clear = function() {
