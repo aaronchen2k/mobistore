@@ -490,6 +490,7 @@ angular.module('mobistore.controllers', [])
 		  });
 	  };
 	  
+	  
 	  $scope.select = function(item) {
 		  console.log(item);
 		  OrderOpt.opt({act: 'changeRecipient', orderId: $scope.order.id, recipientId: item.id}, 
