@@ -396,8 +396,8 @@ angular.module('mobistore.controllers', [])
 	  };
   }])
 
-  .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', 'ClientOpt', 
-                           function($state, $rootScope, $scope, $location, ClientOpt) {
+  .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicModal', 'ClientOpt', 
+                           function($state, $rootScope, $scope, $location, $ionicModal, ClientOpt) {
 	  
 	  $scope.$on('$ionicView.enter', function( scopes, states ) {
 		  ClientOpt.opt({act: 'info', platform: ionic.Platform.platform()},function(json) {
@@ -412,8 +412,12 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/tab/profile');
 	  };
 	  
-	  $scope.gotoMkt = function(url) {
-		  console.log($scope.info.rateUrl);
+	  $scope.suggest = function() {
+		  $location.path('/tab/suggestion');
+	  };
+	  $scope.gotoMkt = function() {
+		  $scope.title="请在打开的窗口中评分！";
+		  $rootScope.modal.show();
 	  };
 	  
 	  $scope.showOrders = function(orderFilter) {
@@ -427,6 +431,45 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/tab/addresses');
 	  };
 	  
+	  if (!$scope.modalLoaded) {
+		  $ionicModal.fromTemplateUrl('templates/myframe.html', {
+		    scope: $scope,
+		    animation: 'slide-in'
+		  }).then(function(modal) {
+		    $rootScope.modal = modal;
+		    $scope.modalLoaded = true;
+		  });
+	  }
+	  
+	  $scope.cancelModal = function() {
+		  $rootScope.modal.hide();
+	  };
+	  $scope.$on('$destroy', function() {
+		  if ($rootScope.modal) {
+			  $rootScope.modal.remove();
+		  }
+	  });
+  }])
+  .controller('SuggestionCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicPopup', 'StringUtil', 'ClientOpt', 
+                           function($state, $rootScope, $scope, $location, $ionicPopup, StringUtil, ClientOpt) {
+	  $scope.suggestion = {};
+	  
+	  $scope.save = function() {
+		  console.log($scope.suggestion);
+		  if (StringUtil.isEmpty($scope.suggestion.content)) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '请输入建议内容!',
+				     okText: '确定',
+				     okType: 'button-light'
+			  });
+			  return;
+		  }
+		  
+		  ClientOpt.opt({act: 'suggest', content: $scope.suggestion.content}, function(json) {
+		  		console.log(json);
+		  		$location.path('/tab/mine');
+		  });
+	  };
   }])
   .controller('ProfileCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicPopup', 'StringUtil', 'ClientOpt', 
                            function($state, $rootScope, $scope, $location, $ionicPopup, StringUtil, ClientOpt) {

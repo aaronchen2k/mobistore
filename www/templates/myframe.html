@@ -1,0 +1,17 @@
+<ion-view id="myframe" view-title="">
+	<ion-header-bar class="bar-positive">
+		<div class="buttons"></div>
+		  <h1 class="title">{{title}}</h1>
+		  <div class="buttons">
+		  <span class="button button-clear" ng-click="cancelModal()">
+		    关闭
+		  </span>
+		  </div>
+	</ion-header-bar>
+
+  <ion-content class="content">
+	<iframe src="{{info.rateUrl}}" width="100%" height="100%"> 
+		您的浏览器不支持框架 
+	</iframe> 
+  </ion-content>
+</ion-view>

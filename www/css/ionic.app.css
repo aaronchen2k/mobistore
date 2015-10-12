@@ -8335,3 +8335,9 @@ ion-list.list-with-price .list ion-item {
 
 #address .list .item .icon {
   font-size: small; }
+
+#suggestion textarea {
+  margin-top: 20px; }
+
+#myframe .content .scroll {
+  height: 100%; }

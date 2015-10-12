@@ -26,7 +26,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $provide, $httpProvider, $ionicConfigProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $provide, $httpProvider, $ionicConfigProvider,$sceDelegateProvider) {
     $ionicConfigProvider.platform.android.tabs.position('bottom');
     
     $urlRouterProvider.otherwise('/tab/home');
@@ -35,6 +35,9 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $ionicConfigProvider.backButton.icon('ion-chevron-left');
     $ionicConfigProvider.backButton.text('');
     //$locationProvider.html5Mode(true); // 发布时需要用html5Mode
+    $sceDelegateProvider.resourceUrlWhitelist(['self',
+                                               'https://itunes.apple.com/**',
+                                               'http://zhushou.360.cn/**' ]);
     
 //    $ionicConfigProvider.views.maxCache(0);
 //    $ionicConfigProvider.views.transition('none');
@@ -118,6 +121,16 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
           'tab-mine': {
             templateUrl: 'templates/client/profile.html',
             controller: 'ProfileCtrl'
+          }
+        }
+      })
+      .state('tab.suggestion', {
+        url: '/suggestion',
+//        cache: false,
+        views: {
+          'tab-mine': {
+            templateUrl: 'templates/client/suggestion.html',
+            controller: 'SuggestionCtrl'
           }
         }
       })

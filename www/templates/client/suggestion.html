@@ -1,0 +1,16 @@
+<ion-view id="suggestion" view-title="建议">
+	
+	<ion-content class="has-header content">
+		<div class="list">
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">内容</span>
+		    <textarea rows="10" ng-model="suggestion.content" placeholder="请输入建议内容">
+			</textarea>
+		  </label>
+		</div>
+		<div class="padding">
+	        <button ng-click="save()" class="button button-block button-positive activated">提交</button>
+	    </div>
+	</ion-content>
+	
+</ion-view>
