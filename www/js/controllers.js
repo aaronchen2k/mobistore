@@ -1,6 +1,35 @@
 'use strict';
 
 angular.module('mobistore.controllers', [])
+  .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
+                          function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
+	  
+	  $scope.toHome = function() {
+		  $scope.reset();
+		  $ionicHistory.nextViewOptions({ historyRoot: true });
+		  $location.path('/tab/home');
+	  }
+	  
+	  $scope.toFind = function() {
+		  $scope.reset();
+		  $ionicHistory.nextViewOptions({ historyRoot: true });
+		  $location.path('/tab/products');
+	  }
+	  $scope.toShoppingcart = function() {
+		  $scope.reset();
+		  $ionicHistory.nextViewOptions({ historyRoot: true });
+		  $location.path('/tab/shoppingcart');
+	  }
+	  $scope.toMine = function() {
+		  $scope.reset();
+		  $ionicHistory.nextViewOptions({ historyRoot: true });
+		  $location.path('/tab/mine');
+	  }
+	  $scope.reset = function() {
+		  $rootScope.backToProducts = false;
+		  $rootScope.backToConllections = false;
+	  }
+  }])
   .controller('ClientCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 
                              function($rootScope, $scope, $location, $timeout, $ionicHistory, $ionicPopup, Util, StringUtil, clientSrv) {
 	  var platform = ionic.Platform.platform();
@@ -109,14 +138,6 @@ angular.module('mobistore.controllers', [])
 		  $location.path('/signon');
 	  }
   }])
-  .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
-                          function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
-	  
-	  $scope.toHome = function() {
-		  $ionicHistory.nextViewOptions({ historyRoot: true });
-		  $location.path('/tab/home');
-	  }
-  }])
 
   .controller('HomeCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicModal', '$ionicPopover', 'Util', 'StringUtil', 'HomeOpt', 'ProductMdl', 'ProductOpt', 'SearchOpt', 
                            function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicModal, $ionicPopover, Util, StringUtil, HomeOpt, ProductMdl, ProductOpt, SearchOpt) {
@@ -139,24 +160,6 @@ angular.module('mobistore.controllers', [])
 			  }
 		  });
 	   });
-	  
-//	  window.addEventListener("orientationchange", function() {
-//		　　$scope.resize();
-//	  }, false);
-//	  
-//	  $scope.resize = function() {
-//		  $scope.platform = ionic.Platform.platform();
-//	    var width = Util.getScreenSize().w;
-//	    var height = width * 0.57;
-//	    
-//	    if (ionic.Platform.isAndroid()window.devicePixelRatio) {
-//	    	height = height / window.devicePixelRatio;
-//	    	width = width / window.devicePixelRatio;
-//	    }
-//
-//	    $scope.styleSlideHeight = {'height':height + 'px', 'width': width + 'px'};
-//	  };
-//	  $scope.resize();
  	  
 	  $scope.menuShow = false;$scope.categories
 	  $scope.showMenu = function() {

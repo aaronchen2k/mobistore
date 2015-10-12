@@ -5,20 +5,20 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-dark" ng-class="{'tabs-bar-hide': $root.hideTabs}">
 
-  <ion-tab title="首页" icon-off="ion-ios-home-outline " icon-on="ion-ios-home" href="#/tab/home">
+  <ion-tab title="首页" icon-off="ion-ios-home-outline " icon-on="ion-ios-home" ng-click="toHome()">
     <ion-nav-view name="tab-home"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="发现" icon-off="ion-ios-color-wand-outline" icon-on="ion-ios-color-wand" href="#/tab/products">
+  <ion-tab title="发现" icon-off="ion-ios-color-wand-outline" icon-on="ion-ios-color-wand" ng-click="toFind()">
     <ion-nav-view name="tab-find"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="购物车" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" href="#/tab/shoppingcart"
+  <ion-tab title="购物车" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart"  ng-click="toShoppingcart()" 
   			badge="shoppingcartItemNumb" badge-style="badge-assertive">
     <ion-nav-view name="tab-shoppingcart"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="我的" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/tab/mine" 
+  <ion-tab title="我的" icon-off="ion-ios-person-outline" icon-on="ion-ios-person"  ng-click="toMine()"
   			badge-style="badge-assertive">
     <ion-nav-view name="tab-mine"></ion-nav-view>
   </ion-tab>
