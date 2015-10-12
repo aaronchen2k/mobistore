@@ -3,7 +3,7 @@
 	  <h1 class="title">登录</h1>
 	</div>
   <ion-content class="has-header">
-
+	  
 	  <div class="list">
 		  <label class="item item-input">
 		    <span class="input-label">手机号</span>
@@ -16,18 +16,18 @@
 		</div>
 		
 		<div class="row">
-		 	<button class="button button-positive button-full"  ng-click="signon( client )">
+		 	<button class="button button-positive button-full"  ng-click="signon()">
 			  提交
 			</button>
 		</div>
 
 		<div class="row">
 		  <div class="col">
-			<button class="button button-small button-light">
+			<button class="button button-small button-light" ng-click="toSignup()">
 		  		注册
 			</button>
 			
-			<button class="button button-small button-light">
+			<button class="button button-small button-light" ng-click="toForget()">
 		  		忘记密码
 			</button>
 			</div>

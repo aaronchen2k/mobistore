@@ -1,20 +1,96 @@
 'use strict';
 
 angular.module('mobistore.controllers', [])
-  .controller('ClientCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'clientSrv', 
-                             function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, clientSrv) {
+  .controller('ClientCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 
+                             function($rootScope, $scope, $location, $timeout, $ionicHistory, $ionicPopup, Util, StringUtil, clientSrv) {
 	  var platform = ionic.Platform.platform();
 	  var isWebView = ionic.Platform.isWebView();
 	  
 	  $scope.client = {mobile: '16612345678', password: '123456'};
+	  $scope.client = angular.extend($scope.client, {platform: platform, isWebView: isWebView});
+	  $scope.newClient = {};
 	  $scope.signon = function() {
-		  clientSrv.signon($scope.client, platform);
+		  clientSrv.signon($scope.client);
 	  }
 	  
-	  $scope.$on('$viewContentLoaded', function(event) {
-	      
-	  });
+	  $scope.toSignon = function() {
+		  $location.path('/signon');
+	  }
+	  $scope.toSignup = function() {
+		  $location.path('/signup');
+	  }
 	  
+	  $scope.toForget = function() {
+		  $location.path('/forget');
+	  }
+	  
+	  $scope.signup = function() {
+		  console.log('signup');
+		  if (StringUtil.isEmpty($scope.newClient.mobile) || StringUtil.isEmpty($scope.newClient.password)
+				  || StringUtil.isEmpty($scope.newClient.repassword)) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '请填写手机号和密码!',
+				     okText: '确定', okType: 'button-light' });
+			  return;
+		  }
+		  if ($scope.newClient.password != $scope.newClient.repassword) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '两次密码不一致!',
+				     okText: '确定', okType: 'button-light' });
+			  return;
+		  }
+		  
+		  $scope.newClient = angular.extend($scope.newClient, {platform: platform, isWebView: isWebView});
+		  clientSrv.signup($scope.newClient);
+	  }
+	  
+	  $scope.forget = function() {
+		  console.log('forget');
+		  if (StringUtil.isEmpty($scope.newClient.mobile)) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '请填写手机号码!',
+				     okText: '确定', okType: 'button-light' });
+			  return;
+		  }
+		  clientSrv.forget($scope.newClient.mobile);
+		  
+	  }
+	  
+  }])
+  .controller('ResetPasswordCtrl', ['$rootScope', '$scope', '$state', '$location', '$timeout', '$ionicHistory', '$ionicPopup', 'Util', 'StringUtil', 'clientSrv', 'HomeOpt', 
+                          function($rootScope, $scope, $state, $location, $timeout, $ionicHistory, $ionicPopup, Util, StringUtil, clientSrv, HomeOpt) {
+	  var platform = ionic.Platform.platform();
+	  var isWebView = ionic.Platform.isWebView();
+	  
+	  $scope.newClient = {};
+	  $scope.newClient.mobile = $state.params.mobile;
+	  $scope.resetPassword = function() {
+		 
+		  console.log('---' + $scope.newClient.mobile);
+		  
+		  console.log('resetPassword');
+		  if (StringUtil.isEmpty($scope.newClient.mobile) || StringUtil.isEmpty($scope.newClient.password)
+				  || StringUtil.isEmpty($scope.newClient.repassword) || StringUtil.isEmpty($scope.newClient.verifyCode)) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '请填写必要的信息!',
+				     okText: '确定', okType: 'button-light' });
+			  return;
+		  }
+		  if ($scope.newClient.password != $scope.newClient.repassword) {
+			  var alertPopup = $ionicPopup.alert({
+				     title: '两次密码不一致!',
+				     okText: '确定', okType: 'button-light' });
+			  return;
+		  }
+		  
+		  angular.extend($scope.newClient, {platform: platform, isWebView: isWebView});
+		  
+		  clientSrv.resetPassword($scope.newClient);
+	  }
+	  
+	  $scope.toSignon = function() {
+		  $location.path('/signon');
+	  }
   }])
   .controller('TabCtrl', ['$rootScope', '$scope', '$location', '$timeout', '$ionicHistory', 'Util', 'HomeOpt', 
                           function($rootScope, $scope, $location, $timeout, $ionicHistory, Util, HomeOpt) {
@@ -396,8 +472,8 @@ angular.module('mobistore.controllers', [])
 	  };
   }])
 
-  .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicModal', 'ClientOpt', 
-                           function($state, $rootScope, $scope, $location, $ionicModal, ClientOpt) {
+  .controller('MineCtrl', ['$state', '$rootScope', '$scope', '$location', '$ionicModal', 'ClientOpt', 'clientSrv', 
+                           function($state, $rootScope, $scope, $location, $ionicModal, ClientOpt, clientSrv) {
 	  
 	  $scope.$on('$ionicView.enter', function( scopes, states ) {
 		  ClientOpt.opt({act: 'info', platform: ionic.Platform.platform()},function(json) {
@@ -429,6 +505,10 @@ angular.module('mobistore.controllers', [])
 	  
 	  $scope.showAddress = function() {
 		  $location.path('/tab/addresses');
+	  };
+	  $scope.signout = function() {
+		  clientSrv.signout();
+		  
 	  };
 	  
 	  if (!$scope.modalLoaded) {

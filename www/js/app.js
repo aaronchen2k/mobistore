@@ -34,7 +34,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $ionicConfigProvider.navBar.alignTitle('center');
     $ionicConfigProvider.backButton.icon('ion-chevron-left');
     $ionicConfigProvider.backButton.text('');
-    //$locationProvider.html5Mode(true); // 发布时需要用html5Mode
+    $locationProvider.html5Mode(true); // 发布时需要用html5Mode
     $sceDelegateProvider.resourceUrlWhitelist(['self',
                                                'https://itunes.apple.com/**',
                                                'http://zhushou.360.cn/**' ]);
@@ -50,8 +50,23 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $stateProvider
 	.state('signon', {
 	    url: '/signon',
-	    templateUrl: 'templates/signon.html',
+	    templateUrl: 'templates/client/signon.html',
 	    controller: 'ClientCtrl'
+	  })
+	  .state('signup', {
+	    url: '/signup',
+	    templateUrl: 'templates/client/signup.html',
+	    controller: 'ClientCtrl'
+	  })
+	  .state('forget', {
+	    url: '/forget',
+	    templateUrl: 'templates/client/forget.html',
+	    controller: 'ClientCtrl'
+	  })
+	  .state('resetPassword', {
+	    url: '/resetPassword/:mobile',
+	    templateUrl: 'templates/client/resetPassword.html',
+	    controller: 'ResetPasswordCtrl'
 	  })
 
       // setup an abstract state for the tabs directive
@@ -225,7 +240,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
         	if (code === -100) {
         		$location.path("/signon");
         	} else if (code < 0){
-        		$location.path("/msg/" + code);
+
         	}
             return response;
         },
