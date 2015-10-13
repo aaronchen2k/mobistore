@@ -74,7 +74,7 @@ $menu-height: 290px;
 }
 
 .text-ellipsis{text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
-.text-ellipsis{text-overflow:clip; overflow:hidden; white-space:nowrap;}
+.text-clip{text-overflow:clip; overflow:hidden; white-space:nowrap;}
 
 .spinner {
     display: block;
@@ -373,7 +373,7 @@ ion-popover-view.active {
 				 width: 50%;
     			 padding: 0 13px 0 13px;
 				 .button-icon {
-					margin: 5px 5px;
+					margin: 5px 0px;
 				}
 			}
 			.buttons {
@@ -398,6 +398,7 @@ ion-popover-view.active {
 					&.half {
 						width: 50%;
 					}
+					
 				}
 			}
 	}
@@ -532,6 +533,7 @@ ion-list.list-with-price .list ion-item {
 				.title {
 				    font-size: 18px;
 				    color: #08548e;
+				    
 				}
 				.col-left {
 					width:100px;

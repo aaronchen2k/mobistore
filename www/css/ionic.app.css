@@ -7802,7 +7802,7 @@ a.button {
   overflow: hidden;
   white-space: nowrap; }
 
-.text-ellipsis {
+.text-clip {
   text-overflow: clip;
   overflow: hidden;
   white-space: nowrap; }
@@ -8027,7 +8027,7 @@ ion-popover-view.active {
       width: 50%;
       padding: 0 13px 0 13px; }
       .bar-footer .bottom-buttons .icons .button-icon {
-        margin: 5px 5px; }
+        margin: 5px 0px; }
     .bar-footer .bottom-buttons .buttons {
       width: 100%; }
       .bar-footer .bottom-buttons .buttons.half {

@@ -13,7 +13,7 @@
 			</div>
 			<div class="rows">
 				<div class="row name">
-					<span class="title">{{product.name}}</span>
+					<span class="title text-ellipsis">{{product.name}}</span>
 	       		</div>
 				<div class="row">
 			        <div class="col-left text-color-light-grey">
@@ -76,11 +76,8 @@
 		   		</a>
 	   		</div>
 			<div class="buttons half">
-				<button class="button button-light left half" ng-click="addToShoppingcart(product)">
+				<button class="button button-light left" ng-click="addToShoppingcart(product)">
 				  加入购物车
-				</button>
-				<button class="button button-light right half" ng-click="buy(product)">
-				  立即购买
 				</button>
 			</div>
 		</div>
