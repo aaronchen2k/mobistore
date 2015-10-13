@@ -34,7 +34,7 @@ angular.module('mobistore', ['ngResource', 'ionic', 'ngCookies',
     $ionicConfigProvider.navBar.alignTitle('center');
     $ionicConfigProvider.backButton.icon('ion-chevron-left');
     $ionicConfigProvider.backButton.text('');
-//    $locationProvider.html5Mode(true); // 发布时需要用html5Mode
+    $locationProvider.html5Mode(true); // 发布时需要用html5Mode
     $sceDelegateProvider.resourceUrlWhitelist(['self',
                                                'https://itunes.apple.com/**',
                                                'http://zhushou.360.cn/**' ]);

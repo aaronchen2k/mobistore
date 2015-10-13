@@ -446,6 +446,7 @@ angular.module('mobistore.controllers', [])
 		  		console.log(json);
 		  		
 		  		$scope.cart = json.data;
+		  		$rootScope.shoppingcartItemNumb = $scope.cart.items.length;
 		  		$scope.isEmpty = $scope.cart.totalAmount == 0;
 			});
 	  };
@@ -454,8 +455,9 @@ angular.module('mobistore.controllers', [])
 		  ShoppingcartOpt.opt({act:'clear'}).$promise.then(function(json) {
     		  console.log(json);
     		  $scope.cart = json.data;
-    		  $scope.isEmpty = $scope.cart.totalAmount == 0;
     		  $rootScope.shoppingcartItemNumb = 0;
+    		  $scope.isEmpty = $scope.cart.totalAmount == 0;
+    		  
     	  });	
 	  };
 	  $scope.checkout = function() {
