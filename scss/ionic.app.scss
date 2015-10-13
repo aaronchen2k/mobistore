@@ -214,8 +214,7 @@ ion-popover-view.active {
 
   .my-row1 {
     .slider {
-      height: 200px;
-      
+    	height: 200px;
       .slider-slide {
         margin: 0px;
         padding: 0px;
@@ -229,6 +228,16 @@ ion-popover-view.active {
         }
       }
     }
+    @media screen and (min-width: 480px) {
+        .slider {
+    		height: 200px;
+        }
+	}
+    @media screen and (max-width: 480px) {
+        .slider {
+    		height: 150px;
+        }
+	}
   }
 
   .my-row2 {
