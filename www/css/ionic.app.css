@@ -8194,7 +8194,7 @@ ion-list.list-with-price .list ion-item {
     #shoppingcart .summary .row .col.left {
       text-align: right; }
     #shoppingcart .summary .row .col.right {
-      padding-left: 50px; }
+      padding-left: 10px; }
 
 #orders h2 {
   background-color: #EBEBEB; }
