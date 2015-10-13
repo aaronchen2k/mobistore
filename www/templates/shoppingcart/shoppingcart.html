@@ -25,18 +25,23 @@
 		          <img ng-click="showProdcut(item.productId)" ng-src="{{item.image | imgPath}}">
 		          
 		          <h2 ng-click="showProdcut(item.productId)" class="text-big text-color-light-grey" >{{item.name}}</h2>
+		          <p class="text-thin text-color-light-grey">{{item.unitPrice | currency:"￥"}}</p>
+		          <div class="clear-both"></div>
 		          <div class="my-box text-thin text-color-light-grey">
-					<span>
-						{{item.unitPrice | currency:"￥"}}
-					</span>
-					<span class="right">
-						<span class="my-label">
-							数量
+					<div class="line">
+						<span class="left">
+							<span class="my-label">
+								数量
+							</span>
+							<span class="my-input">
+								<input type="text" ng-model="item.qty" ng-change="qtyChange(item)">
+							</span>
 						</span>
-						<span class="my-input">
-							<input type="text" ng-model="item.qty" ng-change="qtyChange(item)">
+						
+						<span class="right" ng-click="remove(item)">
+							<span class="icon ion-ios-trash"></span>
 						</span>
-					</span>
+					</div>
 				  </div>
 		        </ion-item>
 		   </ion-list>

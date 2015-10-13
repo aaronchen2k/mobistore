@@ -405,7 +405,7 @@ ion-popover-view.active {
 }	
 
 ion-list.list-with-price .list ion-item {
-    padding-top: 20px;
+    padding-top: 6px;
     padding-left: 100px;
     img {
     	top: 0px;
@@ -413,7 +413,7 @@ ion-list.list-with-price .list ion-item {
    	    max-width: 100px;
  		max-height: 100px;
     }
-    h2 {
+    h2, p {
     	padding-left: 10px;
     }
     .my-box {
@@ -427,9 +427,8 @@ ion-list.list-with-price .list ion-item {
   			
   			span {
   				line-height: 35px;
-  				&.right {
-  					    float: right;
-				    width: 220px;
+  				&.left {
+  					float: left;
 				    span {
 				    	float: left;
 				    	&.my-label {
@@ -445,6 +444,16 @@ ion-list.list-with-price .list ion-item {
 				    		}
 				    	}
 				    }
+  				}
+  				&.right {
+  					float: right;
+  					margin-right: 100px;
+  					padding: 0 10px;
+  					width: 30px;
+  					.icon {
+  						font-size: 22px;
+  					}
+  					
   				}
   			}
 	}

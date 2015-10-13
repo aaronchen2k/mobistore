@@ -8047,14 +8047,14 @@ ion-popover-view.active {
           width: 50%; }
 
 ion-list.list-with-price .list ion-item {
-  padding-top: 20px;
+  padding-top: 6px;
   padding-left: 100px; }
   ion-list.list-with-price .list ion-item img {
     top: 0px;
     left: 0px;
     max-width: 100px;
     max-height: 100px; }
-  ion-list.list-with-price .list ion-item h2 {
+  ion-list.list-with-price .list ion-item h2, ion-list.list-with-price .list ion-item p {
     padding-left: 10px; }
   ion-list.list-with-price .list ion-item .my-box {
     position: absolute;
@@ -8065,20 +8065,26 @@ ion-list.list-with-price .list ion-item {
     background-color: #EBEBEB; }
     ion-list.list-with-price .list ion-item .my-box span {
       line-height: 35px; }
-      ion-list.list-with-price .list ion-item .my-box span.right {
-        float: right;
-        width: 220px; }
-        ion-list.list-with-price .list ion-item .my-box span.right span {
+      ion-list.list-with-price .list ion-item .my-box span.left {
+        float: left; }
+        ion-list.list-with-price .list ion-item .my-box span.left span {
           float: left; }
-          ion-list.list-with-price .list ion-item .my-box span.right span.my-label {
+          ion-list.list-with-price .list ion-item .my-box span.left span.my-label {
             width: 50px; }
-          ion-list.list-with-price .list ion-item .my-box span.right span.my-input {
+          ion-list.list-with-price .list ion-item .my-box span.left span.my-input {
             padding: 2px;
             text-align: center; }
-            ion-list.list-with-price .list ion-item .my-box span.right span.my-input input {
+            ion-list.list-with-price .list ion-item .my-box span.left span.my-input input {
               width: 50px;
               height: 31px;
               text-align: center; }
+      ion-list.list-with-price .list ion-item .my-box span.right {
+        float: right;
+        margin-right: 100px;
+        padding: 0 10px;
+        width: 30px; }
+        ion-list.list-with-price .list ion-item .my-box span.right .icon {
+          font-size: 22px; }
 
 #detail .content .slide {
   width: 100%;

@@ -110,7 +110,6 @@ angular.module('mobistore.controllers', [])
 	  }
 	  
 	  $scope.toSignon = function() {
-		  $location.path('/signon');
 	  }
   }])
 
@@ -421,6 +420,7 @@ angular.module('mobistore.controllers', [])
 	   });
 	  
 	  $scope.showProdcut = function(productId) {
+		  $rootScope.productBackTo = 'shoppingcart';
 		  $location.path('/product/'+ productId);
 	  };
 	  
@@ -438,6 +438,16 @@ angular.module('mobistore.controllers', [])
 			  		$scope.isEmpty = $scope.cart.totalAmount == 0;
 				});
 			}, 2000);
+	  };
+	  
+	  $scope.remove = function(item) {
+		  console.log(item);
+			ShoppingcartOpt.opt({act: 'remove', itemId: item.id}, function(json) {
+		  		console.log(json);
+		  		
+		  		$scope.cart = json.data;
+		  		$scope.isEmpty = $scope.cart.totalAmount == 0;
+			});
 	  };
 	  
 	  $scope.clear = function() {
