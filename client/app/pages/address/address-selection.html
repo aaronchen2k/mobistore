@@ -1,0 +1,26 @@
+<ion-navbar *navbar light>
+	<ion-title>
+		请选择
+	</ion-title>
+	<ion-buttons end>
+		<button royal (click)="cancel()">
+			<ion-icon name="close-outline"></ion-icon>
+		</button>
+	</ion-buttons>
+</ion-navbar>
+
+<div class="address-selection" [ngModel]="recipientId">
+	<ion-list radio-group > 
+	    <!-- <ion-list-header> 请选择地址： </ion-list-header>  -->
+	    <ion-item *ngFor="#item of addresses">
+			<ion-label>
+				<h2 class="text-big text-color-light-grey">{{item.name}}，{{item.phone}}</h2>
+				<p class="text-thin text-color-light-grey">{{item.province}} &nbsp;{{item.city}}</p>
+				<p class="text-thin text-color-light-grey descr">{{recipientId}} == {{item.id}} - {{item.street}} {{item.address}}</p>
+			</ion-label>
+	        <ion-radio (click)="selectAddress(item.id)" [value]="item.id"></ion-radio>
+        </ion-item>
+    </ion-list>
+</div>
+
+

@@ -1,0 +1,43 @@
+<div id="search">
+    <div class="searchbar-container">
+        <div class="search-wapper">
+		    <ion-searchbar [(ngModel)]="searchQuery" (input)="loadKeywords($event)" 
+		        hideCancelButton='true' (clear)="clear()">
+		    </ion-searchbar>
+	    </div>
+	    <div class="cancel-wapper" (click)="close()">
+	       关闭
+	    </div>
+    </div>
+      <div class="keywords" *ngIf="!showResult">
+        <ion-item-group>
+	      <ion-item-divider light>
+	           热门搜索
+	      </ion-item-divider>
+	      <ion-item>
+	           <button *ngFor="#keywords of hots" (click)="search(keywords)">
+	               {{keywords}}
+	           </button>
+	      </ion-item>
+	    </ion-item-group>
+	    
+        <ion-item-group>
+            <ion-item-divider light>
+                搜索历史
+            </ion-item-divider>
+            <ion-item *ngFor="#keywords of histories" (click)="search(keywords)">
+                {{keywords}}
+            </ion-item>
+        </ion-item-group>
+	 </div>
+	 <div class="results" *ngIf="showResult">
+	    <ion-item-group>
+            <ion-item-divider light>
+                搜索结果
+            </ion-item-divider>
+            <ion-item *ngFor="#item of keywordsResult" (click)="search(item.keywords)">
+                {{item.keywords}}
+            </ion-item>
+        </ion-item-group>
+	 </div>
+</div>

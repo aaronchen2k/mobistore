@@ -1,0 +1,15 @@
+<ion-navbar *navbar class="my-navbar">
+	<ion-title>
+		信息列表
+	</ion-title>
+</ion-navbar>
+
+<ion-content class="my-msg-list">
+	<ion-list>
+		<ion-item *ngFor="#item of msgs" (click)="showMsg(item)">
+			<h2>{{item.title}}</h2>
+			<p>{{item.descr}}</p>
+		</ion-item>
+	</ion-list>
+</ion-content>
+

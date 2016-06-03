@@ -1,0 +1,122 @@
+<ion-navbar *navbar class="my-navbar">
+  <ion-title>
+    我的
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="mine">
+	<div *ngIf="data">
+	    <div class="info">
+	        <div class="profile">
+	            <div class="avatar"></div>
+	            <div class="detail">
+	                <div class="">
+	                    {{data.client.nickName}}
+	                </div>
+	                <div class="">
+	                    {{data.client.mobile}}
+	                </div>
+	            </div>
+	            <div class="edit" (click)="editProfile()">
+	                <ion-icon name="create-outline"></ion-icon>
+	            </div>
+	            <div class="clear-both"></div>
+	        </div>
+	        <div class="bar">
+	              <div class="col">
+	                <div class="numb">{{data.client.rewardPoints}}</div>
+	                <div class="text">我的积分</div>
+	              </div>
+	              <div class="col" (click)="showCollections()">
+	                <div class="numb">{{data.collectionCount}}</div>
+	                <div class="text">我的收藏</div>
+	              </div>
+	              <div class="col" (click)="showMsgs()">
+	                <div class="numb">{{data.msgCount}}</div>
+	                <div class="text">我的消息</div>
+	              </div>
+	        </div>
+	    </div>
+	    <div class="service">
+	      <div class="my-col left" (click)="suggest()">
+	        <div class="box">
+	            <div>
+	                <ion-icon name="chatboxes-outline"></ion-icon>
+	            </div>
+	            <div>
+	                建议投诉
+	            </div>
+	        </div>
+	      </div>
+	      <div class="my-col right" (click)="gotoMkt()">
+	        <div class="box">
+	            <div>
+		            <ion-icon name="star-outline"></ion-icon>
+		        </div>
+		        <div>
+		            应用打分
+		        </div>
+	        </div>
+
+	      </div>
+	    </div>
+
+	    <div class="section">
+	        <div class="sec my-header" (click)="showAllOrders()">
+	          <div class="left">
+	               <ion-icon name="pricetags-outline"></ion-icon>
+	              订单管理
+	          </div>
+	          <div class="right">
+	               <ion-icon name="ios-arrow-forward"></ion-icon>
+	          </div>
+	        </div>
+	        <div class="sec my-content">
+	          <div class="col" (click)="showOrders('waitPay')">
+	            <div class="box">
+	                <i class="icon pay has-badge my-badge">
+	                    <span class="badge light" *ngIf="data.waitPay > 0">{{data.waitPay}}</span>
+	                </i>
+	                待付款
+	            </div>
+	          </div>
+	          <div class="col" (click)="showOrders('waitShip')">
+	            <div class="box">
+	                <i class="icon deliver has-badge my-badge">
+	                    <span class="badge light" *ngIf="data.waitShip > 0">{{data.waitShip}}</span>
+	                </i>
+	                待投递
+	            </div>
+	          </div>
+	          <div class="col" (click)="showOrders('waitReceive')">
+	            <div class="box">
+	                <i class="icon take has-badge my-badge">
+	                    <span class="badge light" *ngIf="data.waitReceive > 0">{{data.waitReceive}}</span>
+	                </i>
+	                待收货
+	            </div>
+	          </div>
+	          <div class="col" (click)="showOrders('waitRate')">
+	            <div class="box">
+	                <i class="icon mark has-badge my-badge">
+	                    <span class="badge light" *ngIf="data.waitRate > 0">{{data.waitRate}}</span>
+	                </i>
+	                待评价
+	            </div>
+	          </div>
+	        </div>
+	    </div>
+
+	    <div class="section">
+	        <div class="sec my-header" (click)="showAddress()">
+	          <div class="left">
+	              <ion-icon name="home-outline"></ion-icon>
+	              地址管理
+	          </div>
+	          <div class="right">
+	               <ion-icon name="ios-arrow-forward"></ion-icon>
+	          </div>
+	        </div>
+	    </div>
+	</div>
+</ion-content>

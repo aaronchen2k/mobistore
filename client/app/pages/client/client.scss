@@ -1,0 +1,42 @@
+.signon {
+  button.button-small {
+    margin-right: 0.3rem;
+    width: 60px;
+  }
+}
+
+.suggestion {
+  textarea {
+    margin-top: 2rem;
+  }
+}
+.forget-password {
+  .virify-code {
+    label {
+      background-color: #FFFFFF;
+    }
+    button {
+      color: black;
+    }
+  }
+}
+
+.profile {
+  ion-list {
+    ion-item {
+      ion-label{
+        width: 4rem;
+      }
+    }
+  }
+
+}
+.collections {
+  ion-item {
+    ion-thumbnail {
+      img {
+        width: 5.6rem;
+      }
+    }
+  }
+}

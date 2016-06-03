@@ -1,0 +1,82 @@
+{
+  "name": "mobistore",
+  "version": "0.0.1",
+  "main": "src/mobistore.js",
+  "scripts": {
+    
+    "start": "node index",
+    "watch": "gulp",
+    
+    "dev": "concurrently \"npm start\" \"gulp\"",
+    
+    "build-dev": "node index && gulp client.watch",
+    "build-dist": "gulp client.build:dist",
+    "test-client": "gulp client.unit_test",
+    "test-server": "mocha ./tests/server/**/*.js --recursive --check-leaks --reporter min --compilers js:babel-register",
+    "coverage-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- tests/**/*.js --compilers js:babel-register",
+    "coveralls-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- tests/**/*.js --compilers js:babel-register --report lcovonly && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "bluebird": "^3.3.4",
+    "body-parser": "^1.5.0",
+    "express": "~4.13.4",
+    "express-content-length-validator": "1.0.0",
+    "mongoose": "^4.4.7",
+    "morgan": "^1.5.2",  
+    "newrelic": "^1.18.2",
+    "helmet": "^0.7.1"
+  },
+  "devDependencies": {
+    "karma-ng-html2js-preprocessor": "^0.1.2",
+    "aliv": "~1.1.5",
+    "del": "^1.1.1",
+  	"gulp": "^3.9.0",
+  	"babel-register": "^6.7.2",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
+    "protractor": "^3.1.0",
+    "wiredep": "^2.2.2",
+    "browser-sync": "^2.5.2",
+    "require-dir": "^0.3.0",
+    "gulp-concat": "^2.4.3",
+    "gulp-coveralls": "^0.1.3",
+    "gulp-typescript": "^2.9.2",
+    "gulp-clean-css": "^2.0.3",
+    "gulp-rename": "^1.2.0",
+    "gulp-rev-append": "^0.1.6",
+    "gulp-uglify": "^1.1.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-util": "^3.0.3",
+    "jasmine-core": "^2.1.3",
+    "run-sequence": "^1.1.5",
+    "karma": "^0.12.28",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-coverage": "^0.2.7",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-jasmine": "^0.3.3",
+    "karma-opera-launcher": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1",
+    "mocha": "^2.4.5",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.5",
+    "concurrently": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aaronchen2k/mobistore.git"
+  },
+  "author": "aaronchen2k",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaronchen2k/mobistore/issues"
+  },
+  "homepage": "https://github.com/aaronchen2k/mobistore",
+  "engines": {
+    "node": "stable"
+  }
+}

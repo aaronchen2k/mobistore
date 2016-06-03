@@ -1,0 +1,43 @@
+  @HostListener('touchstart mousedown', ['$event.target'])
+  onClick(ele) {
+    var me = this;
+    console.log(ele);
+    me.dragDelay.exec(function () {
+      me.dragStartEvent(ele);
+    }, me.dragDelayTime || 0);
+  }
+
+
+
+  // listenFunc will hold the function returned by "renderer.listen"
+  listenFunc: Function;
+
+  // globalListenFunc will hold the function returned by "renderer.listenGlobal"
+  globalListenFunc: Function;
+
+  constructor(private elRef: ElementRef, renderer: Renderer) {
+    this.elem = this.elRef.nativeElement;
+    if (!!UiTreeConfig.treeClass) {
+      this.elRef.nativeElement.className = UiTreeConfig.nodeClass;
+    }
+
+    // We cache the function "listen" returns
+    this.listenFunc = renderer.listen(elRef.nativeElement, 'click', (event) => {
+      console.log('elRef clicked');
+    });
+
+    // We cache the function "listenGlobal" returns
+    this.globalListenFunc = renderer.listenGlobal('document', 'click', (event) => {
+      console.log('document clicked');
+    });
+  }
+
+  ngOnDestroy() {
+    // We execute both functions to remove the respectives listeners
+
+    // Removes "listen" listener
+    this.listenFunc();
+
+    // Removs "listenGlobal" listener
+    this.globalListenFunc();
+  }

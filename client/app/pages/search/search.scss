@@ -1,0 +1,16 @@
+#search {
+	.searchbar-container {
+	   display: flex;
+	   margin-bottom: 10px;
+	   .search-wapper {
+	       flex:1;
+	   }
+	   .cancel-wapper {
+	       width: 4rem;
+	       height: 3.5rem;
+	       line-height: 3.5rem;
+	       font-size: 1.6rem;
+	       text-align: center;
+	   }
+	}
+}

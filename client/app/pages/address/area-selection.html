@@ -1,0 +1,23 @@
+ <ion-navbar *navbar light>
+
+	 <ion-title>
+		 请选择
+	 </ion-title>
+	 <ion-buttons end>
+		 <button royal (click)="cancel()">
+			 <ion-icon name="close-outline"></ion-icon>
+		 </button>
+	 </ion-buttons>
+ </ion-navbar>
+
+ <ion-content class="address-selection">
+	 <ion-list radio-group >
+		 <!-- <ion-list-header> 请选择： </ion-list-header>  -->
+		 <ion-item *ngFor="#item of areas">
+			 <ion-label>
+				 {{item.areaname}}
+			 </ion-label>
+			 <ion-radio (click)="select(item)" [value]="item.id"></ion-radio>
+		 </ion-item>
+	 </ion-list>
+</ion-content>

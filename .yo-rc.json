@@ -1,0 +1,11 @@
+{
+  "generator-ng-fullstack": {
+    "username": "aaronchen2k",
+    "appName": "mobistore",
+    "stack": "server",
+    "server": "node",
+    "client": "",
+    "transpilerServer": "node",
+    "secure": false
+  }
+}

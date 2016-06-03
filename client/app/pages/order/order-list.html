@@ -1,0 +1,32 @@
+<ion-navbar *navbar class="my-navbar">
+	<ion-title>订单</ion-title>
+</ion-navbar>
+
+<ion-content class="order-list">
+	<div class="content">
+		<div class="msg" *ngIf="orders?.length == 0">
+			暂无订单
+		</div>
+		<ion-list *ngIf="orders?.length > 0">
+			<ion-item *ngFor="#order of orders" (click)="showOrder(order.id)">
+			  <h2 class="text-big text-color-light-grey" >
+				{{order.createTime | date:'yyyy-MM-dd'}}
+				 &nbsp;&nbsp; {{order | orderStatus}}
+			  </h2>
+			  <div>
+				  <div class="left" *ngFor="#item of order.items">
+					 <img [src]="item.image | imgPath">
+				  </div>
+				  <div class="right">
+					  <p class="text-thin text-color-light-grey">
+						  {{order.recipientName}}, {{order.totalAmount | currency:'CNY' | cny}}
+					  </p>
+					  <p class="text-thin text-color-light-grey text-ellipsis">
+						{{order.recipientArea}} {{order.recipientStreet}} {{order.recipientAddress}}
+					  </p>
+				  </div>
+			  </div>
+			</ion-item>
+	   </ion-list>
+	</div>
+</ion-content>
