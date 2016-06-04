@@ -19,9 +19,7 @@ export class MyApp {
       } else {    // production
         CONSTANT.SERVICE_URL = CONSTANT.SERVICE_URL_PRODUCTION;
       }
-
-      // uncomment this line to always use the web server on internet
-      // CONSTANT.SERVICE_URL = CONSTANT.SERVICE_URL_PRODUCTION;
+      console.log(CONSTANT.SERVICE_URL);
     }
 
     platform.ready().then(() => {

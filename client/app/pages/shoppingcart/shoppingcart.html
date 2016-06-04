@@ -26,7 +26,7 @@
 
         <div class="detail">
             <div class="list-with-price">
-                <div *ngFor="#item of cart.items" class="list-item">
+                <div *ngFor="let item of cart.items" class="list-item">
                   <div class="left">
                         <img (click)="showProdcut(item.productId)" [src]="item.image | imgPath">
                   </div>

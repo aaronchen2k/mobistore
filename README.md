@@ -1,3 +1,13 @@
-# mobistore
-[![Build Status](https://secure.travis-ci.org/aaronchen2k/mobistore.png?branch=master)](https://travis-ci.org/aaronchen2k/mobistore)
-[![Coverage Status](https://coveralls.io/repos/aaronchen2k/mobistore/badge.svg?branch=master)](https://coveralls.io/r/aaronchen2k/mobistore/?branch=master)
+eCommerce Fashion Store
+
+-- Ionic 2.0, AngularJS 2.0, Node.js
+
+&nbsp;&nbsp;&nbsp;(Old version for Ionic 1.X & AngularJS 1.X, please refer to Branch 1.0)
+
+&nbsp;&nbsp;&nbsp;<a href="http://101.200.189.57:18080/ms/c/" target="_blank">Demo</a>
+
+<img src="http://101.200.189.57:18080/ms/c/assets/img/demo.png?r=1" height="500px" style="margin: 10px auto;">
+
+## Licenses
+
+All source code is licensed under the [GPLv3 License](LICENSE.md).

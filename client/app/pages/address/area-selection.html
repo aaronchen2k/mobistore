@@ -13,7 +13,7 @@
  <ion-content class="address-selection">
 	 <ion-list radio-group >
 		 <!-- <ion-list-header> 请选择： </ion-list-header>  -->
-		 <ion-item *ngFor="#item of areas">
+		 <ion-item *ngFor="let item of areas">
 			 <ion-label>
 				 {{item.areaname}}
 			 </ion-label>

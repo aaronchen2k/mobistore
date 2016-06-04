@@ -26,17 +26,14 @@ export class Home {
     errorMessage: any;
     slideHeight: number;
 
-    constructor(private nav: NavController, private _homeService: HomeService, private _commonService: CommonService) {
+    constructor(private nav: NavController,
+                private _homeService: HomeService, private _commonService: CommonService) {
         let me = this;
         me.slideHeight = _commonService.getScreenSize().h * 0.3 / 14;
+    }
 
-        this._homeService.getData().subscribe(
-            json => {
-                me.data = json.data;
-                PubSubService.getInstance().shoppingcart.emit(json.data.shoppingcartItemNumb)
-            },
-            error => me.errorMessage = <any>error
-        );
+    ngOnInit() {
+        this.loadData();
     }
 
     onPageDidEnter(): void {
@@ -45,6 +42,16 @@ export class Home {
 
     onProductSelected(item) {
         this.nav.push(ProductDetail, item.id);
+    }
+
+    loadData():void {
+        var me = this;
+        this._homeService
+            .getData()
+            .subscribe((json) => {
+                me.data = json.data;
+                PubSubService.getInstance().shoppingcart.emit(json.data.shoppingcartItemNumb)
+            });
     }
 
 }

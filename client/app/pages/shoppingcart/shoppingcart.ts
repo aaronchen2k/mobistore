@@ -52,4 +52,6 @@ export class Shoppingcart {
             error => this.errorMessage = <any>error 
         );
     }
+
+    
 }

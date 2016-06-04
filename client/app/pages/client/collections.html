@@ -6,7 +6,7 @@
 
 <ion-content class="collections">
 	<ion-list *ngIf="collections">
-		<ion-item *ngFor="#item of collections" (click)="showProdcut(item.productId)" class="item-thumbnail-left item-icon-right">
+		<ion-item *ngFor="let item of collections" (click)="showProdcut(item.productId)" class="item-thumbnail-left item-icon-right">
 			<ion-thumbnail item-left>
 				<img [src]="item.image | imgPath">
 			</ion-thumbnail>

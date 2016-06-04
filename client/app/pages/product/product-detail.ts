@@ -16,24 +16,26 @@ import {ShoppingcartService}    from '../../services/shoppingcart';
   pipes: [ImgPathPipe,CurrencyCnyPipe]
 })
 export class ProductDetail {
-    
-    errorMessage: any;
+
+    private errorMessage: any;
     private productId: string;
     private product: Product;
     private isCollected: boolean;
     private qty: number = 1;
-    
-    private shoppingcartService: ShoppingcartService;
 
-    constructor(nav: NavController, params: NavParams, private _productService: ProductService, private _shoppingcartService: ShoppingcartService) {
+    constructor(nav: NavController, params: NavParams,
+                private _productService: ProductService, private _shoppingcartService: ShoppingcartService) {
         let me = this;
         me.productId = params.data;
+        me.getDetail();
+    }
+
+    getDetail () {
+        let me = this;
         me._productService.getDetail(me.productId).subscribe(
             json => {me.product = json.data; me.isCollected = json.isCollected;} ,
-            error => me.errorMessage = <any>error 
+            error => me.errorMessage = <any>error
         );
-        
-        this.shoppingcartService = _shoppingcartService;
     }
     
     collect () {
@@ -55,7 +57,7 @@ export class ProductDetail {
      }
      
      addToShoppingcart() {
-        this.shoppingcartService.addToShoppingcart(this.product, this.qty).subscribe(
+        this._shoppingcartService.addToShoppingcart(this.product, this.qty).subscribe(
             json => PubSubService.getInstance().shoppingcart.emit(json.data.items.length),
             error => this.errorMessage = <any>error
         );

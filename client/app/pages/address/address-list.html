@@ -11,7 +11,7 @@
 
 <ion-content class="address-list">
 	<ion-list>
-		<ion-item *ngFor="#item of addresses" (click)="edit(item.id)" class="item-icon-right text-ellipsis">
+		<ion-item *ngFor="let item of addresses" (click)="edit(item.id)" class="item-icon-right text-ellipsis">
 		  <h2 class="text-big text-color-light-grey text-ellipsis" >{{item.name}}，{{item.phone}}</h2>
 		  <p class="text-thin text-color-light-grey">{{item.province}} &nbsp;{{item.city}}</p>
 		  <p class="text-thin text-color-light-grey text-ellipsis">{{item.street}} {{item.address}}</p>

@@ -1,16 +1,18 @@
-import {Injectable} from '@angular/core';
-import {PostService} from './post';
+import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
-import {CONSTANT} from '../utils/constant';
+import {PostService} from './post';
 
 @Injectable()
 export class HomeService {
-    constructor(private _postService: PostService) { }
-    
-    _index = '/home/index';
+    static ENDPOINT: string = '/home/index';
 
-    getData() {
-        return this._postService.post(this._index, {});
+    constructor(private _postService: PostService) {
     }
-	
+
+    getData(): Observable<any> {
+        return this._postService.post(HomeService.ENDPOINT, {});
+    }
 }

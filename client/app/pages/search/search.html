@@ -15,7 +15,7 @@
 	           热门搜索
 	      </ion-item-divider>
 	      <ion-item>
-	           <button *ngFor="#keywords of hots" (click)="search(keywords)">
+	           <button *ngFor="let keywords of hots" (click)="search(keywords)">
 	               {{keywords}}
 	           </button>
 	      </ion-item>
@@ -25,7 +25,7 @@
             <ion-item-divider light>
                 搜索历史
             </ion-item-divider>
-            <ion-item *ngFor="#keywords of histories" (click)="search(keywords)">
+            <ion-item *ngFor="let keywords of histories" (click)="search(keywords)">
                 {{keywords}}
             </ion-item>
         </ion-item-group>
@@ -35,7 +35,7 @@
             <ion-item-divider light>
                 搜索结果
             </ion-item-divider>
-            <ion-item *ngFor="#item of keywordsResult" (click)="search(item.keywords)">
+            <ion-item *ngFor="let item of keywordsResult" (click)="search(item.keywords)">
                 {{item.keywords}}
             </ion-item>
         </ion-item-group>

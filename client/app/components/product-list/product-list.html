@@ -1,5 +1,5 @@
 <ion-list class="product-list-component">
-  <ion-item *ngFor="#item of products" (click)="onSelect(item)">
+  <ion-item *ngFor="let item of products" (click)="onSelect(item)">
     <ion-thumbnail item-left>
       <img [src]="item.image | imgPath">
     </ion-thumbnail>

@@ -6,7 +6,7 @@
 
 <ion-content class="my-msg-list">
 	<ion-list>
-		<ion-item *ngFor="#item of msgs" (click)="showMsg(item)">
+		<ion-item *ngFor="let item of msgs" (click)="showMsg(item)">
 			<h2>{{item.title}}</h2>
 			<p>{{item.descr}}</p>
 		</ion-item>

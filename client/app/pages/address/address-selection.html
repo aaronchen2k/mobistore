@@ -12,7 +12,7 @@
 <div class="address-selection" [ngModel]="recipientId">
 	<ion-list radio-group > 
 	    <!-- <ion-list-header> 请选择地址： </ion-list-header>  -->
-	    <ion-item *ngFor="#item of addresses">
+	    <ion-item *ngFor="let item of addresses">
 			<ion-label>
 				<h2 class="text-big text-color-light-grey">{{item.name}}，{{item.phone}}</h2>
 				<p class="text-thin text-color-light-grey">{{item.province}} &nbsp;{{item.city}}</p>

@@ -63,7 +63,7 @@
 
     <div class="detail" *ngIf="tab==2">
         <div class="list-with-price">
-                <div *ngFor="#item of order.items" class="list-item">
+                <div *ngFor="let item of order.items" class="list-item">
                   <div class="left">
                         <img [src]="item.image | imgPath">
                   </div>

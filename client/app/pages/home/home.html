@@ -5,7 +5,7 @@
 <ion-content class="home">
 	<div *ngIf="data">
 		<ion-slides [style.height.rem]="slideHeight" pager loop="true" autoplay="true">
-		  <ion-slide *ngFor="#item of data.adverts" (click)="onProductSelected(item.productId)">
+		  <ion-slide *ngFor="let item of data.adverts" (click)="onProductSelected(item.productId)">
 		        <div class="slide-image">
 					<div class="image-loading"></div>
 		         <img [src]="item.image | imgPath">

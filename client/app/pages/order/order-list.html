@@ -8,13 +8,13 @@
 			暂无订单
 		</div>
 		<ion-list *ngIf="orders?.length > 0">
-			<ion-item *ngFor="#order of orders" (click)="showOrder(order.id)">
+			<ion-item *ngFor="let order of orders" (click)="showOrder(order.id)">
 			  <h2 class="text-big text-color-light-grey" >
 				{{order.createTime | date:'yyyy-MM-dd'}}
 				 &nbsp;&nbsp; {{order | orderStatus}}
 			  </h2>
 			  <div>
-				  <div class="left" *ngFor="#item of order.items">
+				  <div class="left" *ngFor="let item of order.items">
 					 <img [src]="item.image | imgPath">
 				  </div>
 				  <div class="right">
