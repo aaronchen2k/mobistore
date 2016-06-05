@@ -16,8 +16,10 @@ export class MyApp {
     if (!CONSTANT.SERVICE_URL) {
       if (host.indexOf("localhost") > -1 || host.indexOf("127.0.0.1") > -1) {
         CONSTANT.SERVICE_URL = CONSTANT.SERVICE_URL_DEV;
+        CONSTANT.UPLOAD_URL = CONSTANT.UPLOAD_URL_DEV;
       } else {    // production
         CONSTANT.SERVICE_URL = CONSTANT.SERVICE_URL_PRODUCTION;
+        CONSTANT.UPLOAD_URL = CONSTANT.UPLOAD_URL_PRODUCTION;
       }
       console.log(CONSTANT.SERVICE_URL);
     }
@@ -37,7 +39,7 @@ export class MyApp {
       // For example, we might change the StatusBar color. This one below is
       // good for dark backgrounds and light text:
       // StatusBar.setStyle(StatusBar.LIGHT_CONTENT)
-      
+
     });
   }
 }

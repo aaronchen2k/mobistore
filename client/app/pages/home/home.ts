@@ -50,7 +50,7 @@ export class Home {
             .getData()
             .subscribe((json) => {
                 me.data = json.data;
-                PubSubService.getInstance().shoppingcart.emit(json.data.shoppingcartItemNumb)
+                PubSubService.getInstance().shoppingcart.emit(json.data.shoppingCartItemNumb)
             });
     }
 

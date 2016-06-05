@@ -2,11 +2,11 @@
 
 const mongoose = require('mongoose');
 
-var config = require('../../config');
+var config = require('./config');
 
 const shoppingCartSchema = {
-    id: mongoose.Schema.ObjectId,
-    
+    _id: mongoose.Schema.ObjectId,
+
     createTime: {type: Date},
     amount: {type: Number},
     freight: {type: Number},

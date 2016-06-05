@@ -1,7 +1,7 @@
 "use strict";
 const mongoose = require('mongoose');
 
-var config = require('../../config');
+var config = require('./config');
 
 const areaSchema = {
 	_id: mongoose.Schema.ObjectId,

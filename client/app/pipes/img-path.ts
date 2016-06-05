@@ -14,7 +14,7 @@ export class ImgPathPipe implements PipeTransform {
         }
 
         if (external) {
-            url = CONSTANT.SERVICE_URL + url;
+            url = CONSTANT.UPLOAD_URL + url;
         }
         return url;
     }

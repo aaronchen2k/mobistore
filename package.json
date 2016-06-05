@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "main": "src/mobistore.js",
   "scripts": {
-    
+
     "start": "node index",
     "watch": "gulp",
-    
+
     "dev": "concurrently \"npm start\" \"gulp\"",
-    
+
     "build-dev": "node index && gulp client.watch",
     "build-dist": "gulp client.build:dist",
     "test-client": "gulp client.unit_test",
@@ -23,7 +23,9 @@
     "express": "~4.13.4",
     "express-content-length-validator": "1.0.0",
     "mongoose": "^4.4.7",
-    "morgan": "^1.5.2",  
+    "node-static": "*",
+    "gm": "*",
+    "morgan": "^1.5.2",
     "newrelic": "^1.18.2",
     "helmet": "^0.7.1"
   },

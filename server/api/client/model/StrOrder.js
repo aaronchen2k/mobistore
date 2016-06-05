@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-var config = require('../../config');
+var config = require('./config');
 
 const orderSchema = {
 	_id: mongoose.Schema.ObjectId,

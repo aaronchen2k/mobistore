@@ -1,4 +1,6 @@
 npm run dev
 
+node server/upload.js
+
 cd client
 ionic serve
