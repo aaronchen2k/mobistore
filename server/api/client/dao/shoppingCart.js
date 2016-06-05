@@ -4,18 +4,21 @@ const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const _ = require('lodash');
 
+
 const shoppingCartSchema = require('../model/StrShoppingCart');
 
 shoppingCartSchema.statics.getItemNumb = (clientId) => {
+  console.log(clientId);
     return new Promise((resolve, reject) => {
-        let _query = {'client._id': clientId};
+      let _query = {'client': clientId};
 
       StrShoppingCart
-          .findOne(_query)
+          .findOne(clientId)
           .populate('items')
           .exec((err, json) => {
+            console.log(json);
               err ? reject(err)
-                  : resolve(json);
+                  : resolve(json.items.length);
           });
       });
 }

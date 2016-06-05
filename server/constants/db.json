@@ -1,3 +1,4 @@
 {
-  "localhost": "mongodb://localhost/mobistore"
+  "localhost": "mongodb://localhost/mobistore",
+  "testUserId": "57541fad0cf01df6063a803d"
 }

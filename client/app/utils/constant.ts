@@ -3,9 +3,5 @@ export var CONSTANT = {
     SERVICE_URL_DEV: "http://localhost:3333/",
     SERVICE_URL_PRODUCTION: "http://101.200.189.57:18080/",
 
-    UPLOAD_URL: undefined,
-    UPLOAD_URL_DEV: 'http://localhost:9090/',
-    UPLOAD_URL_PRODUCTION: "http://101.200.189.57:19090/",
-
     API_VER: "v1"
 };

@@ -6,15 +6,15 @@ import {CONSTANT} from '../utils/constant';
 export class ImgPathPipe implements PipeTransform {
     transform(url: string, external: any) : string {
         if (!url) {
-            return '../../assets/img/none.png';
+            return CONSTANT.SERVICE_URL + 'img/none.png';
         }
-        
+
         if (!external)  {
             external = true;
         }
 
         if (external) {
-            url = CONSTANT.UPLOAD_URL + url;
+            url = CONSTANT.SERVICE_URL + url;
         }
         return url;
     }

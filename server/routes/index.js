@@ -1,5 +1,6 @@
 "use strict";
 
+const express = require('express');
 const HomeRoutes = require('../api/client/routes/home');
 const ProductRoutes = require('../api/client/routes/product');
 
@@ -7,6 +8,8 @@ module.exports = class Routes {
    static init(app, router) {
        HomeRoutes.init(router);
        ProductRoutes.init(router);
+
+       app.use(express.static(__dirname + '/../../public/'));
 
        app.all('*', function(req, res,next) {
            console.log('req.headers.origin = ' + req.headers.origin);

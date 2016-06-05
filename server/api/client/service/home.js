@@ -4,15 +4,17 @@ const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const _ = require('lodash');
 
+const dbConst = require('../../../constants/db.json');
 const ProductDao = require('../dao/product');
 const ShoppingCartDao = require('../dao/shoppingCart');
+const ShoppingCartItemDao = require('../dao/shoppingCartItem');
 const StrAdvert = require('../dao/advert');
 
 module.exports = class HomeService {
     static getData(req, res) {
        return Promise.join(HomeService.getProducts(), HomeService.getAdverts(), HomeService.getShoppingCartItemNumb(),
             function (products, adverts, shoppingCartItemNumb) {
-                console.log('===', products, adverts, shoppingCartItemNumb);
+                // console.log('===', products, adverts, shoppingCartItemNumb);
 
                 return new Promise((resolve, reject) => {
                     resolve({
@@ -37,11 +39,6 @@ module.exports = class HomeService {
     }
 
     static getShoppingCartItemNumb () {
-      // var test = new StrAdvert({image:'111', title: 'test', descr: 'WW'});
-      // test.save(function (err) {
-      //   console.log(err);
-      // })
-
-      return  ShoppingCartDao.getItemNumb(1);
+      return  ShoppingCartDao.getItemNumb(dbConst.testUserId);
     }
 };
