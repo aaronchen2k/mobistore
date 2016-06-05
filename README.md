@@ -4,7 +4,7 @@ eCommerce Fashion Store
 
 &nbsp;&nbsp;&nbsp;(Old version for Ionic 1.X & AngularJS 1.X, please refer to Branch 1.0)
 
-&nbsp;&nbsp;&nbsp;<a href="http://101.200.189.57:18080/ms/c/" target="_blank">Demo</a>
+&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">Demo</a>
 
 <img src="http://101.200.189.57:18080/ms/c/assets/img/demo.png?r=1" height="500px" style="margin: 10px auto;">
 
