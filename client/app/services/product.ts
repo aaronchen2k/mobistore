@@ -3,30 +3,24 @@ import { Observable } from 'rxjs/Observable';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import {PostService} from './post';
+
 @Injectable()
 export class ProductService {
-    static ENDPOINT: string = '/api/products/:id';
+    static ENDPOINT: string = '/products/:id';
     product: any;
 
-    constructor(@Inject(Http) private _http: Http) {
+    constructor(private _postService: PostService) {
 
     }
 
     getDetail(productId) {
-        var me = this;
-        return this._http
-            .get(productId)
-            .map((r) => r.json());
+        return this._postService.get(ProductService.ENDPOINT.replace(':id', productId));
     }
 
     collect(productId) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        return this._http
-            .post(ProductService.ENDPOINT.replace(':id', 'collect'),
-                JSON.stringify(productId), {headers} )
-            .map((r) => r.json());
+       return this._postService.post(ProductService.ENDPOINT.replace(':id', 'collect'),
+            {productId: productId});
     }
 
     // add(product: any):Observable<any> {

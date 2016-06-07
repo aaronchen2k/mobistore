@@ -11,6 +11,11 @@ module.exports = class ProductRoutes {
 
         router
             .route('/api/v1/products/:id')
+            .get(ProductCtrl.get)
             .delete(ProductCtrl.delete);
+
+        router
+          .route('/api/v1/products/collect')
+          .post(ProductCtrl.collect);
     }
 }

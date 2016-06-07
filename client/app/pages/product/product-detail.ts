@@ -37,32 +37,31 @@ export class ProductDetail {
             error => me.errorMessage = <any>error
         );
     }
-    
+
     collect () {
         let me = this;
+
         me._productService.collect(this.productId).subscribe(
             json => {
-                console.log(json);
                 if (json.code > 0) {
-                    me.isCollected = json.data;
-                    console.log('success');
+                    me.isCollected = json.data.enabled;
                 }
             },
-            error => me.errorMessage = <any>error 
+            error => me.errorMessage = <any>error
         );
      }
-     
+
      toShoppingcart() {
         PubSubService.getInstance().gotoTab.emit(2);
      }
-     
+
      addToShoppingcart() {
         this._shoppingcartService.addToShoppingcart(this.product, this.qty).subscribe(
             json => PubSubService.getInstance().shoppingcart.emit(json.data.items.length),
             error => this.errorMessage = <any>error
         );
      }
-     
+
      reduceQty() {
           if (StringUtil.IsString(this.qty)) {
               this.qty = parseInt(StringUtil.Trim(this.qty))
@@ -72,7 +71,7 @@ export class ProductDetail {
               this.qty -= 1;
           }
      }
-     
+
      addQty() {
           if (StringUtil.IsString(this.qty)) {
               this.qty = parseInt(StringUtil.Trim(this.qty))

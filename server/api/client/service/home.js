@@ -4,17 +4,19 @@ const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const _ = require('lodash');
 
-const dbConst = require('../../../constants/db.json');
+const CONSTANTS = require('../../../constants/constants');
 const ProductDao = require('../dao/product');
 const ShoppingCartDao = require('../dao/shoppingCart');
 const ShoppingCartItemDao = require('../dao/shoppingCartItem');
 const StrAdvert = require('../dao/advert');
+const StrCategory = require('../dao/category');
 
 module.exports = class HomeService {
     static getData(req, res) {
-       return Promise.join(HomeService.getProducts(), HomeService.getAdverts(), HomeService.getShoppingCartItemNumb(),
-            function (products, adverts, shoppingCartItemNumb) {
-                // console.log('===', products, adverts, shoppingCartItemNumb);
+       return Promise.join(HomeService.getProducts(), HomeService.getAdverts(),
+              HomeService.getShoppingCartItemNumb(), HomeService.getcategories(),
+            function (products, adverts, shoppingCartItemNumb, categories) {
+                console.log('===', products, adverts, shoppingCartItemNumb, categories);
 
                 return new Promise((resolve, reject) => {
                     resolve({
@@ -22,7 +24,8 @@ module.exports = class HomeService {
                             data: {
                                 products: products,
                                 adverts: adverts,
-                                shoppingCartItemNumb: shoppingCartItemNumb
+                                shoppingCartItemNumb: shoppingCartItemNumb,
+                                categories: categories
                             }
                         });
                 });
@@ -39,6 +42,10 @@ module.exports = class HomeService {
     }
 
     static getShoppingCartItemNumb () {
-      return  ShoppingCartDao.getItemNumb(dbConst.testUserId);
+      return  ShoppingCartDao.getItemNumb(CONSTANTS.testClientId);
+    }
+
+    static getcategories () {
+      return  StrCategory.list();
     }
 };

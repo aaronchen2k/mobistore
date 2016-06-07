@@ -40,7 +40,7 @@ productSchema.statics.create = (product) => {
 
       let _product = new StrProduct(product);
 
-    _product.save((err, saved) => {
+      _product.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
       });

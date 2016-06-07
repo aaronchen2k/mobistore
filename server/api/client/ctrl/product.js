@@ -1,6 +1,7 @@
 "use strict";
 
 const ProductDao = require('../dao/product');
+const CollectionDao = require('../dao/collection');
 
 module.exports = class ProductCtrl {
     static list(req, res) {
@@ -14,10 +15,26 @@ module.exports = class ProductCtrl {
         let _id = req.params.id;
         ProductDao
             .get(_id)
-            .then(product => res.status(200).json(product))
+            .then(product => res.status(200).json({
+              code: 1,
+              data: product
+            }))
             .catch(error => res.status(400).json(error));
     }
-    
+
+    static collect(req, res) {
+      let _id = req.body.productId;
+      console.log('=' + _id+ '=');
+
+      CollectionDao
+        .collect(_id)
+        .then(product => res.status(200).json({
+          code: 1,
+          data: product
+        }))
+        .catch(error => res.status(400).json(error));
+    }
+
     static create(req, res) {
         let _product = req.body;
 
