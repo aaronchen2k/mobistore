@@ -4,7 +4,8 @@ Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
 
 ### Quick start
 ```bash
-Import data to MongoDB from xdoc/mongodb-dump.zip
+Import MongoDB data from xdoc/mongodb-dump.zip
+
 cd mobistore
 npm run dev
 
