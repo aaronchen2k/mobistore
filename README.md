@@ -1,6 +1,6 @@
 # eCommerce Fashion Store
 
--- Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
+Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
 
 ### Quick start
 ```bash
