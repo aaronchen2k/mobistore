@@ -1,4 +1,4 @@
-eCommerce Fashion Store&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">Demo</a>
+# eCommerce Fashion Store&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">Demo</a>
 
 -- Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
 
