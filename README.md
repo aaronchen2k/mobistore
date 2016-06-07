@@ -1,10 +1,8 @@
-eCommerce Fashion Store
+eCommerce Fashion Store&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">Demo</a>
 
 -- Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
 
 &nbsp;&nbsp;&nbsp;(Old version for Ionic 1.X & AngularJS 1.X, please refer to Branch 1.0)
-
-&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">Demo</a>
 
 ### Quick start
 ```bash
