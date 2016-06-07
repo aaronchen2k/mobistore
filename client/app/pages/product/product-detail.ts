@@ -33,7 +33,10 @@ export class ProductDetail {
     getDetail () {
         let me = this;
         me._productService.getDetail(me.productId).subscribe(
-            json => {me.product = json.data; me.isCollected = json.isCollected;} ,
+            json => {
+              me.product = json.data.product;
+              me.isCollected = json.data.isCollected;
+            } ,
             error => me.errorMessage = <any>error
         );
     }

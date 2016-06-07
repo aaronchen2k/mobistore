@@ -12,7 +12,7 @@ const StrAdvert = require('../dao/advert');
 const StrCategory = require('../dao/category');
 
 module.exports = class HomeService {
-    static getData(req, res) {
+    static getData() {
        return Promise.join(HomeService.getProducts(), HomeService.getAdverts(),
               HomeService.getShoppingCartItemNumb(), HomeService.getcategories(),
             function (products, adverts, shoppingCartItemNumb, categories) {
@@ -20,13 +20,10 @@ module.exports = class HomeService {
 
                 return new Promise((resolve, reject) => {
                     resolve({
-                            code: 1,
-                            data: {
-                                products: products,
-                                adverts: adverts,
-                                shoppingCartItemNumb: shoppingCartItemNumb,
-                                categories: categories
-                            }
+                            products: products,
+                            adverts: adverts,
+                            shoppingCartItemNumb: shoppingCartItemNumb,
+                            categories: categories
                         });
                 });
             }

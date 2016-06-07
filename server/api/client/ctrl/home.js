@@ -7,7 +7,9 @@ module.exports = class HomeCtrl {
 
         HomeService
             .getData()
-            .then(data => res.status(200).json(data))
+            .then(data => {
+              res.status(200).json({code: 1, data: data});
+            })
             .catch(error => res.status(400).json(error));
     }
 }

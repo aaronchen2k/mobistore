@@ -1,5 +1,6 @@
 "use strict";
 
+const ProductService = require('../service/product');
 const ProductDao = require('../dao/product');
 const CollectionDao = require('../dao/collection');
 
@@ -13,18 +14,19 @@ module.exports = class ProductCtrl {
 
     static get(req, res) {
         let _id = req.params.id;
-        ProductDao
-            .get(_id)
-            .then(product => res.status(200).json({
+
+        ProductService
+            .getDetail(_id)
+            .then(data => res.status(200).json({
               code: 1,
-              data: product
+              data: data,
+
             }))
             .catch(error => res.status(400).json(error));
     }
 
     static collect(req, res) {
       let _id = req.body.productId;
-      console.log('=' + _id+ '=');
 
       CollectionDao
         .collect(_id)
