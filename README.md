@@ -2,8 +2,6 @@
 
 -- Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
 
-&nbsp;&nbsp;&nbsp;(Old version for Ionic 1.X & AngularJS 1.X, please refer to Branch 1.0)
-
 ### Quick start
 ```bash
 Import data to MongoDB from xdoc/mongodb-dump.zip
