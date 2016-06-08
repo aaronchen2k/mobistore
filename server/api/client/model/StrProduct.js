@@ -10,7 +10,7 @@ const productSchema = {
 	image: {type: String, required: true, trim: true},
 
 	freight: {type: Boolean},
-	freight_free_if_total_amount: {type: Number},
+	freightFreeIfTotalAmount: {type: Number},
 	orderPeriod: {type: Number},
 	qty: {type: Number},
 	startTime: {type: Date},
@@ -30,7 +30,7 @@ const productSchema = {
 	promotion: {type: Boolean},
 
 	collect: {type: Number, default: 0},
-  retail_price: {type: Number},
+  retailPrice: {type: Number},
 	discountPrice: {type: Number},
 
 	tags: {type: String, required: true, trim: true},

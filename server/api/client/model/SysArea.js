@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const areaSchema = {
-	area_name: {type: String, required: true, trim: true},
-	short_name: {type: String, required: true, trim: true},
+	areaName: {type: String, required: true, trim: true},
+	shortName: {type: String, required: true, trim: true},
 	lng: {type: String, required: true, trim: true},
 	lat: {type: String, required: true, trim: true},
 	level : {type: Number},

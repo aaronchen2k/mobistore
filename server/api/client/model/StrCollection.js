@@ -6,7 +6,7 @@ var config = require('./config');
 
 const collectionSchema = {
 
-	collect_time: {type: Date},
+	collectTime: {type: Date},
 
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'},
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},

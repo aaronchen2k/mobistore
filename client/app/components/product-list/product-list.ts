@@ -3,7 +3,6 @@ import {List,Item,Button,Icon} from 'ionic-angular';
 
 import {ImgPathPipe} from '../../pipes/img-path';
 import {CurrencyCnyPipe} from '../../pipes/currency-cny';
-import {Product} from '../../models/Product';
 
 @Component({
     selector: 'product-list',
@@ -13,18 +12,18 @@ import {Product} from '../../models/Product';
 })
 
 export class ProductListComponent {
-    @Input() products: Product[];
-    @Output() selected: any = new EventEmitter<Product>();
-    
+    @Input() products: any[];
+    @Output() selected: any = new EventEmitter<any>();
+
     constructor() {
-        
+
     }
-    
+
     ngOnInit() {
-        
+
     }
-    
-    onSelect(item) {
-        this.selected.emit(item);
+
+    onSelect(itemId) {
+        this.selected.emit(itemId);
     }
 }

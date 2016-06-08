@@ -6,22 +6,22 @@ var config = require('./config');
 
 const orderSchema = {
 	currency: {type: String},
-	pay_channel: {type: Number},
+	payChannel: {type: Number},
 	amount: {type: Number},
 	freight: {type: Number},
-	total_amount: {type: Number},
-	pay_amount: {type: Number},
+	totalAmount: {type: Number},
+	payAmount: {type: Number},
 
 	recipient: {type: String, required: true, trim: true},
-	recipient_area: {type: String, required: true, trim: true},
-	recipient_street: {type: String, required: true, trim: true},
-	recipient_address: {type: String, required: true, trim: true},
-	recipient_name: {type: String, required: true, trim: true},
-	recipient_phone: {type: String, required: true, trim: true},
+	recipientArea: {type: String, required: true, trim: true},
+	recipientStreet: {type: String, required: true, trim: true},
+	recipientAddress: {type: String, required: true, trim: true},
+	recipientName: {type: String, required: true, trim: true},
+	recipientPhone: {type: String, required: true, trim: true},
 
-  create_time: {type: Date},
-  pay_time: {type: Date},
-  ship_time: {type: Date},
+  createTime: {type: Date},
+  payTime: {type: Date},
+  shipTime: {type: Date},
 
 	status: {type: String, required: true, trim: true},
 

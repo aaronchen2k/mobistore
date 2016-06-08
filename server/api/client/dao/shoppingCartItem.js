@@ -7,22 +7,19 @@ const _ = require('lodash');
 const shoppingCartItemSchema = require('../model/StrShoppingCartItem');
 
 shoppingCartItemSchema.statics.create = (product, qty, cart) => {
-  console.log(product);
-  console.log(product.retail_price, qty);
-
   return new Promise((resolve, reject) => {
       var item = new StrShoppingCartItem({
-        unit_price: product.retail_price,
+        unitPrice: product.retailPrice,
         qty: qty,
-        amount: product.retail_price * qty,
+        amount: product.retailPrice * qty,
         freight: product.freight,
-        freight_free_if_total_amount: product.freight_free_if_total_amount,
+        freightFreeIfTotalAmount: product.freightFreeIfTotalAmount,
         name: product.name,
         image: product.image,
 
-        create_time: new Date(),
+        createTime: new Date(),
         product: product.id,
-        shopping_cart: cart.id,
+        shoppingCart: cart.id,
         enabled: true
       });
       item.save(function (err) {

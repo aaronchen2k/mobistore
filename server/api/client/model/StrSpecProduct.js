@@ -13,7 +13,7 @@ const specProductSchema = {
 
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},
 	spec: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpec'},
-	spec_type: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpecType'},
+	specType: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpecType'},
 }
 
 module.exports = mongoose.Schema(specProductSchema, config.schemaOptions);

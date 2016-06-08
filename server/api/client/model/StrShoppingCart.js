@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const shoppingCartSchema = {
-    create_time: {type: Date},
+    createTime: {type: Date},
     amount: {type: Number},
     freight: {type: Number},
-    total_amount: {type: Number},
+    totalAmount: {type: Number},
     enabled: {type: Boolean},
 
     client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'},

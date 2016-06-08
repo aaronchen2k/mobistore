@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const orderItemSchema = {
-	unit_price: {type: Number},
+	unitPrice: {type: Number},
 	qty: {type: Number},
 	amount: {type: Number},
 	name: {type: String, required: true, trim: true},

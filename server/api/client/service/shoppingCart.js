@@ -14,7 +14,7 @@ module.exports = class ShoppingCartService {
     return Promise.join(ShoppingCartDao.createIfNeeded(clientId), ProductDao.get(productId),
       function (cart, product) {
         return new Promise((resolve, reject) => {
-          var _query = {product: productId, shopping_cart: cart.id};
+          var _query = {product: productId, shoppingCart: cart.id};
           ShoppingCartItemDao
             .findOne(_query)
             .exec((err, doc) => {

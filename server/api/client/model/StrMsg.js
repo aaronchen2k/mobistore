@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const msgSchema = {
-	send_time: {type: Date},
+	sendTime: {type: Date},
 	title: {type: String, required: true, trim: true},
 	descr: {type: String, required: true, trim: true},
 

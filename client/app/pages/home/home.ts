@@ -40,8 +40,8 @@ export class Home {
 
     }
 
-    onProductSelected(item) {
-        this.nav.push(ProductDetail, item.id);
+    onProductSelected(itemId) {
+        this.nav.push(ProductDetail, itemId);
     }
 
     loadData():void {
