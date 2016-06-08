@@ -12,8 +12,6 @@ module.exports = class ProductService {
     static getDetail(id) {
        return Promise.join(ProductDao.get(id), CollectionDao.isCollected(id),
             function (product, isCollected) {
-                console.log(product, isCollected);
-
                 return new Promise((resolve, reject) => {
                     resolve({
                           product: product,

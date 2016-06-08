@@ -3,55 +3,46 @@
 const ProductService = require('../service/product');
 const ProductDao = require('../dao/product');
 const CollectionDao = require('../dao/collection');
+const CONSTANTS = require('../../../constants/constants');
 
 module.exports = class ProductCtrl {
-    static list(req, res) {
-        ProductDao
-            .list()
-            .then(products => res.status(200).json(products))
-            .catch(error => res.status(400).json(error));
-    }
 
-    static get(req, res) {
-        let _id = req.params.id;
+  static collect(req, res) {
+    let _id = req.body.productId;
 
-        ProductService
-            .getDetail(_id)
-            .then(data => res.status(200).json({
-              code: 1,
-              data: data,
+    CollectionDao
+      .collect(_id, CONSTANTS.testClientId)
+      .then(product => res.status(200).json({
+        code: 1,
+        data: product
+      }))
+      .catch(error => res.status(400).json(error));
+  }
 
-            }))
-            .catch(error => res.status(400).json(error));
-    }
+  static list(req, res) {
+    ProductDao
+      .list()
+      .then(products => res.status(200).json(products))
+      .catch(error => res.status(400).json(error));
+  }
 
-    static collect(req, res) {
-      let _id = req.body.productId;
+  static get(req, res) {
+    let _id = req.params.id;
 
-      CollectionDao
-        .collect(_id)
-        .then(product => res.status(200).json({
-          code: 1,
-          data: product
-        }))
-        .catch(error => res.status(400).json(error));
-    }
+    ProductService
+      .getDetail(_id)
+      .then(data => res.status(200).json({
+        code: 1,
+        data: data,
 
-    static create(req, res) {
-        let _product = req.body;
+      }))
+      .catch(error => res.status(400).json(error));
+  }
 
-        ProductDao
-            .create(_product)
-            .then(product => res.status(201).json(product))
-            .catch(error => res.status(400).json(error));
-    }
+  static save(req, res) {
 
-    static delete(req, res) {
-        let _id = req.params.id;
+  }
+  static delete(req, res) {
 
-        ProductDao
-            .delete(_id)
-            .then(() => res.status(200).end())
-            .catch(error => res.status(400).json(error));
-    }
+  }
 }

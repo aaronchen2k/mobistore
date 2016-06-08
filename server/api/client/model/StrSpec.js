@@ -10,7 +10,6 @@ var config = require('./config');
  * 比如 颜色-红色、尺寸-大号
  */
 const specSchema = {
-	id: mongoose.Schema.ObjectId,
 	name: {type: String, required: true, trim: true},
 	descr: {type: String, required: true, trim: true},
 

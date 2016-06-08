@@ -1,14 +1,31 @@
 "use strict";
 
 const express = require('express');
+
+const CategoryRoutes = require('../api/client/routes/category');
+const ClientRoutes = require('../api/client/routes/client');
 const HomeRoutes = require('../api/client/routes/home');
+const MineRoutes = require('../api/client/routes/mine');
+const MsgRoutes = require('../api/client/routes/msg');
+const OrderRoutes = require('../api/client/routes/order');
 const ProductRoutes = require('../api/client/routes/product');
+const RewardRoutes = require('../api/client/routes/reward');
+const SearchRoutes = require('../api/client/routes/search');
+const ShoppingCartRoutes = require('../api/client/routes/shoppingCart');
 
 module.exports = class Routes {
    static init(app, router) {
+       CategoryRoutes.init(router);
+       ClientRoutes.init(router);
        HomeRoutes.init(router);
+       MineRoutes.init(router);
+       MsgRoutes.init(router);
+       OrderRoutes.init(router);
        ProductRoutes.init(router);
-
+       RewardRoutes.init(router);
+       SearchRoutes.init(router);
+       ShoppingCartRoutes.init(router);
+     
        app.use(express.static(__dirname + '/../../public/'));
 
        app.all('*', function(req, res,next) {

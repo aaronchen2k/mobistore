@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const brandSchema = {
-	_id: mongoose.Schema.ObjectId,
-
 	name: {type: String, required: true, trim: true},
 	descr: {type: String, required: true, trim: true},
 

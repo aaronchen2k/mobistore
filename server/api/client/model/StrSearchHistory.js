@@ -5,10 +5,8 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const searchHistorySchema = {
-	id: mongoose.Schema.ObjectId,
-	
-	searchTime: {type: Date},
-    keywords: {type: String, required: true, trim: true},
+	search_time: {type: Date},
+  keywords: {type: String, required: true, trim: true},
 
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'}
 

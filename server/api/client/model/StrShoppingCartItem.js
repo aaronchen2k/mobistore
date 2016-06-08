@@ -5,18 +5,18 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const shoppingCartItemSchema = {
-	_id: mongoose.Schema.ObjectId,
-	
-	unitPrice: {type: Number},
+  create_time: {type: Date},
+	unit_price: {type: Number},
 	qty: {type: Number},
 	amount: {type: Number},
 	freight: {type: Number},
-	freightFreeIfTotalAmount: {type: Number},
+	freight_free_if_total_amount: {type: Number},
 	name: {type: String, required: true, trim: true},
 	image: {type: String, required: true, trim: true},
+  enabled: {type: Boolean},
 
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},
-	shoppingCart: {type: mongoose.Schema.Types.ObjectId, ref: 'StrShoppingCart'}
+	shopping_cart: {type: mongoose.Schema.Types.ObjectId, ref: 'StrShoppingCart'}
 }
 
 module.exports = mongoose.Schema(shoppingCartItemSchema, config.schemaOptions);

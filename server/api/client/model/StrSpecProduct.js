@@ -10,11 +10,10 @@ var config = require('./config');
  * 比如 衬衫A-白、衬衫A-黑、衬衫A-大号
  */
 const specProductSchema = {
-	_id: mongoose.Schema.ObjectId,
 
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},
 	spec: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpec'},
-	specType: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpecType'},
+	spec_type: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpecType'},
 }
 
 module.exports = mongoose.Schema(specProductSchema, config.schemaOptions);

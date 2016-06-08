@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const recipientSchema = {
-	_id: mongoose.Schema.ObjectId,
-	
     name: {type: String, required: true, trim: true},
     phone: {type: String, required: true, trim: true},
     province: {type: String, required: true, trim: true},

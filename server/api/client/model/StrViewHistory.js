@@ -5,8 +5,7 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const viewHistorySchema = {
-	_id: mongoose.Schema.ObjectId,
-	viewTime: {type: Date},
+	view_time: {type: Date},
 
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'},
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'}

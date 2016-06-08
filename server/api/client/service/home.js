@@ -8,15 +8,14 @@ const CONSTANTS = require('../../../constants/constants');
 const ProductDao = require('../dao/product');
 const ShoppingCartDao = require('../dao/shoppingCart');
 const ShoppingCartItemDao = require('../dao/shoppingCartItem');
-const StrAdvert = require('../dao/advert');
-const StrCategory = require('../dao/category');
+const StrAdvertDao = require('../dao/advert');
+const StrCategoryDao = require('../dao/category');
 
 module.exports = class HomeService {
     static getData() {
        return Promise.join(HomeService.getProducts(), HomeService.getAdverts(),
               HomeService.getShoppingCartItemNumb(), HomeService.getcategories(),
             function (products, adverts, shoppingCartItemNumb, categories) {
-                console.log('===', products, adverts, shoppingCartItemNumb, categories);
 
                 return new Promise((resolve, reject) => {
                     resolve({
@@ -35,7 +34,7 @@ module.exports = class HomeService {
     }
 
     static getAdverts () {
-        return  StrAdvert.list();
+        return  StrAdvertDao.list();
     }
 
     static getShoppingCartItemNumb () {
@@ -43,6 +42,6 @@ module.exports = class HomeService {
     }
 
     static getcategories () {
-      return  StrCategory.list();
+      return  StrCategoryDao.list();
     }
 };

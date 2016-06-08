@@ -9,7 +9,6 @@ const CONSTANTS = require('../../../constants/constants');
 
 collectionSchema.statics.isCollected = (id) => {
   return new Promise((resolve, reject) => {
-    console.log({product: {_id: id}, client: {_id: CONSTANTS.testClientId}, enabled: true});
 
     let _query = {product: {_id: id}, client: {_id: CONSTANTS.testClientId}, enabled: true};
 
@@ -28,15 +27,15 @@ collectionSchema.statics.isCollected = (id) => {
   });
 }
 
-collectionSchema.statics.collect = (id) => {
+collectionSchema.statics.collect = (productId, clientId) => {
     return new Promise((resolve, reject) => {
-      let _query = {product: {_id: id}, client: {_id: CONSTANTS.testClientId}};
+      let _query = {product: {_id: productId}, client: {_id: clientId}};
 
       StrCollection
         .findOne(_query, function(err, doc) {
           if (doc === null) {
-            StrCollection.create({product: {_id: id},
-                                  client: {_id: CONSTANTS.testClientId},
+            StrCollection.create({product: {_id: productId},
+                                  client: {_id: clientId},
                                   date: new Date(),
                                   enabled: true},
               function (err, product) {

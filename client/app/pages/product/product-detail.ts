@@ -59,6 +59,7 @@ export class ProductDetail {
      }
 
      addToShoppingcart() {
+       
         this._shoppingcartService.addToShoppingcart(this.product, this.qty).subscribe(
             json => PubSubService.getInstance().shoppingcart.emit(json.data.items.length),
             error => this.errorMessage = <any>error

@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const roleSchema = {
-    _id: mongoose.Schema.ObjectId,
     code: {type: String, required: true, trim: true},
     name: {type: String, required: true, trim: true},
 
