@@ -14,7 +14,7 @@ const StrCategoryDao = require('../dao/category');
 module.exports = class HomeService {
     static getData() {
        return Promise.join(HomeService.getProducts(), HomeService.getAdverts(),
-              HomeService.getShoppingCartItemNumb(), HomeService.getcategories(),
+              HomeService.getShoppingCartItemNumb(), StrCategoryDao.list(),
             function (products, adverts, shoppingCartItemNumb, categories) {
 
                 return new Promise((resolve, reject) => {
@@ -39,9 +39,5 @@ module.exports = class HomeService {
 
     static getShoppingCartItemNumb () {
       return  ShoppingCartDao.getItemNumb(CONSTANTS.testClientId);
-    }
-
-    static getcategories () {
-      return  StrCategoryDao.list();
     }
 };

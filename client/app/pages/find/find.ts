@@ -59,7 +59,7 @@ export class Find implements OnInit {
 
     search(keywords) {
         this.searchService.search(keywords).subscribe(
-            json => {this.data = json.data;},
+            json => {this.data = json.data},
             error => this.errorMessage = <any>error
         );
     }

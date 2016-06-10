@@ -29,11 +29,11 @@ export class TabsPage implements OnInit {
     categories: Category[] = [];
     shoppingcartItemCount: number;
     errorMessage: any;
-    
+
     subscription = null;
 
     constructor(private nav: NavController, private _categoryService: CategoryService) {
-        
+
     }
     ngOnInit(){
         let me = this;
@@ -56,14 +56,14 @@ export class TabsPage implements OnInit {
             this.tabs.getSelected().popToRoot();
         }
     }
-    
+
     processCategory(category){
-        VARIABLE.CURRENT_CATEGORY = category.id;
+        VARIABLE.CURRENT_CATEGORY = category;
         this.gotoTab(1);
     }
     gotoTab(index){
         let tabIndex = this.tabs.selectedIndex;
-        
+
         if (tabIndex != index) {
             this.tabs.select(index);
         }
