@@ -17,18 +17,19 @@ module.exports = class ShoppingCartService {
         return new Promise((resolve, reject) => {
           var _query = {product: productId, shoppingCart: cart.id};
           ShoppingCartItemDao.findOne(_query).exec((err, item) => {
+              err ? reject(err): {};
+
               if (item != null) {
                 ShoppingCartItemDao.update(item, product, qty).then(cartUpdated => {
-                    err ? reject(err): resolve(cartUpdated);
-                });
+                    resolve(cartUpdated);
+                }).catch(error => reject(error));
               } else {
                 ShoppingCartItemDao.create(product, qty, cart).then(cartUpdated => {
-                    err ? reject(err): resolve(cartUpdated);
-                });
+                    resolve(cartUpdated);
+                }).catch(error => reject(error));
               }
             });
         });
-
       }
     );
   };

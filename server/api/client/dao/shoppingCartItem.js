@@ -31,8 +31,8 @@ shoppingCartItemSchema.statics.create = (product, qty, cart) => {
           err ? reject(err): {};
 
           shoppingCartItemSchema.statics.computeItemsPriceAndSave(cart.id).then(cart => {
-            err ? reject(err): resolve(cart);
-          });
+            resolve(cart);
+          }).catch(error => reject(error));
         })
       })
     });
@@ -53,7 +53,7 @@ shoppingCartItemSchema.statics.update = (item, product, qty) => {
 
       shoppingCartItemSchema.statics.computeItemsPriceAndSave(item.shoppingCart).then(cart => {
         err ? reject(err): resolve(cart);
-      });
+      }).catch(error => reject(error));
     })
   });
 };

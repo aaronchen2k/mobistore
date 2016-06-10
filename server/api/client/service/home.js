@@ -19,11 +19,11 @@ module.exports = class HomeService {
 
                 return new Promise((resolve, reject) => {
                     resolve({
-                            products: products,
-                            adverts: adverts,
-                            shoppingCartItemNumb: shoppingCartItemNumb,
-                            categories: categories
-                        });
+                        products: products,
+                        adverts: adverts,
+                        shoppingCartItemNumb: shoppingCartItemNumb,
+                        categories: categories
+                    });
                 });
             }
         );
