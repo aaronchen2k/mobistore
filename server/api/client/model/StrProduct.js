@@ -9,7 +9,7 @@ const productSchema = {
 	descr: {type: String, required: true, trim: true},
 	image: {type: String, required: true, trim: true},
 
-	freight: {type: Boolean},
+	freight: {type: Number},
 	freightFreeIfTotalAmount: {type: Number},
 	orderPeriod: {type: Number},
 	qty: {type: Number},

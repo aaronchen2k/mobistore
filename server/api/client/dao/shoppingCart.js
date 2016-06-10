@@ -5,8 +5,6 @@ const Promise = require('bluebird');
 const _ = require('lodash');
 
 const shoppingCartSchema = require('../model/StrShoppingCart');
-const ShoppingCartItem = require('./shoppingCartitem');
-const Product = require('./product');
 
 shoppingCartSchema.statics.getItemNumb = (clientId) => {
     return new Promise((resolve, reject) => {

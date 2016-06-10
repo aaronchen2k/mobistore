@@ -13,29 +13,22 @@ module.exports = class ShoppingCartService {
   static addTo (productId, qty, clientId)  {
     return Promise.join(ShoppingCartDao.createIfNeeded(clientId), ProductDao.get(productId),
       function (cart, product) {
+
         return new Promise((resolve, reject) => {
           var _query = {product: productId, shoppingCart: cart.id};
-          ShoppingCartItemDao
-            .findOne(_query)
-            .exec((err, doc) => {
-              if (doc != null) {
-                doc.qty += qty;
-                doc.save(function (err, doc) {
-                  err ? reject(err)
-                    : resolve(cart);
-                })
+          ShoppingCartItemDao.findOne(_query).exec((err, item) => {
+              if (item != null) {
+                ShoppingCartItemDao.update(item, product, qty).then(cartUpdated => {
+                    err ? reject(err): resolve(cartUpdated);
+                });
               } else {
-                ShoppingCartItemDao.create(product, qty, cart)
-                  .then(cartItem => {
-                    cart.items.push(cartItem);
-                    cart.save(function (err, doc) {
-                      err ? reject(err)
-                        : resolve(doc);
-                    })
-                  });
+                ShoppingCartItemDao.create(product, qty, cart).then(cartUpdated => {
+                    err ? reject(err): resolve(cartUpdated);
+                });
               }
             });
         });
+
       }
     );
   };
