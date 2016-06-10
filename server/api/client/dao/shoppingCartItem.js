@@ -9,33 +9,33 @@ const ShoppingCartDao = require('./shoppingCart');
 
 shoppingCartItemSchema.statics.create = (product, qty, cart) => {
   return new Promise((resolve, reject) => {
-      var item = new StrShoppingCartItem({
-        unitPrice: product.retailPrice,
-        qty: qty,
-        amount: product.retailPrice * qty,
-        freight: product.freight,
-        freightFreeIfTotalAmount: product.freightFreeIfTotalAmount,
-        name: product.name,
-        image: product.image,
+    var item = new StrShoppingCartItem({
+      unitPrice: product.retailPrice,
+      qty: qty,
+      amount: product.retailPrice * qty,
+      freight: product.freight,
+      freightFreeIfTotalAmount: product.freightFreeIfTotalAmount,
+      name: product.name,
+      image: product.image,
 
-        createTime: new Date(),
-        product: product.id,
-        shoppingCart: cart.id,
-        enabled: true
-      });
-      item.save(function (err, item) {
+      createTime: new Date(),
+      product: product.id,
+      shoppingCart: cart.id,
+      enabled: true
+    });
+    item.save(function (err, item) {
+      err ? reject(err): {};
+
+      cart.items.push(item);
+      cart.save(function (err, cart) {
         err ? reject(err): {};
 
-        cart.items.push(item);
-        cart.save(function (err, cart) {
-          err ? reject(err): {};
-
-          shoppingCartItemSchema.statics.computeItemsPriceAndSave(cart.id).then(cart => {
-            resolve(cart);
-          }).catch(error => reject(error));
-        })
+        shoppingCartItemSchema.statics.computeItemsPriceAndSave(cart.id).then(cart => {
+          resolve(cart);
+        }).catch(error => reject(error));
       })
-    });
+    })
+  });
 };
 
 shoppingCartItemSchema.statics.update = (item, product, qty) => {
@@ -52,7 +52,7 @@ shoppingCartItemSchema.statics.update = (item, product, qty) => {
       err ? reject(err): {};
 
       shoppingCartItemSchema.statics.computeItemsPriceAndSave(item.shoppingCart).then(cart => {
-        err ? reject(err): resolve(cart);
+        resolve(cart);
       }).catch(error => reject(error));
     })
   });
