@@ -3,6 +3,7 @@ import {Page} from 'ionic-angular';
 import {NavController, NavParams, Modal} from 'ionic-angular';
 import {ImgPathPipe} from '../../pipes/img-path';
 
+import {VARIABLE} from '../../utils/variable';
 import {PubSubService} from '../../services/pub-sub-service';
 import {PostService}    from '../../services/post';
 import {SearchService}    from '../../services/search';
@@ -40,7 +41,7 @@ export class Find implements OnInit {
     }
 
     onPageWillEnter(): void {
-      
+
     }
 
     onProductSelected(itemId) {
@@ -52,6 +53,7 @@ export class Find implements OnInit {
         let modal = Modal.create(Search, {});
         modal.onDismiss(data => {
             console.log('=' + data + '=');
+            VARIABLE.CURRENT_CATEGORY = ''; // reset the category
             me.search(data);
         });
         this.nav.present(modal);
