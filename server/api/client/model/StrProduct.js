@@ -32,6 +32,7 @@ const productSchema = {
 	collect: {type: Number, default: 0},
   retailPrice: {type: Number},
 	discountPrice: {type: Number},
+  enabled: {type: Boolean, default: true},
 
 	tags: {type: String, required: true, trim: true},
 	category: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'}

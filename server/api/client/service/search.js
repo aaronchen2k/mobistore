@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 const _ = require('lodash');
 
 const CONSTANTS = require('../../../constants/constants');
-const StrCategoryDao = require('../dao/category');
+const CategoryDao = require('../dao/category');
 const ProductDao = require('../dao/product');
 const SearchHistoryDao = require('../dao/searchHistory');
 const SearchHotDao = require('../dao/searchHot');
@@ -13,7 +13,7 @@ const SearchHotDao = require('../dao/searchHot');
 module.exports = class SearchService {
   static getData (categoryId, keywords)  {
 
-    return Promise.join(SearchService.search(categoryId, keywords), StrCategoryDao.list(),
+    return Promise.join(SearchService.search(categoryId, keywords), CategoryDao.list(),
       function (products, categories) {
 
         return new Promise((resolve, reject) => {

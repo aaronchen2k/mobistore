@@ -10,6 +10,7 @@ var config = require('./config');
  * 比如 衬衫A-白、衬衫A-黑、衬衫A-大号
  */
 const specProductSchema = {
+  enabled: {type: Boolean, default: true},
 
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},
 	spec: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpec'},

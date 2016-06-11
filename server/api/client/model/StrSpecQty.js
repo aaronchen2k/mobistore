@@ -11,6 +11,8 @@ var config = require('./config');
  */
 const specQtySchema = {
 	qty: {type: Number},
+  enabled: {type: Boolean, default: true},
+  
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},
 
 	color: {type: mongoose.Schema.Types.ObjectId, ref: 'StrSpec'},

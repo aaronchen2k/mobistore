@@ -8,7 +8,8 @@ const categorySchema = {
 	code: {type: String, required: true, trim: true},
 	name: {type: String, required: true, trim: true},
 	descr: {type: String, required: true, trim: true},
-	image: {type: String, required: true, trim: true}
+	image: {type: String, required: true, trim: true},
+  enabled: {type: Boolean, default: true}
 }
 
 module.exports = mongoose.Schema(categorySchema, config.schemaOptions);

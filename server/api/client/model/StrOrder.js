@@ -24,6 +24,7 @@ const orderSchema = {
   shipTime: {type: Date},
 
 	status: {type: String, required: true, trim: true},
+  enabled: {type: Boolean, default: true},
 
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'},
 	items: [{type: mongoose.Schema.Types.ObjectId, ref: 'StrOrderItems'}]

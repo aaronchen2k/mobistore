@@ -12,7 +12,7 @@ var config = require('./config');
 const specTypeSchema = {
 	name: {type: String, required: true, trim: true},
 	descr: {type: String, required: true, trim: true},
-
+  enabled: {type: Boolean, default: true}
 }
 
 module.exports = mongoose.Schema(specTypeSchema, config.schemaOptions);

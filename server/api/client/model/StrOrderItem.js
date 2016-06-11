@@ -10,6 +10,7 @@ const orderItemSchema = {
 	amount: {type: Number},
 	name: {type: String, required: true, trim: true},
 	image: {type: String, required: true, trim: true},
+  enabled: {type: Boolean, default: true},
 
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},
 	order: {type: mongoose.Schema.Types.ObjectId, ref: 'StrOrder'}

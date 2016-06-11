@@ -11,6 +11,7 @@ const areaSchema = {
 	level : {type: Number},
   position: {type: String, required: true, trim: true},
   sort: {type: Number},
+  enabled: {type: Boolean, default: true},
 
 	parent: {type: mongoose.Schema.Types.ObjectId, ref: 'SysArea'}
 }

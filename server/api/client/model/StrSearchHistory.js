@@ -7,6 +7,7 @@ var config = require('./config');
 const searchHistorySchema = {
 	searchTime: {type: Date},
   keywords: {type: String, required: true, trim: true},
+  enabled: {type: Boolean, default: true},
 
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'}
 

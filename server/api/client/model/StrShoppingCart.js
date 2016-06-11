@@ -9,7 +9,7 @@ const shoppingCartSchema = {
     amount: {type: Number},
     freight: {type: Number},
     totalAmount: {type: Number},
-    enabled: {type: Boolean},
+    enabled: {type: Boolean, default: true},
 
     client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'},
     items: [{type: mongoose.Schema.Types.ObjectId, ref: 'StrShoppingCartItem'}]

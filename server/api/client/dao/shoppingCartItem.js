@@ -7,7 +7,7 @@ const _ = require('lodash');
 const shoppingCartItemSchema = require('../model/StrShoppingCartItem');
 const ShoppingCartDao = require('./shoppingCart');
 
-shoppingCartItemSchema.statics.create = (product, qty, cart) => {
+shoppingCartItemSchema.statics.create = (product, qty, cart, clientId) => {
   return new Promise((resolve, reject) => {
     var item = new StrShoppingCartItem({
       unitPrice: product.retailPrice,
@@ -30,7 +30,7 @@ shoppingCartItemSchema.statics.create = (product, qty, cart) => {
       cart.save(function (err, cart) {
         err ? reject(err): {};
 
-        shoppingCartItemSchema.statics.computeItemsPriceAndSave(cart.id).then(cart => {
+        shoppingCartItemSchema.statics.computeItemsPriceAndSave(clientId).then(cart => {
           resolve(cart);
         }).catch(error => reject(error));
       })
@@ -38,7 +38,7 @@ shoppingCartItemSchema.statics.create = (product, qty, cart) => {
   });
 };
 
-shoppingCartItemSchema.statics.update = (item, product, qty) => {
+shoppingCartItemSchema.statics.update = (item, product, qty, clientId) => {
   return new Promise((resolve, reject) => {
     let qtyTotal = item.qty + qty;
     item.set({
@@ -48,43 +48,41 @@ shoppingCartItemSchema.statics.update = (item, product, qty) => {
       freight: product.freight,
       freightFreeIfTotalAmount: product.freightFreeIfTotalAmount
     });
+
     item.save(function (err, doc) {
       err ? reject(err): {};
 
-      shoppingCartItemSchema.statics.computeItemsPriceAndSave(item.shoppingCart).then(cart => {
+      shoppingCartItemSchema.statics.computeItemsPriceAndSave(clientId).then(cart => {
         resolve(cart);
       }).catch(error => reject(error));
     })
   });
 };
 
-shoppingCartItemSchema.statics.computeItemsPriceAndSave = (cartId) => {
+shoppingCartItemSchema.statics.computeItemsPriceAndSave = (clientId) => {
   return new Promise((resolve, reject) => {
-    ShoppingCartDao.findOne({_id: cartId})
-      .populate('items')
-      .exec((err, cart) => {
-        err ? reject(err): {};
-          let items = cart.items;
-          let amount = 0;
-          let freight = 0;
-          for (let i in items) {
-            amount += items[i].amount;
-          }
-          for (let i in items) {
-            freight += items[i].freightFreeIfTotalAmount >= amount? 0: items[i].freight;
-          }
+    ShoppingCartDao.getByClient(clientId).then(cart => {
+        let items = cart.items;
+        let amount = 0;
+        let freight = 0;
+        for (let i in items) {
+          amount += items[i].amount;
+        }
+        for (let i in items) {
+          freight += items[i].freightFreeIfTotalAmount >= amount? 0: items[i].freight;
+        }
 
-        console.log(amount, freight);
-          cart.set({
-            amount: amount,
-            freight: freight,
-            totalAmount: amount + freight
-          });
-          cart.save(function (err, doc) {
-            err ? reject(err)
-              : resolve(doc);
-          })
-      });
+        cart.set({
+          amount: amount,
+          freight: freight,
+          totalAmount: amount + freight
+        });
+
+        cart.save(function (err, doc) {
+          err ? reject(err)
+            : resolve(doc);
+        })
+    }).catch(error => reject(error));
   });
 };
 

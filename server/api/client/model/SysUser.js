@@ -9,6 +9,7 @@ const userSchema = {
     password: {type: String, required: true, trim: true},
     nickName: {type: String, required: true, trim: true},
     lastLoginTime: {type: Date},
+    enabled: {type: Boolean, default: true},
 
     roles : [{type: mongoose.Schema.Types.ObjectId, ref: 'SysRole'}]
 };

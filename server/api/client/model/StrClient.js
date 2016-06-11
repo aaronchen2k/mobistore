@@ -13,6 +13,7 @@ const clientSchema = {
     verifyCode: {type: String, required: true, trim: true},
     lastLoginTime: {type: Date},
     rewardPoints: {type: Number},
+    enabled: {type: Boolean, default: true},
 
     // 当前登录的设备类型
     clientPlatform: {type: String, required: true, trim: true},

@@ -13,7 +13,7 @@ const shoppingCartItemSchema = {
 	freightFreeIfTotalAmount: {type: Number},
 	name: {type: String, required: true, trim: true},
 	image: {type: String, required: true, trim: true},
-  enabled: {type: Boolean},
+  enabled: {type: Boolean, default: true},
 
 	product: {type: mongoose.Schema.Types.ObjectId, ref: 'StrProduct'},
 	shoppingCart: {type: mongoose.Schema.Types.ObjectId, ref: 'StrShoppingCart'}

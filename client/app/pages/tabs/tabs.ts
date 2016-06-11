@@ -7,8 +7,6 @@ import {Find} from '../find/find';
 import {Shoppingcart} from '../shoppingcart/shoppingcart';
 import {Mine} from '../mine/mine';
 
-import {Category} from '../../models/category';
-
 import {CategoryService}    from '../../services/category';
 import {PostService} from '../../services/post';
 
@@ -26,7 +24,7 @@ export class TabsPage implements OnInit {
     shoppingcartTab: any = Shoppingcart;
     mineTab: any = Mine;
 
-    categories: Category[] = [];
+    categories: any[] = [];
     shoppingcartItemCount: number;
     errorMessage: any;
 

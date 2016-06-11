@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {VARIABLE} from '../utils/variable';
 import {PostService} from './post';
-import {Product} from '../models/product';
 
 @Injectable()
 export class SearchService {
@@ -12,7 +11,7 @@ export class SearchService {
     _keywords = '/search/getMatchedKeywords';
 
     search(keywords) {
-        return this._postService.post(this._search, {keywords: keywords, categoryId: VARIABLE.CURRENT_CATEGORY.id});
+        return this._postService.post(this._search, {keywords: keywords, categoryId: VARIABLE.CURRENT_CATEGORY['id']});
     }
 
     getHistory() {
@@ -20,6 +19,6 @@ export class SearchService {
     }
 
     getMatchedKeywords(keywords) {
-        return this._postService.post(this._keywords, {keywords: keywords, categoryId: VARIABLE.CURRENT_CATEGORY.id});
+        return this._postService.post(this._keywords, {keywords: keywords, categoryId: VARIABLE.CURRENT_CATEGORY['id']});
     }
 }
