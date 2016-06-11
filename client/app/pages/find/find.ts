@@ -43,8 +43,8 @@ export class Find implements OnInit {
 
     }
 
-    onProductSelected(item) {
-        this.nav.push(ProductDetail, item.id);
+    onProductSelected(itemId) {
+        this.nav.push(ProductDetail, itemId);
     }
 
     openSearchModal() {
