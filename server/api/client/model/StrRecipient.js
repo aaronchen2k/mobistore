@@ -13,9 +13,9 @@ const recipientSchema = {
     street: {type: String, required: true, trim: true},
     address: {type: String, required: true, trim: true},
     default: {type: Boolean, required: true, trim: true},
-  enabled: {type: Boolean, default: true},
+    enabled: {type: Boolean, default: true},
 
-	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'}
+	  client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'}
 }
 
 module.exports = mongoose.Schema(recipientSchema, config.schemaOptions);

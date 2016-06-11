@@ -7,11 +7,9 @@ import {CONSTANT} from '../utils/constant';
 export class MineService {
     constructor(private _postService: PostService) { }
 
-    _mine = '/mine/index';
+    _mine = '/mine/info';
 
     getData() {
         return this._postService.post(this._mine, {});
     }
-	
-
 }

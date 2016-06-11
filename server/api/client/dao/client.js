@@ -6,17 +6,17 @@ const _ = require('lodash');
 
 const clientSchema = require('../model/StrClient');
 
-clientSchema.statics.list = () => {
-    return new Promise((resolve, reject) => {
-      let _query = {};
+clientSchema.statics.get = (clientId) => {
+  return new Promise((resolve, reject) => {
+    let _query = {_id: clientId, enabled: true};
 
-      StrClient
-          .find(_query)
-          .exec((err, json) => {
-              err ? reject(err)
-                  : resolve(json);
-          });
+    StrClient
+      .findOne(_query)
+      .exec((err, json) => {
+        err ? reject(err)
+          : resolve(json);
       });
+  });
 }
 
 const StrClient  = mongoose.model('StrClient', clientSchema);

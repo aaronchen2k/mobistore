@@ -29,7 +29,7 @@ collectionSchema.statics.isCollected = (id) => {
 
 collectionSchema.statics.collect = (productId, clientId) => {
     return new Promise((resolve, reject) => {
-      let _query = {product: {_id: productId}, client: {_id: clientId}};
+      let _query = {product: {_id: productId}, client: {_id: clientId}, enabled: true};
 
       StrCollection
         .findOne(_query, function(err, doc) {
@@ -51,6 +51,27 @@ collectionSchema.statics.collect = (productId, clientId) => {
           }
         });
     });
+}
+
+collectionSchema.statics.count = (clientId) => {
+  return new Promise((resolve, reject) => {
+    var rules = [{client: mongoose.Types.ObjectId(clientId)}, {enabled: true}];
+
+    StrCollection.aggregate(
+      [
+        { $match: {$and: rules} },
+        { $group:  {
+          _id: '$_id',
+          count: { $sum: 1 }
+        }},
+      ], function(err, docs) {
+        let ret = docs.length > 0? docs[0]['count']: 0;
+
+        err ? reject(err)
+          : resolve(ret);
+      }
+    );
+  });
 }
 
 const StrCollection  = mongoose.model('StrCollection', collectionSchema);

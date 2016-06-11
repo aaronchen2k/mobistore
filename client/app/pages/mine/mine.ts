@@ -26,6 +26,7 @@ export class Mine {
     constructor(private nav: NavController, private mineService: MineService, private orderService: OrderService) {
 
     }
+
     onPageWillEnter(): void {
         let me = this;
         me.mineService.getData().subscribe(
@@ -79,5 +80,6 @@ export class Mine {
         let me = this;
         this.nav.push(Collections, {});
     }
+    
 }
 

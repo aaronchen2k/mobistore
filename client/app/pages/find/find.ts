@@ -40,7 +40,7 @@ export class Find implements OnInit {
     }
 
     onPageWillEnter(): void {
-
+      
     }
 
     onProductSelected(itemId) {
