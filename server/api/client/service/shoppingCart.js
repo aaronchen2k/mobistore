@@ -89,4 +89,15 @@ module.exports = class ShoppingCartService {
         });
     });
   }
+
+  static disableItem (item)  {
+    return new Promise((resolve, reject) => {
+      item.set({
+        enabled: false
+      });
+      item.save(function (err, item) {
+        err ? reject(err): resolve(item);
+      })
+    });
+  }
 };
