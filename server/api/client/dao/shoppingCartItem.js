@@ -30,7 +30,7 @@ shoppingCartItemSchema.statics.create = (product, qty, cart, clientId) => {
       cart.save(function (err, cart) {
         err ? reject(err): {};
 
-        shoppingCartItemSchema.statics.computeItemsPriceAndSave(clientId).then(cart => {
+        ShoppingCartDao.computeItemsPriceAndSave(clientId).then(cart => {
           resolve(cart);
         }).catch(error => reject(error));
       })
@@ -52,39 +52,10 @@ shoppingCartItemSchema.statics.update = (item, product, qty, clientId) => {
     item.save(function (err, doc) {
       err ? reject(err): {};
 
-      shoppingCartItemSchema.statics.computeItemsPriceAndSave(clientId).then(cart => {
+      ShoppingCartDao.computeItemsPriceAndSave(clientId).then(cart => {
         resolve(cart);
       }).catch(error => reject(error));
     })
-  });
-};
-
-shoppingCartItemSchema.statics.computeItemsPriceAndSave = (clientId) => {
-  return new Promise((resolve, reject) => {
-    ShoppingCartDao.getByClient(clientId).then(cart => {
-      console.log(22, cart.items);
-
-        let items = cart.items;
-        let amount = 0;
-        let freight = 0;
-        for (let i in items) {
-          amount += items[i].amount;
-        }
-        for (let i in items) {
-          freight += items[i].freightFreeIfTotalAmount >= amount? 0: items[i].freight;
-        }
-
-        cart.set({
-          amount: amount,
-          freight: freight,
-          totalAmount: amount + freight
-        });
-
-        cart.save(function (err, doc) {
-          err ? reject(err)
-            : resolve(doc);
-        })
-    }).catch(error => reject(error));
   });
 };
 

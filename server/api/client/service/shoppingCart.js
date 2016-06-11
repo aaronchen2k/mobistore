@@ -87,7 +87,7 @@ module.exports = class ShoppingCartService {
                   cart.save(function (err, doc) {
                     err ? reject(err): {};
 
-                    ShoppingCartItemDao.computeItemsPriceAndSave(clientId).then(cart => {
+                    ShoppingCartDao.computeItemsPriceAndSave(clientId).then(cart => {
                       resolve(cart);
                     }).catch(error => reject(error));
                   })
@@ -125,7 +125,7 @@ module.exports = class ShoppingCartService {
                 item.save(function (err, item) {
                   err ? reject(err) : {};
 
-                  ShoppingCartItemDao.computeItemsPriceAndSave(clientId).then(cart => {
+                  ShoppingCartDao.computeItemsPriceAndSave(clientId).then(cart => {
                     resolve(cart);
                   }).catch(error => reject(error));
                 })

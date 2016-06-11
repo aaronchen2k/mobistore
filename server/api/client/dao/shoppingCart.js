@@ -61,5 +61,34 @@ shoppingCartSchema.statics.createIfNeeded = (clientId) => {
   });
 }
 
+shoppingCartSchema.statics.computeItemsPriceAndSave = (clientId) => {
+  return new Promise((resolve, reject) => {
+    shoppingCartSchema.statics.getByClient(clientId).then(cart => {
+      console.log(22, cart.items);
+
+      let items = cart.items;
+      let amount = 0;
+      let freight = 0;
+      for (let i in items) {
+        amount += items[i].amount;
+      }
+      for (let i in items) {
+        freight += items[i].freightFreeIfTotalAmount >= amount? 0: items[i].freight;
+      }
+
+      cart.set({
+        amount: amount,
+        freight: freight,
+        totalAmount: amount + freight
+      });
+
+      cart.save(function (err, doc) {
+        err ? reject(err)
+          : resolve(doc);
+      })
+    }).catch(error => reject(error));
+  });
+};
+
 const StrShoppingCart  = mongoose.model('StrShoppingCart', shoppingCartSchema);
 module.exports = StrShoppingCart;
