@@ -29,7 +29,13 @@ module.exports = class ShoppingCartCtrl {
       .catch(error => res.status(400).json(error));
   }
   static changeQty(req, res) {
+    let _itemId = req.body.itemId;
+    let _itemQty = req.body.itemQty;
 
+    ShoppingCartService
+      .changeQty(_itemId, _itemQty, CONSTANTS.testClientId)
+      .then(data => { res.status(200).json({code: 1, data: data}); })
+      .catch(error => res.status(400).json(error));
   }
   static clear(req, res) {
     ShoppingCartService

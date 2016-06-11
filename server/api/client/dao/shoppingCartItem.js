@@ -62,6 +62,8 @@ shoppingCartItemSchema.statics.update = (item, product, qty, clientId) => {
 shoppingCartItemSchema.statics.computeItemsPriceAndSave = (clientId) => {
   return new Promise((resolve, reject) => {
     ShoppingCartDao.getByClient(clientId).then(cart => {
+      console.log(22, cart.items);
+
         let items = cart.items;
         let amount = 0;
         let freight = 0;

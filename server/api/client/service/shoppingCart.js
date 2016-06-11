@@ -58,35 +58,80 @@ module.exports = class ShoppingCartService {
 
   static remove (itemId, clientId)  {
     return new Promise((resolve, reject) => {
-      let _query = {_id: itemId};
-
-      ShoppingCartItemDao
-        .findOne(_query)
-        .exec((err, doc) => {
+      ShoppingCartDao
+        .findOne({'client': clientId})
+        .populate('items') // including disabled items
+        .exec((err, cart) => {
           err ? reject(err): {};
 
-          doc.set({ enabled: false });
-          doc.save(function (err, item) {
-            err ? reject(err): {};
+          let found = false; // not to remove other client's item
+          cart.items.forEach(function (item, index) {
+            if (itemId == item._id) {
+              found = true;
+              cart.items.splice(index, 1);
+            }
+          });
 
-            ShoppingCartDao
-              .findOne({'client': clientId})
-              .populate('items') // including disabled items
-              .exec((err, cart) => {
+          if (found) {
+            let _query = {_id: itemId};
+
+            ShoppingCartItemDao
+              .findOne(_query)
+              .exec((err, item) => {
                 err ? reject(err): {};
 
-                cart.items.forEach(function (item, index) {
-                  if (itemId == item._id) {
-                    cart.items.splice(index, 1);
-                  }
-                });
-                cart.save(function (err, doc) {
-                  err ? reject(err)
-                    : resolve(doc);
+                item.set({ enabled: false });
+                item.save(function (err, item) {
+                  err ? reject(err) : {};
+
+                  cart.save(function (err, doc) {
+                    err ? reject(err): {};
+
+                    ShoppingCartItemDao.computeItemsPriceAndSave(clientId).then(cart => {
+                      resolve(cart);
+                    }).catch(error => reject(error));
+                  })
                 })
-            }).catch(error => reject(error));
-          })
-        });
+              });
+          }
+      }).catch(error => reject(error));
+    });
+  }
+
+  static changeQty (itemId, itemQty, clientId)  {
+    return new Promise((resolve, reject) => {
+      ShoppingCartDao
+        .findOne({'client': clientId})
+        .populate('items') // including disabled items
+        .exec((err, cart) => {
+          err ? reject(err): {};
+
+          let found = false; // not to remove other client's item
+          cart.items.forEach(function (item, index) {
+            if (itemId == item._id) {
+              found = true;
+            }
+          });
+
+          if (found) {
+            let _query = {_id: itemId};
+
+            ShoppingCartItemDao
+              .findOne(_query)
+              .exec((err, item) => {
+                err ? reject(err): {};
+
+                item.set({ qty: itemQty, amount: item.unitPrice * itemQty });
+                item.save(function (err, item) {
+                  err ? reject(err) : {};
+
+                  ShoppingCartItemDao.computeItemsPriceAndSave(clientId).then(cart => {
+                    resolve(cart);
+                  }).catch(error => reject(error));
+                })
+              });
+          }
+        }).catch(error => reject(error));
     });
   }
 

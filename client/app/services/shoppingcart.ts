@@ -8,6 +8,7 @@ export class ShoppingcartService {
     _infoPath = '/shoppingCart/info';
     _addItemPath = '/shoppingCart/addto';
     _removeItemPath = '/shoppingCart/remove';
+    _changeQtyPath = '/shoppingCart/changeQty';
     _clearPath = '/shoppingCart/clear';
     _checkoutPath = '/shoppingCart/checkout';
 
@@ -21,6 +22,10 @@ export class ShoppingcartService {
 
     remove(item) {
         return this._postService.post(this._removeItemPath, {itemId: item.id});
+    }
+
+    changeQty(itemId, itemQty) {
+      return this._postService.post(this._changeQtyPath, {itemId: itemId, itemQty: itemQty});
     }
 
     clear() {

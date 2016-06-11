@@ -42,7 +42,7 @@
 	                                数量
 	                            </span>
 	                            <span class="my-input">
-	                                <input type="text" [(ngModel)]="item.qty" onKey="qtyChange(item)">
+	                                <input type="text" [(ngModel)]="item.qty" (keyup)="qtyChange(item)">
 	                            </span>
 	                        </span>
 
