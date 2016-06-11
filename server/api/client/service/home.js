@@ -16,7 +16,6 @@ module.exports = class HomeService {
        return Promise.join(HomeService.getProducts(), HomeService.getAdverts(),
               HomeService.getShoppingCartItemNumb(), CategoryDao.list(),
             function (products, adverts, shoppingCartItemNumb, categories) {
-
                 return new Promise((resolve, reject) => {
                     resolve({
                         products: products,

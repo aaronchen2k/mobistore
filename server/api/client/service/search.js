@@ -12,7 +12,6 @@ const SearchHotDao = require('../dao/searchHot');
 
 module.exports = class SearchService {
   static getData (categoryId, keywords)  {
-
     return Promise.join(SearchService.search(categoryId, keywords), CategoryDao.list(),
       function (products, categories) {
 
@@ -27,14 +26,59 @@ module.exports = class SearchService {
   }
 
   static search (categoryId, keywords) {
+    console.log(keywords);
     return new Promise((resolve, reject) => {
-      let _query = {category: categoryId}; //, keywords: keywords};
-      ProductDao
-        .find(_query)
+      let _query = {};
+      if (categoryId) {
+        _query['category'] = categoryId;
+      }
+
+      let search = ProductDao.find(_query);
+      if (keywords) {
+        search.or([
+          { name: new RegExp(keywords) },
+          { descr: new RegExp(keywords) }
+        ]);
+      }
+
+      search.limit(10)
+        .sort({ recommend: 1 })
         .exec((err, json) => {
           err ? reject(err)
             : resolve(json);
         });
     });
   }
+
+  static getHistories (clientId)  {
+    return Promise.join(SearchHistoryDao.list(clientId), SearchHotDao.list(),
+      function (histories, hots) {
+        return new Promise((resolve, reject) => {
+          resolve({
+            histories: histories,
+            hots: hots
+          });
+        });
+      }
+    );
+  }
+
+  static getMatchedKeywords (keywords)  {
+    return new Promise((resolve, reject) => {
+
+      let _query = {};
+      let search = SearchHotDao.find(_query);
+      if (keywords) {
+        search.where( { keywords: new RegExp('.*'+keywords+'.*', '') } );
+      }
+
+      search.limit(10)
+        .sort({ times: -1 })
+        .exec((err, json) => {
+          err ? reject(err)
+            : resolve(json);
+        });
+    });
+  }
+
 };

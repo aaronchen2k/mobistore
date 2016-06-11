@@ -6,17 +6,24 @@ const _ = require('lodash');
 
 const searchHistorySchema = require('../model/StrSearchHistory');
 
-searchHistorySchema.statics.list = () => {
-    return new Promise((resolve, reject) => {
-      let _query = {};
+searchHistorySchema.statics.list = (clientId) => {
+  return new Promise((resolve, reject) => {
+    let _query = {client: clientId, enabled: true};
 
-      StrCategory
-          .find(_query)
-          .exec((err, json) => {
-              err ? reject(err)
-                  : resolve(json);
+    StrSearchHistory
+        .find(_query)
+        .limit(10)
+        .sort({ searchTime: -1 })
+        .exec((err, docs) => {
+          err ? reject(err): {};
+
+          let ret = [];
+          docs.forEach(function (doc) {
+            ret.push(doc['keywords']);
           });
-      });
+          resolve(ret);
+        });
+    });
 }
 
 const StrSearchHistory  = mongoose.model('StrSearchHistory', searchHistorySchema);

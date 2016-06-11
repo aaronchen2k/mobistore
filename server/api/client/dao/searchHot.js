@@ -7,16 +7,23 @@ const _ = require('lodash');
 const searchHotSchema = require('../model/StrSearchHot');
 
 searchHotSchema.statics.list = () => {
-    return new Promise((resolve, reject) => {
-      let _query = {};
+  return new Promise((resolve, reject) => {
+    let _query = {enabled: true};
 
-      StrCategory
-          .find(_query)
-          .exec((err, json) => {
-              err ? reject(err)
-                  : resolve(json);
-          });
+    StrSearchHot
+      .find(_query)
+      .limit(10)
+      .sort({ times: -1 })
+      .exec((err, docs) => {
+        err ? reject(err): {};
+
+        let ret = [];
+        docs.forEach(function (doc) {
+          ret.push(doc['keywords']);
+        });
+        resolve(ret);
       });
+  });
 }
 
 const StrSearchHot  = mongoose.model('StrSearchHot', searchHotSchema);
