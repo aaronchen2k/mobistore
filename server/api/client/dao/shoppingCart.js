@@ -54,7 +54,6 @@ shoppingCartSchema.statics.createIfNeeded = (clientId) => {
               : resolve(doc);
           });
       } else {
-
         resolve(cart);
       }
     }).catch(error => reject(error));

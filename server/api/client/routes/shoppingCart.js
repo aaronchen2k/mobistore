@@ -12,6 +12,9 @@ module.exports = class ShoppingCartRoutes {
       .route('/api/v1/shoppingCart/addTo')
       .post(ShoppingCartCtrl.addTo);
     router
+      .route('/api/v1/shoppingCart/remove')
+      .post(ShoppingCartCtrl.remove);
+    router
       .route('/api/v1/shoppingCart/changeQty')
       .post(ShoppingCartCtrl.changeQty);
     router

@@ -56,17 +56,37 @@ module.exports = class ShoppingCartService {
       });
   }
 
-  static disableItem (item)  {
-    console.log(555);
+  static remove (itemId, clientId)  {
     return new Promise((resolve, reject) => {
-      item.set({
-        enabled: false
-      });
-      item.save(function (err, item) {
-        console.log(333);
-        err ? reject(err): resolve(item);
-      })
+      let _query = {_id: itemId};
+
+      ShoppingCartItemDao
+        .findOne(_query)
+        .exec((err, doc) => {
+          err ? reject(err): {};
+
+          doc.set({ enabled: false });
+          doc.save(function (err, item) {
+            err ? reject(err): {};
+
+            ShoppingCartDao
+              .findOne({'client': clientId})
+              .populate('items') // including disabled items
+              .exec((err, cart) => {
+                err ? reject(err): {};
+
+                cart.items.forEach(function (item, index) {
+                  if (itemId == item._id) {
+                    cart.items.splice(index, 1);
+                  }
+                });
+                cart.save(function (err, doc) {
+                  err ? reject(err)
+                    : resolve(doc);
+                })
+            }).catch(error => reject(error));
+          })
+        });
     });
   }
-
 };
