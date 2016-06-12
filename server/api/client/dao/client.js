@@ -5,6 +5,7 @@ const Promise = require('bluebird');
 const _ = require('lodash');
 
 const clientSchema = require('../model/StrClient');
+const StrRecipient = require('../dao/recipient');
 
 clientSchema.statics.get = (clientId) => {
   return new Promise((resolve, reject) => {
@@ -12,6 +13,10 @@ clientSchema.statics.get = (clientId) => {
 
     StrClient
       .findOne(_query)
+      .populate({
+        path: 'recipients',
+        match: { enabled: true, default: true }
+      })
       .exec((err, json) => {
         err ? reject(err)
           : resolve(json);

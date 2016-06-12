@@ -9,6 +9,10 @@ const ShoppingCartDao = require('../dao/shoppingCart');
 const ShoppingCartItemDao = require('../dao/shoppingCartItem');
 const ProductDao = require('../dao/product');
 
+const OrderService = require('../service/order');
+const OrderDao = require('../dao/order');
+const OrderItemDao = require('../dao/product');
+
 module.exports = class ShoppingCartService {
   static addTo (productId, qty, clientId)  {
     return Promise.join(ShoppingCartDao.createIfNeeded(clientId), ProductDao.get(productId),
@@ -135,6 +139,38 @@ module.exports = class ShoppingCartService {
     });
   }
 
+  static checkout (clientId)  {
+    return new Promise((resolve, reject) => {
+      OrderService.create(clientId).then(data => {
+
+        let shoppingCart = data.shoppingCart;
+        let order = data.order;
+
+        var arr = [];
+        shoppingCart.items.forEach(function(item) {
+          arr.push(ShoppingCartService.checkoutItem(item, order));
+        });
+
+        Promise.all(arr).then(function() {
+          console.log("all items were checkout");
+          shoppingCart.set({ amount: 0, freight: 0, totalAmount: 0 , items: []});
+          shoppingCart.save(function (err, doc) {
+            err ? reject(err): {};
+
+            console.log(11, order);
+            order.save(function (err, order) {
+              err ? reject(err)
+                : resolve(order);
+            })
+          })
+        }, function(reason) {
+          console.log(reason);
+          reject(reason);
+        })
+      }).catch(error => reject(error));
+    });
+  }
+
   static disableItem (item)  {
     return new Promise((resolve, reject) => {
       item.set({
@@ -145,4 +181,37 @@ module.exports = class ShoppingCartService {
       })
     });
   }
+
+  static checkoutItem (shoppingCartItem, order)  {
+    return new Promise((resolve, reject) => {
+      shoppingCartItem.set({
+        checkout: true,
+        enabled: false
+      });
+      shoppingCartItem.save(function (err, shoppingCartItem) {
+        err ? reject(err): {};
+
+        OrderDao.create({
+          name: shoppingCartItem.name,
+          image: shoppingCartItem.image,
+          unitPrice: shoppingCartItem.unitPrice,
+          qty: shoppingCartItem.qty,
+          // freight: shoppingCartItem.freight,
+          // freightFreeIfTotalAmount: shoppingCartItem.freightFreeIfTotalAmount,
+          amount: shoppingCartItem.amount,
+
+          product: shoppingCartItem.product,
+          order: order.id,
+          createTime: new Date(),
+          },
+          function (err, orderItem) {
+            err ? reject(err): {};
+
+            order.items.push(orderItem);
+            resolve(orderItem);
+          });
+      })
+    });
+  }
+
 };

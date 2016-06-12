@@ -7,7 +7,7 @@ module.exports = class ProductRoutes {
     router
       .route('/api/v1/products/collect')
       .post(ProductCtrl.collect);
-      
+
     router
       .route('/api/v1/products')
       .get(ProductCtrl.list)
@@ -15,7 +15,7 @@ module.exports = class ProductRoutes {
 
     router
       .route('/api/v1/products/:id')
-      .get(ProductCtrl.get)
+      .get(ProductCtrl.getWithCartNumb)
       .delete(ProductCtrl.delete);
 
   }

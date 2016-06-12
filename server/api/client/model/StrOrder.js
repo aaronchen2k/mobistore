@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 
 var config = require('./config');
+const CONSTANTS = require('../../../constants/constants');
 
 const orderSchema = {
 	currency: {type: String},
@@ -12,20 +13,20 @@ const orderSchema = {
 	totalAmount: {type: Number},
 	payAmount: {type: Number},
 
-	recipient: {type: String, required: true, trim: true},
-	recipientArea: {type: String, required: true, trim: true},
-	recipientStreet: {type: String, required: true, trim: true},
-	recipientAddress: {type: String, required: true, trim: true},
-	recipientName: {type: String, required: true, trim: true},
-	recipientPhone: {type: String, required: true, trim: true},
+	recipientArea: {type: String},
+	recipientStreet: {type: String},
+	recipientAddress: {type: String},
+	recipientName: {type: String},
+	recipientPhone: {type: String},
 
   createTime: {type: Date},
   payTime: {type: Date},
   shipTime: {type: Date},
 
-	status: {type: String, required: true, trim: true},
+	status: {type: String, default: CONSTANTS.orderStatus.created},
   enabled: {type: Boolean, default: true},
 
+  recipient: {type: mongoose.Schema.Types.ObjectId, ref: 'StrRecipient'},
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'},
 	items: [{type: mongoose.Schema.Types.ObjectId, ref: 'StrOrderItems'}]
 }

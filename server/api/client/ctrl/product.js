@@ -26,15 +26,14 @@ module.exports = class ProductCtrl {
       .catch(error => res.status(400).json(error));
   }
 
-  static get(req, res) {
+  static getWithCartNumb(req, res) {
     let _id = req.params.id;
 
     ProductService
-      .getDetail(_id)
+      .getWithCartNumb(_id)
       .then(data => res.status(200).json({
         code: 1,
-        data: data,
-
+        data: data
       }))
       .catch(error => res.status(400).json(error));
   }

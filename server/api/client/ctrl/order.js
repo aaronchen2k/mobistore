@@ -19,7 +19,15 @@ module.exports = class OrderCtrl {
 
   }
   static get(req, res) {
+    let _id = req.params.id;
 
+    Orderao
+      .get(_id)
+      .then(data => res.status(200).json({
+        code: 1,
+        data: data
+      }))
+      .catch(error => res.status(400).json(error));
   }
   static save(req, res) {
 

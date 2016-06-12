@@ -2,7 +2,6 @@ import {Output, EventEmitter} from '@angular/core';
 import {Page, NavController, NavParams, Modal} from 'ionic-angular';
 import {ImgPathPipe} from '../../pipes/img-path';
 import {CurrencyCnyPipe} from '../../pipes/currency-cny';
-import {Product} from '../../models/product';
 import {AddressSelection} from '../address/address-selection';
 
 import {OrderStatusPipe} from '../../pipes/order-status';
@@ -15,14 +14,14 @@ import {OrderService}    from '../../services/order';
   pipes: [ImgPathPipe,CurrencyCnyPipe,OrderStatusPipe]
 })
 export class OrderDetail {
-    
+
     errorMessage: any;
     private orderId: string;
-    private order: Product;
+    private order: any;
     private tab: number = 1;
     constructor(private nav: NavController, params: NavParams, private orderService: OrderService) {
         let me = this;
-        
+
         me.orderId = params.data;
     }
 
@@ -33,11 +32,11 @@ export class OrderDetail {
             error => me.errorMessage = <any>error
         );
     }
-    
+
     show(tab) {
         this.tab = tab;
     }
- 
+
     cancel(orderId) {
         let me = this;
         me.orderService.cancel(orderId).subscribe(
@@ -45,7 +44,7 @@ export class OrderDetail {
             error => me.errorMessage = <any>error
         );
     }
-    
+
     openAddressModel(order) {
         let me = this;
 
@@ -61,16 +60,16 @@ export class OrderDetail {
         if (!addressId) {
             return;
         }
-        
+
         me.orderService.changeRecipient(orderId, addressId).subscribe(
             json => {me.order = json.data;},
             error => me.errorMessage = <any>error
         );
     }
-   
+
     pay(orderId) {
         let me = this;
-        
+
         //let recipientId = 1;
         //me.orderService.pay(orderId, recipientId).subscribe(
         //    json => {PubSubService.getInstance().gotoTab.emit(4);},

@@ -63,13 +63,15 @@
 
 <ion-toolbar white position="bottom" class="bottom-toolbar">
     <div class="bottom-buttons">
-	  <div class="icons">
+	  <div class="icons ">
 	       <button dark clear (click)="collect()">
 	           <ion-icon *ngIf="isCollected" name="heart"></ion-icon>
 	           <ion-icon *ngIf="!isCollected" name="heart-outline"></ion-icon>
 	       </button>
-	       <button dark clear (click)="toShoppingcart()">
-	           <ion-icon name="cart"></ion-icon>
+	       <button class="has-icon" dark clear (click)="toShoppingcart()">
+	           <ion-icon class="with-badge" name="cart"></ion-icon>
+             <ion-badge *ngIf="shoppingcartItemCount > 0"
+                        class="tab-badge badge-danger">{{shoppingcartItemCount}}</ion-badge>
 	       </button>
 	   </div>
 

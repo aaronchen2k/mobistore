@@ -7,15 +7,18 @@ const _ = require('lodash');
 const CONSTANTS = require('../../../constants/constants');
 const ProductDao = require('../dao/product');
 const CollectionDao = require('../dao/collection');
+const ShoppingCartDao = require('../dao/shoppingCart');
 
 module.exports = class ProductService {
-    static getDetail(id) {
+    static getWithCartNumb(id) {
        return Promise.join(ProductDao.get(id), CollectionDao.isCollected(id),
-            function (product, isCollected) {
+              ShoppingCartDao.getItemNumb(CONSTANTS.testClientId),
+            function (product, isCollected, shoppingcartItemCount) {
                 return new Promise((resolve, reject) => {
                     resolve({
                           product: product,
-                          isCollected: isCollected
+                          isCollected: isCollected,
+                          shoppingcartItemCount: shoppingcartItemCount
                     });
                 });
             }

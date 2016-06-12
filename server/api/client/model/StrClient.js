@@ -22,7 +22,7 @@ const clientSchema = {
     // 友盟设备Token
     deviceToken: {type: String, required: true, trim: true},
 
-	  addresses: [{type: mongoose.Schema.Types.ObjectId, ref: 'StrRecipient'}]
+    recipients: [{type: mongoose.Schema.Types.ObjectId, ref: 'StrRecipient'}]
 }
 
 module.exports = mongoose.Schema(clientSchema, config.schemaOptions);

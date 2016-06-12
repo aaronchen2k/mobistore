@@ -59,7 +59,7 @@ export class Shoppingcart {
         me._shoppingcartService.checkout().subscribe(
             json =>  {
                 PubSubService.getInstance().shoppingcart.emit(0);
-                me.nav.push(OrderDetail, json.orderId);
+                me.nav.push(OrderDetail, json.data.id);
             },
             error => this.errorMessage = <any>error
         );

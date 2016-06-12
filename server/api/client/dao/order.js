@@ -19,6 +19,19 @@ orderSchema.statics.list = () => {
       });
 }
 
+orderSchema.statics.get = (id) => {
+  return new Promise((resolve, reject) => {
+    let _query = {id: id};
+
+    StrOrder
+      .find(_query)
+      .exec((err, json) => {
+        err ? reject(err)
+          : resolve(json);
+      });
+  });
+}
+
 orderSchema.statics.counts = (clientId) => {
   return new Promise((resolve, reject) => {
     var rules = [{client: mongoose.Types.ObjectId(clientId)}, {enabled: true}];
