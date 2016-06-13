@@ -15,14 +15,12 @@ export class AddressSelection {
     private addresses: any[];
     private orderId: String;
     private recipientId: String;
-    
+
     constructor(params: NavParams, private viewCtrl: ViewController, private addressService: AddressService) {
         let me = this;
 
         me.orderId = params.data.order.id;
-        me.recipientId = params.data.order.recipientId;
-
-        console.log('me.recipientId == 01 ' + (me.recipientId == '01'));
+        me.recipientId = params.data.order.recipient;
 
         me.addressService.list().subscribe(
             json => {me.addresses = json.data;},
@@ -33,7 +31,7 @@ export class AddressSelection {
     onPageWillEnter(): void {
 
     }
-    
+
     selectAddress(addressId) {
         this.recipientId = addressId;
         this.viewCtrl.dismiss(addressId);

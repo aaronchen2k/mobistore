@@ -60,6 +60,29 @@ export class PostService {
         .catch(this.handleError);
     }
 
+    delete(apiPath: string) {
+      let me = this;
+      let url = CONSTANT.SERVICE_URL + 'api/' + CONSTANT.API_VER + apiPath;
+
+      console.log(url);
+      let headers = new Headers({ 'Content-Type': 'application/json', 'token': 'test' });
+      let options = new RequestOptions({ headers: headers });
+
+      return this.http.delete(url, options)
+        .map(
+          function(res) {
+            let json = res.json();
+            console.log(json);
+            if (!!json.code && json.code > 0) {
+              return json;
+            } else {
+              me.handleError(json.msg);
+            }
+          }
+        )
+        .catch(this.handleError);
+    }
+
     handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');

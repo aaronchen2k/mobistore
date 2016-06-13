@@ -21,7 +21,15 @@ module.exports = class OrderCtrl {
   }
 
   static changeRecipient(req, res) {
-    let _id = req.params.id;
+    let orderId = req.body.orderId;
+    let recipientId = req.body.recipientId;
+
+    OrderService.changeRecipient(orderId, recipientId)
+      .then(order => res.status(200).json({
+        code: 1,
+        data: order
+      }))
+      .catch(error => res.status(400).json(error));
   }
 
   static cancel(req, res) {

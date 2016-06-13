@@ -9,14 +9,14 @@
 	</ion-buttons>
 </ion-navbar>
 
-<div class="address-selection" [ngModel]="recipientId">
-	<ion-list radio-group > 
+<div class="address-selection">
+	<ion-list radio-group [ngModel]="recipientId">
 	    <!-- <ion-list-header> 请选择地址： </ion-list-header>  -->
 	    <ion-item *ngFor="let item of addresses">
 			<ion-label>
 				<h2 class="text-big text-color-light-grey">{{item.name}}，{{item.phone}}</h2>
 				<p class="text-thin text-color-light-grey">{{item.province}} &nbsp;{{item.city}}</p>
-				<p class="text-thin text-color-light-grey descr">{{recipientId}} == {{item.id}} - {{item.street}} {{item.address}}</p>
+				<p class="text-thin text-color-light-grey descr">{{item.street}} {{item.address}}</p>
 			</ion-label>
 	        <ion-radio (click)="selectAddress(item.id)" [value]="item.id"></ion-radio>
         </ion-item>

@@ -4,30 +4,27 @@ import {PostService} from './post';
 @Injectable()
 export class AddressService {
     constructor(private _postService: PostService) { }
-    
-    _list = '/address/list';
-    _detail = '/address/detail';
-    _listAreas = '/address/getAreas';
 
-    _save = '/address/save';
-    _remove = '/address/remove';
+    _address = '/recipients/:id';
+
+    _listAreas = '/areas/list';
 
     list() {
-        return this._postService.post(this._list, {});
+        return this._postService.get(this._address.replace(':id', ''));
     }
 
     detail(addressId) {
-        return this._postService.post(this._detail, {addressId: addressId});
-    }
-
-    listArea(type, provinceId, cityId) {
-        return this._postService.post(this._listAreas, {type:type, provinceId:provinceId, cityId:cityId});
+        return this._postService.get(this._address.replace(':id', addressId));
     }
 
     save(address) {
-        return this._postService.post(this._save, address);
+        return this._postService.post(this._address.replace(':id', ''), address);
     }
     remove(addressId) {
-        return this._postService.post(this._remove, {addressId: addressId});
+        return this._postService.delete(this._address.replace(':id', addressId));
+    }
+
+    listArea(type, provinceId, cityId) {
+      return this._postService.post(this._listAreas, {type:type, provinceId:provinceId, cityId:cityId});
     }
 }

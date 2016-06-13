@@ -1,9 +1,9 @@
 "use strict";
 
+const CONSTANTS = require('../../../constants/constants');
 const ProductService = require('../service/product');
 const ProductDao = require('../dao/product');
 const CollectionDao = require('../dao/collection');
-const CONSTANTS = require('../../../constants/constants');
 
 module.exports = class ProductCtrl {
 

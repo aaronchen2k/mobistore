@@ -2,6 +2,8 @@
 
 const express = require('express');
 
+const RecipientRoutes = require('../api/client/routes/recipient');
+const AreaRoutes = require('../api/client/routes/area');
 const CategoryRoutes = require('../api/client/routes/category');
 const ClientRoutes = require('../api/client/routes/client');
 const HomeRoutes = require('../api/client/routes/home');
@@ -15,6 +17,8 @@ const ShoppingCartRoutes = require('../api/client/routes/shoppingCart');
 
 module.exports = class Routes {
    static init(app, router) {
+       RecipientRoutes.init(router);
+       AreaRoutes.init(router);
        CategoryRoutes.init(router);
        ClientRoutes.init(router);
        HomeRoutes.init(router);
@@ -25,7 +29,7 @@ module.exports = class Routes {
        RewardRoutes.init(router);
        SearchRoutes.init(router);
        ShoppingCartRoutes.init(router);
-     
+
        app.use(express.static(__dirname + '/../../public/'));
 
        app.all('*', function(req, res,next) {
