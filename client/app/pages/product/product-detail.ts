@@ -7,11 +7,11 @@ import {CurrencyCnyPipe} from '../../pipes/currency-cny';
 import {StringUtil} from '../../utils/string';
 import {PubSubService} from '../../services/pub-sub-service';
 import {ProductService}    from '../../services/product';
-import {ShoppingcartService}    from '../../services/shoppingcart';
+import {ShoppingCartService}    from '../../services/shoppingCart';
 
 @Page({
   templateUrl: 'build/pages/product/product-detail.html',
-  providers: [ProductService,ShoppingcartService, PubSubService],
+  providers: [ProductService,ShoppingCartService, PubSubService],
   pipes: [ImgPathPipe,CurrencyCnyPipe]
 })
 export class ProductDetail {
@@ -20,14 +20,21 @@ export class ProductDetail {
     private productId: string;
     private product: any;
     private isCollected: boolean;
-    private shoppingcartItemCount: number;
+    private shoppingCartItemCount: number;
     private qty: number = 1;
 
     constructor(nav: NavController, params: NavParams,
-                private _productService: ProductService, private _shoppingcartService: ShoppingcartService) {
+                private _productService: ProductService, private _shoppingCartService: ShoppingCartService) {
         let me = this;
         me.productId = params.data;
         me.getDetail();
+    }
+
+    ngOnInit(){
+      let me = this;
+      PubSubService.getInstance().shoppingCart.subscribe(
+        itemCount => me.shoppingCartItemCount = itemCount
+      );
     }
 
     getDetail () {
@@ -37,7 +44,8 @@ export class ProductDetail {
               me.product = json.data.product;
 
               me.isCollected = json.data.isCollected;
-              me.shoppingcartItemCount = json.data.shoppingcartItemCount;
+              me.shoppingCartItemCount = json.data.shoppingCartItemCount;
+              PubSubService.getInstance().shoppingCart.emit(me.shoppingCartItemCount);
             } ,
             error => me.errorMessage = <any>error
         );
@@ -56,14 +64,17 @@ export class ProductDetail {
         );
      }
 
-     toShoppingcart() {
+     toShoppingCart() {
         PubSubService.getInstance().gotoTab.emit(2);
      }
 
-     addToShoppingcart() {
-
-        this._shoppingcartService.addToShoppingcart(this.product, this.qty).subscribe(
-            json => PubSubService.getInstance().shoppingcart.emit(json.data.items.length),
+     addToShoppingCart() {
+        let me = this;
+        this._shoppingCartService.addToShoppingCart(this.product, this.qty).subscribe(
+            json => {
+              me.shoppingCartItemCount = json.data.items.length;
+              PubSubService.getInstance().shoppingCart.emit(me.shoppingCartItemCount);
+            },
             error => this.errorMessage = <any>error
         );
      }

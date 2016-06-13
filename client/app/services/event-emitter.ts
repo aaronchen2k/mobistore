@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
-import {Category} from '../models/category';
 
 @Injectable()
-export class ChangeCategoryEventEmitter extends Subject<Category> {
+export class ChangeCategoryEventEmitter extends Subject<any> {
     constructor() {
         super();
     }
@@ -24,7 +23,7 @@ export class GotoTabEventEmitter extends Subject<number> {
 }
 
 @Injectable()
-export class ShoppingcartChangeEventEmitter extends Subject<number> {
+export class ShoppingCartChangeEventEmitter extends Subject<number> {
     constructor() {
         super();
     }

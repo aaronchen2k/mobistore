@@ -68,14 +68,14 @@
 	           <ion-icon *ngIf="isCollected" name="heart"></ion-icon>
 	           <ion-icon *ngIf="!isCollected" name="heart-outline"></ion-icon>
 	       </button>
-	       <button class="has-icon" dark clear (click)="toShoppingcart()">
+	       <button class="has-icon" dark clear (click)="toShoppingCart()">
 	           <ion-icon class="with-badge" name="cart"></ion-icon>
-             <ion-badge *ngIf="shoppingcartItemCount > 0"
-                        class="tab-badge badge-danger">{{shoppingcartItemCount}}</ion-badge>
+             <ion-badge *ngIf="shoppingCartItemCount > 0"
+                        class="tab-badge badge-danger">{{shoppingCartItemCount}}</ion-badge>
 	       </button>
 	   </div>
 
-	   <div class="buttons orange" (click)="addToShoppingcart()">
+	   <div class="buttons orange" (click)="addToShoppingCart()">
 	       <button clear class="button left">
 	         加入购物车
 	       </button>

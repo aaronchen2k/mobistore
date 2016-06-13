@@ -4,7 +4,7 @@ import {VARIABLE} from '../../utils/variable';
 import {PubSubService} from '../../services/pub-sub-service';
 import {Home} from '../home/home';
 import {Find} from '../find/find';
-import {Shoppingcart} from '../shoppingcart/shoppingcart';
+import {ShoppingCart} from '../shoppingCart/shoppingCart';
 import {Mine} from '../mine/mine';
 
 import {CategoryService}    from '../../services/category';
@@ -21,11 +21,11 @@ export class TabsPage implements OnInit {
 
     homeTab: any = Home;
     findTab: any = Find;
-    shoppingcartTab: any = Shoppingcart;
+    shoppingCartTab: any = ShoppingCart;
     mineTab: any = Mine;
 
     categories: any[] = [];
-    shoppingcartItemCount: number;
+    shoppingCartItemCount: number;
     errorMessage: any;
 
     subscription = null;
@@ -41,8 +41,8 @@ export class TabsPage implements OnInit {
         PubSubService.getInstance().gotoTab.subscribe(
             index => me.gotoTab(index)
         );
-        PubSubService.getInstance().shoppingcart.subscribe(
-            itemCount => me.shoppingcartItemCount = itemCount
+        PubSubService.getInstance().shoppingCart.subscribe(
+            itemCount => me.shoppingCartItemCount = itemCount
         );
     }
 

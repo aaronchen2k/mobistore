@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {PostService} from './post';
 
 @Injectable()
-export class ShoppingcartService {
+export class ShoppingCartService {
     constructor(private _postService: PostService) { }
 
     _infoPath = '/shoppingCart/info';
@@ -16,7 +16,7 @@ export class ShoppingcartService {
         return this._postService.post(this._infoPath, {});
     }
 
-    addToShoppingcart(product, qty) {
+    addToShoppingCart(product, qty) {
         return this._postService.post(this._addItemPath, {productId: product.id, qty: qty});
     }
 
