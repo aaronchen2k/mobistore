@@ -25,8 +25,8 @@ module.exports = class ShoppingCartCtrl {
 
     ShoppingCartService
       .remove(_itemId, CONSTANTS.testClientId)
-      .then(data => { res.status(200).json({code: 1, data: data}); })
-      .catch(error => res.status(400).json(error));
+      .then(data => { res.status(200).json({code: 1, data: data});})
+      .catch(error => { res.status(400).json(error);} );
   }
   static changeQty(req, res) {
     let _itemId = req.body.itemId;

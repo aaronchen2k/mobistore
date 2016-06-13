@@ -15,13 +15,13 @@ module.exports = class OrderRoutes {
         .delete(OrderCtrl.delete);
 
       router
-        .route('/api/v1/orders/:id/changeRecipient')
+        .route('/api/v1/orders/changeRecipient')
         .post(OrderCtrl.changeRecipient);
       router
-        .route('/api/v1/orders/:id/cancel')
+        .route('/api/v1/orders/cancel')
         .post(OrderCtrl.cancel);
       router
-        .route('/api/v1/orders/:id/pay')
+        .route('/api/v1/orders/pay')
         .post(OrderCtrl.pay);
 
     }

@@ -1,15 +1,12 @@
 "use strict";
 
-const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const _ = require('lodash');
 
 const CONSTANTS = require('../../../constants/constants');
 const OrderDao = require('../dao/order');
-const OrderItemDao = require('../dao/orderItem');
 const ClientDao = require('../dao/client');
 const ShoppingCartDao = require('../dao/shoppingCart');
-const ShoppingCartItemDao = require('../dao/shoppingCartItem');
 
 module.exports = class OrderService {
   static create(clientId) {
@@ -43,6 +40,46 @@ module.exports = class OrderService {
         });
       }
     );
+  }
+
+  static cancel(orderId) {
+
+    return new Promise((resolve, reject) => {
+      OrderDao.get(orderId).then(order => {
+
+          var arr = [];
+          console.log(11, order);
+          order.items.forEach(function(item) {
+            arr.push(OrderService.cancelItem(item));
+          });
+
+          Promise.all(arr).then(function() {
+            console.log("all items were cancel");
+            order.set({ enabled: false });
+            order.save(function (err, doc) {
+              err ? reject(err): resolve(order);
+            })
+          }, function(reason) {
+            console.log(reason);
+            reject(reason);
+          })
+        }).catch(error => reject(error));
+    });
+  }
+
+  static cancelItem (item)  {
+    console.log(22);
+    return new Promise((resolve, reject) => {
+      item.set({
+        enabled: false
+      });
+
+      item.save(function (err, doc) {
+        console.log(33, doc);
+        err ? reject(err):
+          resolve(doc);
+      })
+    });
   }
 
   static getDetail(id) {

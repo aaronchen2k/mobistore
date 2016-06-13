@@ -7,7 +7,6 @@ const _ = require('lodash');
 const CONSTANTS = require('../../../constants/constants');
 const ProductDao = require('../dao/product');
 const ShoppingCartDao = require('../dao/shoppingCart');
-const ShoppingCartItemDao = require('../dao/shoppingCartItem');
 const AdvertDao = require('../dao/advert');
 const CategoryDao = require('../dao/category');
 

@@ -31,7 +31,6 @@ orderSchema.statics.get = (id) => {
         match: { enabled: true}
       })
       .exec((err, json) => {
-        console.log(1111, json);
         err ? reject(err)
           : resolve(json);
       });
