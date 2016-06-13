@@ -11,7 +11,7 @@ const ProductDao = require('../dao/product');
 
 const OrderService = require('../service/order');
 const OrderDao = require('../dao/order');
-const OrderItemDao = require('../dao/product');
+const OrderItemDao = require('../dao/orderItem');
 
 module.exports = class ShoppingCartService {
   static addTo (productId, qty, clientId)  {
@@ -157,8 +157,9 @@ module.exports = class ShoppingCartService {
           shoppingCart.save(function (err, doc) {
             err ? reject(err): {};
 
-            console.log(11, order);
             order.save(function (err, order) {
+              console.log('1111', err, order);
+
               err ? reject(err)
                 : resolve(order);
             })
@@ -167,7 +168,7 @@ module.exports = class ShoppingCartService {
           console.log(reason);
           reject(reason);
         })
-      }).catch(error => reject(error));
+       }).catch(error => reject(error));
     });
   }
 
@@ -188,10 +189,11 @@ module.exports = class ShoppingCartService {
         checkout: true,
         enabled: false
       });
+
       shoppingCartItem.save(function (err, shoppingCartItem) {
         err ? reject(err): {};
 
-        OrderDao.create({
+        OrderItemDao.create({
           name: shoppingCartItem.name,
           image: shoppingCartItem.image,
           unitPrice: shoppingCartItem.unitPrice,
@@ -202,12 +204,12 @@ module.exports = class ShoppingCartService {
 
           product: shoppingCartItem.product,
           order: order.id,
-          createTime: new Date(),
+          createTime: new Date()
           },
           function (err, orderItem) {
             err ? reject(err): {};
 
-            order.items.push(orderItem);
+            order.items.push(orderItem.id);
             resolve(orderItem);
           });
       })

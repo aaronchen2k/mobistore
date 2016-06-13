@@ -36,7 +36,6 @@ module.exports = class OrderService {
 
             items: []
           });
-          console.log(111, order);
           order.save(function (err, order) {
             err ? reject(err) : resolve( { order: order, shoppingCart: shoppingCart} );
           });

@@ -40,13 +40,13 @@ module.exports = class ShoppingCartCtrl {
   static clear(req, res) {
     ShoppingCartService
       .clear(CONSTANTS.testClientId)
-      .then(data => { res.status(200).json({code: 1, data: data}); console.log(data); })
+      .then(data => { res.status(200).json({code: 1, data: data});})
       .catch(error => res.status(400).json(error));
   }
   static checkout(req, res) {
     ShoppingCartService
       .checkout(CONSTANTS.testClientId)
-      .then(data => { res.status(200).json({code: 1, data: data}); console.log(data); })
+      .then(data => { res.status(200).json({code: 1, data: data});})
       .catch(error => res.status(400).json(error));
   }
 }

@@ -5,6 +5,7 @@ const Promise = require('bluebird');
 const _ = require('lodash');
 
 const orderSchema = require('../model/StrOrder');
+const orderItemSchema = require('../model/StrOrderItem');
 
 orderSchema.statics.list = () => {
     return new Promise((resolve, reject) => {
@@ -21,11 +22,16 @@ orderSchema.statics.list = () => {
 
 orderSchema.statics.get = (id) => {
   return new Promise((resolve, reject) => {
-    let _query = {id: id};
+    let _query = {_id: id};
 
     StrOrder
-      .find(_query)
+      .findOne(_query)
+      .populate({
+        path: 'items',
+        match: { enabled: true}
+      })
       .exec((err, json) => {
+        console.log(1111, json);
         err ? reject(err)
           : resolve(json);
       });

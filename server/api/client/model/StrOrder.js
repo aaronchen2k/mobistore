@@ -28,7 +28,7 @@ const orderSchema = {
 
   recipient: {type: mongoose.Schema.Types.ObjectId, ref: 'StrRecipient'},
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'},
-	items: [{type: mongoose.Schema.Types.ObjectId, ref: 'StrOrderItems'}]
+	items: [{type: mongoose.Schema.Types.ObjectId, ref: 'StrOrderItem'}]
 }
 
 module.exports = mongoose.Schema(orderSchema, config.schemaOptions);

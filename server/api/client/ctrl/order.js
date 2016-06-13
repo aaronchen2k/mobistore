@@ -1,7 +1,7 @@
 "use strict";
 
 const OrderService = require('../service/order');
-const Orderao = require('../dao/order');
+const OrderDao = require('../dao/order');
 
 module.exports = class OrderCtrl {
   static changeRecipient(req, res) {
@@ -14,14 +14,13 @@ module.exports = class OrderCtrl {
 
   }
 
-
   static list(req, res) {
 
   }
   static get(req, res) {
     let _id = req.params.id;
 
-    Orderao
+    OrderDao
       .get(_id)
       .then(data => res.status(200).json({
         code: 1,
