@@ -14,7 +14,6 @@ module.exports = class OrderService {
 
     return Promise.join(ClientDao.get(clientId), ShoppingCartDao.getByClient(clientId),
       function (client, shoppingCart) {
-
         return new Promise((resolve, reject) => {
 
           let recipient = client.recipients[0];

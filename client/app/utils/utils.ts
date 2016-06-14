@@ -15,12 +15,11 @@ export class Utils {
   static SetServiceUrl (){
     let host = window.location.host;
     if (!CONSTANT.SERVICE_URL) {
-      if (host.indexOf("localhost") > -1 || host.indexOf("127.0.0.1") > -1) {
+      if (host.indexOf("localhost") > -1 || host.indexOf("127.") > -1 || host.indexOf("10.") > -1) {
         CONSTANT.SERVICE_URL = CONSTANT._SERVICE_URL_DEV;
       } else {    // production
         CONSTANT.SERVICE_URL = CONSTANT._SERVICE_URL_PRODUCTION;
       }
-      console.log(CONSTANT.SERVICE_URL);
     }
   }
 
