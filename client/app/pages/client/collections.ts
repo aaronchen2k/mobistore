@@ -5,23 +5,26 @@ import {ImgPathPipe} from '../../pipes/img-path';
 import {CurrencyCnyPipe} from '../../pipes/currency-cny';
 
 import {ClientService}    from '../../services/client';
+import {CollectionService}    from '../../services/collection';
+
 import {PostService}    from '../../services/post';
 
 import {ProductDetail}    from '../../pages/product/product-detail';
 
 @Page({
   templateUrl: 'build/pages/client/collections.html',
-  providers: [ClientService,PostService],
+  providers: [ClientService,CollectionService, PostService],
   pipes: [ImgPathPipe,CurrencyCnyPipe]
 })
 export class Collections {
     errorMessage: any;
     private collections: any[];
 
-    constructor(private nav: NavController, params: NavParams, private viewCtrl: ViewController, private clientService: ClientService) {
+    constructor(private nav: NavController, params: NavParams, private viewCtrl: ViewController,
+                private collectionService: CollectionService ) {
         let me = this;
 
-        me.clientService.listCollections().subscribe(
+        me.collectionService.list().subscribe(
             json => {me.collections = json.data;},
             error => me.errorMessage = <any>error
         );
@@ -37,7 +40,7 @@ export class Collections {
 
     removeCollection(collectionId) {
         let me = this;
-        me.clientService.removeCollection(collectionId).subscribe(
+        me.collectionService.delete(collectionId).subscribe(
             json => {me.collections = json.data;},
             error => me.errorMessage = <any>error
         );

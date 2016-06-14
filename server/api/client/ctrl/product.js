@@ -6,19 +6,7 @@ const ProductDao = require('../dao/product');
 const CollectionDao = require('../dao/collection');
 
 module.exports = class ProductCtrl {
-
-  static collect(req, res) {
-    let _id = req.body.productId;
-
-    CollectionDao
-      .collect(_id, CONSTANTS.testClientId)
-      .then(product => res.status(200).json({
-        code: 1,
-        data: product
-      }))
-      .catch(error => res.status(400).json(error));
-  }
-
+  
   static list(req, res) {
     ProductDao
       .list()

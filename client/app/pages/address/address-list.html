@@ -16,7 +16,7 @@
 		  <p class="text-thin text-color-light-grey">{{item.province}} &nbsp;{{item.city}}</p>
 		  <p class="text-thin text-color-light-grey text-ellipsis">{{item.street}} {{item.address}}</p>
 
-		  <i class="icon ion-chevron-right"></i>
+      <ion-icon *ngIf="item.default" name="ios-checkmark-outline" item-right></ion-icon>
 		</ion-item>
    </ion-list>
 </ion-content>

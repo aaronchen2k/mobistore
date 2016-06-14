@@ -1,18 +1,24 @@
 "use strict";
 
+const CONSTANTS = require('../../../constants/constants');
+
 const OrderService = require('../service/order');
 const OrderDao = require('../dao/order');
 
 module.exports = class OrderCtrl {
   static list(req, res) {
-
+    OrderDao.list(CONSTANTS.testClientId)
+      .then(doc => res.status(200).json({
+        code: 1,
+        data: doc
+      }))
+      .catch(error => res.status(400).json(error));
   }
 
   static get(req, res) {
     let _id = req.params.id;
 
-    OrderDao
-      .get(_id)
+    OrderDao.get(_id)
       .then(data => res.status(200).json({
         code: 1,
         data: data

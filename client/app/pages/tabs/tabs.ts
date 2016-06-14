@@ -50,7 +50,9 @@ export class TabsPage implements OnInit {
 
     }
     tabChanged() {
-        if (this.tabs.selectedIndex == 2) {
+      let index = this.tabs.getSelected()['index'];
+      let tab = this.tabs.getSelected();
+        if ((index == 0 || index == 2) && tab.canGoBack() > 0) {
             this.tabs.getSelected().popToRoot();
         }
     }

@@ -5,7 +5,7 @@
 </ion-navbar>
 
 <ion-content class="shoppingCart">
-    <div class="msg" *ngIf="cart?.items?.length == 0">
+    <div class="no-records" *ngIf="cart?.items?.length == 0">
         暂未添加商品
     </div>
     <div *ngIf="cart?.items?.length > 0">

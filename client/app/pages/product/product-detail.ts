@@ -8,10 +8,11 @@ import {StringUtil} from '../../utils/string';
 import {PubSubService} from '../../services/pub-sub-service';
 import {ProductService}    from '../../services/product';
 import {ShoppingCartService}    from '../../services/shoppingCart';
+import {CollectionService}    from '../../services/collection';
 
 @Page({
   templateUrl: 'build/pages/product/product-detail.html',
-  providers: [ProductService,ShoppingCartService, PubSubService],
+  providers: [ProductService,ShoppingCartService, CollectionService, PubSubService],
   pipes: [ImgPathPipe,CurrencyCnyPipe]
 })
 export class ProductDetail {
@@ -24,7 +25,8 @@ export class ProductDetail {
     private qty: number = 1;
 
     constructor(nav: NavController, params: NavParams,
-                private _productService: ProductService, private _shoppingCartService: ShoppingCartService) {
+                private _productService: ProductService, private _collectionService: CollectionService,
+                private _shoppingCartService: ShoppingCartService) {
         let me = this;
         me.productId = params.data;
         me.getDetail();
@@ -54,7 +56,7 @@ export class ProductDetail {
     collect () {
         let me = this;
 
-        me._productService.collect(this.productId).subscribe(
+        me._collectionService.save(this.productId).subscribe(
             json => {
                 if (json.code > 0) {
                     me.isCollected = json.data.enabled;

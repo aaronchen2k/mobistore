@@ -7,6 +7,19 @@ const _ = require('lodash');
 const collectionSchema = require('../model/StrCollection');
 const CONSTANTS = require('../../../constants/constants');
 
+collectionSchema.statics.list = (clientId) => {
+  return new Promise((resolve, reject) => {
+    let _query = {client: clientId, enabled: true};
+
+    StrCollection.find(_query)
+      .populate('product')
+      .exec((err, cart) => {
+        err ? reject(err)
+          : resolve(cart);
+      });
+  });
+}
+
 collectionSchema.statics.isCollected = (id) => {
   return new Promise((resolve, reject) => {
 

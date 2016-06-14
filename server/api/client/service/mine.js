@@ -18,19 +18,20 @@ module.exports = class MineService {
     return Promise.join(CollectionDao.count(clientId), MsgDao.count(clientId),
       OrderDao.counts(clientId), ConfigDao.get(), ClientDao.get(clientId),
       function (collectionCount, msgCount, orders, config, client) {
-        console.log(collectionCount, msgCount, orders, config, client);
+        // console.log(collectionCount, msgCount, orders, config, client);
 
         return new Promise((resolve, reject) => {
           resolve({
             collectionCount: collectionCount,
             msgCount: msgCount,
 
-            waitPay: orders[CONSTANTS.orderStatus.created],
+            waitPay: orders[CONSTANTS.orderStatus.init],
             waitShip: orders[CONSTANTS.orderStatus.paid],
-            waitReceive: orders[CONSTANTS.orderStatus.shipped],
+            waitReceive: orders[CONSTANTS.orderStatus.shipping],
             waitRate: orders[CONSTANTS.orderStatus.received],
 
-            rateUrl: config.rateUrl,
+            androidMkt: config.androidMkt,
+            iosMkt: config.iosMkt,
             client: client
           });
         });

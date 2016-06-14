@@ -28,9 +28,8 @@ export class Profile {
 
     save() {
         let me = this;
-        console.log(me.profile);
 
-        me.clientService.saveProfile(me.profile).subscribe(
+        me.clientService.saveProfile({profile: me.profile}).subscribe(
             json => { me.nav.pop(); },
             error => me.errorMessage = <any>error
         );

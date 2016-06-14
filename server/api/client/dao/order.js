@@ -7,15 +7,20 @@ const _ = require('lodash');
 const orderSchema = require('../model/StrOrder');
 const orderItemSchema = require('../model/StrOrderItem');
 
-orderSchema.statics.list = () => {
+orderSchema.statics.list = (clientId) => {
     return new Promise((resolve, reject) => {
-      let _query = {};
 
-      StrOrder
-          .find(_query)
-          .exec((err, json) => {
-              err ? reject(err)
-                  : resolve(json);
+      let _query = {client: clientId, enabled: true};
+
+      StrOrder.find(_query)
+          .populate('items')
+          .exec((err, orders) => {
+              err ? reject(err): {};
+
+            orders.forEach(order => {
+              order.image = order.items[0].image;
+            });
+            resolve(orders);
           });
       });
 }

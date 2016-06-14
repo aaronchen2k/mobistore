@@ -1,5 +1,6 @@
 "use strict";
 
+const CONSTANTS = require('../../../constants/constants');
 const ClientService = require('../service/client');
 const ClientDao = require('../dao/client');
 
@@ -20,12 +21,25 @@ module.exports = class ClientCtrl {
 
   }
   static getProfile(req, res) {
-
+    ClientDao.getProfile(CONSTANTS.testClientId).then(product => res.status(200).json({
+        code: 1,
+        data: product
+      }))
+      .catch(error => res.status(400).json(error));
   }
+
   static saveProfile(req, res) {
+    let profile = req.body.profile;
 
+    console.log(0, req.body);
+
+    ClientDao.saveProfile(profile, CONSTANTS.testClientId)
+      .then(profile => res.status(200).json({
+        code: 1,
+        data: profile
+      }))
+      .catch(error => res.status(400).json(error));
   }
-
 
   static list(req, res) {
 

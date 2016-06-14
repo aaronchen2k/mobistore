@@ -6,18 +6,20 @@ const _ = require('lodash');
 
 const areaSchema = require('../model/SysArea');
 
-areaSchema.statics.list = () => {
+areaSchema.statics.listByParentId = (level, parentId) => {
     return new Promise((resolve, reject) => {
-      let _query = {enabled: true};
 
-      StrArea
-          .find(_query)
+      let _query = {parentId: parentId, level: level};
+
+      SysArea.find(_query)
           .exec((err, json) => {
-              err ? reject(err)
-                  : resolve(json);
-          });
-      });
+            console.log(err);
+
+            err ? reject(err)
+                : resolve(json);
+        });
+    });
 }
 
-const StrArea  = mongoose.model('StrArea', areaSchema);
-module.exports = StrArea;
+const SysArea  = mongoose.model('SysArea', areaSchema);
+module.exports = SysArea;

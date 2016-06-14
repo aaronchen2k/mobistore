@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const areaSchema = {
+  id: {type: Number},
 	areaName: {type: String, required: true, trim: true},
 	shortName: {type: String, required: true, trim: true},
 	lng: {type: String, required: true, trim: true},
@@ -13,7 +14,7 @@ const areaSchema = {
   sort: {type: Number},
   enabled: {type: Boolean, default: true},
 
-	parent: {type: mongoose.Schema.Types.ObjectId, ref: 'SysArea'}
+  parentId: {type: Number}
 }
 
 module.exports = mongoose.Schema(areaSchema, config.schemaOptions);

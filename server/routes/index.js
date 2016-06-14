@@ -6,6 +6,7 @@ const RecipientRoutes = require('../api/client/routes/recipient');
 const AreaRoutes = require('../api/client/routes/area');
 const CategoryRoutes = require('../api/client/routes/category');
 const ClientRoutes = require('../api/client/routes/client');
+const CollectionRoutes = require('../api/client/routes/collection');
 const HomeRoutes = require('../api/client/routes/home');
 const MineRoutes = require('../api/client/routes/mine');
 const MsgRoutes = require('../api/client/routes/msg');
@@ -14,6 +15,7 @@ const ProductRoutes = require('../api/client/routes/product');
 const RewardRoutes = require('../api/client/routes/reward');
 const SearchRoutes = require('../api/client/routes/search');
 const ShoppingCartRoutes = require('../api/client/routes/shoppingCart');
+const SuggestionRoutes = require('../api/client/routes/suggestion');
 
 module.exports = class Routes {
    static init(app, router) {
@@ -21,6 +23,7 @@ module.exports = class Routes {
        AreaRoutes.init(router);
        CategoryRoutes.init(router);
        ClientRoutes.init(router);
+       CollectionRoutes.init(router);
        HomeRoutes.init(router);
        MineRoutes.init(router);
        MsgRoutes.init(router);
@@ -29,6 +32,7 @@ module.exports = class Routes {
        RewardRoutes.init(router);
        SearchRoutes.init(router);
        ShoppingCartRoutes.init(router);
+       SuggestionRoutes.init(router);
 
        app.use(express.static(__dirname + '/../../public/'));
 

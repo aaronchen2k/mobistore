@@ -1,4 +1,6 @@
 import {Page, NavController, NavParams, Modal} from 'ionic-angular';
+
+import {Utils} from '../../utils/utils';
 import {ImgPathPipe} from '../../pipes/img-path';
 
 import {MineService}    from '../../services/mine';
@@ -59,9 +61,10 @@ export class Mine {
     gotoMkt() {
         let me = this;
 
-        let modal = Modal.create(MyFrame, {title: '请投票!', url: 'http://m.app.mi.com/#page=detail&id=1104'});
+        let mktUrl =Utils.IsAndroid? me.data.androidMkt: me.data.iosMkt;
+        let modal = Modal.create(MyFrame, {title: '请投票!', url: mktUrl});
         modal.onDismiss(success => {
-
+          ;
         });
         this.nav.present(modal);
     }
@@ -80,6 +83,6 @@ export class Mine {
         let me = this;
         this.nav.push(Collections, {});
     }
-    
+
 }
 

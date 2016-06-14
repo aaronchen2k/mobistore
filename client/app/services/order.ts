@@ -5,17 +5,17 @@ import {PostService} from './post';
 export class OrderService {
     constructor(private _postService: PostService) { }
 
-    _list = '/orders/list';
-    _detail = '/orders/:id';
+    _orders = '/orders/:id';
+
     _cancel = '/orders/cancel';
     _changeRecipient = '/orders/changeRecipient';
 
     list(status) {
-        return this._postService.post(this._list, {filter: status});
+        return this._postService.get(this._orders.replace(':id', ''));
     }
 
     getDetail(orderId) {
-        return this._postService.get(this._detail.replace(':id', orderId));
+        return this._postService.get(this._orders.replace(':id', orderId));
     }
 
     cancel(orderId) {

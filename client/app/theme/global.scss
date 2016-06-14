@@ -6,9 +6,18 @@ body {
 	font-size: 200%;
 }
 
+.no-records {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
 .toolbar-background {
 	display: none;
 }
+.toolbar[dark] .toolbar-background {
+  display: none;
+}
+
 .toolbar-title {
 	color: #fff;
 }

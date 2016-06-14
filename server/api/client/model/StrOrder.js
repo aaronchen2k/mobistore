@@ -23,7 +23,8 @@ const orderSchema = {
   payTime: {type: Date},
   shipTime: {type: Date},
 
-	status: {type: String, default: CONSTANTS.orderStatus.created},
+  image: {type: String, trim: true},
+	status: {type: String, default: CONSTANTS.orderStatus.init},
   enabled: {type: Boolean, default: true},
 
   recipient: {type: mongoose.Schema.Types.ObjectId, ref: 'StrRecipient'},

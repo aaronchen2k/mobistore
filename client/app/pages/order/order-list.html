@@ -4,14 +4,13 @@
 
 <ion-content class="order-list">
 	<div class="content">
-		<div class="msg" *ngIf="orders?.length == 0">
+		<div class="no-records" *ngIf="orders?.length == 0">
 			暂无订单
 		</div>
 		<ion-list *ngIf="orders?.length > 0">
 			<ion-item *ngFor="let order of orders" (click)="showOrder(order.id)">
 			  <h2 class="text-big text-color-light-grey" >
-				{{order.createTime | date:'yyyy-MM-dd'}}
-				 &nbsp;&nbsp; {{order | orderStatus}}
+				{{order.createTime | iosDate:'short'}} &nbsp;&nbsp; {{order | orderStatus}}
 			  </h2>
 			  <div>
 				  <div class="left" *ngFor="let item of order.items">

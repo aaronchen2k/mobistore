@@ -18,11 +18,6 @@ export class ProductService {
         return this._postService.get(ProductService.ENDPOINT.replace(':id', productId));
     }
 
-    collect(productId) {
-       return this._postService.post(ProductService.ENDPOINT.replace(':id', 'collect'),
-            {productId: productId});
-    }
-
     // add(product: any):Observable<any> {
     //     let _productStringified = JSON.stringify(product);
     //

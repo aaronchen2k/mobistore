@@ -2,7 +2,7 @@ import {App, Platform,Tabs} from 'ionic-angular';
 import {} from '@angular/core';
 import {TabsPage} from './pages/tabs/tabs';
 
-import {CONSTANT} from './utils/constant';
+import {Utils} from './utils/utils';
 
 @App({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
@@ -12,15 +12,7 @@ export class MyApp {
   rootPage: any = TabsPage;
 
   constructor(platform: Platform) {
-    let host = window.location.host;
-    if (!CONSTANT.SERVICE_URL) {
-      if (host.indexOf("localhost") > -1 || host.indexOf("127.0.0.1") > -1) {
-        CONSTANT.SERVICE_URL = CONSTANT.SERVICE_URL_DEV;
-      } else {    // production
-        CONSTANT.SERVICE_URL = CONSTANT.SERVICE_URL_PRODUCTION;
-      }
-      console.log(CONSTANT.SERVICE_URL);
-    }
+    Utils.ClientCofig();
 
     platform.ready().then(() => {
       // The platform is now ready. Note: if this callback fails to fire, follow

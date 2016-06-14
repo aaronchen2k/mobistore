@@ -4,9 +4,6 @@ const ProductCtrl = require('../ctrl/product');
 
 module.exports = class ProductRoutes {
   static init(router) {
-    router
-      .route('/api/v1/products/collect')
-      .post(ProductCtrl.collect);
 
     router
       .route('/api/v1/products')

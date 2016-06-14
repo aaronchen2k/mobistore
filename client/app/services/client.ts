@@ -5,30 +5,18 @@ import {PostService} from './post';
 export class ClientService {
     constructor(private _postService: PostService) { }
 
-    _getProfile = '/client/getProfile';
-    _saveProfile = '/client/saveProfile';
+    _getProfile = '/client/profile/get';
+    _saveProfile = '/client/profile/save';
     _forgotPassword = '/client/forgotPassword';
     _signon = '/client/signon';
     _signup = '/client/signup';
 
-    _saveSuggestion = '/client/suggest';
+    _suggestions = '/suggestions/:id';
     _resetPassword = '/client/resetPassword';
 
-    _listCollections = '/collection/list';
+    _collections = '/collections/:id';
     _removeCollection = '/client/removeCollections';
-    _getMsgs = '/msg/list';
-
-    listCollections() {
-        return this._postService.post(this._listCollections, {});
-    }
-
-    removeCollection(collectionId) {
-        return this._postService.post(this._removeCollection, {collectionId: collectionId});
-    }
-
-    getMsgs() {
-        return this._postService.post(this._getMsgs, {});
-    }
+    _msgs = '/msgs';
 
     getProfile() {
         return this._postService.post(this._getProfile, {});
@@ -51,7 +39,7 @@ export class ClientService {
     }
 
     saveSuggestion(content) {
-        return this._postService.post(this._saveSuggestion, {content: content});
+        return this._postService.post(this._suggestions.replace(':id', ''), {suggestion: {content: content}});
     }
 
     resetPassword(phone) {

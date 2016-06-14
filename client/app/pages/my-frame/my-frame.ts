@@ -1,4 +1,4 @@
-
+import {} from '@angular/core';
 import {Page, ViewController, NavParams} from 'ionic-angular';
 
 @Page({

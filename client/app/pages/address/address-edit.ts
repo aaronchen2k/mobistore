@@ -15,7 +15,7 @@ export class AddressEdit {
     errorMessage: any;
     private address: any;
     private addressId: String;
-    
+
     constructor(private nav: NavController, params: NavParams, private addressService: AddressService) {
         let me = this;
 
@@ -40,7 +40,7 @@ export class AddressEdit {
                 return;
             }
 
-            me.address[type] = area.areaname;
+            me.address[type] = area.areaName;
             me.address[type + 'Id'] = area.id;
             if (type == 'province') {
                 me.address.city = undefined;
@@ -51,16 +51,13 @@ export class AddressEdit {
         });
         this.nav.present(modal);
     }
-    
+
     save() {
         let me = this;
-        console.log(me.address);
         me.addressService.save(me.address).subscribe(
             json => { me.nav.pop(); },
             error => me.errorMessage = <any>error
         );
-
-        console.log(me.address);
     }
 
     remove() {

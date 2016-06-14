@@ -9,4 +9,36 @@ const RecipientDao = require('../dao/recipient');
 
 module.exports = class RecipientService {
 
+  static save (address) {
+    return new Promise((resolve, reject) => {
+
+      RecipientDao.allNotDefault(address).then(recipient => {
+
+        if (!address._id) {
+          RecipientDao.create(address,
+            function (err, doc) {
+              err ? reject(err)
+                : resolve(doc);
+            });
+        } else {
+          RecipientDao.findById(address._id)
+            .exec((err, doc) => {
+              err ? reject(err): {};
+
+              Object.keys(address).forEach(function(key) {
+                if (key != '_id' && key != 'id') {
+                  doc[key] = address[key];
+                }
+              });
+
+              doc.save(
+                function (err, doc) {
+                  err ? reject(err)
+                    : resolve(doc);
+                });
+            });
+        }
+      });
+    });
+  }
 };

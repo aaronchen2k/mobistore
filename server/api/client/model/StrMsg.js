@@ -12,7 +12,6 @@ const msgSchema = {
   enabled: {type: Boolean, default: true},
 
 	client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'}
-
 }
 
 module.exports = mongoose.Schema(msgSchema, config.schemaOptions);

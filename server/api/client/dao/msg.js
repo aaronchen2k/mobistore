@@ -10,8 +10,7 @@ msgSchema.statics.list = (clientId) => {
     return new Promise((resolve, reject) => {
       let _query = {client: clientId, enabled: true};
 
-      StrMsg
-          .find(_query)
+      StrMsg.find(_query)
           .exec((err, json) => {
               err ? reject(err)
                   : resolve(json);

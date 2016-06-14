@@ -17,11 +17,23 @@ module.exports = class RecipientCtrl {
   static get(req, res) {
     let _id = req.params.id;
 
+    RecipientDao.get(_id)
+      .then(data => res.status(200).json({
+        code: 1,
+        data: data
+      }))
+      .catch(error => res.status(400).json(error));
   }
 
   static save(req, res) {
     let address = req.body.address;
 
+    RecipientService.save(address)
+      .then(data => res.status(200).json({
+        code: 1,
+        data: data
+      }))
+      .catch(error => res.status(400).json(error));
   }
 
   static delete(req, res) {

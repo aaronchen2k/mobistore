@@ -41,7 +41,6 @@ export class Search {
         if (q.trim() == '') {
           return;
         }
-        console.log(q);
         this.searchService.getMatchedKeywords(q).subscribe(
             json => {this.keywordsResult = json.data;},
             error => this.errorMessage = <any>error
