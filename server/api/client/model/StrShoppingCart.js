@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 var config = require('./config');
 
 const shoppingCartSchema = {
-    createTime: {type: Date},
+    createTime: {type: Date, default: Date.now},
     amount: {type: Number},
     freight: {type: Number},
     totalAmount: {type: Number},

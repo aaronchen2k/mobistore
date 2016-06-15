@@ -15,7 +15,7 @@ clientSchema.statics.get = (clientId) => {
       .findOne(_query)
       .populate({
         path: 'recipients',
-        match: { enabled: true, default: true }
+        match: { enabled: true, isDefault: true }
       })
       .exec((err, json) => {
         err ? reject(err)

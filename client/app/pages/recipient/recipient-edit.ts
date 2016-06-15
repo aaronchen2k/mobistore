@@ -28,7 +28,7 @@ export class RecipientEdit {
             error => me.errorMessage = <any>error
           );
         } else {
-          me.recipient = {_id: undefined, default: false};
+          me.recipient = {_id: undefined, isDefault: false};
         }
       console.log(me.recipient);
     }

@@ -37,7 +37,7 @@ recipientSchema.statics.get = (id) => {
 recipientSchema.statics.allNotDefault = (recipient, clientId) => {
   return new Promise((resolve, reject) => {
       let otherHasDefault = false;
-      StrRecipient.find({client: clientId, default: true})
+      StrRecipient.find({client: clientId, isDefault: true})
         .exec((err, recipients) => {
           err ? reject(err) : {};
 
@@ -62,7 +62,7 @@ recipientSchema.statics.allNotDefault = (recipient, clientId) => {
               reject(reason);
             });
           } else if (!otherHasDefault) {
-            recipient.default = true;
+            recipient.isDefault = true;
             resolve(recipient);
           }
         });
@@ -73,7 +73,7 @@ recipientSchema.statics.allNotDefault = (recipient, clientId) => {
 recipientSchema.statics.notDefault = (address) => {
   return new Promise((resolve, reject) => {
     address.set({
-      default: false
+      isDefault: false
     });
     address.save(function (err, item) {
       err ? reject(err): resolve(item);

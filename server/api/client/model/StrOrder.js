@@ -19,7 +19,7 @@ const orderSchema = {
 	recipientName: {type: String},
 	recipientPhone: {type: String},
 
-  createTime: {type: Date},
+  createTime: {type: Date, default: Date.now},
   payTime: {type: Date},
   shipTime: {type: Date},
 

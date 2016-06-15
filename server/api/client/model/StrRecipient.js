@@ -12,7 +12,7 @@ const recipientSchema = {
     region: {type: String, required: true, trim: true},
     street: {type: String, required: true, trim: true},
     address: {type: String, required: true, trim: true},
-    default: {type: Boolean, required: true, trim: true, default: false},
+    isDefault: {type: Boolean, required: true, trim: true, default: false},
     enabled: {type: Boolean, default: true},
 
 	  client: {type: mongoose.Schema.Types.ObjectId, ref: 'StrClient'}
