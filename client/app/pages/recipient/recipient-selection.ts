@@ -1,29 +1,29 @@
 import {} from '@angular/core';
 import {Page, NavController, ViewController, NavParams} from 'ionic-angular';
 
-import {AddressService}    from '../../services/address';
+import {RecipientService}    from '../../services/recipient';
 import {PostService}    from '../../services/post';
 import {isUndefined} from "ionic-angular/util";
 
 @Page({
-  templateUrl: 'build/pages/address/address-selection.html',
-  providers: [AddressService,PostService],
+  templateUrl: 'build/pages/recipient/recipient-selection.html',
+  providers: [RecipientService,PostService],
   pipes: []
 })
-export class AddressSelection {
+export class RecipientSelection {
     errorMessage: any;
-    private addresses: any[];
+    private recipients: any[];
     private orderId: String;
     private recipientId: String;
 
-    constructor(params: NavParams, private viewCtrl: ViewController, private addressService: AddressService) {
+    constructor(params: NavParams, private viewCtrl: ViewController, private recipientService: RecipientService) {
         let me = this;
 
         me.orderId = params.data.order.id;
         me.recipientId = params.data.order.recipient;
 
-        me.addressService.list().subscribe(
-            json => {me.addresses = json.data;},
+        me.recipientService.list().subscribe(
+            json => {me.recipients = json.data;},
             error => me.errorMessage = <any>error
         );
     }
@@ -32,9 +32,9 @@ export class AddressSelection {
 
     }
 
-    selectAddress(addressId) {
-        this.recipientId = addressId;
-        this.viewCtrl.dismiss(addressId);
+    selectRecipient(recipientId) {
+        this.recipientId = recipientId;
+        this.viewCtrl.dismiss(recipientId);
     }
 
     cancel() {

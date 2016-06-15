@@ -17,6 +17,7 @@ module.exports = class OrderService {
         return new Promise((resolve, reject) => {
 
           let recipient = client.recipients[0];
+          console.log('111', recipient);
           var order = new OrderDao({
             client: client.id,
             recipient: recipient.id,

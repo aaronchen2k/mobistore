@@ -2,7 +2,7 @@ import {Output, EventEmitter} from '@angular/core';
 import {Page, NavController, NavParams, Modal} from 'ionic-angular';
 import {ImgPathPipe} from '../../pipes/img-path';
 import {CurrencyCnyPipe} from '../../pipes/currency-cny';
-import {AddressSelection} from '../address/address-selection';
+import {RecipientSelection} from '../recipient/recipient-selection';
 
 import {OrderStatusPipe} from '../../pipes/order-status';
 import {PubSubService} from '../../services/pub-sub-service';
@@ -45,23 +45,23 @@ export class OrderDetail {
         );
     }
 
-    openAddressModel(order) {
+    openRecipientModel(order) {
         let me = this;
 
-        let modal = Modal.create(AddressSelection, {order: order});
-        modal.onDismiss(addressId => {
-            me.changeRecipient(order.id, addressId);
+        let modal = Modal.create(RecipientSelection, {order: order});
+        modal.onDismiss(recipientId => {
+            me.changeRecipient(order.id, recipientId);
         });
         this.nav.present(modal);
     }
-    changeRecipient(orderId, addressId) {
+    changeRecipient(orderId, recipientId) {
         let me = this;
 
-        if (!addressId) {
+        if (!recipientId) {
             return;
         }
 
-        me.orderService.changeRecipient(orderId, addressId).subscribe(
+        me.orderService.changeRecipient(orderId, recipientId).subscribe(
             json => {me.order = json.data;},
             error => me.errorMessage = <any>error
         );

@@ -52,7 +52,7 @@ export class TabsPage implements OnInit {
     tabChanged() {
       let index = this.tabs.getSelected()['index'];
       let tab = this.tabs.getSelected();
-        if ((index == 0 || index == 2) && tab.canGoBack() > 0) {
+        if ((index == 0 || index == 2) && tab.canGoBack()) {
             this.tabs.getSelected().popToRoot();
         }
     }

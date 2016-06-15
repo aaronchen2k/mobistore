@@ -26,9 +26,8 @@ module.exports = class RecipientCtrl {
   }
 
   static save(req, res) {
-    let address = req.body.address;
-
-    RecipientService.save(address)
+    let recipient = req.body.recipient;
+    RecipientService.save(recipient, CONSTANTS.testClientId)
       .then(data => res.status(200).json({
         code: 1,
         data: data

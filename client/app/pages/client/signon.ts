@@ -5,11 +5,11 @@ import {ClientService}    from '../../services/client';
 import {PostService}    from '../../services/post';
 
 @Page({
-  templateUrl: 'build/pages/address/address-selection.html',
+  templateUrl: 'build/pages/recipient/recipient-selection.html',
   providers: [ClientService,PostService],
   pipes: []
 })
-export class AddressSelection {
+export class RecipientSelection {
     errorMessage: any;
     private username: String;
     private password: String;

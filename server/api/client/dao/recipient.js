@@ -34,21 +34,21 @@ recipientSchema.statics.get = (id) => {
   });
 }
 
-recipientSchema.statics.allNotDefault = (recipient) => {
+recipientSchema.statics.allNotDefault = (recipient, clientId) => {
   return new Promise((resolve, reject) => {
-
-      StrRecipient.find({client: recipient.client, default: true})
+      let otherHasDefault = false;
+      StrRecipient.find({client: clientId, default: true})
         .exec((err, recipients) => {
           err ? reject(err) : {};
 
-          let otherHasDefault = false;
           var arr = [];
           recipients.forEach( rec => {
             if (rec._id != recipient._id) {
-              arr.push(recipientSchema.statics.notDefault(rec));
               if (rec.default) {
                 otherHasDefault = true;
               }
+
+              arr.push(recipientSchema.statics.notDefault(rec));
             }
           });
 

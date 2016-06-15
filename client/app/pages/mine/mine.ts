@@ -12,7 +12,7 @@ import {Profile} from '../client/profile';
 import {Collections} from '../client/collections';
 
 import {OrderList} from '../order/order-list';
-import {AddressList} from '../address/address-list';
+import {RecipientList} from '../recipient/recipient-list';
 import {Suggestion} from '../client/suggestion';
 
 @Page({
@@ -49,9 +49,9 @@ export class Mine {
         }
     }
 
-    showAddress() {
+    showRecipient() {
         let me = this;
-        this.nav.push(AddressList, {});
+        this.nav.push(RecipientList, {});
     }
 
     suggest() {

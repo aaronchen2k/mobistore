@@ -1,26 +1,26 @@
 import {} from '@angular/core';
 import {Page, ViewController, NavParams} from 'ionic-angular';
 
-import {AddressService}    from '../../services/address';
+import {RecipientService}    from '../../services/recipient';
 import {PostService}    from '../../services/post';
 
 @Page({
-  templateUrl: 'build/pages/address/area-selection.html',
-  providers: [AddressService,PostService],
+  templateUrl: 'build/pages/recipient/area-selection.html',
+  providers: [RecipientService,PostService],
   pipes: []
 })
 export class AreaSelection {
     errorMessage: any;
     private areas: any[];
 
-    constructor(params: NavParams, private viewCtrl: ViewController, private addressService: AddressService) {
+    constructor(params: NavParams, private viewCtrl: ViewController, private recipientService: RecipientService) {
         let me = this;
 
         let type = params.data.type;
         let provinceId = params.data.provinceId;
         let cityId = params.data.cityId;
 
-        me.addressService.listArea(type, provinceId, cityId).subscribe(
+        me.recipientService.listArea(type, provinceId, cityId).subscribe(
             json => {me.areas = json.data;},
             error => me.errorMessage = <any>error
         );

@@ -47,11 +47,11 @@
 			  <div class="col left">电话</div>
 			  <div class="col right">{{order.recipientPhone}}</div>
 			</div>
-			<div class="row content address" (click)="openAddressModel(order)">
+			<div class="row content recipient" (click)="openRecipientModel(order)">
 			  <div class="col left">地址</div>
 			  <div class="col right content">
 			  	<div class="text">
-			  		<span>{{order.recipientArea}}{{order.recipientStreet}}{{order.recipientAddress}}</span>
+			  		<span>{{order.recipientArea}}{{order.recipientStreet}}{{order.recipientRecipient}}</span>
 			  	</div>
 			  	<div class="more">
                     <ion-icon name="ios-arrow-forward"></ion-icon>

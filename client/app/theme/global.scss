@@ -41,6 +41,11 @@ ion-navbar.toolbar.my-navbar {
 .back-default {
     display: none;
 }
+ion-item.error {
+  ion-label {
+    color: red !important;
+  }
+}
 
 .text-big {
 	font-size: 1.6rem !important;
@@ -297,7 +302,7 @@ ion-navbar.toolbar.my-navbar {
     }
 }
 
-#address {
+#recipient {
     .list {
         .item {
             .icon {

@@ -5,13 +5,13 @@ import {ClientService}    from '../../services/client';
 import {PostService}    from '../../services/post';
 
 @Page({
-  templateUrl: 'build/pages/address/address-selection.html',
+  templateUrl: 'build/pages/recipient/recipient-selection.html',
   providers: [ClientService,PostService],
   pipes: []
 })
-export class AddressSelection {
+export class RecipientSelection {
     errorMessage: any;
-    
+
     constructor(params: NavParams, private clientService: ClientService) {
 
     }
@@ -19,10 +19,10 @@ export class AddressSelection {
     onPageWillEnter(): void {
 
     }
-    
+
     forgotPassword() {
         let me = this;
-        me.clientService.forgotPassword().subscribe(
+        me.clientService.forgotPassword('phone').subscribe(
             json => {},
             error => me.errorMessage = <any>error
         );
