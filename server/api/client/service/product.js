@@ -13,12 +13,12 @@ module.exports = class ProductService {
     static getWithCartNumb(id) {
        return Promise.join(ProductDao.get(id), CollectionDao.isCollected(id),
               ShoppingCartDao.getItemNumb(CONSTANTS.testClientId),
-            function (product, isCollected, shoppingcartItemCount) {
+            function (product, isCollected, shoppingCartItemCount) {
                 return new Promise((resolve, reject) => {
                     resolve({
                           product: product,
                           isCollected: isCollected,
-                          shoppingcartItemCount: shoppingcartItemCount
+                          shoppingCartItemCount: shoppingCartItemCount
                     });
                 });
             }

@@ -3,6 +3,10 @@ import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import {Page} from 'ionic-angular';
 import {NavController, NavParams, Tab} from 'ionic-angular';
 
+import {StrAdvert} from '../../models/StrAdvert';
+import {StrProduct} from '../../models/StrProduct';
+import {StrCategory} from '../../models/StrCategory';
+
 import {ImgPathPipe} from '../../pipes/img-path';
 import {CurrencyCnyPipe} from '../../pipes/currency-cny';
 
@@ -22,7 +26,7 @@ import {ProductDetail} from '../product/product-detail';
     pipes: [ImgPathPipe,CurrencyCnyPipe]
 })
 export class Home {
-    data: any;
+    data: {code: number, adverts: StrAdvert[], products: StrProduct[], categories: StrCategory[]};
     errorMessage: any;
     slideHeight: number;
 
