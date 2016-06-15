@@ -1,4 +1,4 @@
-.address-selection {
+.recipient-selection {
 	  ion-item {
 	       .descr {
 				 word-break: break-all;
@@ -7,7 +7,7 @@
 	  }
 }
 
-.address-list {
+.recipient-list {
 	ion-item {
 		padding-right: 1.6rem;
 
@@ -17,7 +17,7 @@
 	}
 }
 
-.address-edit {
+.recipient-edit {
 	.item-input ion-label {
 		color: #000;
 	}

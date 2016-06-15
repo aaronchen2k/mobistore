@@ -9,12 +9,12 @@
 	</ion-buttons>
 </ion-navbar>
 
-<ion-content class="address-list">
+<ion-content class="recipient-list">
 	<ion-list>
-		<ion-item *ngFor="let item of addresses" (click)="edit(item.id)" class="item-icon-right text-ellipsis">
+		<ion-item *ngFor="let item of recipients" (click)="edit(item.id)" class="item-icon-right text-ellipsis">
 		  <h2 class="text-big text-color-light-grey text-ellipsis" >{{item.name}}，{{item.phone}}</h2>
 		  <p class="text-thin text-color-light-grey">{{item.province}} &nbsp;{{item.city}}</p>
-		  <p class="text-thin text-color-light-grey text-ellipsis">{{item.street}} {{item.address}}</p>
+		  <p class="text-thin text-color-light-grey text-ellipsis">{{item.street}} {{item.recipient}}</p>
 
       <ion-icon *ngIf="item.default" name="ios-checkmark-outline" item-right></ion-icon>
 		</ion-item>
