@@ -28,7 +28,7 @@ shoppingCartItemSchema.statics.create = (product, qty, cart, clientId) => {
 
       cart.items.push(item);
       cart.save(function (err, cart) {
-        console.log(22, cart);
+        console.log(55, cart);
 
         err ? reject(err): {};
 
@@ -52,7 +52,7 @@ shoppingCartItemSchema.statics.update = (item, product, qty, clientId) => {
     });
 
     item.save(function (err, doc) {
-      console.log(22, doc);
+      console.log(77, doc);
 
       err ? reject(err): {};
 

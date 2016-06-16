@@ -51,7 +51,7 @@ clientSchema.statics.saveProfile = (profile, clientId) => {
         console.log(11, profile);
 
         doc.set({nickName: profile.nickName, mobile: profile.mobile});
-        console.log(22, doc);
+        console.log(66, doc);
         doc.save(function (err, doc) {
           err ? reject(err)
             : resolve(doc);
