@@ -1,6 +1,6 @@
 import {StrProduct} from './StrProduct';
 
-export class Category{
+export class StrAdvert{
   constructor(
 	title: string,
 	descr: string,

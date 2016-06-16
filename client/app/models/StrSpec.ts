@@ -1,6 +1,6 @@
 import {StrSpecType} from './StrSpecType';
 
-export class Category{
+export class StrSpec{
   constructor(
 	name: string,
 	descr: string,

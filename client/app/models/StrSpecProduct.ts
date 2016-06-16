@@ -2,7 +2,7 @@ import {StrProduct} from './StrProduct';
 import {StrSpec} from './StrSpec';
 import {StrSpecType} from './StrSpecType';
 
-export class Category{
+export class StrSpecProduct{
   constructor(
   enabled: boolean,
 

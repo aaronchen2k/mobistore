@@ -1,4 +1,4 @@
-export class Category{
+export class StrCategory{
   constructor(
 	code: string,
 	name: string,
