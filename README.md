@@ -4,6 +4,7 @@ Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
 
 ### Quick start
 ```bash
+Install mongodb-org-3.0
 Import MongoDB data from xdoc/mongodb-dump.zip
 
 cd mobistore

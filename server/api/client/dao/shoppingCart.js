@@ -80,6 +80,7 @@ shoppingCartSchema.statics.computeItemsPriceAndSave = (clientId) => {
         freight: freight,
         totalAmount: amount + freight
       });
+      console.log(cart);
 
       cart.save(function (err, doc) {
         err ? reject(err)
