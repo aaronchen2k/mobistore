@@ -12,9 +12,6 @@ npm run dev
 
 cd client
 sudo npm install
-sudo npm install -g typings
-typings install
-cp typings/index.d.ts typings/main.d.ts
 
 ionic serve
 ```
