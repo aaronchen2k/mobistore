@@ -55,6 +55,7 @@ shoppingCartItemSchema.statics.update = (item, product, qty, clientId) => {
       err ? reject(err): {};
 
       ShoppingCartDao.computeItemsPriceAndSave(clientId).then(cart => {
+        console.log(44, cart);
         resolve(cart);
       }).catch(error => reject(error));
     })
