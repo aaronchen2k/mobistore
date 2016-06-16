@@ -28,6 +28,8 @@ shoppingCartItemSchema.statics.create = (product, qty, cart, clientId) => {
 
       cart.items.push(item);
       cart.save(function (err, cart) {
+        console.log(22, cart);
+
         err ? reject(err): {};
 
         ShoppingCartDao.computeItemsPriceAndSave(clientId).then(cart => {
