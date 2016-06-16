@@ -7,11 +7,14 @@ Ionic 2.0, AngularJS 2.0, Node.js, MongoDB
 Import MongoDB data from xdoc/mongodb-dump.zip
 
 cd mobistore
-npm install
+sudo npm install
 npm run dev
 
 cd client
-npm install
+sudo npm install
+sudo npm install -g typings
+typings install
+
 ionic serve
 ```
 
