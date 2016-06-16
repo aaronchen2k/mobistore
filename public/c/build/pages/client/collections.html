@@ -1,0 +1,20 @@
+<ion-navbar *navbar class="my-navbar">
+	<ion-title>
+		我的收藏
+	</ion-title>
+</ion-navbar>
+
+<ion-content class="collections">
+	<ion-list *ngIf="collections">
+		<ion-item *ngFor="let item of collections" (click)="showProdcut(item.product.id)" class="item-thumbnail-left item-icon-right">
+			<ion-thumbnail item-left>
+				<img [src]="item.product.image | imgPath">
+			</ion-thumbnail>
+			<h2 class="list-item-text-middle text-color-light-grey text-ellipsis">{{item.product.name}}</h2>
+			<p class="list-item-text-thin text-color-light-grey">{{item.product.retailPrice | currency:'CNY' | cny}}</p>
+			<button clear item-right>
+				<ion-icon name="ios-arrow-forward"></ion-icon>
+			</button>
+		</ion-item>
+   </ion-list>
+</ion-content>
