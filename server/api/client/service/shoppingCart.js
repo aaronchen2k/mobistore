@@ -80,7 +80,6 @@ module.exports = class ShoppingCartService {
             found.save(function (err, item) {
               err ? reject(err) : {};
 
-              console.log(22, cart);
               cart.save(function (err, doc) {
                 err ? reject(err): {};
 
