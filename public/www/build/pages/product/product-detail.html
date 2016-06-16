@@ -1,0 +1,84 @@
+<ion-navbar *navbar class="my-navbar">
+  <ion-title>产品</ion-title>
+</ion-navbar>
+
+<ion-content class="product-detail">
+	<div *ngIf="product">
+	    <div class="slide">
+	         <img [src]="product.image | imgPath">
+	     </div>
+	     <div class="rows">
+	         <div class="row name">
+	             <span class="title text-ellipsis">{{product.name}}</span>
+	         </div>
+	         <div class="row">
+	             <div class="col-left text-color-light-grey">
+	                 价格
+	             </div>
+	             <div class="col-right">
+	                 {{product.retailPrice | currency:'CNY' | cny}}
+	             </div>
+	             <div class="clear-both"></div>
+	         </div>
+	         <div class="row qty">
+	             <div class="col-left text-color-light-grey">
+	                 数量
+	             </div>
+	             <div class="col-right">
+	                 {{product.qty}}
+	             </div>
+	             <div class="clear-both"></div>
+	         </div>
+	         <div class="row">
+	             <div class="col-left text-color-light-grey">
+	                 运费
+	             </div>
+	             <div class="col-right">
+	                 {{product.freight | currency:'CNY' | cny}}
+	             </div>
+	             <div class="clear-both"></div>
+	         </div>
+	         <div class="row qty">
+	             <div class="col-left text-color-light-grey">
+	                 数量
+	             </div>
+	             <div class="col-right">
+	                    <div (click)="reduceQty()" class="reduceQty"><img src="assets/img/reduce.png"></div>
+	                    <div class="input">
+	                            <input type="text" [(ngModel)]="qty">
+	                    </div>
+	                    <div (click)="addQty()" class="addQty"><img src="assets/img/add.png"></div>
+	                    <div class="clear-both"></div>
+	             </div>
+	         </div>
+	     </div>
+
+	     <div class="divide-line pad"></div>
+
+	     <div class="descr">
+	         {{product.descr}}
+	     </div>
+	</div>
+</ion-content>
+
+<ion-toolbar white position="bottom" class="bottom-toolbar">
+    <div class="bottom-buttons">
+	  <div class="icons ">
+	       <button dark clear (click)="collect()">
+	           <ion-icon *ngIf="isCollected" name="heart"></ion-icon>
+	           <ion-icon *ngIf="!isCollected" name="heart-outline"></ion-icon>
+	       </button>
+	       <button class="has-icon" dark clear (click)="toShoppingCart()">
+	           <ion-icon class="with-badge" name="cart"></ion-icon>
+             <ion-badge *ngIf="shoppingCartItemCount > 0"
+                        class="tab-badge badge-danger">{{shoppingCartItemCount}}</ion-badge>
+	       </button>
+	   </div>
+
+	   <div class="buttons orange" (click)="addToShoppingCart()">
+	       <button clear class="button left">
+	         加入购物车
+	       </button>
+	   </div>
+   </div>
+</ion-toolbar>
