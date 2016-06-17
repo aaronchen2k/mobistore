@@ -70,16 +70,16 @@ shoppingCartSchema.statics.computeItemsPriceAndSave = (clientId) => {
       let items = cart.items;
       let amount = 0;
       let freight = 0;
-      for (let i in items) {
-        amount += items[i].amount;
-        console.log('aa', items[i].freight);
-      }
+      items.forEach(item => {
+        amount += item.amount;
+        console.log('aa', item.freight);
+      });
 
-      for (let i in items) {
-        freight += items[i].freightFreeIfTotalAmount <= amount? 0: items[i].freight;
+      items.forEach(item => {
+        freight += item.freightFreeIfTotalAmount <= amount? 0: item.freight;
 
-        console.log('bb', items[i].freightFreeIfTotalAmount);
-      }
+        console.log('bb', item.freightFreeIfTotalAmount);
+      });
 
       console.log('cc', amount, freight);
       cart.set({
