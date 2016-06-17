@@ -1,0 +1,153 @@
+<html>
+<head>
+  <meta name="decorator" content="demo"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>mobistore demo</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+
+    .main {
+      flex-flow: column;
+    }
+
+    .header {
+      height: 40px;
+      width: 100%;
+      background-color: #E86224;
+    }
+
+    .header .line {
+      padding: 8px;
+    }
+
+    .header .line .left {
+      font-size: 15px;
+      line-height: 22px;
+      color: white;
+    }
+
+    .content {
+      flex: 1;
+
+      display: -webkit-flex; /* Safari */
+      display: flex;
+    }
+
+    .content .right {
+      flex: 1;
+      padding: 10px;
+      padding-left: 100px;
+
+    }
+
+    .content .right img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .my-row {
+      display: flex;
+    }
+
+    .content .right .my-row .my-col1 {
+      width: 50px;
+      text-align: right;
+    }
+
+    .content .right .my-row .my-col2 {
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .content .right .my-row .my-col2 img {
+      height: 200px;
+      width: 200px;
+    }
+
+    .content .left {
+      padding: 10px;
+      width: 370px;
+    }
+
+    .content .left .iframe-container {
+      width: 370px;
+      height: 640px;
+      /*background: url(../img/iphone.png) no-repeat;*/
+      background-size: 360px 640px;
+    }
+
+    .iframe-container iframe {
+      width: 370px;
+      height: 640px;
+    }
+  </style>
+  <script type="text/javascript">
+    function setFrameHeight() {
+      var ifm = document.getElementById("iframepage");
+      var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;
+      if (ifm != null && subWeb != null) {
+        ifm.height = subWeb.body.scrollHeight;
+        ifm.width = subWeb.body.scrollWidth;
+      }
+    }
+  </script>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="line">
+      <div class="left">
+        移动商店
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="iframe-container">
+        <iframe id="iframepage" src="c/"
+                frameborder="0" framespacing="0" frameborder="0" scrolling="no" allowtrancparency="true"
+                style="filter: chroma(COLOR=#6A6A6A);" marginheight="0" marginwidth="0"></iframe>
+      </div>
+    </div>
+    <div class="right">
+      <h4>开发技术</h4>
+      <div class="my-row">
+        <span class="my-col1">前端:</span>
+        <span class="my-col2">AngularJS2.0, Ionic2.0</span>
+      </div>
+      <div class="my-row">
+        <span class="my-col1">后端:</span>
+        <span class="my-col2">Node.js, MongoDB</span>
+      </div>
+      <br/>
+
+      <h4>联系方式</h4>
+      <div class="my-row">
+        <div class="my-col1">QQ:</div>
+        <div class="my-col2">462826</div>
+      </div>
+      <div class="my-row">
+        <div class="my-col1">Email:</div>
+        <div class="my-col2">
+          <a href="mailto:462826@qq.com">462826@qq.com</a>
+        </div>
+      </div>
+      <br/>
+
+      <h4>微信扫二维码访问</h4>
+      <div class="my-row">
+        <div class="my-col2">
+          <img src="img/barcodes.png">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

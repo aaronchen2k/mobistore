@@ -19,7 +19,7 @@ ionic serve
 
 <img src="http://101.200.189.57:13333/img/demo.png" height="500px" style="margin: 10px auto;">
 
-<a href="http://101.200.189.57:13333/c" target="_blank">Demo</a>
+<a href="http://101.200.189.57:13333" target="_blank">Demo</a>
 
 ### Licenses
 
