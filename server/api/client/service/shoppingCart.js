@@ -42,9 +42,9 @@ module.exports = class ShoppingCartService {
         ShoppingCartDao.getByClient(clientId).then(cart => {
           let items = cart.items;
           var arr = [];
-          for (let i in items) {
-            arr.push(ShoppingCartService.disableItem(items[i]));
-          }
+          items.forEach(item => {
+            arr.push(ShoppingCartService.disableItem(item));
+          });
           Promise.all(arr).then(function() {
             console.log("all items were disabled");
             cart.set({ amount: 0, freight: 0, totalAmount: 0 , items: []});
