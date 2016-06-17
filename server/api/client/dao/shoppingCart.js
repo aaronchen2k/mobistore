@@ -79,8 +79,6 @@ shoppingCartSchema.statics.computeItemsPriceAndSave = (clientId) => {
         console.log('bb', items[i].freightFreeIfTotalAmount);
       }
 
-
-
       console.log('cc', amount, freight);
       cart.set({
         amount: amount,

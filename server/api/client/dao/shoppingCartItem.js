@@ -53,7 +53,6 @@ shoppingCartItemSchema.statics.update = (item, product, qty, clientId) => {
 
     item.save(function (err, doc) {
       console.log(77, doc);
-      console.log(777, err);
 
       err ? reject(err): {};
 
