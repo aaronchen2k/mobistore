@@ -44,7 +44,7 @@ recipientSchema.statics.allNotDefault = (recipient, clientId) => {
           var arr = [];
           recipients.forEach( rec => {
             if (rec._id != recipient._id) {
-              if (rec.default) {
+              if (rec.isDefault) {
                 otherHasDefault = true;
               }
 
@@ -52,7 +52,7 @@ recipientSchema.statics.allNotDefault = (recipient, clientId) => {
             }
           });
 
-          if (recipient.default) {
+          if (recipient.isDefault) {
             Promise.all(arr).then(function () {
               console.log("all items were set to notDefault");
               err ? reject(err)
