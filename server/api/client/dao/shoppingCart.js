@@ -65,6 +65,8 @@ shoppingCartSchema.statics.computeItemsPriceAndSave = (clientId) => {
   return new Promise((resolve, reject) => {
     shoppingCartSchema.statics.getByClient(clientId).then(cart => {
 
+      console.log('========', cart);
+
       let items = cart.items;
       let amount = 0;
       let freight = 0;
