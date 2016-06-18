@@ -65,32 +65,24 @@ shoppingCartSchema.statics.computeItemsPriceAndSave = (clientId) => {
   return new Promise((resolve, reject) => {
     shoppingCartSchema.statics.getByClient(clientId).then(cart => {
 
-      console.log('========', cart);
-
       let items = cart.items;
       let amount = 0;
       let freight = 0;
       items.forEach(item => {
         amount += item.amount;
-        console.log('aa', item.freight);
       });
 
       items.forEach(item => {
         freight += item.freightFreeIfTotalAmount <= amount? 0: item.freight;
-
-        console.log('bb', item.freightFreeIfTotalAmount);
       });
 
-      console.log('cc', amount, freight);
       cart.set({
         amount: amount,
         freight: freight,
         totalAmount: amount + freight
       });
-      console.log('dd', cart);
 
       cart.save(function (err, doc) {
-        console.log(33, doc);
         err ? reject(err)
           : resolve(doc);
       })

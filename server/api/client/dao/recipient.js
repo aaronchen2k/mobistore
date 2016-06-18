@@ -58,7 +58,6 @@ recipientSchema.statics.allNotDefault = (recipient, clientId) => {
               err ? reject(err)
                 : resolve(recipient);
             }, function (reason) {
-              console.log(reason);
               reject(reason);
             });
           } else if (!otherHasDefault) {

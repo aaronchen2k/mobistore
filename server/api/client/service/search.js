@@ -26,7 +26,6 @@ module.exports = class SearchService {
   }
 
   static search (categoryId, keywords) {
-    console.log(keywords);
     return new Promise((resolve, reject) => {
       let _query = {};
       if (categoryId) {

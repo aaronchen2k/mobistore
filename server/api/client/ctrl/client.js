@@ -31,8 +31,6 @@ module.exports = class ClientCtrl {
   static saveProfile(req, res) {
     let profile = req.body.profile;
 
-    console.log(0, req.body);
-
     ClientDao.saveProfile(profile, CONSTANTS.testClientId)
       .then(profile => res.status(200).json({
         code: 1,

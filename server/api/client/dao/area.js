@@ -13,7 +13,6 @@ areaSchema.statics.listByParentId = (level, parentId) => {
 
       SysArea.find(_query)
           .exec((err, json) => {
-            console.log(err);
 
             err ? reject(err)
                 : resolve(json);

@@ -24,12 +24,23 @@ body {
 .tab-button:hover:not(.disable-hover), .tab-button[aria-selected=true] {
     color: #444;
 }
+
 ion-navbar.toolbar.my-navbar {
 	background-color: #444444;
 	.bar-button-default {
 	   color: #fff;
 	}
 }
+ion-toolbar.toolbar.my-toolbar {
+  .toolbar-background {
+    display: block;
+    background-color: #333;
+  }
+  .bar-button-default {
+    color: #fff;
+  }
+}
+
 .button-clear {
 	color: black;
 }

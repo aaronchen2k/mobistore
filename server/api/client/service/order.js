@@ -17,7 +17,6 @@ module.exports = class OrderService {
         return new Promise((resolve, reject) => {
 
           let recipient = client.recipients[0];
-          console.log('111', recipient);
           var order = new OrderDao({
             client: client.id,
             recipient: recipient.id,
@@ -49,19 +48,16 @@ module.exports = class OrderService {
       OrderDao.get(orderId).then(order => {
 
           var arr = [];
-          console.log(11, order);
           order.items.forEach(function(item) {
             arr.push(OrderService.cancelItem(item));
           });
 
           Promise.all(arr).then(function() {
-            console.log("all items were cancel");
             order.set({ enabled: false });
             order.save(function (err, doc) {
               err ? reject(err): resolve(order);
             })
           }, function(reason) {
-            console.log(reason);
             reject(reason);
           })
         }).catch(error => reject(error));
@@ -75,7 +71,6 @@ module.exports = class OrderService {
       });
 
       item.save(function (err, doc) {
-        console.log(99, doc);
         err ? reject(err):
           resolve(doc);
       })
