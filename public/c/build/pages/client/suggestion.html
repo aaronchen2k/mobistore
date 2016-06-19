@@ -1,0 +1,24 @@
+<ion-navbar *navbar class="my-navbar">
+	<ion-title>
+		建议
+	</ion-title>
+</ion-navbar>
+
+<ion-content class="suggestion">
+	<ion-list>
+		<ion-item>
+			<ion-label></ion-label>
+			<ion-textarea rows="10" [(ngModel)]="content" placeholder="请输入建议内容"></ion-textarea>
+		</ion-item>
+	</ion-list>
+</ion-content>
+
+<ion-toolbar white position="bottom" class="bottom-toolbar">
+	<div class="bottom-buttons">
+		<div class="buttons orange" (click)="save()">
+			<button clear class="button">
+				保存
+			</button>
+		</div>
+	</div>
+</ion-toolbar>
