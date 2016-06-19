@@ -8568,6 +8568,13 @@ ion-navbar.toolbar.my-navbar {
   ion-navbar.toolbar.my-navbar .bar-button-default {
     color: #fff; }
 
+ion-toolbar.toolbar.my-toolbar .toolbar-background {
+  display: block;
+  background-color: #333; }
+
+ion-toolbar.toolbar.my-toolbar .bar-button-default {
+  color: #fff; }
+
 .button-clear {
   color: black; }
 
