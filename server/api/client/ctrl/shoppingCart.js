@@ -44,7 +44,6 @@ module.exports = class ShoppingCartCtrl {
       .catch(error => res.status(400).json(error));
   }
   static checkout(req, res) {
-   
     ShoppingCartService
       .checkout(CONSTANTS.testClientId)
       .then(data => { res.status(200).json({code: 1, data: data});})

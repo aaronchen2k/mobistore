@@ -122,7 +122,6 @@ module.exports = class ShoppingCartService {
   static checkout (clientId)  {
     return new Promise((resolve, reject) => {
       OrderService.create(clientId).then(data => {
-
         let shoppingCart = data.shoppingCart;
         let order = data.order;
 
@@ -130,6 +129,8 @@ module.exports = class ShoppingCartService {
         shoppingCart.items.forEach(function(item) {
           arr.push(ShoppingCartService.checkoutItem(item, order));
         });
+
+
 
         Promise.all(arr).then(function() {
           console.log("all items were checkout");

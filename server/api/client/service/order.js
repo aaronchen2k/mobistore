@@ -12,7 +12,7 @@ const ShoppingCartDao = require('../dao/shoppingCart');
 module.exports = class OrderService {
   static create(clientId) {
 
-    return Promise.join(ClientDao.get(clientId), ShoppingCartDao.getByClient(clientId),
+    return Promise.join(ClientDao.getWithDefaultRecipient(clientId), ShoppingCartDao.getByClient(clientId),
       function (client, shoppingCart) {
         return new Promise((resolve, reject) => {
 

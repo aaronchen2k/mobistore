@@ -16,7 +16,7 @@ module.exports = class MineService {
 
   static getData(clientId) {
     return Promise.join(CollectionDao.count(clientId), MsgDao.count(clientId),
-      OrderDao.counts(clientId), ConfigDao.get(), ClientDao.get(clientId),
+      OrderDao.counts(clientId), ConfigDao.get(), ClientDao.getWithDefaultRecipient(clientId),
       function (collectionCount, msgCount, orders, config, client) {
         // console.log(collectionCount, msgCount, orders, config, client);
 

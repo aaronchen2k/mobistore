@@ -7,7 +7,7 @@ const _ = require('lodash');
 const clientSchema = require('../model/StrClient');
 const StrRecipient = require('../dao/recipient');
 
-clientSchema.statics.get = (clientId) => {
+clientSchema.statics.getWithDefaultRecipient = (clientId) => {
   return new Promise((resolve, reject) => {
     let _query = {_id: clientId, enabled: true};
 
@@ -18,6 +18,24 @@ clientSchema.statics.get = (clientId) => {
         match: { enabled: true, isDefault: true }
       })
       .exec((err, json) => {
+        err ? reject(err)
+          : resolve(json);
+      });
+  });
+}
+
+clientSchema.statics.getWithAllRecipient = (clientId) => {
+  return new Promise((resolve, reject) => {
+    let _query = {_id: clientId, enabled: true};
+   
+    StrClient
+      .findOne(_query)
+      .populate({
+        path: 'recipients',
+        match: { enabled: true }
+      })
+      .exec((err, json) => {
+
         err ? reject(err)
           : resolve(json);
       });
