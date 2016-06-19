@@ -9889,6 +9889,9 @@ ion-toolbar.toolbar.my-toolbar .toolbar-background {
 ion-toolbar.toolbar.my-toolbar .bar-button-default {
   color: #fff; }
 
+button.item.selected {
+  background-color: #d9d9d9; }
+
 .button-clear {
   color: black; }
 
@@ -10554,11 +10557,11 @@ ion-item.error ion-label {
         background-repeat: no-repeat;
         background-size: cover; }
 
-ion-list.product-list-component ion-item ion-thumbnail img {
+ion-list.product-list-component button.item ion-thumbnail img {
   width: 5.6rem; }
 
-ion-list.product-list-component ion-item .item-inner ion-label h2 {
+ion-list.product-list-component button.item .item-inner ion-label h2 {
   margin-top: 0; }
 
-ion-list.product-list-component ion-item button ion-icon {
+ion-list.product-list-component button.item button ion-icon {
   color: black; }

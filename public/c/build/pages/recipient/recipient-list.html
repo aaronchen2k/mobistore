@@ -11,12 +11,10 @@
 
 <ion-content class="recipient-list">
 	<ion-list>
-		<ion-item *ngFor="let item of recipients" (click)="edit(item.id)" class="item-icon-right text-ellipsis">
-		  <h2 class="text-big text-color-light-grey text-ellipsis" >{{item.name}}，{{item.phone}}</h2>
+		<button ion-item [class.selected]="item.isDefault" *ngFor="let item of recipients" (click)="edit(item.id)" class="item-icon-right text-ellipsis">
+		  <h2 [ngClass]="special" class="text-big text-color-light-grey text-ellipsis" >{{item.name}}，{{item.phone}}</h2>
 		  <p class="text-thin text-color-light-grey">{{item.province}} &nbsp;{{item.city}}</p>
 		  <p class="text-thin text-color-light-grey text-ellipsis">{{item.street}} {{item.recipient}}</p>
-
-      <ion-icon *ngIf="item.isDefault" name="ios-checkmark-outline" item-right></ion-icon>
-		</ion-item>
+		</button>
    </ion-list>
 </ion-content>

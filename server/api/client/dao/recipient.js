@@ -12,6 +12,7 @@ recipientSchema.statics.listByClient = (clientId) => {
     let _query = {client: clientId, enabled: true};
 
     StrRecipient.find(_query)
+      .sort({ isDefault: -1 })
       .exec((err, json) => {
         err ? reject(err)
           : resolve(json);
