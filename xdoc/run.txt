@@ -1,4 +1,9 @@
+#API Server
 npm run dev
 
+#Client Site
 cd client
 ionic serve
+
+#Admin Site
+npm start
