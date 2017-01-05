@@ -13,8 +13,16 @@ npm run dev
 
 cd client
 sudo npm install
-
 ionic serve
+
+cd admin
+sudo npm install
+npm start
+
+#Client Site
+cd client
+ionic serve
+
 ```
 
 <img src="http://101.200.189.57:13333/img/demo.png?r=123" height="500px" style="margin: 10px auto;">

@@ -6,4 +6,5 @@ cd client
 ionic serve
 
 #Admin Site
+cd admin
 npm start
