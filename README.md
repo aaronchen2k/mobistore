@@ -17,9 +17,7 @@ sudo npm install
 ionic serve
 ```
 
-<img src="http://101.200.189.57:13333/img/demo.png?r=123" height="500px" style="margin: 10px auto;">
-
-<a href="http://101.200.189.57:13333" target="_blank">Demo</a>
+<img src="https://raw.githubusercontent.com/aaronchen2k/mobistore/master/public/img/demo.png" height="500px" style="margin: 10px auto;">
 
 ### Licenses
 
