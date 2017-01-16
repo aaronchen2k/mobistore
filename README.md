@@ -25,7 +25,7 @@ ionic serve
 
 ```
 
-<img src="https://raw.githubusercontent.com/aaronchen2k/mobistore/master/public/img/demo.png" height="500px" style="margin: 10px auto;">
+<img src="https://raw.githubusercontent.com/aaronchen2k/mobistore/master/xdoc/demo.jpg" height="500px" style="margin: 10px auto;">
 
 ### Licenses
 
